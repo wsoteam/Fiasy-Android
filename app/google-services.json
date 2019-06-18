@@ -25,15 +25,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588344798889-cr28eaof07tfndusqa5a51bjfkqj9tla.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "588344798889-ucqhmdmq5m5isj591c2rl6ul6fuqp36a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fiasy.fiasyapp"
+              }
+            }
+          ]
         }
       }
     },
@@ -62,7 +67,6 @@
           }
         },
         {
-
           "client_id": "588344798889-3fhr087b9oavkt4ljv7i3bm2ssn1rnjr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -71,7 +75,14 @@
           }
         },
         {
-
+          "client_id": "588344798889-3k3vjm7v0simuqsbquaiom4rp0tk5kpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wild.diet",
+            "certificate_hash": "f803cb03f6a0bbaf3b1d325b45b5e050cc19593e"
+          }
+        },
+        {
           "client_id": "588344798889-cr28eaof07tfndusqa5a51bjfkqj9tla.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -82,20 +93,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "588344798889-cr28eaof07tfndusqa5a51bjfkqj9tla.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "588344798889-ucqhmdmq5m5isj591c2rl6ul6fuqp36a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fiasy.fiasyapp"
+              }
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
