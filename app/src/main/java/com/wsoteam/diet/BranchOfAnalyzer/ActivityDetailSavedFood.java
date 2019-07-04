@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -26,7 +27,10 @@ import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -37,13 +41,17 @@ public class ActivityDetailSavedFood extends AppCompatActivity {
     @BindView(R.id.tvActivityDetailOfFoodCalculateCarbo) TextView tvCalculateCarbohydrates;
     @BindView(R.id.tvActivityDetailOfFoodCalculateProtein) TextView tvCalculateProtein;
     @BindView(R.id.edtActivityDetailOfFoodPortion) EditText edtWeight;
+    @BindView(R.id.cardView6) CardView cardView6;
 
     @BindView(R.id.tvCarbohydrates) TextView tvCarbohydrates;
     @BindView(R.id.tvFats) TextView tvFats;
     @BindView(R.id.tvProteins) TextView tvProteins;
-
-    @BindView(R.id.bottom_sheet) LinearLayout bottomSheet;
-    private BottomSheetBehavior bottomSheetBehavior;
+    @BindViews({R.id.tvCellulose, R.id.tvSugar, R.id.tvSaturated, R.id.tvСholesterol, R.id.tvSodium,
+            R.id.tvPotassium, R.id.tvMonoUnSaturated, R.id.tvPolyUnSaturated,
+            R.id.tvLabelCellulose, R.id.tvLabelSugar, R.id.tvLabelSaturated, R.id.tvLabelMonoUnSaturated, R.id.tvLabelPolyUnSaturated,
+            R.id.tvLabelСholesterol, R.id.tvLabelSodium, R.id.tvLabelPotassium, R.id.btnPremCell, R.id.btnPremSugar, R.id.btnPremSaturated,
+            R.id.btnPremMonoUnSaturated, R.id.btnPremPolyUnSaturated, R.id.btnPremCholy, R.id.btnPremSod, R.id.btnPremPot})
+    List<View> viewList;
 
     private final int BREAKFAST_POSITION = 0, LUNCH_POSITION = 1, DINNER_POSITION = 2, SNACK_POSITION = 3, EMPTY_FIELD = -1;
     private Eating foodItem;
@@ -52,11 +60,13 @@ public class ActivityDetailSavedFood extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_saved_food);
+        setContentView(R.layout.activity_detail_of_food);
         ButterKnife.bind(this);
         foodItem = (Eating) getIntent().getSerializableExtra(Config.INTENT_DETAIL_FOOD);
         reCalculate();
         bindFields();
+        ButterKnife.apply(viewList, (view, value, index) -> view.setVisibility(value), View.GONE);
+        cardView6.setBackgroundResource(R.drawable.shape_calculate);
 
         edtWeight.addTextChangedListener(new TextWatcher() {
             @Override
@@ -86,8 +96,6 @@ public class ActivityDetailSavedFood extends AppCompatActivity {
 
             }
         });
-
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         Amplitude.getInstance().logEvent(AmplitudaEvents.view_detail_food);
 
     }
@@ -174,7 +182,7 @@ public class ActivityDetailSavedFood extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btnSaveEating, R.id.ivBack, R.id.ibSheetClose})
+    @OnClick({R.id.btnSaveEating, R.id.ivBack})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnSaveEating:
