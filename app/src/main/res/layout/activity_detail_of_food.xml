@@ -90,7 +90,7 @@
             android:id="@+id/cardView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="54dp"
             android:src="@drawable/shape_calculate"
             app:cardElevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,29 +104,18 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvActivityDetailOfFoodCountOfFat2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:text="г"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/divider17"
-                    app:layout_constraintEnd_toEndOf="@+id/divider17"
-                    app:layout_constraintStart_toStartOf="@+id/divider17" />
-
-                <TextView
                     android:id="@+id/textView36"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="45dp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/roboto"
-                    android:text="Расчет порции"
+                    android:gravity="center_horizontal"
+                    android:text="Расчет продукта"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -175,16 +164,15 @@
                     android:id="@+id/tvActivityDetailOfFoodCalculateKcal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/roboto"
-                    android:text="0 Ккал"
+                    android:text="= 0 Ккал"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edtActivityDetailOfFoodPortion"
+                    app:layout_constraintStart_toEndOf="@+id/textView147"
+                    app:layout_constraintTop_toTopOf="@+id/edtActivityDetailOfFoodPortion"
+                    app:layout_constraintVertical_bias="0.49" />
 
                 <TextView
                     android:id="@+id/tvActivityDetailOfFoodCalculateFat"
@@ -236,21 +224,24 @@
 
                 <EditText
                     android:id="@+id/edtActivityDetailOfFoodPortion"
-                    android:layout_width="70dp"
+                    android:layout_width="53dp"
                     android:layout_height="46dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/edit_text_food"
-                    android:fontFamily="@font/roboto_light"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center_horizontal"
                     android:hint=""
                     android:inputType="numberSigned"
                     android:maxLength="5"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/divider17"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:textColor="@color/edit_text_food"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView145"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.55"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvActivityDetailOfFoodCalculateKcal" />
+                    app:layout_constraintTop_toTopOf="@+id/textView145"
+                    app:layout_constraintVertical_bias="0.555" />
 
                 <Button
                     android:id="@+id/btnSaveEating"
@@ -275,22 +266,37 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/edtActivityDetailOfFoodPortion" />
 
-                <View
-                    android:id="@+id/divider17"
-                    android:layout_width="186dp"
-                    android:layout_height="1dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="?android:attr/listDivider"
+                <TextView
+                    android:id="@+id/textView145"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Вес продукта"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/edtActivityDetailOfFoodPortion"
+                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+                <TextView
+                    android:id="@+id/textView147"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="г."
+                    android:textColor="@color/edit_text_food"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/edtActivityDetailOfFoodPortion"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/edtActivityDetailOfFoodPortion"
+                    app:layout_constraintTop_toTopOf="@+id/edtActivityDetailOfFoodPortion" />
 
 
             </android.support.constraint.ConstraintLayout>
