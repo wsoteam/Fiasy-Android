@@ -51,7 +51,7 @@
                 />
 
             <ImageView
-                android:id="@+id/imageView56"
+                android:id="@+id/backgroundImg"
                 android:layout_width="171dp"
                 android:layout_height="171dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView22"

@@ -1,5 +1,10 @@
 <resources>
 
+  <!--  prem 2.0-->
+  <string name="prem_2_title">Специальное предложение</string>
+  <string name="prem_2_info">Станьте участником PREMIUM и вы получите доступ ко всей базе рецептов, тренировок и статей!</string>
+  <string name="prem_2_price">Попробуйте 3 дня бесплатно\nДалее 49р. / неделя</string>
+
   <string name="subTitle">Достигайте цели быстрее!</string>
   <string name="subTestText">Попробуйте 3 дня бесплатно\n Далее 49р. / неделя</string>
   <string name="individualPlanTxt">Вы достигнете своей цели уже через месяц, получив доступ к уникальным статьям о здоровом питании и сотни рецептов</string>
