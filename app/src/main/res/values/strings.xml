@@ -1,5 +1,11 @@
 <resources>
 
+  <!--  prem 4.0-->
+  <string name="prem_4_price">Каждая покупка включает\n 3 дня бесплатного использования</string>
+  <string name="prem_4_title">Разблокируйте все!</string>
+  <string name="prem_4_info">Получите доступ ко всей базе рецептов, тренировок и статей!</string>
+  <string name="prem_4_sale">SAFE 30%</string>
+
   <!--  prem 5.0-->
   <string name="prem_5_title">Открой новые возможности PREMIUM</string>
   <string name="prem_5_card1_title">Статьи от диетологов</string>
