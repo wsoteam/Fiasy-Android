@@ -1,5 +1,14 @@
 <resources>
 
+  <!--  prem 5.0-->
+  <string name="prem_5_title">Открой новые возможности PREMIUM</string>
+  <string name="prem_5_card1_title">Статьи от диетологов</string>
+  <string name="prem_5_card1_text">Вы получите безграничный доступ к статьим ведущих диетологв мира!</string>
+  <string name="prem_5_card2_title">Контроль КБЖУ</string>
+  <string name="prem_5_card2_text">Вы сможете просматривать и регулировать уровень своего КБЖУ!</string>
+  <string name="prem_5_card3_title">База рецептов</string>
+  <string name="prem_5_card3_text">Вы сможете найти рецепт по любому вашему предпочтенью!</string>
+
   <!--  prem 2.0-->
   <string name="prem_2_title">Специальное предложение</string>
   <string name="prem_2_info">Станьте участником PREMIUM и вы получите доступ ко всей базе рецептов, тренировок и статей!</string>

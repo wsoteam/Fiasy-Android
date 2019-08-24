@@ -16,11 +16,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import com.adjust.sdk.Adjust;
 import com.adjust.sdk.AdjustEvent;
 import com.android.billingclient.api.BillingClient;
@@ -46,22 +48,15 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.utils.IntentUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
-
-
-public class FragmentSubscriptionOneButton2 extends Fragment
+public class FragmentSubscriptionOneButton5 extends Fragment
     implements PurchasesUpdatedListener {
 
-  @BindView(R.id.info) TextView infoTextView;
+
   @BindView(R.id.price) TextView priceTextView;
-  @BindView(R.id.backgroundImg) ImageView backgroundImage;
+  @BindView(R.id.title) TextView titleTextView;
 
   private BillingClient billingClient;
   private static final String TAG = "inappbilling";
@@ -72,11 +67,11 @@ public class FragmentSubscriptionOneButton2 extends Fragment
   private Box box;
   private final String BUY_NOW = "BUY_NOW";
 
-  public static FragmentSubscriptionOneButton2 newInstance(Box box) {
+  public static FragmentSubscriptionOneButton5 newInstance(Box box) {
     Bundle bundle = new Bundle();
     bundle.putSerializable(TAG_BOX, box);
-    FragmentSubscriptionOneButton2 fragment =
-        new FragmentSubscriptionOneButton2();
+    FragmentSubscriptionOneButton5 fragment =
+        new FragmentSubscriptionOneButton5();
     fragment.setArguments(bundle);
     return fragment;
   }
@@ -85,23 +80,28 @@ public class FragmentSubscriptionOneButton2 extends Fragment
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    //View view = inflater.inflate(R.layout.fragment_subscription_one_button_2, container, false);
-    View view = inflater.inflate(R.layout.fragment_subscription_2, container, false);
+
+    View view = inflater.inflate(R.layout.fragment_subscription_5, container, false);
     unbinder = ButterKnife.bind(this, view);
     box = (Box) getArguments().getSerializable(TAG_BOX);
 
     Window w = getActivity().getWindow(); // in Activity's onCreate() for instance
-    w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    w.setNavigationBarColor(getResources().getColor(R.color.black_for_background));
-    infoTextView.setText(setColor(R.string.prem_2_info, "#ef7d02", 19, 26 ));
+    //w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    w.getDecorView().setSystemUiVisibility(
+        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    w.setNavigationBarColor(Color.parseColor("#30000000"));
+    w.setStatusBarColor(Color.parseColor("#382c2c2d"));
+
+    titleTextView.setText(setColor(R.string.prem_5_title, "#ef7d02", 25, 32));
     priceTextView.setText(setColor(R.string.prem_2_price, "#ef7d02", 11, 26 ));
 
-        //Glide.with(requireContext())
-        //        .load(R.drawable.bacgroud_premium_2)
-        //        .apply(new RequestOptions()
-        //                .skipMemoryCache(true)
-        //                .centerInside())
-        //        .into(backgroundImage);
+    //Glide.with(requireContext())
+    //        .load(R.drawable.bacgroud_premium_2)
+    //        .apply(new RequestOptions()
+    //                .skipMemoryCache(true)
+    //                .centerInside())
+    //        .into(backgroundImage);
 
     billingClient = BillingClient.newBuilder(requireContext())
         .setListener(this)
