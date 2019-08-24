@@ -204,7 +204,7 @@ public class FragmentSubscriptionOneButton2 extends Fragment
   }
 
 
-  @OnClick({R.id.btnBuyPrem, R.id.tvPrivacyPolicy})
+  @OnClick({R.id.btnClose, R.id.btnBack, R.id.btnBuyPrem, R.id.tvPrivacyPolicy})
   public void onViewClicked(View view) {
     switch (view.getId()) {
       case R.id.btnBuyPrem:

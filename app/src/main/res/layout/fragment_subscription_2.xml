@@ -6,6 +6,45 @@
     android:layout_height="match_parent"
     >
 
+  <ImageView
+      android:id="@+id/backgroundImg"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:scaleType="centerCrop"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/bacgroud_premium_2"
+      />
+  <ImageView
+      android:id="@+id/btnBack"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="32dp"
+      android:padding="4dp"
+      android:scaleType="fitCenter"
+      android:tint="#000"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_prem_back"
+      />
+  <ImageView
+      android:id="@+id/btnClose"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:layout_marginEnd="20dp"
+      android:layout_marginTop="32dp"
+      android:padding="6dp"
+      android:scaleType="fitCenter"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_prem_close"
+      app:tint="#444"
+      />
   <Button
       android:id="@+id/btnBuyPrem"
       android:layout_width="250dp"
@@ -21,19 +60,6 @@
       app:layout_constraintStart_toStartOf="parent"
       />
 
-  <ImageView
-      android:id="@+id/backgroundImg"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:scaleType="centerCrop"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0"
-      app:srcCompat="@drawable/bacgroud_premium_2"
-      />
   <ImageView
       android:id="@+id/imageView59"
       android:layout_width="wrap_content"
