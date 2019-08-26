@@ -58,6 +58,9 @@ public class FragmentSubscription4 extends Fragment
   @BindView(R.id.mcvMonth) MaterialCardView mcvMonth;
   @BindView(R.id.mcvYear) MaterialCardView mcvYear;
 
+  int pushedButton = Btn.EMPTY;
+  // 1: left
+  // 2: right
   private BillingClient billingClient;
   private static final String TAG = "inappbilling";
   private String currentSKU = IDs.ID_ONE_WEEK, currentPrice = "99р";
@@ -66,6 +69,12 @@ public class FragmentSubscription4 extends Fragment
   private static final String TAG_BOX = "TAG_BOX";
   private Box box;
   private final String BUY_NOW = "BUY_NOW";
+
+  static class Btn {
+    public static final int EMPTY = 0;
+    public static final int YEAR = 1;
+    public static final int MONTH = 2;
+  }
 
   public static FragmentSubscription4 newInstance(Box box) {
     Bundle bundle = new Bundle();
@@ -156,13 +165,26 @@ public class FragmentSubscription4 extends Fragment
   void mcvClicked(View view){
     switch (view.getId()){
       case R.id.mcvYear:
-        mcvYear.setStrokeColor(Color.parseColor("#f2994a"));
-        mcvMonth.setStrokeColor(Color.parseColor("#00FFFFFF"));
-        mcvYear.setStrokeWidth(3);
+        if (pushedButton != Btn.YEAR) {
+          if (pushedButton == Btn.EMPTY){
+            mcvYear.setStrokeWidth(6);
+          }else {
+            mcvYear.setStrokeWidth(6);
+            mcvMonth.setStrokeWidth(-6);
+          }
+          pushedButton = Btn.YEAR;
+        }
         break;
       case R.id.mcvMonth:
-        mcvMonth.setStrokeColor(Color.parseColor("#f2994a"));
-        mcvYear.setStrokeColor(Color.parseColor("#00FFFFFF"));
+        if (pushedButton != Btn.MONTH) {
+          if (pushedButton == Btn.EMPTY){
+            mcvMonth.setStrokeWidth(6);
+          }else {
+            mcvYear.setStrokeWidth(-6);
+            mcvMonth.setStrokeWidth(6);
+          }
+          pushedButton = Btn.MONTH;
+        }
         break;
     }
   }
