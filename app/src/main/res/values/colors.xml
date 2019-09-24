@@ -1,229 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3e0169</color>
-  <color name="colorPrimaryDark">#460261</color>
-  <color name="colorAccent">#FF4081</color>
-  <color name="colorTitleText">#1d1c1c</color>
+    <color name="colorPrimary">#3e0169</color>
+    <color name="colorPrimaryDark">#460261</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTitleText">#1d1c1c</color>
 
     <color name="pumpkin_orange">#ef7d02</color>
     <color name="black">#1D1C1C</color>
     <color name="black_for_background">#371d1c1c</color>
 
-  <color name="colorPrimaryDarkAlfa">#cd340447</color>
+    <color name="colorPrimaryDarkAlfa">#cd340447</color>
 
-  <color name="test">#1cae17</color>
+    <color name="test">#1cae17</color>
 
-  <color name="orange1">#EF7D02</color>
-  <color name="orange2">#FFB800</color>
-  <color name="orange3">#FFF4BB</color>
+    <color name="orange1">#EF7D02</color>
+    <color name="orange2">#FFB800</color>
+    <color name="orange3">#FFF4BB</color>
 
-  <color name="green">#1cae17</color>
-  <color name="пку">#1cae17</color>
-  <color name="white">#FFFFFF</color>
-  <color name="white_half">#64FFFFFF</color>
-  <color name="white_half_transparent">#A6FFFFFF</color>
-  <color name="red">#e12a2a</color>
-  <color name="light_red">#cf3838</color>
-  <color name="white_red">#f14a4a</color>
-  <color name="blue">#4a5bf1</color>
-  <color name="orange">#fb651a</color>
-  <color name="orange_light">#fc9426</color>
-  <color name="orange_dark">#ee8f36</color>
-  <color name="orange_light2">#f9a12d</color>
-  <color name="purple">#961afb</color>
-  <color name="gray">#3C3C3C</color>
-  <color name="gray2">#71726c</color>
-  <color name="gray3">#747474</color>
-  <color name="gray4">#aaaaaa</color>
-  <color name="gray5">#575757</color>
-  <color name="gray6">#8a030303</color>
-  <color name="gray7">#ebebeb</color>
-  <color name="gray_light">#757575</color>
-  <color name="gray_light2">#aeaeae</color>
-  <color name="light_gray">#8f8f8f</color>
-  <color name="yellow">#f9e72a</color>
-  <color name="images_filter">#e17d218f</color>
-  <color name="images_filter_edit_profile">#be252525</color>
-  <color name="black_gray">#3A3A3A</color>
-  <color name="black_gray_alpha">#A63A3A3A</color>
-  <color name="black_half_alpha">#80000000</color>
+    <color name="green">#1cae17</color>
+    <color name="пку">#1cae17</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_half">#64FFFFFF</color>
+    <color name="white_half_transparent">#A6FFFFFF</color>
+    <color name="red">#e12a2a</color>
+    <color name="light_red">#cf3838</color>
+    <color name="white_red">#f14a4a</color>
+    <color name="blue">#4a5bf1</color>
+    <color name="orange">#fb651a</color>
+    <color name="orange_light">#fc9426</color>
+    <color name="orange_dark">#ee8f36</color>
+    <color name="orange_light2">#f9a12d</color>
+    <color name="purple">#961afb</color>
+    <color name="gray">#3C3C3C</color>
+    <color name="gray2">#71726c</color>
+    <color name="gray3">#747474</color>
+    <color name="gray4">#aaaaaa</color>
+    <color name="gray5">#575757</color>
+    <color name="gray6">#8a030303</color>
+    <color name="gray7">#ebebeb</color>
+    <color name="gray_light">#757575</color>
+    <color name="gray_light2">#aeaeae</color>
+    <color name="light_gray">#8f8f8f</color>
+    <color name="yellow">#f9e72a</color>
+    <color name="images_filter">#e17d218f</color>
+    <color name="images_filter_edit_profile">#be252525</color>
+    <color name="black_gray">#3A3A3A</color>
+    <color name="black_gray_alpha">#A63A3A3A</color>
+    <color name="black_half_alpha">#80000000</color>
 
-  <color name="text_enabled">#585757</color>
-  <color name="text_disabled">#46868383</color>
-  <color name="text_color_auth">#323131</color>
-  <color name="auth_hint_color">#32323131</color>
+    <color name="text_enabled">#585757</color>
+    <color name="text_disabled">#46868383</color>
+    <color name="text_color_auth">#323131</color>
+    <color name="auth_hint_color">#32323131</color>
 
-  <color name="finished_circle_detail_food">#9ACEDC</color>
-
-
-  <color name="uninated_nations_blue">#fa6b44</color>
-  <color name="frostbite">#de32aa</color>
-  <color name="light_green">#4fe76d</color>
-
-  <color name="alfa">#00FFFFFF</color>
-
-  <color name="water_text_black">#de000000</color>
-
-  <!--Exercises-->
-  <color name="whiteColor">#FFFFFF</color>
-  <color name="dark">#6d050505</color>
-  <color name="darkWithoutAlfa">#ffffff</color>
-  <color name="darkWithoutAlfaJustMoreBlack">#262525</color>
-  <color name="darkWithoutAlfaMoreLight">#4b4a4a</color>
-  <color name="backgroundDelete">#b41c1c</color>
-  <color name="transparent">#00b41c1c</color>
+    <color name="finished_circle_detail_food">#9ACEDC</color>
 
 
-  <!--Colors for cirlce progress on main screen-->
-  <color name="fatColor">#fbaa1d</color>
-  <color name="kcalColor">#fffc21</color>
-  <color name="protColor">#ff2b8e</color>
-  <color name="carboColor">#45ff17</color>
-  <color name="little_transparent">#5e303030</color>
-  <color name="littlejust_transparent">#c143d448</color>
-  <color name="textColor">#ffffff</color>
-  <color name="backgroundColor">#FFFFFF</color>
+    <color name="uninated_nations_blue">#fa6b44</color>
+    <color name="frostbite">#de32aa</color>
+    <color name="light_green">#4fe76d</color>
+
+    <color name="alfa">#00FFFFFF</color>
+
+    <color name="water_text_black">#de000000</color>
+
+    <!--Exercises-->
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="dark">#6d050505</color>
+    <color name="darkWithoutAlfa">#ffffff</color>
+    <color name="darkWithoutAlfaJustMoreBlack">#262525</color>
+    <color name="darkWithoutAlfaMoreLight">#4b4a4a</color>
+    <color name="backgroundDelete">#b41c1c</color>
+    <color name="transparent">#00b41c1c</color>
 
 
-  <color name="over_eat_color">#DF590E</color>
-  <color name="bottom_color_for_eating_diary_style">#a943fe</color>
+    <!--Colors for cirlce progress on main screen-->
+    <color name="fatColor">#fbaa1d</color>
+    <color name="kcalColor">#fffc21</color>
+    <color name="protColor">#ff2b8e</color>
+    <color name="carboColor">#45ff17</color>
+    <color name="little_transparent">#5e303030</color>
+    <color name="littlejust_transparent">#c143d448</color>
+    <color name="textColor">#ffffff</color>
+    <color name="backgroundColor">#FFFFFF</color>
 
 
-  <color name="text_color_item_eating_diary">#7091be</color>
+    <color name="over_eat_color">#DF590E</color>
+    <color name="bottom_color_for_eating_diary_style">#a943fe</color>
 
 
-  <color name="wave_color">#00d2ff</color>
-  <color name="glass_color">#3784899d</color>
-
-  <color name="level_easy">#43d448</color>
-  <color name="level_normal">#fbaa1d</color>
-  <color name="level_hard">#b41c1c</color>
+    <color name="text_color_item_eating_diary">#7091be</color>
 
 
-  <color name="add_food_green">#34847C</color>
-  <color name="add_food_red">#f44336</color>
+    <color name="wave_color">#00d2ff</color>
+    <color name="glass_color">#3784899d</color>
+
+    <color name="level_easy">#43d448</color>
+    <color name="level_normal">#fbaa1d</color>
+    <color name="level_hard">#b41c1c</color>
 
 
-  <color name="imt_close_ad">#00a82d</color>
+    <color name="add_food_green">#34847C</color>
+    <color name="add_food_red">#f44336</color>
 
 
-  <color name="fab_main_activity">#39A298</color>
-
-  <color name="background_premium">#44566D</color>
-  <color name="premium_text">#F8B408</color>
-  <color name="select_card_premium">#F8B408</color>
+    <color name="imt_close_ad">#00a82d</color>
 
 
-  <color name="grey_100">#F5F5F5</color>
-  <color name="grey_300">#E0E0E0</color>
-  <color name="grey_500">#9E9E9E</color>
+    <color name="fab_main_activity">#39A298</color>
 
-  <color name="is_exist_profile">#464646</color>
-  <color name="first_auth_description">#5A5A5A</color>
-
-
-  <color name="head_analyzer_search">#39A298</color>
+    <color name="background_premium">#44566D</color>
+    <color name="premium_text">#F8B408</color>
+    <color name="select_card_premium">#F8B408</color>
 
 
-  <color name="colorPrimaryDarkPolicy">#AE8005</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_500">#9E9E9E</color>
+
+    <color name="is_exist_profile">#464646</color>
+    <color name="first_auth_description">#5A5A5A</color>
 
 
-  <color name="unactive_color_bnv_main">#ABABAB</color>
-  <color name="active_color_bnv_main">#DF8B30</color>
+    <color name="head_analyzer_search">#39A298</color>
 
 
-  <color name="gray_text_detail_food">#757575</color>
+    <color name="colorPrimaryDarkPolicy">#AE8005</color>
 
 
-  <color name="premium_button">#EF7D02</color>
+    <color name="unactive_color_bnv_main">#ABABAB</color>
+    <color name="active_color_bnv_main">#DF8B30</color>
 
 
-  <color name="head_detail_food">#EF7D02</color>
+    <color name="gray_text_detail_food">#757575</color>
 
 
-  <color name="back_food_item_diary">#1AF3DD72</color>
-  <color name="b_color">#EF7D02</color>
-  <color name="g_color">#7993B2</color>
-  <color name="u_color">#694B74</color>
+    <color name="premium_button">#EF7D02</color>
 
 
-  <color name="background_empty_fragment">#44566D</color>
-  <color name="white_profile">#A1FFFFFF</color>
-
-  <color name="head_settings">#FDBD0A</color>
+    <color name="head_detail_food">#EF7D02</color>
 
 
-  <color name="statusbar_prem">#374557</color>
+    <color name="back_food_item_diary">#1AF3DD72</color>
+    <color name="b_color">#EF7D02</color>
+    <color name="g_color">#7993B2</color>
+    <color name="u_color">#694B74</color>
 
-  <color name="statusbar_profile">#2E4E4E</color>
 
-  <color name="btn_reg_sheet">#74A6B3</color>
+    <color name="background_empty_fragment">#44566D</color>
+    <color name="white_profile">#A1FFFFFF</color>
 
-  <color name="prem_medium">#883A1B</color>
-  <color name="prem_head">#E4930B</color>
-  <color name="prem_filter">#61FF8E00</color>
+    <color name="head_settings">#FDBD0A</color>
 
-  <color name="prem_text_color_head">#656565</color>
 
-  <color name="frame_whire_premium">#EF7D02</color>
-  <color name="rating_bar_star">#FF9D00</color>
-  <color name="head_green_prem">#919E40</color>
-  <color name="price_green_prem">#E98A25</color>
-  <color name="gray_prem_green_text">#6A6A6A</color>
-  <color name="sleep_title">#D91A1919</color>
-  <color name="total_title">#474747</color>
-  <color name="kcal_color">#3F3D3B</color>
-  <color name="amount_total_count">#EF7D02</color>
-  <color name="left_cloud">#96333232</color>
-  <color name="half_transparent_green">#40009C99</color>
-  <color name="light_gray_one_button">#9D9D9D</color>
-  <color name="edit_text_food">#DC8535</color>
-  <color name="text_claim">#A6000000</color>
-  <color name="button_claim_active">#EF7D02</color>
-  <color name="button_claim_inactive">#8AEF7D02</color>
-  <color name="recommendation">#555555</color>
-  <color name="back_eating">#1AF3DD72</color>
-  <color name="fab_eating">#EF7D02</color>
-  <color name="count_color">#57000000</color>
-  <color name="reminder_color">#555555</color>
-  <color name="reminder_back_color">#70FF947A</color>
-  <color name="confirm_text">#8A000000</color>
-  <color name="confirm_button">#205651</color>
+    <color name="statusbar_prem">#374557</color>
 
-  <color name="black_trans80">#32000000</color>
+    <color name="statusbar_profile">#2E4E4E</color>
 
-  <color name="fff">#BB6001</color>
-  <color name="bottom_create_food">#F19027</color>
+    <color name="btn_reg_sheet">#74A6B3</color>
 
-  <color name="main_calories_done">#f2812d    </color>
-  <color name="main_calories_done_over">#dec87d2d</color>
-  <color name="main_calories_left">#8ab60d</color>
-  <color name="main_calories_left_over">#fb4d3c</color>
+    <color name="prem_medium">#883A1B</color>
+    <color name="prem_head">#E4930B</color>
+    <color name="prem_filter">#61FF8E00</color>
 
-  <color name="main_value_over">#f96657</color>
+    <color name="prem_text_color_head">#656565</color>
 
-  <color name="main_screen_progress_bar_calories">#f39530</color>
-  <color name="main_screen_progress_bar_protein">#f2942e</color>
-  <color name="main_screen_progress_bar_fat">#fabe4f</color>
-  <color name="main_screen_progress_bar_carbo">#f1e085</color>
-  <color name="main_screen_progress_bar_over">#f55d4e</color>
+    <color name="frame_whire_premium">#EF7D02</color>
+    <color name="rating_bar_star">#FF9D00</color>
+    <color name="head_green_prem">#919E40</color>
+    <color name="price_green_prem">#E98A25</color>
+    <color name="gray_prem_green_text">#6A6A6A</color>
+    <color name="sleep_title">#D91A1919</color>
+    <color name="total_title">#474747</color>
+    <color name="kcal_color">#3F3D3B</color>
+    <color name="amount_total_count">#EF7D02</color>
+    <color name="left_cloud">#96333232</color>
+    <color name="half_transparent_green">#40009C99</color>
+    <color name="light_gray_one_button">#9D9D9D</color>
+    <color name="edit_text_food">#DC8535</color>
+    <color name="text_claim">#A6000000</color>
+    <color name="button_claim_active">#EF7D02</color>
+    <color name="button_claim_inactive">#8AEF7D02</color>
+    <color name="recommendation">#555555</color>
+    <color name="back_eating">#1AF3DD72</color>
+    <color name="fab_eating">#EF7D02</color>
+    <color name="count_color">#57000000</color>
+    <color name="reminder_color">#555555</color>
+    <color name="reminder_back_color">#70FF947A</color>
+    <color name="confirm_text">#8A000000</color>
+    <color name="confirm_button">#205651</color>
 
-  <color name="uncompleted_color">#A3E0D9</color>
-  <color name="uncompleted_text_color">#F8F8F8</color>
-  <color name="prem_settings">#f2994a</color>
-  <color name="unprem_settings">#d9424242</color>
-  <color name="logout_settings">#eb5757</color>
-  <color name="filter_edit_avatar">#59000000</color>
-  <color name="color_bar">#f2994a</color>
-  <color name="color_bar_past">#FCB981</color>
-  <color name="color_bar_future">#d5d7de</color>
-  <color name="color_line_chart">#f9a7ad</color>
-  <color name="highlight_line_color">#80aeb3c0</color>
-  <color name="linear_line_color">#80EB5757</color>
+    <color name="black_trans80">#32000000</color>
 
-  <color name="auth_enter_background_color_disabled">#acacac</color>
-  <color name="auth_enter_background_color_enabled">@color/orange</color>
+    <color name="fff">#BB6001</color>
+    <color name="bottom_create_food">#F19027</color>
+
+    <color name="main_calories_done">#f2812d</color>
+    <color name="main_calories_done_over">#dec87d2d</color>
+    <color name="main_calories_left">#8ab60d</color>
+    <color name="main_calories_left_over">#fb4d3c</color>
+
+    <color name="main_value_over">#f96657</color>
+
+    <color name="main_screen_progress_bar_calories">#f39530</color>
+    <color name="main_screen_progress_bar_protein">#f2942e</color>
+    <color name="main_screen_progress_bar_fat">#fabe4f</color>
+    <color name="main_screen_progress_bar_carbo">#f1e085</color>
+    <color name="main_screen_progress_bar_over">#f55d4e</color>
+
+    <color name="uncompleted_color">#A3E0D9</color>
+    <color name="uncompleted_text_color">#F8F8F8</color>
+    <color name="prem_settings">#f2994a</color>
+    <color name="unprem_settings">#d9424242</color>
+    <color name="logout_settings">#eb5757</color>
+    <color name="filter_edit_avatar">#59000000</color>
+    <color name="color_bar">#f2994a</color>
+    <color name="color_bar_past">#FCB981</color>
+    <color name="color_bar_future">#d5d7de</color>
+    <color name="color_line_chart">#f9a7ad</color>
+    <color name="highlight_line_color">#80aeb3c0</color>
+    <color name="linear_line_color">#80EB5757</color>
+
+    <color name="auth_enter_background_color_disabled">#acacac</color>
+    <color name="auth_enter_background_color_enabled">@color/orange</color>
 
     <color name="diets_plan_prem_btn">#ef7d02</color>
+    <color name="active_promo_btn">#ef7d02</color>
+    <color name="unactive_promo_btn">#acacac</color>
+    <color name="hint_promo">#51000000</color>
+    <color name="hint_error">#8acc0808</color>
+    <color name="hint_no_error_back">#f2994a</color>
+
+    <color name="active_drop">#ef7d02</color>
+    <color name="inactive_drop">#bdbdbd</color>
 
 </resources>

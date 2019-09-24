@@ -100,18 +100,202 @@ public class Events {
     public static final String ADD_CUSTOM_RECIPE = "add_custom_recipe";
     public static final String CHANGE_GOAL = "change_goal";
 
-    //DIET
-    //public static final String SELECT_DIET_FILTRES = "select_diet_filters";
-    //public static final String SHARE_DIET = "share_diet";
+    //Diets
+    public static final String CHOOSE_PLAN = "choose_plan";
+    public static final String CONNECT_PLAN_SUCCES = "connect_plan_success";
+    public static final String WATCH_PLAN_RECIPIES = "watch_plan_recipies";
+    public static final String ADD_PLAN_RECIPE_SUCCESS = "add_plan_recipe_success";
+    public static final String PLAN_COMPLETE = "plan_complete";
+    public static final String LEAVE_PLAN = "leave_plan";
+
+    public static void logAddRecipeInDiaryPlan(String eating, String nameRecipe, String namePlan) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.recipe_intake, eating);
+            eventProperties.put(EventProperties.recipe_id_add, nameRecipe);
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(RECIPE_ADD_SUCCES, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.recipe_intake, eating);
+        eventData.put(EventProperties.recipe_id_add, nameRecipe);
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        io.intercom.android.sdk.Intercom.client().logEvent(RECIPE_ADD_SUCCES, eventData);
+    }
 
 
-    //TRAINING
-    //public static final String SELECT_TRAINING = "select_training";
-    //public static final String SHARE_TRAINING = "share_training";
+    public static void logViewRecipePlan(String name, String namePlan) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.recipe_item, name);
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(VIEW_RECIPE, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.recipe_item, name);
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        io.intercom.android.sdk.Intercom.client().logEvent(VIEW_RECIPE, eventData);
+    }
+
+
+    public static void logPlanLeave(String namePlan, int activeDays) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+            eventProperties.put(EventProperties.active_day, activeDays);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(LEAVE_PLAN, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        eventData.put(EventProperties.active_day, activeDays);
+        io.intercom.android.sdk.Intercom.client().logEvent(LEAVE_PLAN, eventData);
+    }
+
+    public static void logSetUserPropertyError(String message) {
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put("message", message);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent("prop_error", eventProperties);
+    }
 
     public static void logChangeGoal() {
         Amplitude.getInstance().logEvent(CHANGE_GOAL);
         io.intercom.android.sdk.Intercom.client().logEvent(CHANGE_GOAL);
+    }
+
+
+    public static void logPlanComplete(String namePlan, int countRecipes) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+            eventProperties.put(EventProperties.recipe_added, countRecipes);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(PLAN_COMPLETE, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        eventData.put(EventProperties.recipe_added, countRecipes);
+        io.intercom.android.sdk.Intercom.client().logEvent(PLAN_COMPLETE, eventData);
+    }
+
+    public static void logAddPlanRecipe(String intake, String recipe, String from) {
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.plan_intake, intake);
+            eventProperties.put(EventProperties.recipe_id_plan, recipe);
+            eventProperties.put(EventProperties.plan_intake_from, from);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(ADD_PLAN_RECIPE_SUCCESS, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.plan_intake, intake);
+        eventData.put(EventProperties.recipe_id_plan, recipe);
+        eventData.put(EventProperties.plan_intake_from, from);
+        io.intercom.android.sdk.Intercom.client().logEvent(ADD_PLAN_RECIPE_SUCCESS, eventData);
+    }
+
+    public static void logConnectPlan(String namePlan, String watchPlan, int activeDays) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+            eventProperties.put(EventProperties.watch_plan, watchPlan);
+            eventProperties.put(EventProperties.active_day, activeDays);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(CONNECT_PLAN_SUCCES, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        eventData.put(EventProperties.watch_plan, watchPlan);
+        eventData.put(EventProperties.active_day, activeDays);
+        io.intercom.android.sdk.Intercom.client().logEvent(CONNECT_PLAN_SUCCES, eventData);
+    }
+
+
+    public static String flagToAnalConst(String namePlan) {
+        String convertedNamePlan = "";
+        switch (namePlan) {
+            case "keto":
+                convertedNamePlan = EventProperties.diet_plans_keto;
+                break;
+            case "vegan":
+                convertedNamePlan = EventProperties.diet_plans_vegan;
+                break;
+            case "3week":
+                convertedNamePlan = EventProperties.diet_plans_21_day;
+                break;
+            case "prot":
+                convertedNamePlan = EventProperties.diet_plans_high_protein;
+                break;
+            case "classic":
+                convertedNamePlan = EventProperties.diet_plans_classic;
+                break;
+            case "clear":
+                convertedNamePlan = EventProperties.diet_plans_clear;
+                break;
+            case "mediterranean":
+                convertedNamePlan = EventProperties.diet_plans_mediterranean;
+                break;
+            case "scand":
+                convertedNamePlan = EventProperties.diet_plans_scandinavian;
+                break;
+            case "highLCHF":
+                convertedNamePlan = EventProperties.diet_plans_LCHF_strict;
+                break;
+            case "mediumLCHF":
+                convertedNamePlan = EventProperties.diet_plans_LCHF_moderate;
+                break;
+            case "52":
+                convertedNamePlan = EventProperties.diet_plans_5_2;
+                break;
+            case "lowLCHF":
+                convertedNamePlan = EventProperties.diet_plans_LCHF_light;
+                break;
+            case "61":
+                convertedNamePlan = EventProperties.diet_plans_6_1;
+                break;
+        }
+        return convertedNamePlan;
+    }
+
+
+    public static void logViewPlan(String namePlan) {
+        String convertedNamePlan = flagToAnalConst(namePlan);
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        } catch (JSONException exception) {
+        }
+        Amplitude.getInstance().logEvent(CHOOSE_PLAN, eventProperties);
+
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put(EventProperties.diet_plans_choose, convertedNamePlan);
+        io.intercom.android.sdk.Intercom.client().logEvent(CHOOSE_PLAN, eventData);
+    }
+
+    public static void logViewArticlesDiet() {
+        Amplitude.getInstance().logEvent(SELECT_DIET);
+        io.intercom.android.sdk.Intercom.client().logEvent(SELECT_DIET);
+    }
+
+    public static void logViewArticlesTraining() {
+        Amplitude.getInstance().logEvent(SELECT_TRAINING);
+        io.intercom.android.sdk.Intercom.client().logEvent(SELECT_TRAINING);
     }
 
     public static void logAddCustomRecipe(String nameRecipe) {
@@ -125,24 +309,6 @@ public class Events {
         Map<String, Object> eventData = new HashMap<>();
         eventData.put(EventProperties.recipe_id_add, nameRecipe);
         io.intercom.android.sdk.Intercom.client().logEvent(ADD_CUSTOM_RECIPE, eventData);
-    }
-
-    public static void logAddCustomFood(String nameFood) {
-        JSONObject eventProperties = new JSONObject();
-        try {
-            eventProperties.put(EventProperties.custom_product_id, nameFood);
-        } catch (JSONException exception) {
-        }
-        Amplitude.getInstance().logEvent(ADD_CUSTOM_SUCCESS, eventProperties);
-
-        Map<String, Object> eventData = new HashMap<>();
-        eventData.put(EventProperties.custom_product_id, nameFood);
-        io.intercom.android.sdk.Intercom.client().logEvent(ADD_CUSTOM_SUCCESS, eventData);
-    }
-
-    public static void logAddTemplate() {
-        Amplitude.getInstance().logEvent(ADD_TEMPLATE_SUCCESS);
-        io.intercom.android.sdk.Intercom.client().logEvent(ADD_TEMPLATE_SUCCESS);
     }
 
     public static void logSearch(String nameFood) {
@@ -437,13 +603,16 @@ public class Events {
         io.intercom.android.sdk.Intercom.client().logEvent(CUSTOM_TEMPLATE_SUCCESS, eventData);
     }
 
-    public static void logAddFood(String food_intake, String food_category, String food_date, String food_item) {
+    public static void logAddFood(String food_intake, String food_category, String food_date, String food_item, int kcals, int weight) {
         JSONObject eventProperties = new JSONObject();
         try {
             eventProperties.put(EventProperties.food_intake, food_intake);
             eventProperties.put(EventProperties.food_category, food_category);
             eventProperties.put(EventProperties.food_date, food_date);
             eventProperties.put(EventProperties.food_item, food_item);
+            eventProperties.put(EventProperties.calorie_value, kcals);
+            eventProperties.put(EventProperties.calorie_value, kcals);
+            eventProperties.put(EventProperties.product_weight, weight);
         } catch (JSONException exception) {
         }
 
@@ -454,19 +623,26 @@ public class Events {
         eventData.put(EventProperties.food_category, food_category);
         eventData.put(EventProperties.food_date, food_date);
         eventData.put(EventProperties.food_item, food_item);
+        eventData.put(EventProperties.calorie_value, kcals);
+        eventData.put(EventProperties.product_weight, weight);
         io.intercom.android.sdk.Intercom.client().logEvent(ADD_FOOD_SUCCESS, eventData);
     }
+
+
+
 
     public static void logViewRecipe(String name) {
         JSONObject eventProperties = new JSONObject();
         try {
             eventProperties.put(EventProperties.recipe_item, name);
+            eventProperties.put(EventProperties.diet_plans_choose, EventProperties.diet_plans_without);
         } catch (JSONException exception) {
         }
         Amplitude.getInstance().logEvent(VIEW_RECIPE, eventProperties);
 
         Map<String, Object> eventData = new HashMap<>();
         eventData.put(EventProperties.recipe_item, name);
+        eventData.put(EventProperties.diet_plans_choose, EventProperties.diet_plans_without);
         io.intercom.android.sdk.Intercom.client().logEvent(VIEW_RECIPE, eventData);
     }
 
@@ -483,16 +659,22 @@ public class Events {
         io.intercom.android.sdk.Intercom.client().logEvent(RECIPE_FAVORITES, eventData);
     }
 
-    public static void logAddRecipeInDiary(String eating) {
+
+
+    public static void logAddRecipeInDiary(String eating, String nameRecipe) {
         JSONObject eventProperties = new JSONObject();
         try {
             eventProperties.put(EventProperties.recipe_intake, eating);
+            eventProperties.put(EventProperties.recipe_id_add, nameRecipe);
+            eventProperties.put(EventProperties.diet_plans_choose, EventProperties.diet_plans_without);
         } catch (JSONException exception) {
         }
         Amplitude.getInstance().logEvent(RECIPE_ADD_SUCCES, eventProperties);
 
         Map<String, Object> eventData = new HashMap<>();
         eventData.put(EventProperties.recipe_intake, eating);
+        eventData.put(EventProperties.recipe_id_add, nameRecipe);
+        eventData.put(EventProperties.diet_plans_choose, EventProperties.diet_plans_without);
         io.intercom.android.sdk.Intercom.client().logEvent(RECIPE_ADD_SUCCES, eventData);
     }
 

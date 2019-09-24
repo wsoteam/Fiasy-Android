@@ -73,6 +73,9 @@ public class EventProperties {
     public static final String food_date_future = "future";
     public static final String food_date_past = "food_date_past";
 
+    public static final String calorie_value = "calorie_value";
+    public static final String product_weight = "product_weight";
+
     public static final String results = "results";
 
     public static final String product_item = "product_item";
@@ -128,6 +131,7 @@ public class EventProperties {
     public static final String trial_from_recipe = "recipe";
     public static final String trial_from_articles = "articles";
     public static final String trial_from_settings = "settings";
+    public static final String trial_from_norm = "goal";
     public static final String trial_from_elements = "micro";
 
     public static final String auto_renewal = "auto_renewal";
@@ -164,4 +168,37 @@ public class EventProperties {
     public static final String search_item = "search_item";
     public static final String custom_product_id = "product_id";
     public static final String recipe_id_add = "recipe_id";
+
+
+    //PLANS
+    public static final String diet_plans_choose = "diet_plans";
+    public static final String watch_plan = "watch_plan";
+    public static final String active_day = "active_day";
+    public static final String recipe_id_plan = "recipe_id";
+    public static final String plan_intake = "plan_intake";
+    public static final String recipe_added = "recipe_added";
+
+    public static final String plan_intake_from = "from";
+    public static final String plan_intake_from_diary = "diary";
+    public static final String plan_intake_from_plan = "plan";
+
+    public static final String plan_intake_breakfast = "breakfast";
+    public static final String plan_intake_lunch = "lunch";
+    public static final String plan_intake_dinner = "dinner";
+
+
+    public static final String diet_plans_keto = "keto";
+    public static final String diet_plans_vegan = "vegan";
+    public static final String diet_plans_21_day = "21_day";
+    public static final String diet_plans_high_protein = "high_protein";
+    public static final String diet_plans_classic = "classic";
+    public static final String diet_plans_clear = "clear";
+    public static final String diet_plans_mediterranean = "mediterranean";
+    public static final String diet_plans_scandinavian = "scandinavian";
+    public static final String diet_plans_LCHF_strict = "LCHF_strict";
+    public static final String diet_plans_LCHF_moderate = "LCHF_moderate";
+    public static final String diet_plans_5_2 = "5_2";
+    public static final String diet_plans_LCHF_light = "LCHF_light";
+    public static final String diet_plans_6_1 = "6_1";
+    public static final String diet_plans_without = "without_plan";
 }

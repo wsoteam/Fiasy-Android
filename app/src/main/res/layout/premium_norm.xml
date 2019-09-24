@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvClickablePrem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="PREMIUM"
+        android:textColor="#ef7d02"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPropPremium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvPropPremium"
+        app:layout_constraintTop_toTopOf="@+id/tvPropPremium" />
+
+    <TextView
+        android:id="@+id/tvPropPremium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Чтобы изменить КБЖУ вы должны купить"
+        android:textColor="#80424242"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPremiumTitle" />
+
+    <TextView
+        android:id="@+id/tvPremiumTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_medium"
+        android:lineSpacingExtra="10sp"
+        android:text="Задать свою норму КБЖУ"
+        android:textColor="#ef7d02"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilKcal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPropPremium">
+
+        <EditText
+            android:id="@+id/edtKcal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Калории"
+            android:inputType="numberSigned"
+            android:maxLength="4"
+            android:text="2000"
+            android:textColor="#d9424242"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilKcal">
+
+        <EditText
+            android:id="@+id/edtProt"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Белки"
+            android:inputType="numberSigned"
+            android:maxLength="4"
+            android:text="40"
+            android:textColor="#d9424242"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCarbo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilProt">
+
+        <EditText
+            android:id="@+id/edtCarbo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Углеводы"
+            android:inputType="numberSigned"
+            android:maxLength="4"
+            android:text="40"
+            android:textColor="#d9424242"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilCarbo">
+
+        <EditText
+            android:id="@+id/edtFats"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Жиры"
+            android:inputType="numberSigned"
+            android:maxLength="4"
+            android:text="40"
+            android:textColor="#d9424242"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvFormulaHint"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto"
+        android:textColor="#80424242"
+        android:text="Дневная норма КБЖУ, рассчитанная по формуле \nМиффлина - Сан Жеора"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilFats" />
+
+    <Button
+        android:id="@+id/btnReturnParametrs"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/unactive_return_parametrs"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingLeft="46dp"
+        android:paddingRight="46dp"
+        android:text="стандартные значения"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFormulaHint" />
+
+    <TextView
+        android:id="@+id/textView165"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="70dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Если вы меняли значение КБЖУ, то вы всегда можете \nвернуться к стандартным значениям"
+        android:textColor="#80424242"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReturnParametrs" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

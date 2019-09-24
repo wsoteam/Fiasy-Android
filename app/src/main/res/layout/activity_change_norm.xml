@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.wsoteam.diet.presentation.profile.norm.ChangeNormActivity"
     android:focusable="true"
+    android:background="@color/white"
     android:focusableInTouchMode="true">
 
     <ImageButton
@@ -64,145 +65,175 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:translationY="-10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilSex"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+                android:elevation="3dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
-                    android:id="@+id/edtSex"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textSize="16sp"
-                    android:hint="@string/change_sex"
-                    android:inputType="textCapSentences"
-                    android:maxLength="50"
-                    android:text="Мужской"
-                    android:textColor="#80424242"
-                    android:focusableInTouchMode="false"
-                    android:enabled="false"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilHeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
-
-                <EditText
-                    android:id="@+id/edtHeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/change_height"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:text="180 см"
-                    android:textColor="#d9424242"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
-
-                <EditText
-                    android:id="@+id/edtWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/change_weight"
-                    android:inputType="numberDecimal"
-                    android:maxLength="5"
-                    android:text="75 кг"
-                    android:textColor="#d9424242"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
-
-                <EditText
-                    android:id="@+id/edtAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/change_age"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:text="25 лет"
-                    android:textColor="#d9424242"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
-
-                <EditText
-                    android:id="@+id/edtActivity"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/change_activity"
-                    android:text="Ежедневные интенсивные тренировки"
-                    android:textColor="#d9424242"
-                    android:textSize="16sp"
-                    android:focusableInTouchMode="false"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilGoal"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilSex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="42dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtSex"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:enabled="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_sex"
+                            android:inputType="textCapSentences"
+                            android:maxLength="50"
+                            android:text="Мужской"
+                            android:textColor="#80424242"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtHeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_height"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text="180 см"
+                            android:textColor="#d9424242"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_weight"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5"
+                            android:text="75 кг"
+                            android:textColor="#d9424242"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtAge"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_age"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text="25 лет"
+                            android:textColor="#d9424242"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_activity"
+                            android:text="Ежедневные интенсивные тренировки"
+                            android:textColor="#d9424242"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
+                        app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
+
+                        <EditText
+                            android:id="@+id/edtGoal"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="@string/change_goal"
+                            android:inputType="textCapSentences"
+                            android:text="Сохранение мышц и сжигание жира"
+                            android:background="@color/transparent"
+                            android:textColor="#d9424242"
+                            android:layout_marginLeft="3dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <include
+                layout="@layout/premium_norm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorTextAppearance="@style/TextInputStyle.Error.ChangeNorm"
-                app:hintTextAppearance="@style/TextInputStyle.Hint.ChangeNorm">
-
-                <EditText
-                    android:id="@+id/edtGoal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/change_goal"
-                    android:inputType="textCapSentences"
-                    android:text="Сохранение мышц и сжигание жира"
-                    android:textColor="#d9424242"
-                    android:textSize="16sp"
-                    android:focusableInTouchMode="false"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@+id/cardView18" />
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 

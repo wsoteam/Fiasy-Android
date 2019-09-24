@@ -69,9 +69,8 @@ public class UpdateChecker {
             if (getStartPoint() == Config.SP_START_POINT_EMPTY) {
                 setStartPoint(currentTime);
                 setPeriodPoint(currentTime);
-                showWeakDialog();
+                //showWeakDialog();
             } else {
-                Log.e("LOL", String.valueOf(value.getTimeUntilHardUpdate()));
                 if (timeAfterStart > value.getTimeUntilHardUpdate()) {
                     showHardDialog();
                 } else {

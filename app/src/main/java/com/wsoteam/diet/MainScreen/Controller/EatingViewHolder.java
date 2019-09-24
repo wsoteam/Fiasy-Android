@@ -226,6 +226,7 @@ public class EatingViewHolder extends RecyclerView.ViewHolder {
             switch (menuItem.getItemId()) {
                 case R.id.add_food_dots:
                     openSearch();
+                    Events.logDiaryNext(getAdapterPosition());
                     break;
             }
             return false;

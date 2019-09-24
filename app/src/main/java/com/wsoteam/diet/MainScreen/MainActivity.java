@@ -56,14 +56,18 @@ import com.wsoteam.diet.Recipes.POJO.ListRecipes;
 import com.wsoteam.diet.Recipes.POJO.RecipesHolder;
 import com.wsoteam.diet.Recipes.v2.GroupsFragment;
 import com.wsoteam.diet.common.Analytics.EventProperties;
+import com.wsoteam.diet.common.promo.Generator;
 import com.wsoteam.diet.common.remote.POJO.StoreVersion;
 import com.wsoteam.diet.common.remote.UpdateChecker;
 import com.wsoteam.diet.common.Analytics.SavedConst;
 import com.wsoteam.diet.presentation.plans.browse.BrowsePlansFragment;
 import com.wsoteam.diet.presentation.profile.section.ProfileFragment;
 import com.wsoteam.diet.common.Analytics.Events;
+import com.wsoteam.diet.presentation.promo.PromoFormActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import io.intercom.android.sdk.Intercom;
 
@@ -172,10 +176,11 @@ public class MainActivity extends AppCompatActivity {
         if (ArticlesHolder.getListArticles() == null) {
             loadArticles();
         }
-      if (DietPlansHolder.get() == null){
-        loadDietPlans();
-      }
+        if (DietPlansHolder.get() == null) {
+            loadDietPlans();
+        }
         logEvents();
+
     }
 
     private void logEvents() {
@@ -266,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadDietPlans(){
+    private void loadDietPlans() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("PLANS");
 

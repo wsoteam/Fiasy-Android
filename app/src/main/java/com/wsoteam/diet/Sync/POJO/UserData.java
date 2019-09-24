@@ -9,6 +9,7 @@ import com.wsoteam.diet.POJOProfile.Profile;
 import com.wsoteam.diet.POJOProfile.SubInfo;
 import com.wsoteam.diet.POJOProfile.TrackInfo;
 import com.wsoteam.diet.Recipes.POJO.RecipeItem;
+import com.wsoteam.diet.common.promo.POJO.UserPromo;
 import com.wsoteam.diet.model.Breakfast;
 import com.wsoteam.diet.model.Dinner;
 import com.wsoteam.diet.model.Lunch;
@@ -37,6 +38,7 @@ public class UserData implements Serializable {
   private HashMap<String, CustomFood> customFoods;
   private HashMap<String, FoodTemplate> foodTemplates;
   private DietPlan plan;
+  private UserPromo userPromo;
 
   public UserData() {
   }
@@ -47,7 +49,7 @@ public class UserData implements Serializable {
       HashMap<String, Snack> snacks, HashMap<String, WeightDiaryObject> diaryDataList,
       HashMap<String, RecipeItem> recipes, HashMap<String, FavoriteFood> foodFavorites,
       HashMap<String, RecipeItem> favoriteRecipes, HashMap<String, CustomFood> customFoods,
-      DietPlan plan, HashMap<String, FoodTemplate> foodTemplates) {
+      DietPlan plan, HashMap<String, FoodTemplate> foodTemplates, UserPromo userPromo) {
     this.name = name;
     this.profile = profile;
     this.subInfo = subInfo;
@@ -65,6 +67,7 @@ public class UserData implements Serializable {
     this.customFoods = customFoods;
     this.plan = plan;
     this.foodTemplates = foodTemplates;
+    this.userPromo = userPromo;
   }
 
   public SubInfo getSubInfo() {
@@ -201,5 +204,13 @@ public class UserData implements Serializable {
 
   public void setPlan(DietPlan plan) {
     this.plan = plan;
+  }
+
+  public UserPromo getUserPromo() {
+    return userPromo;
+  }
+
+  public void setUserPromo(UserPromo userPromo) {
+    this.userPromo = userPromo;
   }
 }

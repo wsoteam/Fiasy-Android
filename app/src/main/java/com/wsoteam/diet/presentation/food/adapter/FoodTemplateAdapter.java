@@ -97,7 +97,6 @@ public class FoodTemplateAdapter extends RecyclerView.Adapter<FoodTemplateAdapte
 
         @OnClick({R.id.ivAddTemplate})
         public void onViewClicked(View view) {
-            Events.logAddTemplate();
             presenter.addToDiary(templateList.get(getAdapterPosition()));
         }
 

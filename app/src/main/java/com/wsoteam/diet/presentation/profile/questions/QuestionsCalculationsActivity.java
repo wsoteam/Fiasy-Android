@@ -94,62 +94,9 @@ public class QuestionsCalculationsActivity extends AppCompatActivity {
         }
 
         if (profile != null) {
-            setUserProperties(profile);
+            UserProperty.setUserProperties(profile, this);
             WorkWithFirebaseDB.putProfileValue(profile);
 
-        }
-    }
-
-    private void setUserProperties(Profile profile) {
-        try {
-            String goal = "", active = "", sex;
-            String userStressLevel = profile.getExerciseStress();
-            String userGoal = profile.getDifficultyLevel();
-
-            String age = String.valueOf(profile.getAge());
-            String weight = String.valueOf(profile.getWeight());
-            String height = String.valueOf(profile.getHeight());
-
-            if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_none))) {
-                active = UserProperty.q_active_status1;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_easy))) {
-                active = UserProperty.q_active_status2;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_medium))) {
-                active = UserProperty.q_active_status3;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_hard))) {
-                active = UserProperty.q_active_status4;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_up_hard))) {
-                active = UserProperty.q_active_status5;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_super))) {
-                active = UserProperty.q_active_status6;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_up_super))) {
-                active = UserProperty.q_active_status7;
-            }
-
-            if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_easy))) {
-                goal = UserProperty.q_goal_status1;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_normal))) {
-                goal = UserProperty.q_goal_status2;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_hard))) {
-                goal = UserProperty.q_goal_status3;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_hard_up))) {
-                goal = UserProperty.q_goal_status4;
-            }
-
-            if (profile.isFemale()) {
-                sex = UserProperty.q_male_status_female;
-            } else {
-                sex = UserProperty.q_male_status_male;
-            }
-            UserProperty.setUserProperties(sex, height, weight, age, active, goal,
-                    FirebaseAuth.getInstance().getCurrentUser().getUid(),
-                    String.valueOf(profile.getMaxKcal()), String.valueOf(profile.getMaxProt()), String.valueOf(profile.getMaxFat()), String.valueOf(profile.getMaxCarbo()));
-            UserProperty.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        } catch (Exception ex) {
-            Log.e("LOL", ex.getLocalizedMessage());
         }
     }
 }

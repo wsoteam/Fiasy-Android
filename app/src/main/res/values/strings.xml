@@ -11,6 +11,7 @@
     <integer-array name="left_drawables">
         <item>@drawable/ic_left_settings_diamond</item>
         <!--<item>@drawable/ic_left_settings_item_fork</item>-->
+        <item>@drawable/ic_left_settings_item_promo</item>
         <item>@drawable/ic_left_settings_item_man</item>
         <item>@drawable/ic_left_settings_item_kcal</item>
         <!--<item>@drawable/ic_left_settings_item_bell</item>
@@ -21,6 +22,7 @@
 
     <integer-array name="left_drawables_prem">
         <!--<item>@drawable/ic_left_settings_item_fork</item>-->
+        <item>@drawable/ic_left_settings_item_promo</item>
         <item>@drawable/ic_left_settings_item_man</item>
         <item>@drawable/ic_left_settings_item_kcal</item>
         <!--<item>@drawable/ic_left_settings_item_bell</item>
@@ -817,10 +819,15 @@
     <string name="update_message">Вышла новая версия приложения!  \nОбновите приложение в Google Play</string>
     <string name="go_update">Обновить</string>
     <string name="update_title">Обновление!</string>
+    <string name="eating_trigger">Питание</string>
+
+    <string name="enter_multi_params">Введите данные</string>
+
 
     <string-array name="settings_items">
         <item>Premium аккаунт</item>
         <!--<item>Еда и аллергия</item>-->
+        <item>Промокоды</item>
         <item>Личные данные</item>
         <item>Норма калорий</item>
         <!--<item>Уведомления</item>
@@ -830,6 +837,7 @@
     </string-array>
     <string-array name="settings_items_prem">
         <!--<item>Еда и аллергия</item>-->
+        <item>Промокоды</item>
         <item>Личные данные</item>
         <item>Норма калорий</item>
         <!--<item>Уведомления</item>

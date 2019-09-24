@@ -1,11 +1,14 @@
 package com.wsoteam.diet.common.Analytics;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.Identify;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wsoteam.diet.POJOProfile.Profile;
+import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.UserDataHolder;
 
 import org.json.JSONException;
@@ -23,6 +26,7 @@ public class UserProperty {
     public static final String registration_google = "google";
     public static final String registration_fb = "facebook";
     public static final String registration_email = "email";
+    public static final String name_const = "name";
 
     public static final String q_male_status = "male";
     public static final String q_male_status_male = "male";
@@ -74,8 +78,56 @@ public class UserProperty {
     public static final String first_week = "first_week";
     public static final String first_month = "first_month";
 
+    public static void setUserProperties(Profile profile, Context context) {
+        try {
+            String goal = "", active = "", sex;
+            String userStressLevel = profile.getExerciseStress();
+            String userGoal = profile.getDifficultyLevel();
 
-    public static void setUserProperties(String sex, String height, String weight, String age, String active, String goal, String id, String kcal, String prot, String fat, String carbo) {
+            String age = String.valueOf(profile.getAge());
+            String weight = String.valueOf(profile.getWeight());
+            String height = String.valueOf(profile.getHeight());
+
+            if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_none))) {
+                active = UserProperty.q_active_status1;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_easy))) {
+                active = UserProperty.q_active_status2;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_medium))) {
+                active = UserProperty.q_active_status3;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_hard))) {
+                active = UserProperty.q_active_status4;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_up_hard))) {
+                active = UserProperty.q_active_status5;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_super))) {
+                active = UserProperty.q_active_status6;
+            } else if (userStressLevel.equalsIgnoreCase(context.getResources().getString(R.string.level_up_super))) {
+                active = UserProperty.q_active_status7;
+            }
+
+            if (userGoal.equalsIgnoreCase(context.getResources().getString(R.string.dif_level_easy))) {
+                goal = UserProperty.q_goal_status1;
+            } else if (userGoal.equalsIgnoreCase(context.getResources().getString(R.string.dif_level_normal))) {
+                goal = UserProperty.q_goal_status2;
+            } else if (userGoal.equalsIgnoreCase(context.getResources().getString(R.string.dif_level_hard))) {
+                goal = UserProperty.q_goal_status3;
+            } else if (userGoal.equalsIgnoreCase(context.getResources().getString(R.string.dif_level_hard_up))) {
+                goal = UserProperty.q_goal_status4;
+            }
+
+            if (profile.isFemale()) {
+                sex = UserProperty.q_male_status_female;
+            } else {
+                sex = UserProperty.q_male_status_male;
+            }
+            UserProperty.logProperties(sex, height, weight, age, active, goal, FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                    String.valueOf(profile.getMaxKcal()), String.valueOf(profile.getMaxProt()), String.valueOf(profile.getMaxFat()), String.valueOf(profile.getMaxCarbo()), profile.getFirstName());
+        } catch (Exception ex) {
+            Events.logSetUserPropertyError(ex.getMessage());
+        }
+    }
+
+
+    private static void logProperties(String sex, String height, String weight, String age, String active, String goal, String id, String kcal, String prot, String fat, String carbo, String name) {
         Identify identify = new Identify()
                 .set(q_male_status, sex)
                 .set(q_height_status, height)
@@ -87,20 +139,22 @@ public class UserProperty {
                 .set(proteins, prot)
                 .set(fats, fat)
                 .set(сarbohydrates, carbo)
+                .set(name_const, name)
                 .set(user_id, id);
         Amplitude.getInstance().identify(identify);
 
         UserAttributes userAttributes = new UserAttributes.Builder()
                 .withCustomAttribute(q_male_status, sex)
-                .withCustomAttribute(q_height_status, height)
-                .withCustomAttribute(q_weight_status, weight)
-                .withCustomAttribute(q_age_status, age)
+                .withCustomAttribute(q_height_status, Integer.parseInt(height))
+                .withCustomAttribute(q_weight_status, Double.parseDouble(weight))
+                .withCustomAttribute(q_age_status, Integer.parseInt(age))
                 .withCustomAttribute(q_active_status, active)
-                .withCustomAttribute(q_goal_status, id)
-                .withCustomAttribute(calorie, kcal)
-                .withCustomAttribute(proteins, prot)
-                .withCustomAttribute(fats, fat)
-                .withCustomAttribute(сarbohydrates, carbo)
+                .withCustomAttribute(q_goal_status, goal)
+                .withCustomAttribute(calorie, Integer.parseInt(kcal))
+                .withCustomAttribute(proteins, Integer.parseInt(prot))
+                .withCustomAttribute(fats, Integer.parseInt(fat))
+                .withCustomAttribute(сarbohydrates, Integer.parseInt(carbo))
+                .withCustomAttribute(name_const, name)
                 .withCustomAttribute(user_id, id)
                 .build();
         Intercom.client().updateUser(userAttributes);
@@ -158,7 +212,7 @@ public class UserProperty {
         Intercom.client().updateUser(userAttributes);
     }
 
-    private static void signInIntercom(){
+    private static void signInIntercom() {
         Registration registration = Registration.create().withUserId(FirebaseAuth.getInstance().getCurrentUser().getUid());
         Intercom.client().registerIdentifiedUser(registration);
         Intercom.client().handlePushMessage();

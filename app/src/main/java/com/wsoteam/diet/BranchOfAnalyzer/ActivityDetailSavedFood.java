@@ -66,9 +66,8 @@ public class ActivityDetailSavedFood extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().equals(" ")
-                        || charSequence.toString().equals("-")) {
-                    edtWeight.setText("0");
+                if (charSequence.toString().equals("-")) {
+                    edtWeight.setText("");
                 } else {
                     if (!edtWeight.getText().toString().equals("")) {
                         calculateMainParameters(charSequence);

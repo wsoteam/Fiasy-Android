@@ -1,6 +1,7 @@
 package com.wsoteam.diet.presentation.food.template.browse;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AlertDialog;
@@ -17,6 +18,7 @@ import com.wsoteam.diet.Config;
 import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
+import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.model.Breakfast;
 import com.wsoteam.diet.model.Dinner;
 import com.wsoteam.diet.model.Lunch;
@@ -25,6 +27,7 @@ import com.wsoteam.diet.presentation.food.template.create.CreateFoodTemplateActi
 import com.wsoteam.diet.presentation.global.BasePresenter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -119,8 +122,8 @@ public class BrowseFoodTemplatePresenter extends BasePresenter<BrowseFoodTemplat
     }
 
     private void savePortion(Food food) {
+        String food_intake = "";
         final int BREAKFAST_POSITION = 0, LUNCH_POSITION = 1, DINNER_POSITION = 2, SNACK_POSITION = 3, EMPTY_FIELD = -1;
-
         String wholeDate = activity.getIntent().getStringExtra(Config.INTENT_DATE_FOR_SAVE);
         String[] arrayOfNumbersForDate = wholeDate.split("\\.");
 
@@ -143,21 +146,43 @@ public class BrowseFoodTemplatePresenter extends BasePresenter<BrowseFoodTemplat
             case BREAKFAST_POSITION:
                 WorkWithFirebaseDB.
                         addBreakfast(new Breakfast(name, urlOfImage, kcal, carbo, prot, fat, weight, day, month, year));
+                food_intake = EventProperties.food_intake_breakfast;
                 break;
             case LUNCH_POSITION:
                 WorkWithFirebaseDB.
                         addLunch(new Lunch(name, urlOfImage, kcal, carbo, prot, fat, weight, day, month, year));
+                food_intake = EventProperties.food_intake_lunch;
                 break;
             case DINNER_POSITION:
                 WorkWithFirebaseDB.
                         addDinner(new Dinner(name, urlOfImage, kcal, carbo, prot, fat, weight, day, month, year));
+                food_intake = EventProperties.food_intake_dinner;
                 break;
             case SNACK_POSITION:
                 WorkWithFirebaseDB.
                         addSnack(new Snack(name, urlOfImage, kcal, carbo, prot, fat, weight, day, month, year));
+                food_intake = EventProperties.food_intake_snack;
                 break;
         }
+        String food_date = getDateType(day, month, year);
 
+        Events.logAddFood(food_intake, EventProperties.food_category_template, food_date, name, kcal, weight);
+
+    }
+
+    private String getDateType(int day, int month, int year) {
+        Calendar calendar = Calendar.getInstance();
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentYear = calendar.get(Calendar.YEAR);
+
+        if (currentDay == day && currentMonth == month && currentYear == year){
+            return EventProperties.food_date_today;
+        }else if (currentDay > day && currentMonth >= month && currentYear >= year){
+            return EventProperties.food_date_future;
+        }else {
+            return EventProperties.food_date_past;
+        }
     }
 
 }

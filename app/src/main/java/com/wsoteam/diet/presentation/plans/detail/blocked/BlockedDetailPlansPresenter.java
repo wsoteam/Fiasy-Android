@@ -2,10 +2,13 @@ package com.wsoteam.diet.presentation.plans.detail.blocked;
 
 
 
+import android.util.Log;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.wsoteam.diet.DietPlans.POJO.DietPlan;
 import com.wsoteam.diet.Recipes.POJO.RecipesHolder;
 import com.wsoteam.diet.Recipes.POJO.plan.PlansGroupsRecipe;
+import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.presentation.global.BasePresenter;
 import com.wsoteam.diet.presentation.global.Screens;
 
@@ -26,6 +29,7 @@ public class BlockedDetailPlansPresenter extends BasePresenter<BlockedDetailPlan
         this.dietPlan = diet;
         plansRecipe = new PlansGroupsRecipe(RecipesHolder.get(), dietPlan);
         getViewState().showData(dietPlan);
+        Events.logViewPlan(diet.getFlag());
     }
 
     void clickedShare(){

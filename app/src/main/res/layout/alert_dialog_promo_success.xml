@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="305dp"
+            android:layout_height="237dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_main_promo_alert_success"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поздравляем!"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="24sp"
+            android:textColor="#c0000000"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#8a000000"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:text="Теперь вы можете пользоваться всеми \nпреимуществами Premium аккаунта"/>
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/unactive_promo_btn"
+            android:backgroundTint="@color/active_promo_btn"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingLeft="46dp"
+            android:paddingRight="46dp"
+            android:text="приступить"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

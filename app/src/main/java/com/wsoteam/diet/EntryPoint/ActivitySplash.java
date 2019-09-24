@@ -50,6 +50,7 @@ import com.wsoteam.diet.Sync.POJO.UserData;
 import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.UserProperty;
+import com.wsoteam.diet.common.promo.POJO.UserPromo;
 import com.wsoteam.diet.presentation.auth.AuthStrategy;
 import com.wsoteam.diet.presentation.global.BaseActivity;
 import com.wsoteam.diet.presentation.intro_tut.NewIntroActivity;
@@ -152,7 +153,7 @@ public class ActivitySplash extends BaseActivity {
 
                 new UserDataHolder().bindObjectWithHolder(user);
 
-                setUserProperties(UserDataHolder.getUserData().getProfile());
+                UserProperty.setUserProperties(UserDataHolder.getUserData().getProfile(), ActivitySplash.this);
                 onSignedIn();
             }
 
@@ -165,59 +166,6 @@ public class ActivitySplash extends BaseActivity {
                 onUserNotAuthorized();
             }
         });
-    }
-
-    private void setUserProperties(Profile profile) {
-        try {
-            String goal = "", active = "", sex;
-            String userStressLevel = profile.getExerciseStress();
-            String userGoal = profile.getDifficultyLevel();
-
-            String age = String.valueOf(profile.getAge());
-            String weight = String.valueOf(profile.getWeight());
-            String height = String.valueOf(profile.getHeight());
-
-            if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_none))) {
-                active = UserProperty.q_active_status1;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_easy))) {
-                active = UserProperty.q_active_status2;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_medium))) {
-                active = UserProperty.q_active_status3;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_hard))) {
-                active = UserProperty.q_active_status4;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_up_hard))) {
-                active = UserProperty.q_active_status5;
-            } else if (userStressLevel.equalsIgnoreCase(getResources().getString(R.string.level_super))) {
-                active = UserProperty.q_active_status6;
-            } else if (userStressLevel.equalsIgnoreCase(
-                    getResources().getString(R.string.level_up_super))) {
-                active = UserProperty.q_active_status7;
-            }
-
-            if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_easy))) {
-                goal = UserProperty.q_goal_status1;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_normal))) {
-                goal = UserProperty.q_goal_status2;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_hard))) {
-                goal = UserProperty.q_goal_status3;
-            } else if (userGoal.equalsIgnoreCase(getResources().getString(R.string.dif_level_hard_up))) {
-                goal = UserProperty.q_goal_status4;
-            }
-
-            if (profile.isFemale()) {
-                sex = UserProperty.q_male_status_female;
-            } else {
-                sex = UserProperty.q_male_status_male;
-            }
-            UserProperty.setUserProperties(sex, height, weight, age, active, goal,
-                    FirebaseAuth.getInstance().getCurrentUser().getUid(),
-                    String.valueOf(profile.getMaxKcal()), String.valueOf(profile.getMaxProt()), String.valueOf(profile.getMaxFat()), String.valueOf(profile.getMaxCarbo()));
-            UserProperty.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        } catch (Exception ex) {
-            Log.e("LOL", ex.getLocalizedMessage());
-        }
     }
 
     private void onUserNotAuthorized() {
@@ -267,30 +215,50 @@ public class ActivitySplash extends BaseActivity {
     }
 
     private void checkBilling() {
-        if (SingletonMakePurchase.getInstance().isMakePurchaseNow()) {
+        if (isHasPromo()) {
             changePremStatus(true);
-        } else if (UserDataHolder.getUserData() != null
-                && UserDataHolder.getUserData().getSubInfo() == null) {
-            //unknown status premium or new user
-            setSubInfoWithGooglePlayInfo();
-        } else if (UserDataHolder.getUserData() != null
-                && UserDataHolder.getUserData().getSubInfo() != null
-                && !UserDataHolder.getUserData().getSubInfo().getProductId().equals(IDs.EMPTY_SUB)) {
-            //user have premium status, check time of premium
-            SubInfo subInfo = UserDataHolder.getUserData().getSubInfo();
-            if (subInfo.getPaymentState() == 0) {
+        } else {
+            if (SingletonMakePurchase.getInstance().isMakePurchaseNow()) {
+                changePremStatus(true);
+            } else if (UserDataHolder.getUserData() != null
+                    && UserDataHolder.getUserData().getSubInfo() == null) {
+                //unknown status premium or new user
+                setSubInfoWithGooglePlayInfo();
+            } else if (UserDataHolder.getUserData() != null
+                    && UserDataHolder.getUserData().getSubInfo() != null
+                    && !UserDataHolder.getUserData().getSubInfo().getProductId().equals(IDs.EMPTY_SUB)) {
+                //user have premium status, check time of premium
+                SubInfo subInfo = UserDataHolder.getUserData().getSubInfo();
+                if (subInfo.getPaymentState() == 0) {
+                    changePremStatus(false);
+                    UserProperty.setPremStatus(UserProperty.preferential);
+                    new CheckAndSetPurchase(this).execute(subInfo.getProductId(), subInfo.getPurchaseToken(),
+                            subInfo.getPackageName());
+                } else if (subInfo.getPaymentState() != 0) {
+                    compareTime(subInfo);
+                }
+            } else if (UserDataHolder.getUserData() != null
+                    && UserDataHolder.getUserData().getSubInfo() != null
+                    && UserDataHolder.getUserData().getSubInfo().getProductId().equals(IDs.EMPTY_SUB)) {
+                UserProperty.setPremStatus(UserProperty.not_buy);
                 changePremStatus(false);
-                UserProperty.setPremStatus(UserProperty.preferential);
-                new CheckAndSetPurchase(this).execute(subInfo.getProductId(), subInfo.getPurchaseToken(),
-                        subInfo.getPackageName());
-            } else if (subInfo.getPaymentState() != 0) {
-                compareTime(subInfo);
             }
-        } else if (UserDataHolder.getUserData() != null
-                && UserDataHolder.getUserData().getSubInfo() != null
-                && UserDataHolder.getUserData().getSubInfo().getProductId().equals(IDs.EMPTY_SUB)) {
-            UserProperty.setPremStatus(UserProperty.not_buy);
-            changePremStatus(false);
+        }
+    }
+
+    private boolean isHasPromo() {
+        if (UserDataHolder.getUserData() != null && UserDataHolder.getUserData().getUserPromo() != null) {
+            UserPromo userPromo = UserDataHolder.getUserData().getUserPromo();
+            long currentTime = Calendar.getInstance().getTimeInMillis();
+            if (currentTime <= userPromo.getStartActivated() + userPromo.getDuration()) {
+                return true;
+            } else {
+                WorkWithFirebaseDB.setEmptyUserPromo();
+                changePremStatus(false);
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 

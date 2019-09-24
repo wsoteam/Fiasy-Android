@@ -344,7 +344,7 @@
         <item name="colorAccent">#ed2d2d</item>
         <item name="android:textColor">#ed2d2d</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
 
     <style name="ChangeGoalActivity" parent="Theme.AppCompat.Light.NoActionBar">
@@ -370,6 +370,14 @@
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="PromoScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#E68D3C</item>
+        <item name="colorPrimaryDark">#d1d1d1</item>
+        <item name="colorAccent">#E68D3C</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>
