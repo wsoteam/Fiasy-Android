@@ -51,7 +51,7 @@ public class AfterQuestionsActivity extends AppCompatActivity {
       @Override
       public void onPageSelected(int i) {
         if (i == 1){
-          Events.logMoveQuestions(EventProperties.question_feature);
+          //Events.logMoveQuestions(EventProperties.question_feature);
         }
       }
 

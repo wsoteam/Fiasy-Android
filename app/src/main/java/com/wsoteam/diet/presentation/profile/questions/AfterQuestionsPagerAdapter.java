@@ -13,7 +13,7 @@ import com.wsoteam.diet.presentation.profile.questions.fragments.WeOfferFragment
 
 public class AfterQuestionsPagerAdapter extends FragmentPagerAdapter {
 
-  private static int NUM_ITEMS = 3;
+  private static int NUM_ITEMS = 2;
 
   public AfterQuestionsPagerAdapter(FragmentManager fm) {
     super(fm);
@@ -24,12 +24,13 @@ public class AfterQuestionsPagerAdapter extends FragmentPagerAdapter {
       case 0:
         return IndividualPlanFragments.newInstance();
       case 1:
-        return WeOfferFragments.newInstance();
-      case 2:
+        //return WeOfferFragments.newInstance();
         Box box = new Box();
         box.setOpenFromIntrodaction(true);
         box.setBuyFrom(EventProperties.trial_from_onboard);
         return FragmentSubscriptionOrangeOneButton.newInstance(box);
+      //case 2:
+
       default:
         return null;
     }
