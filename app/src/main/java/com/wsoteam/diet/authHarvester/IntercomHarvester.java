@@ -21,7 +21,7 @@ public class IntercomHarvester {
     public static void startAdding(Context context) {
         AllUsers users = getAllUsers(context);
         //Log.e("LOL", users.getUsers().get(0).getProviderUserInfo().toString());
-        addUsersInIntercom(users);
+        //addUsersInIntercom(users);
         //checkUserForUID(users);
 
     }
