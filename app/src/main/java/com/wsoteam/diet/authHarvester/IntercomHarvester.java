@@ -25,167 +25,233 @@ import java.util.List;
 
 public class IntercomHarvester {
 
-    public static void startAdding(Context context) {
-        AllUsers allUsers = getAllUsers(context);
-        List<InterUser> interUsers = getAllUsersItercom(context);
-        getAndSetEmails(interUsers, allUsers);
-        //AllUsers users = getAllUsers(context);
-        //Log.e("LOL", users.getUsers().get(0).getProviderUserInfo().toString());
-        //addUsersInIntercom(users);
-        //checkUserForUID(users);
+  public static void startAdding(Context context) {
+    AllUsers allUsers = getAllUsers(context);
+    List<InterUser> interUsers = getAllUsersItercom(context);
+    getAndSetEmailsFix(interUsers, allUsers);
+  }
+
+  private static void checkEmptyModels(AllUsers allUsers) {
+    int counter = 0;
+    Log.e("LOL", "SIZE -- " + String.valueOf(allUsers.getUsers().size()));
+    for (int i = 0; i < allUsers.getUsers().size(); i++) {
+      if (allUsers.getUsers().get(i).getEmail() != null) {
+        counter++;
+      } else if (!allUsers.getUsers().get(i).getProviderUserInfo().equals("[]")
+          && allUsers.getUsers().get(i).getProviderUserInfo().size() > 0
+          && allUsers.getUsers().get(i).getProviderUserInfo().get(0).getEmail() != null) {
+        counter++;
+      }
+    }
+    Log.e("LOL", "NOT EMPTY -- " + String.valueOf(counter));
+  }
+
+  private static void getAndSetEmails(List<InterUser> interUsers, AllUsers allUsers) {
+    int counter = 0;
+    List<User> usersFB = allUsers.getUsers();
+    HashMap<String, User> userHashMap = new HashMap<>();
+    for (int i = 0; i < usersFB.size(); i++) {
+      userHashMap.put(usersFB.get(i).getLocalId(), usersFB.get(i));
     }
 
-    private static void getAndSetEmails(List<InterUser> interUsers, AllUsers allUsers) {
-        int counter = 0;
-        List<User> usersFB = allUsers.getUsers();
-        HashMap<String, User> userHashMap = new HashMap<>();
-        for (int i = 0; i < usersFB.size(); i++) {
-            userHashMap.put(usersFB.get(i).getLocalId(), usersFB.get(i));
-        }
+    Log.e("LOL", "hashmap created!!!");
 
-        Log.e("LOL", "hashmap created!!!");
-
-        for (int i = 0; i < interUsers.size(); i++) {
-            if (interUsers.get(i).getEmail().equals("")){
-                User user = userHashMap.get(interUsers.get(i).getUserID());
-                try {
-                    if (user.getEmail() != null) {
-                        //updateUser(interUsers.get(i).getUserID(), user.getEmail());
-                        counter++;
-                    }
-                }catch (Exception ex){
-                    try {
-                        if (!user.getProviderUserInfo().equals("[]") && user.getProviderUserInfo().size() > 0 ){
-                            counter++;
-                        }
-                    }catch (Exception exc){
-
-                    }
-                }
-            }
-        }
-
-        Log.e("LOL", "COUNT -- " + String.valueOf(counter));
-    }
-
-    private static void updateUser(String userID, String email) {
-    }
-
-    private static void emptyEmails(List<InterUser> interUsers) {
-        int count = 0;
-        for (int i = 0; i < interUsers.size(); i++) {
-            if (interUsers.get(i).getEmail().equals("")){
-                count++;
-            }
-        }
-        Log.e("LOL", "withoutEmails -- " + String.valueOf(count));
-    }
-
-    private static void checkUserForUID(AllUsers users) {
-        int count= 0;
-        for (int i = 0; i < users.getUsers().size(); i++) {
-            if (users.getUsers().get(i).getLocalId() == null){
-                count +=1;
-            }
-        }
-        Log.e("LOL", String.valueOf(count));
-    }
-
-    private static void addUsersInIntercom(AllUsers users) {
-        int count = 0;
-        for (int i = 0; i < 50; i++) {
-            if (users.getUsers().get(i).getEmail() != null) {
-                //count += 1;
-                addUser(users.getUsers().get(i).getEmail(), users.getUsers().get(i).getLocalId());
-            } else if (!users.getUsers().get(i).getProviderUserInfo().equals("[]")
-                    && users.getUsers().get(i).getProviderUserInfo().size() > 0 && users.getUsers().get(i).getProviderUserInfo().get(0).getEmail() != null) {
-                addUser(users.getUsers().get(i).getProviderUserInfo().get(0).getEmail(), users.getUsers().get(i).getLocalId());
-                //count += 1;
-            }
-            Log.e("LOL", String.valueOf(i) + " - added in intercom");
-        }
-        Log.e("LOL", String.valueOf(count));
-    }
-
-    private static void addUser(String email, String uid) {
-        Intercom.client().logout();
-        Registration registration = Registration.create().withUserId(uid);
-        Intercom.client().registerIdentifiedUser(registration);
-        UserAttributes userAttributes = new UserAttributes.Builder()
-                .withEmail(email)
-                .build();
-        Intercom.client().updateUser(userAttributes);
-    }
-
-    private static AllUsers getAllUsers(Context context) {
-        String json = readJsonAllUsers(context);
-        Log.e("LOL", "start ser");
-        AllUsers users = new AllUsers();
-        Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<AllUsers> globalJsonAdapter = moshi.adapter(AllUsers.class);
+    for (int i = 0; i < interUsers.size(); i++) {
+      if (interUsers.get(i).getEmail().equals("")) {
+        User user = userHashMap.get(interUsers.get(i).getUserID());
         try {
-            users = globalJsonAdapter.fromJson(json);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e("LOL", "not read json");
+          if (user.getEmail() != null) {
+            //updateUser(interUsers.get(i).getUserID(), user.getEmail());
+            counter++;
+          }
+        } catch (Exception ex) {
+          try {
+            if (!user.getProviderUserInfo().equals("[]") && user.getProviderUserInfo().size() > 0) {
+              counter++;
+            }
+          } catch (Exception exc) {
+
+          }
         }
-        Log.e("LOL", "fin ser");
-        return users;
+      }
     }
 
-    private static String readJsonAllUsers(Context context) {
-        Log.e("LOL", "start read");
-        String json = "";
-        try {
-            InputStream inputStream = context.getAssets().open("save_file.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+    Log.e("LOL", "COUNT -- " + String.valueOf(counter));
+  }
+
+  private static void getAndSetEmailsFix(List<InterUser> interUsers, AllUsers allUsers) {
+    int counter = 0;
+    int counterNotFind = 0;
+    int android = 0;
+    int ios = 0;
+    int global = 0;
+    List<User> usersFB = allUsers.getUsers();
+    for (int i = 0; i < interUsers.size(); i++) {
+      if (interUsers.get(i).getEmail().equals("")) {
+        User user = find(interUsers.get(i), usersFB);
+        if (user != null){
+          global ++;
+          if (interUsers.get(i).getiOS() > 0) {
+            ios++;
+          }else {
+            android++;
+          }
         }
-        Log.e("LOL", "fin read");
-        return json;
+        /*try {
+          if (user.getEmail() != null) {
+            //updateUser(interUsers.get(i).getUserID(), user.getEmail());
+            counter++;
+          }
+        } catch (Exception ex) {
+          try {
+            if (!user.getProviderUserInfo().equals("[]") && user.getProviderUserInfo().size() > 0) {
+              counter++;
+            }
+          } catch (Exception exc) {
+
+          }
+        }*/
+      }
     }
 
-    private static List<InterUser> getAllUsersItercom(Context context) {
-        String json = readJsonAllUsersIntercom(context);
-        Log.e("LOL", "start ser");
-        List<InterUser> interUsers = new ArrayList<>();
-        Moshi moshi = new Moshi.Builder().build();
-        Type type = Types.newParameterizedType(List.class, InterUser.class);
-        JsonAdapter<List<InterUser>> globalJsonAdapter = moshi.adapter(type);
-        try {
-            interUsers = globalJsonAdapter.fromJson(json);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e("LOL", "not read json");
-        }
-        Log.e("LOL", "fin ser");
-        Log.e("LOL", String.valueOf(interUsers.size()));
-        return interUsers;
-    }
+    Log.e("LOL", "MATCH -- " + String.valueOf(counter));
+    Log.e("LOL", "global " + String.valueOf(global));
+    Log.e("LOL", "android " + String.valueOf(android));
+    Log.e("LOL", "os " + String.valueOf(ios));
+  }
 
-    private static String readJsonAllUsersIntercom(Context context) {
-        Log.e("LOL", "start read");
-        String json = "";
-        try {
-            InputStream inputStream = context.getAssets().open("csvjson.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+  private static User find(InterUser interUser, List<User> usersFB) {
+    User user;
+
+    for (int i = 0; i < usersFB.size(); i++) {
+        if (usersFB.get(i).getLocalId().equals(interUser.getUserID())){
+          user = usersFB.get(i);
+          return user;
         }
-        Log.e("LOL", "fin read");
-        return json;
     }
+    return null;
+  }
+
+  private static void updateUser(String userID, String email) {
+  }
+
+  private static void emptyEmails(List<InterUser> interUsers) {
+    int count = 0;
+    for (int i = 0; i < interUsers.size(); i++) {
+      if (interUsers.get(i).getEmail().equals("")) {
+        count++;
+      }
+    }
+    Log.e("LOL", "withoutEmails -- " + String.valueOf(count));
+  }
+
+  private static void checkUserForUID(AllUsers users) {
+    int count = 0;
+    for (int i = 0; i < users.getUsers().size(); i++) {
+      if (users.getUsers().get(i).getLocalId() == null) {
+        count += 1;
+      }
+    }
+    Log.e("LOL", String.valueOf(count));
+  }
+
+  private static void addUsersInIntercom(AllUsers users) {
+    int count = 0;
+    for (int i = 0; i < 50; i++) {
+      if (users.getUsers().get(i).getEmail() != null) {
+        //count += 1;
+        addUser(users.getUsers().get(i).getEmail(), users.getUsers().get(i).getLocalId());
+      } else if (!users.getUsers().get(i).getProviderUserInfo().equals("[]")
+          && users.getUsers().get(i).getProviderUserInfo().size() > 0
+          && users.getUsers().get(i).getProviderUserInfo().get(0).getEmail() != null) {
+        addUser(users.getUsers().get(i).getProviderUserInfo().get(0).getEmail(),
+            users.getUsers().get(i).getLocalId());
+        //count += 1;
+      }
+      Log.e("LOL", String.valueOf(i) + " - added in intercom");
+    }
+    Log.e("LOL", String.valueOf(count));
+  }
+
+  private static void addUser(String email, String uid) {
+    Intercom.client().logout();
+    Registration registration = Registration.create().withUserId(uid);
+    Intercom.client().registerIdentifiedUser(registration);
+    UserAttributes userAttributes = new UserAttributes.Builder()
+        .withEmail(email)
+        .build();
+    Intercom.client().updateUser(userAttributes);
+  }
+
+  private static AllUsers getAllUsers(Context context) {
+    String json = readJsonAllUsers(context);
+    Log.e("LOL", "start ser");
+    AllUsers users = new AllUsers();
+    Moshi moshi = new Moshi.Builder().build();
+    JsonAdapter<AllUsers> globalJsonAdapter = moshi.adapter(AllUsers.class);
+    try {
+      users = globalJsonAdapter.fromJson(json);
+    } catch (IOException e) {
+      e.printStackTrace();
+      Log.e("LOL", "not read json");
+    }
+    Log.e("LOL", "fin ser");
+    return users;
+  }
+
+  private static String readJsonAllUsers(Context context) {
+    Log.e("LOL", "start read");
+    String json = "";
+    try {
+      InputStream inputStream = context.getAssets().open("save_file.json");
+      int size = inputStream.available();
+      byte[] buffer = new byte[size];
+      inputStream.read(buffer);
+      inputStream.close();
+      json = new String(buffer, "UTF-8");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Log.e("LOL", "fin read");
+    return json;
+  }
+
+  private static List<InterUser> getAllUsersItercom(Context context) {
+    String json = readJsonAllUsersIntercom(context);
+    Log.e("LOL", "start ser");
+    List<InterUser> interUsers = new ArrayList<>();
+    Moshi moshi = new Moshi.Builder().build();
+    Type type = Types.newParameterizedType(List.class, InterUser.class);
+    JsonAdapter<List<InterUser>> globalJsonAdapter = moshi.adapter(type);
+    try {
+      interUsers = globalJsonAdapter.fromJson(json);
+    } catch (IOException e) {
+      e.printStackTrace();
+      Log.e("LOL", "not read json");
+    }
+    Log.e("LOL", "fin ser");
+    Log.e("LOL", String.valueOf(interUsers.size()));
+    return interUsers;
+  }
+
+  private static String readJsonAllUsersIntercom(Context context) {
+    Log.e("LOL", "start read");
+    String json = "";
+    try {
+      InputStream inputStream = context.getAssets().open("csvjson.json");
+      int size = inputStream.available();
+      byte[] buffer = new byte[size];
+      inputStream.read(buffer);
+      inputStream.close();
+      json = new String(buffer, "UTF-8");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Log.e("LOL", "fin read");
+    return json;
+  }
 }
