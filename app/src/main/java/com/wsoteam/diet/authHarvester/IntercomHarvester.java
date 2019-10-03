@@ -9,6 +9,7 @@ import com.squareup.moshi.Types;
 import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.authHarvester.POJO.AllUsers;
 
+import com.wsoteam.diet.authHarvester.POJO.User;
 import com.wsoteam.diet.authHarvester.POJO.intercom.InterUser;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,17 +20,65 @@ import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class IntercomHarvester {
 
     public static void startAdding(Context context) {
+        AllUsers allUsers = getAllUsers(context);
+        List<InterUser> interUsers = getAllUsersItercom(context);
+        getAndSetEmails(interUsers, allUsers);
         //AllUsers users = getAllUsers(context);
         //Log.e("LOL", users.getUsers().get(0).getProviderUserInfo().toString());
         //addUsersInIntercom(users);
         //checkUserForUID(users);
-        getAllUsersItercom(context);
+    }
 
+    private static void getAndSetEmails(List<InterUser> interUsers, AllUsers allUsers) {
+        int counter = 0;
+        List<User> usersFB = allUsers.getUsers();
+        HashMap<String, User> userHashMap = new HashMap<>();
+        for (int i = 0; i < usersFB.size(); i++) {
+            userHashMap.put(usersFB.get(i).getLocalId(), usersFB.get(i));
+        }
+
+        Log.e("LOL", "hashmap created!!!");
+
+        for (int i = 0; i < interUsers.size(); i++) {
+            if (interUsers.get(i).getEmail().equals("")){
+                User user = userHashMap.get(interUsers.get(i).getUserID());
+                try {
+                    if (user.getEmail() != null) {
+                        //updateUser(interUsers.get(i).getUserID(), user.getEmail());
+                        counter++;
+                    }
+                }catch (Exception ex){
+                    try {
+                        if (!user.getProviderUserInfo().equals("[]") && user.getProviderUserInfo().size() > 0 ){
+                            counter++;
+                        }
+                    }catch (Exception exc){
+
+                    }
+                }
+            }
+        }
+
+        Log.e("LOL", "COUNT -- " + String.valueOf(counter));
+    }
+
+    private static void updateUser(String userID, String email) {
+    }
+
+    private static void emptyEmails(List<InterUser> interUsers) {
+        int count = 0;
+        for (int i = 0; i < interUsers.size(); i++) {
+            if (interUsers.get(i).getEmail().equals("")){
+                count++;
+            }
+        }
+        Log.e("LOL", "withoutEmails -- " + String.valueOf(count));
     }
 
     private static void checkUserForUID(AllUsers users) {
@@ -103,7 +152,7 @@ public class IntercomHarvester {
         return json;
     }
 
-    private static void getAllUsersItercom(Context context) {
+    private static List<InterUser> getAllUsersItercom(Context context) {
         String json = readJsonAllUsersIntercom(context);
         Log.e("LOL", "start ser");
         List<InterUser> interUsers = new ArrayList<>();
@@ -118,6 +167,7 @@ public class IntercomHarvester {
         }
         Log.e("LOL", "fin ser");
         Log.e("LOL", String.valueOf(interUsers.size()));
+        return interUsers;
     }
 
     private static String readJsonAllUsersIntercom(Context context) {
