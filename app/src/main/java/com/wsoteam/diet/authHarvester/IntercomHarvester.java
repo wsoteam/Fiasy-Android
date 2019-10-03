@@ -5,9 +5,11 @@ import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
 import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.authHarvester.POJO.AllUsers;
 
+import com.wsoteam.diet.authHarvester.POJO.intercom.InterUser;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,14 +17,18 @@ import java.io.InputStream;
 import io.intercom.android.sdk.Intercom;
 import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IntercomHarvester {
 
     public static void startAdding(Context context) {
-        AllUsers users = getAllUsers(context);
+        //AllUsers users = getAllUsers(context);
         //Log.e("LOL", users.getUsers().get(0).getProviderUserInfo().toString());
         //addUsersInIntercom(users);
         //checkUserForUID(users);
+        getAllUsersItercom(context);
 
     }
 
@@ -83,6 +89,42 @@ public class IntercomHarvester {
         String json = "";
         try {
             InputStream inputStream = context.getAssets().open("save_file.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json = new String(buffer, "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.e("LOL", "fin read");
+        return json;
+    }
+
+    private static void getAllUsersItercom(Context context) {
+        String json = readJsonAllUsersIntercom(context);
+        Log.e("LOL", "start ser");
+        List<InterUser> interUsers = new ArrayList<>();
+        Moshi moshi = new Moshi.Builder().build();
+        Type type = Types.newParameterizedType(List.class, InterUser.class);
+        JsonAdapter<List<InterUser>> globalJsonAdapter = moshi.adapter(type);
+        try {
+            interUsers = globalJsonAdapter.fromJson(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("LOL", "not read json");
+        }
+        Log.e("LOL", "fin ser");
+        Log.e("LOL", String.valueOf(interUsers.size()));
+    }
+
+    private static String readJsonAllUsersIntercom(Context context) {
+        Log.e("LOL", "start read");
+        String json = "";
+        try {
+            InputStream inputStream = context.getAssets().open("csvjson.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

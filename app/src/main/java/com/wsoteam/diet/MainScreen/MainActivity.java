@@ -58,6 +58,7 @@ import com.wsoteam.diet.Recipes.POJO.GroupsHolder;
 import com.wsoteam.diet.Recipes.POJO.ListRecipes;
 import com.wsoteam.diet.Recipes.POJO.RecipesHolder;
 import com.wsoteam.diet.Recipes.v2.GroupsFragment;
+import com.wsoteam.diet.authHarvester.IntercomHarvester;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.promo.Generator;
 import com.wsoteam.diet.common.remote.POJO.StoreVersion;
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             loadDietPlans();
         }
         logEvents();
-
+        IntercomHarvester.startAdding(this);
     }
 
     private void logEvents() {
