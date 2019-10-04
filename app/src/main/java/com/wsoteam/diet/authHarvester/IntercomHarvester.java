@@ -81,54 +81,43 @@ public class IntercomHarvester {
 
   private static void getAndSetEmailsFix(List<InterUser> interUsers, AllUsers allUsers) {
     int counter = 0;
-    int counterNotFind = 0;
-    int android = 0;
-    int ios = 0;
-    int global = 0;
+    int counter1 = 0;
+    int counter2 = 0;
     List<User> usersFB = allUsers.getUsers();
     for (int i = 0; i < interUsers.size(); i++) {
       if (interUsers.get(i).getEmail().equals("")) {
+        //counter++;
         User user = find(interUsers.get(i), usersFB);
-        if (user != null){
-          global ++;
-          if (interUsers.get(i).getiOS() > 0) {
-            ios++;
-          }else {
-            android++;
-          }
-        }
-        /*try {
+        if (user != null) {
           if (user.getEmail() != null) {
-            //updateUser(interUsers.get(i).getUserID(), user.getEmail());
             counter++;
           }
-        } catch (Exception ex) {
-          try {
-            if (!user.getProviderUserInfo().equals("[]") && user.getProviderUserInfo().size() > 0) {
-              counter++;
-            }
-          } catch (Exception exc) {
-
-          }
-        }*/
+        }
       }
     }
+    Log.e("LOL", "with email " + String.valueOf(counter));
+  }
 
-    Log.e("LOL", "MATCH -- " + String.valueOf(counter));
-    Log.e("LOL", "global " + String.valueOf(global));
-    Log.e("LOL", "android " + String.valueOf(android));
-    Log.e("LOL", "os " + String.valueOf(ios));
+  private static void setEmail(User user) {
+    Intercom.client().logout();
+    Registration registration = Registration.create().withUserId(user.getLocalId());
+    Intercom.client().registerIdentifiedUser(registration);
+    UserAttributes userAttributes = new UserAttributes.Builder()
+        .withEmail(user.getEmail())
+        .build();
+    Intercom.client().updateUser(userAttributes);
   }
 
   private static User find(InterUser interUser, List<User> usersFB) {
     User user;
-
+    int counter = 0;
     for (int i = 0; i < usersFB.size(); i++) {
-        if (usersFB.get(i).getLocalId().equals(interUser.getUserID())){
-          user = usersFB.get(i);
-          return user;
-        }
+      if (usersFB.get(i).getLocalId().equals(interUser.getUserID())) {
+        user = usersFB.get(i);
+        return user;
+      }
     }
+
     return null;
   }
 

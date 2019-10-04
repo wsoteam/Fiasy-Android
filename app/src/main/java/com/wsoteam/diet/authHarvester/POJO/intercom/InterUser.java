@@ -12,6 +12,16 @@ public class InterUser {
   private int iOS;
   @Json(name = "Android sessions")
   private int android;
+  @Json(name = "id")
+  private String smallId;
+
+  public String getSmallId() {
+    return smallId;
+  }
+
+  public void setSmallId(String smallId) {
+    this.smallId = smallId;
+  }
 
   public int getAndroid() {
     return android;
