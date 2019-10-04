@@ -1,6 +1,7 @@
 package com.wsoteam.diet.authHarvester;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -24,6 +25,7 @@ import io.intercom.android.sdk.Intercom;
 import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +36,7 @@ public class IntercomHarvester {
   public static void startAdding(Context context) {
     AllUsers allUsers = getAllUsers(context);
     List<InterUser> interUsers = getAllUsersItercom(context);
-    getAndSetEmailsFix(interUsers, allUsers);
+    getAndSetEmailsFix(interUsers, allUsers, context);
   }
 
   private static void checkEmptyModels(AllUsers allUsers) {
@@ -85,7 +87,8 @@ public class IntercomHarvester {
     Log.e("LOL", "COUNT -- " + String.valueOf(counter));
   }
 
-  private static void getAndSetEmailsFix(List<InterUser> interUsers, AllUsers allUsers) {
+  private static void getAndSetEmailsFix(List<InterUser> interUsers, AllUsers allUsers,
+      Context context) {
     int counter = 0;
     int counter1 = 0;
     int counter2 = 0;
@@ -94,7 +97,6 @@ public class IntercomHarvester {
     for (int i = 0; i < interUsers.size(); i++) {
       if (interUsers.get(i).getEmail().equals("")) {
         counter++;
-        if (counter < 15) {
           User user = find(interUsers.get(i), usersFB);
           if (user != null) {
             if (user.getEmail() != null) {
@@ -105,62 +107,42 @@ public class IntercomHarvester {
               userList.add(createUser(user.getLocalId(), user.getProviderUserInfo().get(0).getEmail()));
             }
           }
-        }
+
       }
     }
-    writeList(userList);
-    Log.e("LOL", "with email " + String.valueOf(counter));
+    writeList(userList, context);
+    Log.e("LOL", "with email " + String.valueOf(userList.size()));
   }
 
-  private static void writeList(List<InterUser> userList){
+  private static void writeList(List<InterUser> userList, Context context){
     Moshi moshi = new Moshi.Builder().build();
     Type type = Types.newParameterizedType(List.class, InterUser.class);
     JsonAdapter<List<InterUser>> adapter = moshi.adapter(type);
     String jsonString = adapter.toJson(userList);
-    saveString(jsonString);
+    saveString(jsonString, context);
   }
 
-  private static void saveString(String jsonString) {
-    Log.e("LOL", jsonString);
+  private static void saveString(String jsonString, Context context) {
+    try {
+      OutputStreamWriter
+          outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
+      outputStreamWriter.write(jsonString);
+      outputStreamWriter.close();
+    }
+    catch (IOException e) {
+      Log.e("Exception", "File write failed: " + e.toString());
+    }
   }
 
-  /*public class AsyncWrite extends AsyncTask<String, Void, Void> {
+  public class AsyncWrite extends AsyncTask<String, Void, Void> {
 
     @Override
     protected Void doInBackground(String... strings) {
-      rewriteDB(strings[0]);
+
       return null;
     }
 
-    private void rewriteDB(String string) {
-      try {
-        String outFileName = context.getFilesDir().getParent() + "/databases/" + "okk";
-        OutputStream outputStream = new FileOutputStream(outFileName);
-
-        byte[] buffer = new byte[1024];
-        int length;
-        while ((length = myInput.read(buffer)) > 0) {
-          outputStream.write(buffer, 0, length);
-        }
-        outputStream.flush();
-        outputStream.close();
-        myInput.close();
-        OldFavoriteConverter.run();
-        Log.d(TAG, "DB rewrited");
-      } catch (IOException e) {
-        Log.d(TAG, e.toString());
-        e.printStackTrace();
-      }
-    }
-
-    private boolean isEmptyDB(FoodDAO foodDAO) {
-      boolean isEmpty = true;
-      if (foodDAO.getById(1) != null) {
-        isEmpty = false;
-      }
-      return isEmpty;
-    }
-  }*/
+  }
 
   private static InterUser createUser(String localId, String email) {
       InterUser interUser = new InterUser();
