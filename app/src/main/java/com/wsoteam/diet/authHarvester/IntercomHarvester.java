@@ -90,7 +90,11 @@ public class IntercomHarvester {
         User user = find(interUsers.get(i), usersFB);
         if (user != null) {
           if (user.getEmail() != null) {
-            counter++;
+            setEmail(user.getLocalId(), user.getEmail());
+          }else if (!user.getProviderUserInfo().equals("[]")
+              && user.getProviderUserInfo().size() > 0
+              && user.getProviderUserInfo().get(0).getEmail() != null){
+            setEmail(user.getLocalId(), user.getProviderUserInfo().get(0).getEmail());
           }
         }
       }
@@ -98,14 +102,15 @@ public class IntercomHarvester {
     Log.e("LOL", "with email " + String.valueOf(counter));
   }
 
-  private static void setEmail(User user) {
+  private static void setEmail(String id, String email) {
     Intercom.client().logout();
-    Registration registration = Registration.create().withUserId(user.getLocalId());
+    Registration registration = Registration.create().withUserId(id);
     Intercom.client().registerIdentifiedUser(registration);
     UserAttributes userAttributes = new UserAttributes.Builder()
-        .withEmail(user.getEmail())
+        .withEmail(email)
         .build();
     Intercom.client().updateUser(userAttributes);
+
   }
 
   private static User find(InterUser interUser, List<User> usersFB) {
