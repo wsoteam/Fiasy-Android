@@ -1,23 +1,29 @@
 package com.wsoteam.diet.authHarvester;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
+import com.wsoteam.diet.App;
+import com.wsoteam.diet.BranchOfAnalyzer.POJOFoodSQL.FoodDAO;
 import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.authHarvester.POJO.AllUsers;
 
 import com.wsoteam.diet.authHarvester.POJO.User;
 import com.wsoteam.diet.authHarvester.POJO.intercom.InterUser;
+import com.wsoteam.diet.common.backward.OldFavoriteConverter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import io.intercom.android.sdk.Intercom;
 import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,32 +90,86 @@ public class IntercomHarvester {
     int counter1 = 0;
     int counter2 = 0;
     List<User> usersFB = allUsers.getUsers();
+    List<InterUser> userList = new ArrayList<>();
     for (int i = 0; i < interUsers.size(); i++) {
       if (interUsers.get(i).getEmail().equals("")) {
-        //counter++;
-        User user = find(interUsers.get(i), usersFB);
-        if (user != null) {
-          if (user.getEmail() != null) {
-            setEmail(user.getLocalId(), user.getEmail());
-          }else if (!user.getProviderUserInfo().equals("[]")
-              && user.getProviderUserInfo().size() > 0
-              && user.getProviderUserInfo().get(0).getEmail() != null){
-            setEmail(user.getLocalId(), user.getProviderUserInfo().get(0).getEmail());
+        counter++;
+        if (counter < 15) {
+          User user = find(interUsers.get(i), usersFB);
+          if (user != null) {
+            if (user.getEmail() != null) {
+              userList.add(createUser(user.getLocalId(), user.getEmail()));
+            } else if (!user.getProviderUserInfo().equals("[]")
+                && user.getProviderUserInfo().size() > 0
+                && user.getProviderUserInfo().get(0).getEmail() != null) {
+              userList.add(createUser(user.getLocalId(), user.getProviderUserInfo().get(0).getEmail()));
+            }
           }
         }
       }
     }
+    writeList(userList);
     Log.e("LOL", "with email " + String.valueOf(counter));
   }
 
+  private static void writeList(List<InterUser> userList){
+    Moshi moshi = new Moshi.Builder().build();
+    Type type = Types.newParameterizedType(List.class, InterUser.class);
+    JsonAdapter<List<InterUser>> adapter = moshi.adapter(type);
+    String jsonString = adapter.toJson(userList);
+    saveString(jsonString);
+  }
+
+  private static void saveString(String jsonString) {
+    Log.e("LOL", jsonString);
+  }
+
+  /*public class AsyncWrite extends AsyncTask<String, Void, Void> {
+
+    @Override
+    protected Void doInBackground(String... strings) {
+      rewriteDB(strings[0]);
+      return null;
+    }
+
+    private void rewriteDB(String string) {
+      try {
+        String outFileName = context.getFilesDir().getParent() + "/databases/" + "okk";
+        OutputStream outputStream = new FileOutputStream(outFileName);
+
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = myInput.read(buffer)) > 0) {
+          outputStream.write(buffer, 0, length);
+        }
+        outputStream.flush();
+        outputStream.close();
+        myInput.close();
+        OldFavoriteConverter.run();
+        Log.d(TAG, "DB rewrited");
+      } catch (IOException e) {
+        Log.d(TAG, e.toString());
+        e.printStackTrace();
+      }
+    }
+
+    private boolean isEmptyDB(FoodDAO foodDAO) {
+      boolean isEmpty = true;
+      if (foodDAO.getById(1) != null) {
+        isEmpty = false;
+      }
+      return isEmpty;
+    }
+  }*/
+
+  private static InterUser createUser(String localId, String email) {
+      InterUser interUser = new InterUser();
+      interUser.setEmail(email);
+      interUser.setUserID(localId);
+      return interUser;
+  }
+
   private static void setEmail(String id, String email) {
-    Intercom.client().logout();
-    Registration registration = Registration.create().withUserId(id);
-    Intercom.client().registerIdentifiedUser(registration);
-    UserAttributes userAttributes = new UserAttributes.Builder()
-        .withEmail(email)
-        .build();
-    Intercom.client().updateUser(userAttributes);
 
   }
 
