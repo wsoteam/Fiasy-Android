@@ -99,6 +99,7 @@ public class IntercomHarvester {
         counter++;
           User user = find(interUsers.get(i), usersFB);
           if (user != null) {
+            counter1++;
             if (user.getEmail() != null) {
               userList.add(createUser(user.getLocalId(), user.getEmail()));
             } else if (!user.getProviderUserInfo().equals("[]")
@@ -106,12 +107,17 @@ public class IntercomHarvester {
                 && user.getProviderUserInfo().get(0).getEmail() != null) {
               userList.add(createUser(user.getLocalId(), user.getProviderUserInfo().get(0).getEmail()));
             }
+          }else {
+            if (interUsers.get(i).getIos() > 0){
+              counter2 ++;
+            }
           }
-
       }
     }
-    writeList(userList, context);
-    Log.e("LOL", "with email " + String.valueOf(userList.size()));
+    //writeList(userList, context);
+    Log.e("LOL", "find users" + String.valueOf(counter1));
+    Log.e("LOL", "all users without email" + String.valueOf(counter));
+    Log.e("LOL", "users not found ios" + String.valueOf(counter2));
   }
 
   private static void writeList(List<InterUser> userList, Context context){

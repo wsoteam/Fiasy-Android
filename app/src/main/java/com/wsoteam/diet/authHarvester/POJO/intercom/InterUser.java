@@ -8,6 +8,16 @@ public class InterUser {
   private String email;
   @Json(name = "User ID")
   private String userID;
+  @Json(name = "iOS sessions")
+  private int ios;
+
+  public int getIos() {
+    return ios;
+  }
+
+  public void setIos(int ios) {
+    this.ios = ios;
+  }
 
   public String getEmail() {
     return email;
