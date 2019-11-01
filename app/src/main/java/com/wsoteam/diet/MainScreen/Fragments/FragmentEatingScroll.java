@@ -273,7 +273,7 @@ public class FragmentEatingScroll extends Fragment {
         @Override
         protected List<List<Eating>> doInBackground(Integer... ints) {
             day = ints[0];
-            month = ints[1] - 1;
+            month = ints[1];
             year = ints[2];
             List allEatingForThisDay = new ArrayList<>();
 

@@ -279,7 +279,7 @@ public class ActivityDetailOfFood extends AppCompatActivity {
         String[] arrayOfNumbersForDate = wholeDate.split("\\.");
 
         int day = Integer.parseInt(arrayOfNumbersForDate[0]);
-        int month = Integer.parseInt(arrayOfNumbersForDate[1]) - 1;
+        int month = Integer.parseInt(arrayOfNumbersForDate[1]);
         int year = Integer.parseInt(arrayOfNumbersForDate[2]);
 
         int kcal = Integer.parseInt(tvCalculateKcal.getText().toString().split(" ")[0]);
