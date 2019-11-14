@@ -4,24 +4,34 @@ import com.squareup.moshi.Json;
 
 public class InterUser {
 
-  @Json(name = "Email")
-  private String email;
-  @Json(name = "User ID")
-  private String userID;
+    @Json(name = "Email")
+    private String email;
+    @Json(name = "User ID")
+    private String userID;
+    @Json(name = "Display Name")
+    private String name;
 
-  public String getEmail() {
-    return email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getUserID() {
-    return userID;
-  }
+    public String getUserID() {
+        return userID;
+    }
 
-  public void setUserID(String userID) {
-    this.userID = userID;
-  }
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
