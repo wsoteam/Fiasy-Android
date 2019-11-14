@@ -118,8 +118,11 @@ public class IntercomHarvester {
                     counterWithoutName ++;
                 }
             }
+
+            userList.add(interUser);
         }
-        //writeList(userList, context);
+        Log.e("LOL", "write start...");
+        writeList(userList, context);
         Log.e("LOL", "without email " + String.valueOf(counterWithoutEmail));
         Log.e("LOL", "without name " + String.valueOf(counterWithoutName));
     }
@@ -152,6 +155,7 @@ public class IntercomHarvester {
     }
 
     private static void writeList(List<InterUser> userList, Context context) {
+        Log.e("LOL", "ser");
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, InterUser.class);
         JsonAdapter<List<InterUser>> adapter = moshi.adapter(type);
@@ -165,6 +169,7 @@ public class IntercomHarvester {
                     outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(jsonString);
             outputStreamWriter.close();
+            Log.e("LOL", "saved");
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
