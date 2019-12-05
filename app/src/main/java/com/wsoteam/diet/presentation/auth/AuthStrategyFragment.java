@@ -7,13 +7,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.collection.SparseArrayCompat;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -21,7 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.wsoteam.diet.BuildConfig;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.EntryPoint.ActivitySplash;
-import com.wsoteam.diet.MainScreen.MainActivity;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
@@ -32,13 +24,16 @@ import com.wsoteam.diet.utils.NetworkService;
 import com.wsoteam.diet.utils.RichTextUtils.RichText;
 import com.wsoteam.diet.views.InAppNotification;
 
+import java.io.IOException;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.SparseArrayCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiConsumer;
 import io.reactivex.schedulers.Schedulers;
-import java.io.IOException;
-import okhttp3.ResponseBody;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -49,7 +44,7 @@ public abstract class AuthStrategyFragment extends Fragment {
                 put(R.id.auth_strategy_google, GoogleAuthStrategy.class);
                 put(R.id.auth_strategy_facebook, FacebookAuthStrategy.class);
                 put(R.id.auth_strategy_login, EmailLoginAuthStrategy.class);
-                //put(R.id.auth_strategy_reset, ResetPasswordAuthStrategy.class);
+                put(R.id.auth_strategy_reset, ResetPasswordAuthStrategy.class);
             }};
 
     private AuthStrategy authStrategy;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="water_pushes_enabled"
+        android:title="Напоминания выпить воду"
+        app:iconSpaceReserved="false"
+        android:summary="Напоминания о питье воды приходят ежедневно"
+        />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="nutrition_pushes_enabled"
+        android:title="Напоминания поесть"
+        app:iconSpaceReserved="false"
+        android:summary="Напоминания поесть приходят 3 раза в день"
+        />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="weight_pushes_enabled"
+        app:iconSpaceReserved="false"
+        android:title="Напоминания занести обновления по весу"
+        />
+
+</PreferenceScreen>

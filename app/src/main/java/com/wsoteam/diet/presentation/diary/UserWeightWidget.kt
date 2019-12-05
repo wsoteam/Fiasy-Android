@@ -1,11 +1,11 @@
 package com.wsoteam.diet.presentation.diary
 
 import android.content.Intent
-import android.content.res.Resources
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.wsoteam.diet.App
 import com.wsoteam.diet.R
@@ -14,9 +14,6 @@ import com.wsoteam.diet.Sync.WorkWithFirebaseDB
 import com.wsoteam.diet.common.helpers.DateAndTime
 import com.wsoteam.diet.presentation.measurment.MeasurmentActivity
 import java.util.*
-import androidx.lifecycle.Observer
-import com.google.android.gms.common.data.DataHolder
-import java.lang.Exception
 
 
 class UserWeightWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView), OnClickListener {
@@ -31,13 +28,12 @@ class UserWeightWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView), On
     }
 
     private val weightObserver = Observer<Int> { id ->
-        if ((id ?: -1) == WorkWithFirebaseDB.WEIGHT_UPDATED ) {
+        if ((id ?: -1) == WorkWithFirebaseDB.WEIGHT_UPDATED) {
             getWeightHistory()
         }
     }
 
-
-    fun openMeasScreen() {
+    private fun openMeasScreen() {
         context.startActivity(Intent(context, MeasurmentActivity::class.java))
     }
 
@@ -83,7 +79,7 @@ class UserWeightWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView), On
             } else {
                 weightLabel.text = UserDataHolder.getUserData().profile.weight.toString() + " " + App.getContext().resources.getString(R.string.weight_unit)
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("LOL", "Profile is null")
         }
 

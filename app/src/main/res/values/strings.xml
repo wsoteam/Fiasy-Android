@@ -494,10 +494,12 @@ Share your accomplishments with friends:</string>
     <string name="password">Password</string>
     <string name="restore">Recover password</string>
     <string name="forgot_password">Forgot your password?</string>
+    <string name="forgot_password_hint">We will email you</string>
     <string name="or_signIn_by">Or log in with</string>
 
     <!-- Sign Up Screen -->
     <string name="signUp_title">Sign up</string>
+    <string name="recoverPassword_title">Recover password</string>
     <string name="write_email">Enter email address</string>
     <string name="write_password">Enter password</string>
     <string name="repeat_password">Re-enter password</string>
@@ -1112,4 +1114,10 @@ Share your accomplishments with friends:</string>
     <string name="abt_4_arrow">Meal plans</string>
     <string name="abt_5_arrow">Body measurements</string>
     <string name="abt_bottom_prem">Try 3 days for free \nNext %s per year</string>
+
+    <string name="settings_notifications_title">Notifications</string>
+    <string name="close_form_dialog_title">Закрыть форму?</string>
+    <string name="close_form_dialog_message">Закрыв форму, вы не сможете восстановить пароль.</string>
+    <string name="close_dialog">Закрыть</string>
+    <string name="continue_form_fill_button">Продолжить</string>
 </resources>

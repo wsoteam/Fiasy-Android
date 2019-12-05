@@ -1,6 +1,8 @@
 package com.wsoteam.diet.Sync;
 
 import androidx.annotation.NonNull;
+
+import android.text.TextUtils;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,6 +15,7 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 import com.wsoteam.diet.articles.POJO.ListArticles;
 import com.wsoteam.diet.BranchOfAnalyzer.Const;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
@@ -55,6 +58,14 @@ public class WorkWithFirebaseDB {
     public static final int PLAN_UPDATED = 0;
     public static final int EATING_UPDATED = 1;
     public static final int WEIGHT_UPDATED = 2;
+
+    private final static Map<String, String> OUTCOMES = new HashMap<String, String>(){{
+        put("waters", "water_added");
+        put("breakfasts", "breakfast_added");
+        put("dinners", "dinner_added");
+        put("lunches", "lunch_added");
+        put("snacks", "snack_added");
+    }};
 
     private final static MutableLiveData<Integer> databaseUpdates = new MutableLiveData<>();
     private final static AtomicBoolean hasUpdatesListener = new AtomicBoolean(false);
@@ -136,6 +147,12 @@ public class WorkWithFirebaseDB {
         myRef.child(id).setValue(eating);
 
         databaseUpdates.postValue(EATING_UPDATED);
+
+        final String outcome = OUTCOMES.get(type);
+
+        if (!TextUtils.isEmpty(outcome)) {
+            OneSignal.sendOutcome(outcome);
+        }
 
         return id;
     }
@@ -502,6 +519,8 @@ public class WorkWithFirebaseDB {
         myRef.setValue(weight);
 
         databaseUpdates.postValue(WEIGHT_UPDATED);
+
+        OneSignal.sendOutcome("weight_updated");
     }
 
     public static void deleteWeight(String key) {

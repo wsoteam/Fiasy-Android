@@ -1077,4 +1077,7 @@
   <string name="abt_4_arrow">Планы питания</string>
   <string name="abt_5_arrow">Измерения тела</string>
   <string name="abt_bottom_prem">Попробуйте 3 дня бесплатно \nДалее %s в год</string>
+    <string name="settings_notifications_title">Уведомления</string>
+    <string name="recoverPassword_title">Восстановить пароль</string>
+  <string name="forgot_password_hint">Мы отправим вам письмо на почту</string>
 </resources>

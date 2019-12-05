@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -117,13 +118,12 @@ public class SignInFragment extends AuthStrategyFragment {
     final TextView forgetPassword = view.findViewById(R.id.forget_password);
 
     if (forgetPassword != null) {
+      forgetPassword.setMovementMethod(LinkMovementMethod.getInstance());
       forgetPassword.setText(TextUtils.concat(getString(R.string.forgot_password), " ",
           new RichText(getString(R.string.restore))
               .colorRes(requireContext(), R.color.orange)
               .onClick(v -> restorePassword())
               .text()));
-
-      forgetPassword.setVisibility(View.GONE);
     }
 
     view.findViewById(R.id.backButton)

@@ -333,6 +333,7 @@
         <activity
             android:name=".presentation.premium.PremiumFeaturesActivity"
             android:exported="true" />
+        <activity android:name=".presentation.profile.NotificationsSettingsActivity" />
     </application>
 
 </manifest>
