@@ -1,9 +1,14 @@
 package com.wsoteam.diet.presentation.auth;
 
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wsoteam.diet.BuildConfig;
 import com.wsoteam.diet.utils.RxFirebase;
+
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
@@ -16,9 +21,14 @@ public class ResetPasswordAuthStrategy extends AuthStrategy {
     super(fragment);
   }
 
-  public Single<Void> sendVerificationCode(String email) {
-    return RxFirebase.from(FirebaseAuth.getInstance()
-        .sendPasswordResetEmail(email));
+  public Completable sendVerificationCode(String email) {
+    ActionCodeSettings settings = ActionCodeSettings.newBuilder()
+            .setAndroidPackageName(BuildConfig.APPLICATION_ID, false, BuildConfig.VERSION_NAME)
+            .setHandleCodeInApp(true)
+            .setUrl("https://fiasyapp.page.link/reset")
+            .build();
+
+    return RxFirebase.completable(FirebaseAuth.getInstance().sendPasswordResetEmail(email, settings));
   }
 
   public Single<String> checkValidCode(String code) {

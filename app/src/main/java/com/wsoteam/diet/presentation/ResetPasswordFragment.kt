@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputLayout
+import com.wsoteam.diet.BuildConfig
 import com.wsoteam.diet.R
 import com.wsoteam.diet.presentation.auth.AuthStrategyFragment
 import com.wsoteam.diet.presentation.auth.ResetPasswordAuthStrategy
 import com.wsoteam.diet.utils.InputValidation
 import com.wsoteam.diet.utils.onTextChanged
 import com.wsoteam.diet.views.InAppNotification
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.internal.functions.Functions
 
 class ResetPasswordFragment : AuthStrategyFragment() {
 
@@ -56,8 +60,17 @@ class ResetPasswordFragment : AuthStrategyFragment() {
                 return@setOnClickListener
             }
 
-            val strategy = authStrategy as ResetPasswordAuthStrategy
-            strategy.sendVerificationCode(email.editText?.text.toString() ?: "")
+            val strategy = getStrategyByType(ResetPasswordAuthStrategy::class.java).apply {
+                authStrategy = this
+            }
+
+            disposables.add(strategy.sendVerificationCode(email.editText?.text.toString() ?: "")
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(Functions.EMPTY_ACTION, Consumer { exception ->
+                        if (BuildConfig.DEBUG) {
+                            exception.printStackTrace()
+                        }
+                    }))
         }
     }
 }

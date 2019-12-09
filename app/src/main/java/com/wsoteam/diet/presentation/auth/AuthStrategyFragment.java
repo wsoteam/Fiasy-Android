@@ -50,7 +50,7 @@ public abstract class AuthStrategyFragment extends Fragment {
     private AuthStrategy authStrategy;
     private InAppNotification notification;
 
-    private final CompositeDisposable disposables = new CompositeDisposable();
+    protected final CompositeDisposable disposables = new CompositeDisposable();
 
     protected final Observer<AuthStrategy.AuthenticationResult> userObserver =
             authenticationResult -> {
@@ -88,6 +88,8 @@ public abstract class AuthStrategyFragment extends Fragment {
             strategy = new FacebookAuthStrategy(this);
         } else if (strategyType == EmailLoginAuthStrategy.class) {
             strategy = new EmailLoginAuthStrategy(this);
+        } else if (strategyType == ResetPasswordAuthStrategy.class){
+            strategy = new ResetPasswordAuthStrategy(this);
         } else {
             strategy = null;
         }

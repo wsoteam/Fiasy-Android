@@ -33,6 +33,5 @@ fun EditText.onTextChanged(block: EditText.(text: CharSequence) -> Unit): TextWa
             block(s)
         }
     }
-
     return watcher
 }

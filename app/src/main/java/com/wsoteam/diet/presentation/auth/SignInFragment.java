@@ -124,6 +124,8 @@ public class SignInFragment extends AuthStrategyFragment {
               .colorRes(requireContext(), R.color.orange)
               .onClick(v -> restorePassword())
               .text()));
+
+      forgetPassword.setVisibility(View.GONE);
     }
 
     view.findViewById(R.id.backButton)

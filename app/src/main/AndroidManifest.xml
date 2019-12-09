@@ -220,6 +220,13 @@
 
                 <data android:scheme="fiasy" />
             </intent-filter>
+
+            <intent-filter>
+                <data
+                    android:scheme="https"
+                    android:host="fiasy.page.link"
+                    />
+            </intent-filter>
         </activity>
 
 
