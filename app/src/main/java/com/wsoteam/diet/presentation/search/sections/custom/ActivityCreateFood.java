@@ -32,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ActivityCreateFoodextends extends AppCompatActivity {
+public class ActivityCreateFood extends AppCompatActivity {
 
     public CustomFood customFood;
     public boolean isPublicFood = false;
