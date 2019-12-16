@@ -1,7 +1,10 @@
 package com.wsoteam.diet.presentation.search.sections.custom;
 
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,15 +20,20 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
+import com.wsoteam.diet.common.diary.FoodWork;
+import com.wsoteam.diet.presentation.search.ParentActivity;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentBonusOutlay;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -132,7 +140,7 @@ public class ActivityCreateFood extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ibClose:
-                finish();
+                askExit();
                 break;
             case R.id.btnBack:
                 back();
@@ -163,7 +171,7 @@ public class ActivityCreateFood extends AppCompatActivity {
         if (vpFragmentContainer.getCurrentItem() > 0) {
             vpFragmentContainer.setCurrentItem(vpFragmentContainer.getCurrentItem() - 1);
         } else {
-            finish();
+            askExit();
         }
     }
 
@@ -213,6 +221,35 @@ public class ActivityCreateFood extends AppCompatActivity {
         if (isPublicFood) {
             WorkWithFirebaseDB.shareCustomFood(customFood);
         }
+    }
+
+    private void askExit() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog alertDialog = builder.create();
+        LayoutInflater layoutInflater =
+                (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.alert_dialog_custom_exit, null);
+        TextView tvCancel = view.findViewById(R.id.tvCancel);
+        TextView tvExit = view.findViewById(R.id.tvExit);
+
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.cancel();
+            }
+        });
+        tvExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.cancel();
+                finish();
+
+            }
+        });
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        alertDialog.setView(view);
+        alertDialog.show();
     }
 }
 
