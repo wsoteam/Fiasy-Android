@@ -1153,5 +1153,6 @@ Share your accomplishments with friends:</string>
     <string name="cst_liquid">Напиток</string>
     <string name="cst_ask_exit">Вы хотите закрыть создание продукта без сохранения?</string>
     <string name="cst_header">Основная порция</string>
+    <string name="cst_add_food">Добавить порцию</string>
 
 </resources>
