@@ -77,7 +77,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_outlay, container, false);
+        View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
         unbinder = ButterKnife.bind(this, view);
         if (((ActivityCreateFood) getActivity()).isEdit) {
             bindFields((CustomFood) getArguments().getSerializable(TAG));
