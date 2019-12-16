@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.wsoteam.diet.BarcodeScanner.BaseScanner;
@@ -31,10 +33,18 @@ public class FragmentMain extends Fragment implements SayForward {
 
     @BindView(R.id.edtBrand)
     EditText edtBrand;
-    @BindView(R.id.edtName) EditText edtName;
-    @BindView(R.id.edtBarcode) EditText edtBarcode;
+    @BindView(R.id.edtName)
+    EditText edtName;
+    @BindView(R.id.edtBarcode)
+    EditText edtBarcode;
     Unbinder unbinder;
     private final static String TAG = "FragmentMainInfo";
+    @BindView(R.id.rgrpType)
+    RadioGroup rgrpType;
+    @BindView(R.id.rbtnFood)
+    RadioButton rbtnFood;
+    @BindView(R.id.rbtnLiquid)
+    RadioButton rbtnLiquid;
 
 
     public static FragmentMain newInstance(CustomFood customFood) {
@@ -73,6 +83,7 @@ public class FragmentMain extends Fragment implements SayForward {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_info_new, container, false);
         unbinder = ButterKnife.bind(this, view);
+        rbtnFood.setTextColor(getActivity().getResources().getColor(R.color.cst_active_rb));
         if (((ActivityCreateFood) getActivity()).isEdit) {
             bindFields((CustomFood) getArguments().getSerializable(TAG));
         }
@@ -83,6 +94,21 @@ public class FragmentMain extends Fragment implements SayForward {
         edtName.setText(customFood.getName());
         edtBrand.setText(customFood.getBrand());
         edtBarcode.setText(customFood.getBarcode());
+    }
+
+    @OnClick({R.id.rbtnFood, R.id.rbtnLiquid})
+    public void onRadioButtonClicked(RadioButton radioButton) {
+        boolean checked = radioButton.isChecked();
+        switch (radioButton.getId()) {
+            case R.id.rbtnFood:
+                rbtnFood.setTextColor(getActivity().getResources().getColor(R.color.cst_active_rb));
+                rbtnLiquid.setTextColor(getActivity().getResources().getColor(R.color.cst_inactive_rb));
+                break;
+            case R.id.rbtnLiquid:
+                rbtnLiquid.setTextColor(getActivity().getResources().getColor(R.color.cst_active_rb));
+                rbtnFood.setTextColor(getActivity().getResources().getColor(R.color.cst_inactive_rb));
+                break;
+        }
     }
 
 

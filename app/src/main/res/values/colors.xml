@@ -177,4 +177,7 @@
 
   <color name="teach_background">#88313130</color>
   <color name="teach_btn_cancel">#51ffffff</color>
+
+  <color name="cst_inactive_rb">#8a000000</color>
+  <color name="cst_active_rb">#ef7d02</color>
 </resources>
