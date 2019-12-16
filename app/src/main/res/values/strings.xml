@@ -1154,5 +1154,6 @@ Share your accomplishments with friends:</string>
     <string name="cst_ask_exit">Вы хотите закрыть создание продукта без сохранения?</string>
     <string name="cst_header">Основная порция</string>
     <string name="cst_add_food">Добавить порцию</string>
+    <string name="cst_prop">Здесь вы можете изменить вес “стандартной порции” для создаваемого вами продукта.</string>
 
 </resources>
