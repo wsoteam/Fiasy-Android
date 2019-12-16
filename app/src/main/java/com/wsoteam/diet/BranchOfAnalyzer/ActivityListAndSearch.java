@@ -3,15 +3,8 @@ package com.wsoteam.diet.BranchOfAnalyzer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 import com.wsoteam.diet.BranchOfAnalyzer.Controller.TabsAdapter;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.ActivityCreateFood;
@@ -37,6 +31,11 @@ import com.wsoteam.diet.presentation.food.template.create.CreateFoodTemplateActi
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

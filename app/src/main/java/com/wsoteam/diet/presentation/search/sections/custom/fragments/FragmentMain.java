@@ -13,12 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wsoteam.diet.BarcodeScanner.BaseScanner;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.ActivityCreateFood;
+
+
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentMainInfo;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.SayForward;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,10 +45,10 @@ public class FragmentMain extends Fragment implements SayForward {
     TextView tvTitleShare;
     @BindView(R.id.tvDescriptionShare) TextView tvDescriptionShare;
 
-    public static FragmentMainInfo newInstance(CustomFood customFood) {
+    public static FragmentMain newInstance(CustomFood customFood) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG, customFood);
-        FragmentMainInfo fragmentMainInfo = new FragmentMainInfo();
+        FragmentMain fragmentMainInfo = new FragmentMain();
         fragmentMainInfo.setArguments(bundle);
         return fragmentMainInfo;
     }

@@ -16,7 +16,7 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.presentation.search.sections.controller.SectionAdapter;
 
 public class SectionFragment extends Fragment {
-  //@BindView(R.id.rvSections) RecyclerView rvSections;
+  @BindView(R.id.rvSections) RecyclerView rvSections;
   private SectionAdapter adapter;
   private Unbinder unbinder;
 
@@ -25,15 +25,15 @@ public class SectionFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_section, container, false);
     unbinder = ButterKnife.bind(this, view);
-    //rvSections.setLayoutManager(new LinearLayoutManager(getContext()));
-    //updateUI();
+    rvSections.setLayoutManager(new LinearLayoutManager(getContext()));
+    updateUI();
 
     return view;
   }
 
   private void updateUI() {
     adapter = new SectionAdapter(getContext());
-    //rvSections.setAdapter(adapter);
+    rvSections.setAdapter(adapter);
   }
 
   @Override public void onDestroyView() {

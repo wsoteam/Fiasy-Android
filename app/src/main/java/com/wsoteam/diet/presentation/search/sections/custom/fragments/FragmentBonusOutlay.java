@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.ActivityCreateFood;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.SayForward;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,10 +32,10 @@ public class FragmentBonusOutlay extends Fragment implements SayForward {
     private final double EMPTY_PARAM = -1.0;
     private final static String TAG = "FragmentBonusOutlay";
 
-    public static com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentBonusOutlay newInstance(CustomFood customFood) {
+    public static FragmentBonusOutlay newInstance(CustomFood customFood) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG, customFood);
-        com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentBonusOutlay fragmentBonusOutlay = new com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentBonusOutlay();
+        FragmentBonusOutlay fragmentBonusOutlay = new FragmentBonusOutlay();
         fragmentBonusOutlay.setArguments(bundle);
         return fragmentBonusOutlay;
     }

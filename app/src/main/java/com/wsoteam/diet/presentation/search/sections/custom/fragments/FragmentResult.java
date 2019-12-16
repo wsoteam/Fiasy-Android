@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.ActivityCreateFood;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.SayForward;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

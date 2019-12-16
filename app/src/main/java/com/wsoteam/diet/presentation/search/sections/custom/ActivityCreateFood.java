@@ -11,15 +11,15 @@ import com.wsoteam.diet.BranchOfAnalyzer.Const;
 import com.wsoteam.diet.BranchOfAnalyzer.Controller.CustomFoodViewPagerAdapter;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomViewPager;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentBonusOutlay;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentMainInfo;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentOutlay;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.Fragments.FragmentResult;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.SayForward;
+
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentBonusOutlay;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,12 +111,12 @@ public class ActivityCreateFood extends AppCompatActivity {
     private List<Fragment> createFragmentList() {
         List<Fragment> fragments = new ArrayList<>();
         if (isEdit){
-            fragments.add(FragmentMainInfo.newInstance(customFood));
+            fragments.add(FragmentMain.newInstance(customFood));
             fragments.add(FragmentOutlay.newInstance(customFood));
             fragments.add(FragmentBonusOutlay.newInstance(customFood));
             fragments.add(new FragmentResult());
         }else {
-            fragments.add(new FragmentMainInfo());
+            fragments.add(new FragmentMain());
             fragments.add(new FragmentOutlay());
             fragments.add(new FragmentBonusOutlay());
             fragments.add(new FragmentResult());
