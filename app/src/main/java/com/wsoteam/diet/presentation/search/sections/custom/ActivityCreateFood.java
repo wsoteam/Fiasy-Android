@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +43,8 @@ public class ActivityCreateFood extends AppCompatActivity {
     TextView tvTitle;
     @BindView(R.id.btnForward)
     Button btnForward;
-    @BindView(R.id.btnBack) Button btnBack;
-    @BindView(R.id.tvSubtitle) TextView tvSubtitle;
+    @BindView(R.id.btnBack)
+    ImageButton btnBack;
     private CustomFoodViewPagerAdapter vpAdapter;
     private final int FRAGMENT_RESULT = 2, FRAGMENT_OUTLAY = 1, FRAGMENT_MAIN = 0;
     private final int COUNT_GRAMM = 100;
@@ -54,6 +55,7 @@ public class ActivityCreateFood extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_food);
+        setContentView(R.layout.activity_create_food_new);
         ButterKnife.bind(this);
         if (getIntent().getSerializableExtra(Const.EDIT_CUSTOM_FOOD) != null) {
             customFood = (CustomFood) getIntent().getSerializableExtra(Const.EDIT_CUSTOM_FOOD);
@@ -90,10 +92,9 @@ public class ActivityCreateFood extends AppCompatActivity {
     private void updateUIAfterScrolled(int i) {
         if (isEdit) {
             tvTitle.setText(getResources().getStringArray(R.array.fragment_names)[i]);
-        }else {
+        } else {
 
         }
-        tvSubtitle.setText(getResources().getStringArray(R.array.fragment_subtitles)[i]);
         if (i == FRAGMENT_RESULT) {
             btnForward.setText(getString(R.string.ok));
         }
@@ -110,12 +111,12 @@ public class ActivityCreateFood extends AppCompatActivity {
 
     private List<Fragment> createFragmentList() {
         List<Fragment> fragments = new ArrayList<>();
-        if (isEdit){
+        if (isEdit) {
             fragments.add(FragmentMain.newInstance(customFood));
             fragments.add(FragmentOutlay.newInstance(customFood));
             fragments.add(FragmentBonusOutlay.newInstance(customFood));
             fragments.add(new FragmentResult());
-        }else {
+        } else {
             fragments.add(new FragmentMain());
             fragments.add(new FragmentOutlay());
             fragments.add(new FragmentBonusOutlay());
@@ -145,7 +146,7 @@ public class ActivityCreateFood extends AppCompatActivity {
                     saveFood();
                     if (isEdit) {
                         Toast.makeText(this, getString(R.string.edit_food_completed), Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
                         Toast.makeText(this, getString(R.string.food_saved), Toast.LENGTH_LONG).show();
                     }
                     finish();
@@ -207,7 +208,7 @@ public class ActivityCreateFood extends AppCompatActivity {
         }
         if (isEdit) {
             WorkWithFirebaseDB.rewriteCustomFood(customFood);
-        }else {
+        } else {
             WorkWithFirebaseDB.addCustomFood(customFood);
         }
         if (isPublicFood) {
