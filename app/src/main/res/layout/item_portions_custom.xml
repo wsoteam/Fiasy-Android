@@ -4,9 +4,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/dvdTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ebebeb" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -14,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_bold"
+            android:layout_gravity="center_vertical"
             android:text="1."
             android:textColor="#ef7d02"
             android:textSize="14sp" />
@@ -27,10 +34,19 @@
             android:fontFamily="@font/roboto_medium"
             android:textSize="14sp"
             android:textColor="#de000000"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="Title"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_prem_close"
+            android:background="?selectableItemBackground"
+            android:padding="10dp"
+            android:layout_gravity="bottom|right"
+            />
     </LinearLayout>
 
     <TextView
@@ -41,20 +57,8 @@
         android:id="@+id/tvWeight"
         android:fontFamily="@font/roboto"
         android:text="55 g"
-        android:textColor="#99000000"
-        android:textSize="12sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="36dp"
-        android:id="@+id/tvProp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/cst_prop"
-        android:textColor="#99000000"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="#99000000"
         android:textSize="12sp"/>
 
 </LinearLayout>
