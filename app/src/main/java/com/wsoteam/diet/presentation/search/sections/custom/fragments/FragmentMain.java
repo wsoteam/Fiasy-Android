@@ -8,13 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wsoteam.diet.BarcodeScanner.BaseScanner;
-
-
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
@@ -38,12 +34,8 @@ public class FragmentMain extends Fragment implements SayForward {
     @BindView(R.id.edtName) EditText edtName;
     @BindView(R.id.edtBarcode) EditText edtBarcode;
     Unbinder unbinder;
-    @BindView(R.id.swtShare)
-    Switch swtShare;
     private final static String TAG = "FragmentMainInfo";
-    @BindView(R.id.tvTitleShare)
-    TextView tvTitleShare;
-    @BindView(R.id.tvDescriptionShare) TextView tvDescriptionShare;
+
 
     public static FragmentMain newInstance(CustomFood customFood) {
         Bundle bundle = new Bundle();
@@ -74,13 +66,12 @@ public class FragmentMain extends Fragment implements SayForward {
         customFood.setBrand(brand);
         customFood.setName(name);
         customFood.setBarcode(edtBarcode.getText().toString());
-        (((ActivityCreateFood) getActivity()).isPublicFood) = swtShare.isChecked();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_info_new, container, false);
         unbinder = ButterKnife.bind(this, view);
         if (((ActivityCreateFood) getActivity()).isEdit) {
             bindFields((CustomFood) getArguments().getSerializable(TAG));
@@ -92,9 +83,6 @@ public class FragmentMain extends Fragment implements SayForward {
         edtName.setText(customFood.getName());
         edtBrand.setText(customFood.getBrand());
         edtBarcode.setText(customFood.getBarcode());
-        swtShare.setVisibility(View.GONE);
-        tvTitleShare.setVisibility(View.GONE);
-        tvDescriptionShare.setVisibility(View.GONE);
     }
 
 

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/edtBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="@string/brand_manufacturer"
+                android:maxLength="200"
+                android:textColor="#c0000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout22">
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="@string/product_name"
+                android:maxLength="200"
+                android:textColor="#c0000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout32"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout23">
+
+            <EditText
+                android:id="@+id/edtBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="@string/barcode"
+                android:inputType="numberDecimal"
+                android:maxLength="13"
+                android:textColor="#c0000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageButton
+            android:id="@+id/ibBarcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter_state"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textInputLayout32"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout32"
+            app:srcCompat="@drawable/ic_barcode" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/cst_choise_eating"
+            android:textColor="#51000000"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout32" />
+
+        <RadioGroup
+            android:id="@+id/rgrpType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView42">
+
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbtnFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:drawableTop="@drawable/state_btn_food_type"
+                android:textColor="#8a000000"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:textColorHighlight="#ef7d02"
+                android:drawablePadding="-10dp"
+                android:text="@string/cst_food"
+                android:gravity="center" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbtnLiquid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:textColorHighlight="#ef7d02"
+                android:textSize="14sp"
+                android:textColor="#8a000000"
+                android:fontFamily="@font/roboto"
+                android:text="@string/cst_liquid"
+                android:drawablePadding="-10dp"
+                android:button="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/state_btn_liquid_type"
+                android:gravity="center" />
+
+        </RadioGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

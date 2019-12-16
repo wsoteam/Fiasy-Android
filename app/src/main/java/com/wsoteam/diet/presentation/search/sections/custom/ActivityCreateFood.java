@@ -54,7 +54,6 @@ public class ActivityCreateFood extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_food);
         setContentView(R.layout.activity_create_food_new);
         ButterKnife.bind(this);
         if (getIntent().getSerializableExtra(Const.EDIT_CUSTOM_FOOD) != null) {

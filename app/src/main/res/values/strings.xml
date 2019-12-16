@@ -1148,5 +1148,8 @@ Share your accomplishments with friends:</string>
     <string name="teach_achievement_title">Добавление первого продукта</string>
     <string name="teach_achievement_txt">Поздравляем! Ваша первая награда в приложении.</string>
     <string name="teach_achievement_btn">Отлично!</string>
+    <string name="cst_choise_eating">Выберите тип продукта</string>
+    <string name="cst_food">Еда</string>
+    <string name="cst_liquid">Напиток</string>
 
 </resources>
