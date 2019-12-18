@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
@@ -14,12 +13,18 @@ import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class FragmentPortions extends Fragment implements SayForward {
     private final static String TAG = "FragmentPortions";
+    @BindView(R.id.rvPortions)
+    RecyclerView rvPortions;
     private Unbinder unbinder;
+    private
 
     public static FragmentPortions newInstance(CustomFood customFood) {
         Bundle bundle = new Bundle();
@@ -43,7 +48,13 @@ public class FragmentPortions extends Fragment implements SayForward {
         if (((ActivityCreateFood) getActivity()).isEdit) {
             bindFields((CustomFood) getArguments().getSerializable(TAG));
         }
+        rvPortions.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateList();
         return view;
+    }
+
+    private void updateList() {
+
     }
 
     private void bindFields(CustomFood customFood) {
