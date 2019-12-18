@@ -54,7 +54,11 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 ((StandartPortionsVH) holder).bind(result.getPortion(), getItemCount() == COUNT_UTILITY_VH);
                 break;
             case CUSTOM_TYPE:
-                ((CustomPortionsVH) holder).bind(position, result.getMeasurementUnits().get(position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION), result.isLiquid());
+                ((CustomPortionsVH) holder).bind(position, result.getMeasurementUnits().get(position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION), result.isLiquid(), new ICustomPortionsVH(){
+                    @Override public void deleteItem(int position) {
+                        dropItem(position);
+                    }
+                });
                 break;
             case ADD_TYPE:
                 ((AddPortionsVH) holder).bind(new IAddPortionsVH(){
@@ -67,7 +71,12 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-
+    private void dropItem(int position) {
+        int currentPosition = position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION;
+        result.getMeasurementUnits().remove(currentPosition);
+        iPortions.dropUnit(currentPosition);
+        notifyItemRemoved(position);
+    }
 
     @Override
     public int getItemViewType(int position) {

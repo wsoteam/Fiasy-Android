@@ -14,13 +14,16 @@ public class CustomPortionsVH extends RecyclerView.ViewHolder {
   @BindView(R.id.tvNumber) TextView tvNumber;
   @BindView(R.id.tvTitle) TextView tvTitle;
   @BindView(R.id.tvWeight) TextView tvWeight;
+  private ICustomPortionsVH iCustomPortionsVH;
 
   public CustomPortionsVH(LayoutInflater layoutInflater, ViewGroup viewGroup) {
     super(layoutInflater.inflate(R.layout.item_portions_custom, viewGroup, false));
     ButterKnife.bind(this, itemView);
   }
 
-  public void bind(int number, MeasurementUnit measurementUnit, boolean isLiquid) {
+  public void bind(int number, MeasurementUnit measurementUnit, boolean isLiquid,
+      ICustomPortionsVH iCustomPortionsVH) {
+    this.iCustomPortionsVH = iCustomPortionsVH;
     String unit = itemView.getResources().getString(R.string.cst_g);
     if (isLiquid) {
       unit = itemView.getResources().getString(R.string.cst_ml);
@@ -31,5 +34,6 @@ public class CustomPortionsVH extends RecyclerView.ViewHolder {
   }
 
   @OnClick(R.id.ibDelete) public void onViewClicked() {
+    iCustomPortionsVH.deleteItem(getAdapterPosition());
   }
 }
