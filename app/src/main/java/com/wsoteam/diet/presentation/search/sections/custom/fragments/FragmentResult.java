@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
@@ -58,14 +59,14 @@ public class FragmentResult extends Fragment implements SayForward {
     }
 
     private void bindFields() {
-        CustomFood customFood = ((ActivityCreateFood) getActivity()).customFood;
+        Result customFood = ((ActivityCreateFood) getActivity()).customFood;
         edtName.setText(customFood.getName());
         edtKcal.setText(String.valueOf(customFood.getCalories()));
         edtFats.setText(String.valueOf(customFood.getFats()));
         edtCarbo.setText(String.valueOf(customFood.getCarbohydrates()));
         edtProt.setText(String.valueOf(customFood.getProteins()));
 
-        if (customFood.getBrand().equals("")) {
+        /*if (customFood.getBrand().equals("")) {
             edtBrand.setText(EMPTY_FIELD);
         } else {
             edtBrand.setText(customFood.getBrand());
@@ -122,7 +123,7 @@ public class FragmentResult extends Fragment implements SayForward {
             edtPolyUnSaturatedFats.setText(EMPTY_FIELD);
         }else {
             edtPolyUnSaturatedFats.setText(String.valueOf(customFood.getPolyUnSaturatedFats()));
-        }
+        }*/
 
     }
 

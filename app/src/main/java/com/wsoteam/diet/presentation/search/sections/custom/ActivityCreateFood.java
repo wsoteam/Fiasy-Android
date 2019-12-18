@@ -21,6 +21,7 @@ import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.diary.FoodWork;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.ParentActivity;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentBonusOutlay;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
@@ -43,7 +44,7 @@ import butterknife.OnClick;
 
 public class ActivityCreateFood extends AppCompatActivity {
 
-    public CustomFood customFood;
+    public Result customFood;
     public boolean isPublicFood = false;
     @BindView(R.id.vpFragmentContainer)
     CustomViewPager vpFragmentContainer;
@@ -64,12 +65,7 @@ public class ActivityCreateFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_food_new);
         ButterKnife.bind(this);
-        if (getIntent().getSerializableExtra(Const.EDIT_CUSTOM_FOOD) != null) {
-            customFood = (CustomFood) getIntent().getSerializableExtra(Const.EDIT_CUSTOM_FOOD);
-            isEdit = true;
-        } else {
-            customFood = new CustomFood();
-        }
+        customFood = new Result();
         btnBack.setVisibility(View.GONE);
         vpFragmentContainer.disableScroll(true);
         updateUI();
@@ -120,8 +116,8 @@ public class ActivityCreateFood extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         if (isEdit) {
             fragments.add(FragmentMain.newInstance(customFood));
-            fragments.add(FragmentOutlay.newInstance(customFood));
-            fragments.add(FragmentBonusOutlay.newInstance(customFood));
+            //fragments.add(FragmentOutlay.newInstance(customFood));
+            //fragments.add(FragmentBonusOutlay.newInstance(customFood));
             fragments.add(new FragmentResult());
         } else {
             fragments.add(new FragmentMain());
@@ -148,7 +144,6 @@ public class ActivityCreateFood extends AppCompatActivity {
             case R.id.btnForward:
                 if (isCanMoveForward() && vpFragmentContainer.getCurrentItem() < vpAdapter.getCount() - 1) {
                     vpFragmentContainer.setCurrentItem(vpFragmentContainer.getCurrentItem() + 1);
-                    Log.e("LOL", customFood.toString());
                 } else if (vpFragmentContainer.getCurrentItem() == vpAdapter.getCount() - 1) {
                     saveFood();
                     if (isEdit) {
@@ -177,50 +172,7 @@ public class ActivityCreateFood extends AppCompatActivity {
 
     private void saveFood() {
         Events.logCreateCustomFood(getIntent().getStringExtra(EventProperties.product_from), customFood.getName());
-        customFood.setCalories(customFood.getCalories() / COUNT_GRAMM);
-        customFood.setFats(customFood.getFats() / COUNT_GRAMM);
-        customFood.setCarbohydrates(customFood.getCarbohydrates() / COUNT_GRAMM);
-        customFood.setProteins(customFood.getProteins() / COUNT_GRAMM);
 
-        if (customFood.getCellulose() != EMPTY_PARAM) {
-            customFood.setCellulose(customFood.getCellulose() / COUNT_GRAMM);
-        }
-
-        if (customFood.getSugar() != EMPTY_PARAM) {
-            customFood.setSugar(customFood.getSugar() / COUNT_GRAMM);
-        }
-
-        if (customFood.getCholesterol() != EMPTY_PARAM) {
-            customFood.setCholesterol(customFood.getCholesterol() / COUNT_GRAMM);
-        }
-
-        if (customFood.getSodium() != EMPTY_PARAM) {
-            customFood.setSodium(customFood.getSodium() / COUNT_GRAMM);
-        }
-
-        if (customFood.getPottassium() != EMPTY_PARAM) {
-            customFood.setPottassium(customFood.getPottassium() / COUNT_GRAMM);
-        }
-
-        if (customFood.getSaturatedFats() != EMPTY_PARAM) {
-            customFood.setSaturatedFats(customFood.getSaturatedFats() / COUNT_GRAMM);
-        }
-
-        if (customFood.getMonoUnSaturatedFats() != EMPTY_PARAM) {
-            customFood.setMonoUnSaturatedFats(customFood.getMonoUnSaturatedFats() / COUNT_GRAMM);
-        }
-
-        if (customFood.getPolyUnSaturatedFats() != EMPTY_PARAM) {
-            customFood.setPolyUnSaturatedFats(customFood.getPolyUnSaturatedFats() / COUNT_GRAMM);
-        }
-        if (isEdit) {
-            WorkWithFirebaseDB.rewriteCustomFood(customFood);
-        } else {
-            WorkWithFirebaseDB.addCustomFood(customFood);
-        }
-        if (isPublicFood) {
-            WorkWithFirebaseDB.shareCustomFood(customFood);
-        }
     }
 
     private void askExit() {

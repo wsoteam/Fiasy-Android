@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
@@ -85,7 +86,7 @@ public class FragmentBonusOutlay extends Fragment implements SayForward {
     }
 
     private void setInfo() {
-        CustomFood customFood = ((ActivityCreateFood) getActivity()).customFood;
+        Result customFood = ((ActivityCreateFood) getActivity()).customFood;
 
         if (!edtCell.getText().toString().equals("") && !edtCell.getText().toString().equals(".")) {
             customFood.setCellulose(Double.parseDouble(edtCell.getText().toString()));
@@ -93,7 +94,7 @@ public class FragmentBonusOutlay extends Fragment implements SayForward {
             customFood.setCellulose(EMPTY_PARAM);
         }
 
-        if (!edtSugar.getText().toString().equals("") && !edtSugar.getText().toString().equals(".")) {
+        /*if (!edtSugar.getText().toString().equals("") && !edtSugar.getText().toString().equals(".")) {
             customFood.setSugar(Double.parseDouble(edtSugar.getText().toString()));
         } else {
             customFood.setSugar(EMPTY_PARAM);
@@ -133,7 +134,7 @@ public class FragmentBonusOutlay extends Fragment implements SayForward {
             customFood.setPottassium(Double.parseDouble(edtPottassium.getText().toString()));
         } else {
             customFood.setPottassium(EMPTY_PARAM);
-        }
+        }*/
     }
 
     @Override

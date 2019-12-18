@@ -24,7 +24,7 @@ public class FragmentPortions extends Fragment implements SayForward {
     @BindView(R.id.rvPortions)
     RecyclerView rvPortions;
     private Unbinder unbinder;
-    private
+
 
     public static FragmentPortions newInstance(CustomFood customFood) {
         Bundle bundle = new Bundle();

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.wsoteam.diet.BarcodeScanner.BaseScanner;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Brand;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
@@ -47,7 +50,7 @@ public class FragmentMain extends Fragment implements SayForward {
     RadioButton rbtnLiquid;
 
 
-    public static FragmentMain newInstance(CustomFood customFood) {
+    public static FragmentMain newInstance(Result customFood) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG, customFood);
         FragmentMain fragmentMainInfo = new FragmentMain();
@@ -70,12 +73,17 @@ public class FragmentMain extends Fragment implements SayForward {
     }
 
     private void setInfo() {
+        boolean isLiquid = rbtnLiquid.isChecked();
         String brand = edtBrand.getText().toString().replaceAll("\\s+", " ").trim();
         String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
-        CustomFood customFood = ((ActivityCreateFood) getActivity()).customFood;
-        customFood.setBrand(brand);
+        Brand currentBrand = new Brand();
+        currentBrand.setName(brand);
+        Result customFood = ((ActivityCreateFood) getActivity()).customFood;
+        customFood.setBrand(currentBrand);
         customFood.setName(name);
         customFood.setBarcode(edtBarcode.getText().toString());
+        customFood.setLiquid(isLiquid);
+        Log.e("LOL", customFood.toString());
     }
 
     @Nullable

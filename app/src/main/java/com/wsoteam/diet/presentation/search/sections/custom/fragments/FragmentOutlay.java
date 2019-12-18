@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
@@ -52,7 +53,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
     }
 
     private void setInfo() {
-        CustomFood customFood = ((ActivityCreateFood) getActivity()).customFood;
+        Result customFood = ((ActivityCreateFood) getActivity()).customFood;
         customFood.setCalories(Double.parseDouble(edtKcal.getText().toString()));
         customFood.setFats(Double.parseDouble(edtFats.getText().toString()));
         customFood.setProteins(Double.parseDouble(edtProt.getText().toString()));

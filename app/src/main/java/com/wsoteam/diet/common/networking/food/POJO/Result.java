@@ -5,12 +5,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.moshi.Json;
 import com.wsoteam.diet.common.networking.food.ISearchResult;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Result implements ISearchResult {
+public class Result implements ISearchResult, Serializable {
 
     private int id;
     private String name;
