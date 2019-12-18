@@ -65,7 +65,8 @@ public class FragmentPortions extends Fragment implements SayForward {
             public void createPortion() {
                 startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class), RC_CREATE_PORTION);
             }
-        }, new Result());
+        }, new Result(), getActivity());
+        rvPortions.setAdapter(adapter);
     }
 
     @Override

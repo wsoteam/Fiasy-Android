@@ -13,4 +13,7 @@ public class CustomPortionsVH extends RecyclerView.ViewHolder {
         super(layoutInflater.inflate(R.layout.item_portions_custom, viewGroup, false));
         ButterKnife.bind(this, itemView);
     }
+
+    public void bind() {
+    }
 }

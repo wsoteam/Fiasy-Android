@@ -30,7 +30,7 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Title"/>
+            android:text="@string/cst_standart_portion_title"/>
     </LinearLayout>
 
     <TextView
@@ -56,5 +56,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:textSize="12sp"/>
+
+    <View
+        android:id="@+id/dvdrBottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        android:background="#ebebeb" />
 
 </LinearLayout>

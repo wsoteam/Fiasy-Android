@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.search.sections.custom.fragments.controller;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -20,16 +21,18 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private IPortions iPortions;
     private Result result;
     private int COUNT_UTILITY_VH = 3;
+    private Context context;
 
-    public PortionsAdapter(IPortions iPortions, Result result) {
+    public PortionsAdapter(IPortions iPortions, Result result, Context context) {
         this.iPortions = iPortions;
         this.result = result;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(App.getContext());
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         switch (viewType) {
             case HEADER_TYPE:
                 return new HeaderPortionsVH(layoutInflater, parent);
@@ -46,7 +49,25 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        switch (holder.getItemViewType()){
+            case HEADER_TYPE:
+                ((HeaderPortionsVH) holder).bind();
+                break;
+            case MAIN_TYPE:
+                ((StandartPortionsVH) holder).bind(result.getPortion(), getItemCount() == COUNT_UTILITY_VH);
+                break;
+            case STANDART_TYPE:
+                ((CustomPortionsVH) holder).bind();
+                break;
+            case ADD_TYPE:
+                ((AddPortionsVH) holder).bind(new IAddPortionsVH(){
+                    @Override
+                    public void addPortion() {
+                        iPortions.createPortion();
+                    }
+                });
+                break;
+        }
     }
 
     @Override

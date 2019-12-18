@@ -13,4 +13,7 @@ public class HeaderPortionsVH extends RecyclerView.ViewHolder {
         super(layoutInflater.inflate(R.layout.item_portions_header, viewGroup, false));
         ButterKnife.bind(this, itemView);
     }
+
+    public void bind() {
+    }
 }
