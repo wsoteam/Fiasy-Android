@@ -59,8 +59,8 @@
                 android:layout_height="48dp"
                 android:fontFamily="@font/roboto"
                 android:hint="@string/cst_name_portion"
-                android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:inputType="text"
+                android:maxLength="90"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,13 +77,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout22">
 
             <EditText
-                android:id="@+id/edtFats"
+                android:id="@+id/edtUnits"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:fontFamily="@font/roboto"
                 android:hint="@string/cst_units"
-                android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:inputType="text"
+                android:enabled="false"
+                android:clickable="false"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,13 +100,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
             <EditText
-                android:id="@+id/edtCarbo"
+                android:id="@+id/edtSize"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:fontFamily="@font/roboto"
                 android:hint="@string/cst_size"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="8"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="76dp"
-        android:background="@drawable/shape_orange"
+        android:background="@drawable/shape_gray"
+        android:enabled="false"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/cst_ok"
         android:textColor="@android:color/white"
@@ -125,4 +127,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

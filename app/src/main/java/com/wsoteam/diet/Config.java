@@ -169,6 +169,9 @@ public class Config {
     /////
     public static final String AFTER_PREM_ROAD = "AFTER_PREM_ROAD";
 
+    public static final String RESULT_SEND_TAG = "RESULT_SEND_TAG";
+    public static final String RESULT_RECIEVE_TAG = "RESULT_RECIEVE_TAG";
+
 
 
 

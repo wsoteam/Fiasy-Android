@@ -1161,5 +1161,7 @@ Share your accomplishments with friends:</string>
     <string name="cst_units">Единица измерения</string>
     <string name="cst_size">Размер порции</string>
     <string name="cst_ok">ok</string>
+    <string name="cst_liquid_units">Миллилитры</string>
+    <string name="cst_no_liquid_units">Граммы</string>
 
 </resources>

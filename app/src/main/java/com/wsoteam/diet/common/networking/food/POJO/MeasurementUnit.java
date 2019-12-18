@@ -2,10 +2,11 @@ package com.wsoteam.diet.common.networking.food.POJO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MeasurementUnit {
+public class MeasurementUnit implements Serializable {
   @SerializedName("id")
   @Expose
   private int id;
