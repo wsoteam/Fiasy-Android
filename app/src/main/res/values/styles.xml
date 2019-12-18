@@ -115,7 +115,7 @@
     <style name="CreateFood" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#FF9800</item>
         <item name="colorPrimaryDark">#9C5E21</item>
-        <item name="colorAccent">#34847c</item>
+        <item name="colorAccent">#59000000</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus">true</item>

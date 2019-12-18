@@ -1156,5 +1156,10 @@ Share your accomplishments with friends:</string>
     <string name="cst_add_food">Добавить порцию</string>
     <string name="cst_prop">Здесь вы можете изменить вес “стандартной порции” для создаваемого вами продукта.</string>
     <string name="cst_standart_portion_title">Стандартная порция</string>
+    <string name="cst_add_portion_title">Добавить порцию</string>
+    <string name="cst_name_portion">Наименование порции</string>
+    <string name="cst_units">Единица измерения</string>
+    <string name="cst_size">Размер порции</string>
+    <string name="cst_ok">ok</string>
 
 </resources>
