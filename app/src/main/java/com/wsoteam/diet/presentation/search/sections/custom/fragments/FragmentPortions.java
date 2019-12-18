@@ -74,7 +74,7 @@ public class FragmentPortions extends Fragment implements SayForward {
             Config.RESULT_SEND_TAG, ((ActivityCreateFood) getActivity()).customFood.isLiquid()),
             RC_CREATE_PORTION);
       }
-    }, new Result(), getActivity());
+    }, ((ActivityCreateFood) getActivity()).customFood, getActivity());
     rvPortions.setAdapter(adapter);
   }
 
@@ -95,7 +95,7 @@ public class FragmentPortions extends Fragment implements SayForward {
     }else {
       result.getMeasurementUnits().add(measurementUnit);
     }
-    Log.e("LOL", String.valueOf(((ActivityCreateFood) getActivity()).customFood.getMeasurementUnits().size()));
+    updateList();
   }
 
   @Override

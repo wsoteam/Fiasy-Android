@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rvTitle"
+            android:id="@+id/tvTitle"
             android:fontFamily="@font/roboto_medium"
             android:textSize="14sp"
             android:textColor="#de000000"
@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_prem_close"
+            android:id="@+id/ibDelete"
             android:background="?selectableItemBackground"
             android:padding="10dp"
             android:layout_gravity="bottom|right"

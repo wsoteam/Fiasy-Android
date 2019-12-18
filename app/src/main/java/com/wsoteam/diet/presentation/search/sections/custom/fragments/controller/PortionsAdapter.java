@@ -4,11 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.wsoteam.diet.App;
-import com.wsoteam.diet.common.networking.food.POJO.MeasurementUnit;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int HEADER_TYPE = 0;
     private final int MAIN_TYPE = 1;
-    private final int STANDART_TYPE = 2;
+    private final int CUSTOM_TYPE = 2;
     private final int ADD_TYPE = 3;
     private IPortions iPortions;
     private Result result;
     private int COUNT_UTILITY_VH = 3;
+    private int COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION = 2;
     private Context context;
 
     public PortionsAdapter(IPortions iPortions, Result result, Context context) {
@@ -38,7 +35,7 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 return new HeaderPortionsVH(layoutInflater, parent);
             case MAIN_TYPE:
                 return new StandartPortionsVH(layoutInflater, parent);
-            case STANDART_TYPE:
+            case CUSTOM_TYPE:
                 return new CustomPortionsVH(layoutInflater, parent);
             case ADD_TYPE:
                 return new AddPortionsVH(layoutInflater, parent);
@@ -56,8 +53,8 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case MAIN_TYPE:
                 ((StandartPortionsVH) holder).bind(result.getPortion(), getItemCount() == COUNT_UTILITY_VH);
                 break;
-            case STANDART_TYPE:
-                ((CustomPortionsVH) holder).bind();
+            case CUSTOM_TYPE:
+                ((CustomPortionsVH) holder).bind(position, result.getMeasurementUnits().get(position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION), result.isLiquid());
                 break;
             case ADD_TYPE:
                 ((AddPortionsVH) holder).bind(new IAddPortionsVH(){
@@ -70,6 +67,8 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
+
+
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
@@ -79,7 +78,7 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if (position == getItemCount() - 1) {
             return ADD_TYPE;
         } else {
-            return STANDART_TYPE;
+            return CUSTOM_TYPE;
         }
     }
 
