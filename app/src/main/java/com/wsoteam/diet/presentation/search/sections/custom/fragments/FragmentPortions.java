@@ -2,6 +2,7 @@ package com.wsoteam.diet.presentation.search.sections.custom.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.MeasurementUnit;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreatePortion;
@@ -24,6 +26,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -34,6 +39,7 @@ public class FragmentPortions extends Fragment implements SayForward {
   private Unbinder unbinder;
   private PortionsAdapter adapter;
   private final int RC_CREATE_PORTION = 9090;
+  private Result result;
 
   public static FragmentPortions newInstance(CustomFood customFood) {
     Bundle bundle = new Bundle();
@@ -54,6 +60,7 @@ public class FragmentPortions extends Fragment implements SayForward {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_portions, container, false);
     unbinder = ButterKnife.bind(this, view);
+    result = ((ActivityCreateFood) getActivity()).customFood;
     rvPortions.setLayoutManager(new LinearLayoutManager(getActivity()));
     updateList();
     return view;
@@ -74,9 +81,21 @@ public class FragmentPortions extends Fragment implements SayForward {
   @Override
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == RC_CREATE_PORTION && resultCode == RESULT_OK) {
-      updateList();
+      addNewPortion(data.getSerializableExtra(Config.RESULT_RECIEVE_TAG));
     }
     super.onActivityResult(requestCode, resultCode, data);
+  }
+
+  private void addNewPortion(Serializable serializableExtra) {
+    MeasurementUnit measurementUnit = (MeasurementUnit) serializableExtra;
+    if (result.getMeasurementUnits() == null){
+      List<MeasurementUnit> units = new ArrayList<>();
+      units.add(measurementUnit);
+      result.setMeasurementUnits(units);
+    }else {
+      result.getMeasurementUnits().add(measurementUnit);
+    }
+    Log.e("LOL", String.valueOf(((ActivityCreateFood) getActivity()).customFood.getMeasurementUnits().size()));
   }
 
   @Override

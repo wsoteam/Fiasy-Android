@@ -66,29 +66,27 @@ public class ActivityCreatePortion extends AppCompatActivity {
     });
   }
 
-  private void handlSavedOpportunity(int count, EditText edtSize) {
-    if (count > 0 && isOtherReady(edtSize) && !isBeReady) {
+  private void handlSavedOpportunity(int count, EditText editText) {
+    if (count > 0 && isOtherReady(editText)) {
       makeButtonReady();
-    } else if (isBeReady) {
+    } else {
       makeButtonUnReady();
     }
   }
 
   private void makeButtonUnReady() {
-    isBeReady = false;
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_gray));
     btnForward.setEnabled(false);
   }
 
   private void makeButtonReady() {
-    isBeReady = true;
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_orange));
     btnForward.setEnabled(true);
   }
 
   private boolean isOtherReady(EditText editText) {
     editText.getText().toString().replaceAll("\\s+", " ").trim();
-    return !editText.getText().equals("");
+    return !editText.getText().toString().equals("");
   }
 
   @OnClick({ R.id.btnBack, R.id.btnForward }) public void onViewClicked(View view) {
