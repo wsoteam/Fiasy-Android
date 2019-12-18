@@ -26,6 +26,7 @@ import com.wsoteam.diet.presentation.search.ParentActivity;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentBonusOutlay;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentPortions;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
 
 import org.w3c.dom.Text;
@@ -121,6 +122,7 @@ public class ActivityCreateFood extends AppCompatActivity {
             fragments.add(new FragmentResult());
         } else {
             fragments.add(new FragmentMain());
+            fragments.add(new FragmentPortions());
             fragments.add(new FragmentOutlay());
             fragments.add(new FragmentBonusOutlay());
             fragments.add(new FragmentResult());
