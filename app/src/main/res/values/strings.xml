@@ -1170,5 +1170,6 @@ Share your accomplishments with friends:</string>
   <string name="cst_change_portion">Выбрать порцию</string>
   <string name="cst_create_food">Создать продукт</string>
   <string name="cst_check">Проверка информации</string>
+  <string name="cst_alert_bottom">Выбранный размер порции не соответствует количеству введенных калорий</string>
 
 </resources>

@@ -3,37 +3,12 @@ package com.wsoteam.diet.presentation.search.sections.custom;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.wsoteam.diet.BranchOfAnalyzer.Const;
-import com.wsoteam.diet.BranchOfAnalyzer.Controller.CustomFoodViewPagerAdapter;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomViewPager;
-
-import com.wsoteam.diet.R;
-import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
-import com.wsoteam.diet.common.Analytics.EventProperties;
-import com.wsoteam.diet.common.Analytics.Events;
-import com.wsoteam.diet.common.diary.FoodWork;
-import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.ParentActivity;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentBonusOutlay;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentPortions;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +17,18 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.wsoteam.diet.BranchOfAnalyzer.Controller.CustomFoodViewPagerAdapter;
+import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomViewPager;
+import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.Analytics.EventProperties;
+import com.wsoteam.diet.common.Analytics.Events;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentPortions;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityCreateFood extends AppCompatActivity {
 
@@ -52,6 +39,7 @@ public class ActivityCreateFood extends AppCompatActivity {
   @BindView(R.id.tvTitle) TextView tvTitle;
   @BindView(R.id.btnForward) Button btnForward;
   @BindView(R.id.btnBack) ImageButton btnBack;
+  @BindView(R.id.ibClose) ImageButton ibClose;
   private CustomFoodViewPagerAdapter vpAdapter;
   private final int FRAGMENT_RESULT = 3, FRAGMENT_OUTLAY = 2, FRAGMENT_PORTIONS = 1, FRAGMENT_MAIN =
       0;
@@ -127,16 +115,20 @@ public class ActivityCreateFood extends AppCompatActivity {
     switch (i) {
       case FRAGMENT_MAIN:
         tvTitle.setText(getResources().getString(R.string.cst_create_food));
+        ibClose.setVisibility(View.VISIBLE);
         break;
       case FRAGMENT_PORTIONS:
         tvTitle.setText(getResources().getString(R.string.cst_change_portion));
+        ibClose.setVisibility(View.VISIBLE);
         break;
       case FRAGMENT_OUTLAY:
         tvTitle.setText(
             getResources().getString(R.string.cst_food_price, ((int) customFood.getPortion())));
+        ibClose.setVisibility(View.GONE);
         break;
       case FRAGMENT_RESULT:
         tvTitle.setText(getResources().getString(R.string.cst_check));
+        ibClose.setVisibility(View.VISIBLE);
         break;
     }
   }

@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.search.sections.custom.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,73 +24,84 @@ import butterknife.Unbinder;
 
 public class FragmentOutlay extends Fragment implements SayForward {
 
-    @BindView(R.id.edtKcal)
-    EditText edtKcal;
-    @BindView(R.id.edtFats) EditText edtFats;
-    @BindView(R.id.edtCarbo) EditText edtCarbo;
-    @BindView(R.id.edtProt) EditText edtProt;
-    private Result result;
+  @BindView(R.id.edtKcal) EditText edtKcal;
+  @BindView(R.id.edtFats) EditText edtFats;
+  @BindView(R.id.edtCarbo) EditText edtCarbo;
+  @BindView(R.id.edtProt) EditText edtProt;
+  private Result result;
+  private final int FAT_SIZE = 9;
+  private final int OTHER_SIZE = 4;
 
-    Unbinder unbinder;
-    private final double EMPTY_PARAM = -1.0;
+  Unbinder unbinder;
+  private final double EMPTY_PARAM = -1.0;
 
-    private final static String TAG = "FragmentOutlay";
+  private final static String TAG = "FragmentOutlay";
 
-    public static FragmentOutlay newInstance(CustomFood customFood) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(TAG, customFood);
-        FragmentOutlay fragmentOutlay = new FragmentOutlay();
-        fragmentOutlay.setArguments(bundle);
-        return fragmentOutlay;
+  public static FragmentOutlay newInstance(CustomFood customFood) {
+    Bundle bundle = new Bundle();
+    bundle.putSerializable(TAG, customFood);
+    FragmentOutlay fragmentOutlay = new FragmentOutlay();
+    fragmentOutlay.setArguments(bundle);
+    return fragmentOutlay;
+  }
+
+  @Override
+  public boolean forward() {
+    if (isCanForward()) {
+      setInfo();
+      return true;
+    } else {
+      Toast.makeText(getActivity(), getString(R.string.error_toast), Toast.LENGTH_SHORT).show();
+      return false;
     }
+  }
 
-    @Override
-    public boolean forward() {
-        if (isCanForward()){
-            setInfo();
-            return true;
-        }else {
-            Toast.makeText(getActivity(), getString(R.string.error_toast), Toast.LENGTH_SHORT).show();
-            return false;
-        }
+  private void setInfo() {
+    Result customFood = ((ActivityCreateFood) getActivity()).customFood;
+    customFood.setCalories(Double.parseDouble(edtKcal.getText().toString()));
+    customFood.setFats(Double.parseDouble(edtFats.getText().toString()));
+    customFood.setProteins(Double.parseDouble(edtProt.getText().toString()));
+    customFood.setCarbohydrates(Double.parseDouble(edtCarbo.getText().toString()));
+  }
+
+  private boolean isCanForward() {
+    if (!edtKcal.getText().toString().equals("")
+        && !edtFats.getText().toString().equals("")
+        && !edtCarbo.getText().toString().equals("")
+        && !edtProt.getText().toString().equals("")
+        && !edtKcal.getText().toString().equals(".")
+        && !edtFats.getText().toString().equals(".")
+        && !edtCarbo.getText().toString().equals(".")
+        && !edtProt.getText().toString().equals(".")) {
+      return true;
+    } else {
+      return false;
     }
+  }
 
-    private void setInfo() {
-        Result customFood = ((ActivityCreateFood) getActivity()).customFood;
-        customFood.setCalories(Double.parseDouble(edtKcal.getText().toString()));
-        customFood.setFats(Double.parseDouble(edtFats.getText().toString()));
-        customFood.setProteins(Double.parseDouble(edtProt.getText().toString()));
-        customFood.setCarbohydrates(Double.parseDouble(edtCarbo.getText().toString()));
-    }
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
+    unbinder = ButterKnife.bind(this, view);
+    result = ((ActivityCreateFood) getActivity()).customFood;
+    isRightFormula();
+    return view;
+  }
 
-    private boolean isCanForward() {
-        if (!edtKcal.getText().toString().equals("")
-                && !edtFats.getText().toString().equals("")
-                && !edtCarbo.getText().toString().equals("")
-                && !edtProt.getText().toString().equals("")
-                && !edtKcal.getText().toString().equals(".")
-                && !edtFats.getText().toString().equals(".")
-                && !edtCarbo.getText().toString().equals(".")
-                && !edtProt.getText().toString().equals(".")){
-            return true;
-        }else {
-            return false;
-        }
-    }
+  private boolean isRightFormula() {
+    int kcal = Integer.parseInt(edtKcal.getText().toString());
+    int fat = Integer.parseInt(edtFats.getText().toString());
+    int carbo = Integer.parseInt(edtCarbo.getText().toString());
+    int prot = Integer.parseInt(edtProt.getText().toString());
+    int sum = fat * FAT_SIZE + carbo * OTHER_SIZE + prot * OTHER_SIZE;
+    return kcal > sum;
+  }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        result = ((ActivityCreateFood) getActivity()).customFood;
-        return view;
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    unbinder.unbind();
+  }
 }
