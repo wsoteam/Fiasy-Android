@@ -15,34 +15,33 @@
             app:srcCompat="@drawable/gradient_search"
             tools:layout_editor_absoluteY="0dp" />
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/cst_add_portion_title"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-            app:layout_constraintStart_toEndOf="@+id/btnBack"
-            app:layout_constraintTop_toTopOf="@+id/btnBack" />
+  <TextView
+      android:id="@+id/tvTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginStart="24dp"
+      android:fontFamily="@font/roboto_medium"
+      android:text="@string/cst_add_portion_title"
+      android:textColor="@color/white"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+
+  <ImageButton
+      android:id="@+id/ibClose"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/filter_state"
+      android:padding="16dp"
+      app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/tvTitle"
+      app:srcCompat="@drawable/ic_close" />
 
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/filter_state"
-            android:elevation="9dp"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
-            app:layout_constraintStart_toStartOf="@+id/imageView41"
-            app:srcCompat="@drawable/ic_meas_arrow_back" />
-
-        <com.google.android.material.textfield.TextInputLayout
+  <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -89,9 +89,9 @@ public class ActivityCreatePortion extends AppCompatActivity {
     return !editText.getText().toString().equals("");
   }
 
-  @OnClick({ R.id.btnBack, R.id.btnForward }) public void onViewClicked(View view) {
+  @OnClick({ R.id.ibClose, R.id.btnForward }) public void onViewClicked(View view) {
     switch (view.getId()) {
-      case R.id.btnBack:
+      case R.id.ibClose:
         onBackPressed();
         break;
       case R.id.btnForward:
