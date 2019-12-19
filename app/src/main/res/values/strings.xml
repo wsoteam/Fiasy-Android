@@ -1165,5 +1165,10 @@ Share your accomplishments with friends:</string>
     <string name="cst_no_liquid_units">Граммы</string>
   <string name="cst_g">г</string>
   <string name="cst_ml">мл</string>
+  <string name="cst_kcal">Калорийность (ккал)</string>
+  <string name="cst_food_price">Пищевая ценность на %d г</string>
+  <string name="cst_change_portion">Выбрать порцию</string>
+  <string name="cst_create_food">Создать продукт</string>
+  <string name="cst_check">Проверка информации</string>
 
 </resources>

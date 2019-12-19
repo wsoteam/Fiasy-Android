@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.TextView;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
@@ -66,6 +67,7 @@ public class FragmentPortions extends Fragment implements SayForward {
     updateList();
     return view;
   }
+
 
   private void updateList() {
     adapter = new PortionsAdapter(new IPortionsAdapter() {

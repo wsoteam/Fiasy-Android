@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
@@ -27,6 +28,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
     @BindView(R.id.edtFats) EditText edtFats;
     @BindView(R.id.edtCarbo) EditText edtCarbo;
     @BindView(R.id.edtProt) EditText edtProt;
+    private Result result;
 
     Unbinder unbinder;
     private final double EMPTY_PARAM = -1.0;
@@ -80,18 +82,10 @@ public class FragmentOutlay extends Fragment implements SayForward {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
         unbinder = ButterKnife.bind(this, view);
-        if (((ActivityCreateFood) getActivity()).isEdit) {
-            bindFields((CustomFood) getArguments().getSerializable(TAG));
-        }
+        result = ((ActivityCreateFood) getActivity()).customFood;
         return view;
     }
 
-    private void bindFields(CustomFood customFood) {
-        edtKcal.setText(String.valueOf(customFood.getCalories() * 100));
-        edtFats.setText(String.valueOf(customFood.getFats() * 100));
-        edtCarbo.setText(String.valueOf(customFood.getCarbohydrates() * 100));
-        edtProt.setText(String.valueOf(customFood.getProteins() * 100));
-    }
 
     @Override
     public void onDestroyView() {
