@@ -2,5 +2,4 @@ package com.wsoteam.diet.presentation.search.sections.custom.fragments.controlle
 
 public interface IPortions {
     void createPortion();
-    void dropUnit(int position);
 }

@@ -74,7 +74,6 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void dropItem(int position) {
         int currentPosition = position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION;
         result.getMeasurementUnits().remove(currentPosition);
-        iPortions.dropUnit(currentPosition);
         notifyItemRemoved(position);
     }
 

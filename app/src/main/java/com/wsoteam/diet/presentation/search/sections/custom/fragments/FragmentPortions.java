@@ -75,9 +75,6 @@ public class FragmentPortions extends Fragment implements SayForward {
             RC_CREATE_PORTION);
       }
 
-      @Override public void dropUnit(int position) {
-        /*((ActivityCreateFood) getActivity()).customFood.getMeasurementUnits().remove(position);*/
-      }
     }, ((ActivityCreateFood) getActivity()).customFood, getActivity());
     rvPortions.setAdapter(adapter);
   }
@@ -88,6 +85,7 @@ public class FragmentPortions extends Fragment implements SayForward {
       addNewPortion(data.getSerializableExtra(Config.RESULT_RECIEVE_TAG));
     }
     super.onActivityResult(requestCode, resultCode, data);
+    Log.e("LOL", String.valueOf(((ActivityCreateFood) getActivity()).customFood.getMeasurementUnits().size()));
   }
 
   private void addNewPortion(Serializable serializableExtra) {
