@@ -2,7 +2,6 @@ package com.wsoteam.diet.presentation.search.sections.custom.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreatePortion;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.IPortions;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.IPortionsAdapter;
 import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.PortionsAdapter;
 
 import androidx.annotation.NonNull;
@@ -39,6 +38,7 @@ public class FragmentPortions extends Fragment implements SayForward {
   private Unbinder unbinder;
   private PortionsAdapter adapter;
   private final int RC_CREATE_PORTION = 9090;
+  private final int RC_CHANGE_MAIN_PORTION = 9000;
   private Result result;
 
   public static FragmentPortions newInstance(CustomFood customFood) {
@@ -67,25 +67,32 @@ public class FragmentPortions extends Fragment implements SayForward {
   }
 
   private void updateList() {
-    adapter = new PortionsAdapter(new IPortions() {
+    adapter = new PortionsAdapter(new IPortionsAdapter() {
       @Override
       public void createPortion() {
-        startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class).putExtra(
-            Config.RESULT_SEND_TAG, ((ActivityCreateFood) getActivity()).customFood.isLiquid()),
-            RC_CREATE_PORTION);
+        startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class)
+            .putExtra(Config.TAG_IS_LIQUID, result.isLiquid())
+            .putExtra(Config.IS_MAIN_PORTION, false), RC_CREATE_PORTION);
       }
 
-    }, ((ActivityCreateFood) getActivity()).customFood, getActivity());
+      @Override public void changeMainPortion() {
+        startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class)
+            .putExtra(Config.TAG_IS_LIQUID, result.isLiquid())
+            .putExtra(Config.IS_MAIN_PORTION, true)
+            .putExtra(Config.SIZE_MAIN_PORTION, result.getPortion()), RC_CHANGE_MAIN_PORTION);
+      }
+    }, result, getActivity());
     rvPortions.setAdapter(adapter);
   }
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == RC_CREATE_PORTION && resultCode == RESULT_OK) {
-      addNewPortion(data.getSerializableExtra(Config.RESULT_RECIEVE_TAG));
+      addNewPortion(data.getSerializableExtra(Config.NEW_MEASURMENT));
+    }else if (requestCode == RC_CHANGE_MAIN_PORTION && resultCode == RESULT_OK){
+
     }
     super.onActivityResult(requestCode, resultCode, data);
-    Log.e("LOL", String.valueOf(((ActivityCreateFood) getActivity()).customFood.getMeasurementUnits().size()));
   }
 
   private void addNewPortion(Serializable serializableExtra) {

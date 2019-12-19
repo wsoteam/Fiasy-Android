@@ -14,13 +14,13 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private final int MAIN_TYPE = 1;
     private final int CUSTOM_TYPE = 2;
     private final int ADD_TYPE = 3;
-    private IPortions iPortions;
+    private IPortionsAdapter iPortions;
     private Result result;
     private int COUNT_UTILITY_VH = 3;
     private int COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION = 2;
     private Context context;
 
-    public PortionsAdapter(IPortions iPortions, Result result, Context context) {
+    public PortionsAdapter(IPortionsAdapter iPortions, Result result, Context context) {
         this.iPortions = iPortions;
         this.result = result;
         this.context = context;
@@ -51,7 +51,11 @@ public class PortionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 ((HeaderPortionsVH) holder).bind();
                 break;
             case MAIN_TYPE:
-                ((StandartPortionsVH) holder).bind(result.getPortion(), getItemCount() == COUNT_UTILITY_VH);
+                ((StandartPortionsVH) holder).bind(result.getPortion(), getItemCount() == COUNT_UTILITY_VH, new IStandartPortion(){
+                    @Override public void change() {
+                        iPortions.changeMainPortion();
+                    }
+                });
                 break;
             case CUSTOM_TYPE:
                 ((CustomPortionsVH) holder).bind(position, result.getMeasurementUnits().get(position - COUNT_UTILITY_VH_UNTIL_CUSTOM_PORTION), result.isLiquid(), new ICustomPortionsVH(){

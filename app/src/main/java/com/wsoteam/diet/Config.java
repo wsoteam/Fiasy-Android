@@ -169,8 +169,11 @@ public class Config {
     /////
     public static final String AFTER_PREM_ROAD = "AFTER_PREM_ROAD";
 
-    public static final String RESULT_SEND_TAG = "RESULT_SEND_TAG";
-    public static final String RESULT_RECIEVE_TAG = "RESULT_RECIEVE_TAG";
+    public static final String TAG_IS_LIQUID = "TAG_IS_LIQUID";
+    public static final String TAG_CHANGE_MAIN_PORTION = "TAG_CHANGE_MAIN_PORTION";
+    public static final String NEW_MEASURMENT = "NEW_MEASURMENT";
+    public static final String IS_MAIN_PORTION = "IS_MAIN_PORTION";
+    public static final String SIZE_MAIN_PORTION = "SIZE_MAIN_PORTION";
 
 
 

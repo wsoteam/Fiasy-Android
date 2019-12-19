@@ -30,7 +30,7 @@ public class ActivityCreatePortion extends AppCompatActivity {
     setContentView(R.layout.activity_create_portion);
     ButterKnife.bind(this);
 
-    isLiquid = getIntent().getBooleanExtra(Config.RESULT_SEND_TAG, false);
+    isLiquid = getIntent().getBooleanExtra(Config.TAG_IS_LIQUID, false);
     if (isLiquid) {
       edtUnits.setText(getResources().getString(R.string.cst_liquid_units));
     } else {
@@ -105,7 +105,7 @@ public class ActivityCreatePortion extends AppCompatActivity {
     measurementUnit.setName(edtName.getText().toString());
     measurementUnit.setAmount(Integer.parseInt(edtSize.getText().toString()));
     Intent intent = new Intent();
-    intent.putExtra(Config.RESULT_RECIEVE_TAG, measurementUnit);
+    intent.putExtra(Config.NEW_MEASURMENT, measurementUnit);
     setResult(RESULT_OK, intent);
     finish();
   }
