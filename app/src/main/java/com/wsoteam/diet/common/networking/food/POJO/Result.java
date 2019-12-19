@@ -80,7 +80,7 @@ public class Result implements ISearchResult, Serializable {
         return portion;
     }
 
-    public void setPortion(int portion) {
+    public void setPortion(double portion) {
         this.portion = portion;
     }
 

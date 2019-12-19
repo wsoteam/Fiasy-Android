@@ -12,26 +12,25 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StandartPortionsVH extends RecyclerView.ViewHolder implements View.OnClickListener {
-    @BindView(R.id.tvWeight)
-    TextView tvWeight;
-    @BindView(R.id.dvdrBottom)
-    View dvdrBottom;
+  @BindView(R.id.tvWeight) TextView tvWeight;
+  @BindView(R.id.dvdrBottom) View dvdrBottom;
+  private IStandartPortion iStandartPortion;
 
-    public StandartPortionsVH(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        super(layoutInflater.inflate(R.layout.item_portions_standart, viewGroup, false));
-        ButterKnife.bind(this, itemView);
-        itemView.setOnClickListener(this);
+  public StandartPortionsVH(LayoutInflater layoutInflater, ViewGroup viewGroup) {
+    super(layoutInflater.inflate(R.layout.item_portions_standart, viewGroup, false));
+    ButterKnife.bind(this, itemView);
+    itemView.setOnClickListener(this);
+  }
+
+  @Override public void onClick(View v) {
+      iStandartPortion.change();
+  }
+
+  public void bind(double portion, boolean isAlone, IStandartPortion iStandartPortion) {
+    this.iStandartPortion = iStandartPortion;
+    tvWeight.setText(String.valueOf(portion));
+    if (isAlone) {
+      dvdrBottom.setVisibility(View.VISIBLE);
     }
-
-    @Override public void onClick(View v) {
-
-    }
-
-    public void bind(double portion, boolean isAlone,
-        IStandartPortion iStandartPortion) {
-        tvWeight.setText(String.valueOf(portion));
-        if (isAlone){
-            dvdrBottom.setVisibility(View.VISIBLE);
-        }
-    }
+  }
 }

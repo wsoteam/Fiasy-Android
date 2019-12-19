@@ -88,6 +88,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/CreateFood"
             android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".presentation.search.sections.custom.ActivityChangeMainPortion"
+            android:screenOrientation="portrait"
+            android:theme="@style/CreateFood"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.food.template.create.search.SearchFoodActivity"
             android:screenOrientation="portrait"

@@ -11,6 +11,7 @@ import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.MeasurementUnit;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityChangeMainPortion;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreatePortion;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
@@ -71,14 +72,12 @@ public class FragmentPortions extends Fragment implements SayForward {
       @Override
       public void createPortion() {
         startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class)
-            .putExtra(Config.TAG_IS_LIQUID, result.isLiquid())
-            .putExtra(Config.IS_MAIN_PORTION, false), RC_CREATE_PORTION);
+            .putExtra(Config.TAG_IS_LIQUID, result.isLiquid()), RC_CREATE_PORTION);
       }
 
       @Override public void changeMainPortion() {
-        startActivityForResult(new Intent(getActivity(), ActivityCreatePortion.class)
+        startActivityForResult(new Intent(getActivity(), ActivityChangeMainPortion.class)
             .putExtra(Config.TAG_IS_LIQUID, result.isLiquid())
-            .putExtra(Config.IS_MAIN_PORTION, true)
             .putExtra(Config.SIZE_MAIN_PORTION, result.getPortion()), RC_CHANGE_MAIN_PORTION);
       }
     }, result, getActivity());
@@ -89,8 +88,8 @@ public class FragmentPortions extends Fragment implements SayForward {
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == RC_CREATE_PORTION && resultCode == RESULT_OK) {
       addNewPortion(data.getSerializableExtra(Config.NEW_MEASURMENT));
-    }else if (requestCode == RC_CHANGE_MAIN_PORTION && resultCode == RESULT_OK){
-
+    } else if (requestCode == RC_CHANGE_MAIN_PORTION && resultCode == RESULT_OK) {
+      changeMainPortion(data.getDoubleExtra(Config.NEW_SIZE_MAIN_PORTION, 0));
     }
     super.onActivityResult(requestCode, resultCode, data);
   }
@@ -104,6 +103,11 @@ public class FragmentPortions extends Fragment implements SayForward {
     } else {
       result.getMeasurementUnits().add(measurementUnit);
     }
+    updateList();
+  }
+
+  private void changeMainPortion(double newMainPortion) {
+    result.setPortion(newMainPortion);
     updateList();
   }
 
