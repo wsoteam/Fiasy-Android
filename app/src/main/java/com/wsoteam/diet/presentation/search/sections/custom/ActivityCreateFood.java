@@ -59,6 +59,7 @@ public class ActivityCreateFood extends AppCompatActivity {
     updateUI();
   }
 
+
   private void fillNewProduct() {
     customFood.setCellulose(EMPTY_PARAM);
     customFood.setCholesterol(EMPTY_PARAM);

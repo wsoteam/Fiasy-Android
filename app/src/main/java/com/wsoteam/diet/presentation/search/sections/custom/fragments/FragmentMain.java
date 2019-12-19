@@ -4,10 +4,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -85,10 +88,32 @@ public class FragmentMain extends Fragment implements SayForward {
     View view = inflater.inflate(R.layout.fragment_main_info_new, container, false);
     unbinder = ButterKnife.bind(this, view);
     rbtnFood.setTextColor(getActivity().getResources().getColor(R.color.cst_active_rb));
-    if (((ActivityCreateFood) getActivity()).isEdit) {
-      bindFields((CustomFood) getArguments().getSerializable(TAG));
-    }
+    setForwardListener();
     return view;
+  }
+
+  private void setForwardListener() {
+    edtName.addTextChangedListener(new TextWatcher() {
+      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+        String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
+        Button btnForward = getActivity().findViewById(R.id.btnForward);
+        if (count > 0 && !name.equals("")) {
+          btnForward.setEnabled(true);
+          btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_orange));
+        }else {
+          btnForward.setEnabled(false);
+          btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_gray));
+        }
+      }
+
+      @Override public void afterTextChanged(Editable s) {
+
+      }
+    });
   }
 
   private void bindFields(CustomFood customFood) {
