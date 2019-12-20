@@ -47,6 +47,10 @@ public class FragmentBonusOutlay extends Fragment implements SayForward {
         return true;
     }
 
+    @Override public boolean checkForwardPossibility() {
+        return false;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

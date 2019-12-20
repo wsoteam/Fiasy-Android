@@ -59,6 +59,10 @@ public class FragmentOutlay extends Fragment implements SayForward {
     }
   }
 
+  @Override public boolean checkForwardPossibility() {
+    return checkReady();
+  }
+
   private void setInfo() {
     Result customFood = ((ActivityCreateFood) getActivity()).customFood;
     customFood.setCalories(Double.parseDouble(edtKcal.getText().toString()));

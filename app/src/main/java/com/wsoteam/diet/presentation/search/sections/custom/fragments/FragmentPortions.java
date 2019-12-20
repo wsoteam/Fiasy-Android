@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
@@ -16,8 +15,8 @@ import com.wsoteam.diet.presentation.search.sections.custom.ActivityChangeMainPo
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreatePortion;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.IPortionsAdapter;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.PortionsAdapter;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.portions.IPortionsAdapter;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.portions.PortionsAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +52,10 @@ public class FragmentPortions extends Fragment implements SayForward {
 
   @Override
   public boolean forward() {
+    return true;
+  }
+
+  @Override public boolean checkForwardPossibility() {
     return true;
   }
 

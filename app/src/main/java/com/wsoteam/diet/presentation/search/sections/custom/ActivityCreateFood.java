@@ -59,7 +59,6 @@ public class ActivityCreateFood extends AppCompatActivity {
     updateUI();
   }
 
-
   private void fillNewProduct() {
     customFood.setCellulose(EMPTY_PARAM);
     customFood.setCholesterol(EMPTY_PARAM);
@@ -86,6 +85,11 @@ public class ActivityCreateFood extends AppCompatActivity {
       @Override
       public void onPageSelected(int i) {
         updateUIAfterScrolled(i);
+        if (((SayForward) vpAdapter.getItem(i)).checkForwardPossibility()) {
+          activatedButtonForward();
+        } else {
+          deactivatedButtonForward();
+        }
       }
 
       @Override
@@ -93,6 +97,14 @@ public class ActivityCreateFood extends AppCompatActivity {
 
       }
     });
+  }
+
+  private void deactivatedButtonForward() {
+    btnForward.setBackground(getResources().getDrawable(R.drawable.shape_gray));
+  }
+
+  private void activatedButtonForward() {
+    btnForward.setBackground(getResources().getDrawable(R.drawable.shape_orange));
   }
 
   private void updateUIAfterScrolled(int i) {

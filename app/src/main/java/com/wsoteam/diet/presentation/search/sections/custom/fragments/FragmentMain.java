@@ -55,6 +55,15 @@ public class FragmentMain extends Fragment implements SayForward {
     return fragmentMainInfo;
   }
 
+  @Override public boolean checkForwardPossibility() {
+    String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
+    if (name.equals("")){
+      return false;
+    }else {
+      return true;
+    }
+  }
+
   @Override
   public boolean forward() {
     if (!edtName.getText().toString().equals("")
