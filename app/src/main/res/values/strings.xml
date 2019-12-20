@@ -1172,4 +1172,17 @@ Share your accomplishments with friends:</string>
   <string name="cst_check">Проверка информации</string>
   <string name="cst_alert_bottom">Выбранный размер порции не соответствует количеству введенных калорий</string>
 
+  <string-array name="cst_result_labels">
+    <item>Информация о продукте</item>
+    <item>Марка/производитель</item>
+    <item>Название продукта</item>
+    <item>Штрих-код</item>
+    <item>Информация о порции</item>
+    <item>Стандартная порция</item>
+    <item>Калорийность (ккал)</item>
+    <item>Жиры</item>
+    <item>Белки</item>
+    <item>Углеводы</item>
+  </string-array>
+
 </resources>

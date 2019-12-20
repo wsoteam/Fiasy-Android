@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.coremedia.isocopy.boxes.fragment.TrackRunBox;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
@@ -30,12 +32,12 @@ public class FragmentResult extends Fragment implements SayForward {
   public void setUserVisibleHint(boolean isVisibleToUser) {
     super.setUserVisibleHint(isVisibleToUser);
     if (isVisibleToUser && isResumed()) {
-
+      updateUI();
     }
   }
 
   @Override public boolean checkForwardPossibility() {
-    return false;
+    return true;
   }
 
   @Nullable
@@ -44,7 +46,12 @@ public class FragmentResult extends Fragment implements SayForward {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_result, container, false);
     unbinder = ButterKnife.bind(this, view);
+    rvResult.setLayoutManager(new LinearLayoutManager(getActivity()));
     return view;
+  }
+
+  private void updateUI() {
+
   }
 
   @Override
