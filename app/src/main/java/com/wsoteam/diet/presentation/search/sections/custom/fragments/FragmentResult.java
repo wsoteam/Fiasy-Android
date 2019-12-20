@@ -14,7 +14,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.coremedia.isocopy.boxes.fragment.TrackRunBox;
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
 import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
+import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.result.ResultAdapter;
 
 public class FragmentResult extends Fragment implements SayForward {
 
@@ -22,6 +25,8 @@ public class FragmentResult extends Fragment implements SayForward {
   private final String EMPTY_FIELD = "-";
   private final double EMPTY_PARAM = -1;
   @BindView(R.id.rvResult) RecyclerView rvResult;
+  private ResultAdapter adapter;
+  private Result result;
 
   @Override
   public boolean forward() {
@@ -47,11 +52,13 @@ public class FragmentResult extends Fragment implements SayForward {
     View view = inflater.inflate(R.layout.fragment_result, container, false);
     unbinder = ButterKnife.bind(this, view);
     rvResult.setLayoutManager(new LinearLayoutManager(getActivity()));
+    result = ((ActivityCreateFood) getActivity()).customFood;
     return view;
   }
 
   private void updateUI() {
-
+    adapter = new ResultAdapter(result);
+    rvResult.setAdapter(adapter);
   }
 
   @Override

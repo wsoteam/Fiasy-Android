@@ -19,7 +19,7 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   private final int FIRST_HEADER_POS = 0;
   private final int SECOND_HEADER_POS = 4;
   private int DEFAULT_THIRD_HEADER_POS = 6;
-  private int third_header_pos ;
+  private int third_header_pos;
   private String HEADER_DATA = "";
   private List<String> data;
   private List<String> labels;
@@ -27,6 +27,7 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   public ResultAdapter(Result result) {
     this.result = result;
     data = new ArrayList<>();
+    labels = new ArrayList<>();
     setHeadersPositions();
     createArrays();
   }
@@ -44,16 +45,17 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
     labels =
         Arrays.asList(App.getContext().getResources().getStringArray(R.array.cst_result_labels));
+    labels = new ArrayList<>(labels);
     data.add(HEADER_DATA);
     data.add(result.getBrand().getName());
     data.add(result.getName());
     data.add((String) result.getBarcode());
     data.add(HEADER_DATA);
-    data.add(String.valueOf((int) result.getPortion()));
+    data.add(String.valueOf((int) result.getPortion()) + " " + unitWeight);
     if (result.getMeasurementUnits() != null) {
       for (MeasurementUnit unit : result.getMeasurementUnits()) {
-          labels.add(DEFAULT_THIRD_HEADER_POS, unit.getName());
-          data.add(String.valueOf((int) unit.getAmount()) + " " + unitWeight);
+        labels.add(DEFAULT_THIRD_HEADER_POS, unit.getName());
+        data.add(String.valueOf((int) unit.getAmount()) + " " + unitWeight);
       }
     }
     data.add(HEADER_DATA);
@@ -61,6 +63,8 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     data.add(String.valueOf((int) result.getFats()));
     data.add(String.valueOf((int) result.getProteins()));
     data.add(String.valueOf((int) result.getCarbohydrates()));
+
+    labels.add(third_header_pos, App.getContext().getResources().getString(R.string.cst_food_price, (int) result.getPortion()));
   }
 
   @NonNull @Override
@@ -77,7 +81,14 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   }
 
   @Override public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    switch (holder.getItemViewType()) {
+      case TYPE_HEADER:
+        ((HeaderVH) holder).bind(labels.get(position));
+        break;
+      case TYPE_BODY:
+        ((BodyVH) holder).bind(labels.get(position), data.get(position));
+        break;
+    }
   }
 
   @Override public int getItemViewType(int position) {
@@ -91,6 +102,6 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   }
 
   @Override public int getItemCount() {
-    return 0;
+    return data.size() - 1;
   }
 }

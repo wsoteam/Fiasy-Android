@@ -20,7 +20,6 @@
         android:enabled="false"
         android:focusable="false"
         android:fontFamily="@font/roboto_medium"
-        android:hint="@string/brand_manufacturer"
         android:textColor="@color/black"
         />
   </com.google.android.material.textfield.TextInputLayout>
