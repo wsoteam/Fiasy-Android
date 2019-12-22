@@ -839,12 +839,31 @@ Comparta sus logros con sus amigos:</string>
 
     <string name="bnv_main_recipes">Recetas</string>
     <string name="bnv_main_profile">Perfil</string>
-    <string name="abt_prop_a">Alcanzará su objetivo y obtenga acceso \na artículos exclusivos sobre alimentación \nsaludable y cientos de recetas.</string>
+
+    ///////
+    <string-array name="prf_goals">
+        <item>Mantenerse en forma</item>
+        <item>Perder peso</item>
+        <item>Ganar masa muscular</item>
+        <item>Mantener la musculatura y quemar grasa</item>
+    </string-array>
+
+    <string-array name="prf_activity_level">
+        <item>Ejercicio mínimo</item>
+        <item>Ejercicio leve a lo largo del día</item>
+        <item>Practico ejercicio 2 - 4 veces a la semana (o mi trabajo implica un ejercicio físico moderado).</item>
+        <item>Practico ejercicio intenso 4 - 5 veces a la semana.</item>
+        <item>Practico ejercicio intenso a diario.</item>
+        <item>Practico ejercicio dos veces al día, 5 - 7 días a la semana.</item>
+        <item>Mi trabajo requiere mucha actividad física intensa, o practico ejercicio intenso dos veces al día, a diario.</item>
+    </string-array>
+    <string name="abt_prop_a">Alcanzará su objetivo y obtenga acceso a artículos exclusivos sobre alimentación saludable y cientos de recetas.</string>
     <string name="abt_1_arrow">Artículos exclusivos de un nutricionista profesional</string>
     <string name="abt_2_arrow">Ajustes personalizados</string>
     <string name="abt_3_arrow">Base de datos de recetas</string>
     <string name="abt_4_arrow">Planes de comida</string>
     <string name="abt_5_arrow">Medidas corporales</string>
     <string name="abt_bottom_prem">Prueba 3 días gratisn \nPróximos %s por año</string>
+    <string name="abt_bottom_prem_week">Prueba 3 días gratisn \nPróximos %s por semana</string>
 
 </resources>

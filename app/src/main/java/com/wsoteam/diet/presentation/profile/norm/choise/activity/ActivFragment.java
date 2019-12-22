@@ -51,7 +51,7 @@ public class ActivFragment extends QuestionActivityFragments {
 
     private int choisePosition(String activity) {
         int position = 0;
-        String[] activities = getActivity().getResources().getStringArray(R.array.activities);
+        String[] activities = getActivity().getResources().getStringArray(R.array.prf_activity_level);
         for (int i = 0; i < activities.length; i++) {
             if (activity.equalsIgnoreCase(activities[i])) {
                 position = i;

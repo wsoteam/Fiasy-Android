@@ -41,6 +41,7 @@ import com.wsoteam.diet.presentation.search.results.ResultsView;
 import com.wsoteam.diet.presentation.search.sections.SectionFragment;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ParentActivity extends AppCompatActivity {
@@ -49,11 +50,9 @@ public class ParentActivity extends AppCompatActivity {
     @BindView(R.id.spnEatingList)
     Spinner spnEatingList;
     @BindView(R.id.edtActivityListAndSearchCollapsingSearchField)
-    public EditText
-            edtSearch;
+    public EditText edtSearch;
     @BindView(R.id.ibActivityListAndSearchCollapsingCancelButton)
-    ImageView
-            ibCancel;
+    ImageView ibCancel;
     public int spinnerId = 0;
     @BindView(R.id.pbLoad)
     ProgressBar pbLoad;
@@ -116,6 +115,8 @@ public class ParentActivity extends AppCompatActivity {
                     ((ResultsView) fragmentManager.findFragmentById(
                             R.id.searchFragmentContainer)).updateSearchField(
                             charSequence.toString().replaceAll("\\s+", " "));
+
+
                 }
             }
 
@@ -343,5 +344,29 @@ public class ParentActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public static String prepareDate(Calendar calendar){
+        String result;
+        int day, month, year;
+
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+
+        if (day < 10) {
+            result = "0" + day + ".";
+        } else {
+            result = day + ".";
+        }
+
+        if (month < 10) {
+            result += "0" + (month + 1) + ".";
+        } else {
+            result += month + ".";
+        }
+
+        result += String.valueOf(year);
+
+        return result;
+    }
 
 }

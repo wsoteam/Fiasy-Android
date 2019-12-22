@@ -26,13 +26,9 @@ public class ChangeNormPresenter extends MvpPresenter<ChangeNormView> {
         super.onFirstViewAttach();
         if (UserDataHolder.getUserData() != null && UserDataHolder.getUserData().getProfile() != null) {
 
-//            Log.d("test", "DifficultyLevel : " + BodyCalculates.convertToNewGoal(context, UserDataHolder.getUserData().getProfile().getDifficultyLevel()));
-//            Log.d("test", "ExerciseStress : " + BodyCalculates.convertToNewActivity(context, UserDataHolder.getUserData().getProfile().getExerciseStress()));
-            String goal = BodyCalculates.convertToNewGoal(context, UserDataHolder.getUserData().getProfile().getDifficultyLevel());
-            String activity = BodyCalculates.convertToNewActivity(context, UserDataHolder.getUserData().getProfile().getExerciseStress());
+            String goal = BodyCalculates.getGoalName(UserDataHolder.getUserData().getProfile().getGoal());
+            String activity = BodyCalculates.getActivityName(UserDataHolder.getUserData().getProfile().getGoLevel());
 
-//            Log.d("test", "convert DifficultyLevel : " + goal);
-//            Log.d("test", "convert ExerciseStress : " + activity);
             getViewState().bindFields(UserDataHolder.getUserData().getProfile(), goal, activity);
         }
 
@@ -53,8 +49,8 @@ public class ChangeNormPresenter extends MvpPresenter<ChangeNormView> {
 
         profile.setFemale(sex.equalsIgnoreCase(context.getResources().getString(R.string.profile_female)));
 
-        profile.setExerciseStress(BodyCalculates.convertToOldActivity(context, activity));
-        profile.setDifficultyLevel(BodyCalculates.convertToOldGoal(context, goal));
+        profile.setGoal(BodyCalculates.convertToGoalDigital(goal));
+        profile.setGoLevel(BodyCalculates.convertToActivityDigital(activity));
 
         profile.setMaxKcal(Integer.parseInt(kcal));
         profile.setMaxProt(Integer.parseInt(prot));
@@ -67,17 +63,17 @@ public class ChangeNormPresenter extends MvpPresenter<ChangeNormView> {
     }
 
     public void convertAndSetGoal(int i) {
-        String goal = context.getResources().getStringArray(R.array.goals)[i];
+        String goal = context.getResources().getStringArray(R.array.prf_goals)[i];
         getViewState().setGoal(goal);
     }
 
     public void convertAndSetActivity(int i) {
-        String activity = context.getResources().getStringArray(R.array.activities)[i];
+        String activity = context.getResources().getStringArray(R.array.prf_activity_level)[i];
         getViewState().setActivity(activity);
     }
 
     public void dropParams() {
-        Profile profileDefaultMainParams = BodyCalculates.calculateNew(context, BodyCalculates.cloneProfile(UserDataHolder.getUserData().getProfile()), true);
+        Profile profileDefaultMainParams = BodyCalculates.calculateDigital(context, BodyCalculates.cloneProfile(UserDataHolder.getUserData().getProfile()), true);
 
         getViewState().setDefaultPremParams(String.valueOf(profileDefaultMainParams.getMaxKcal()), String.valueOf(profileDefaultMainParams.getMaxFat()),
                 String.valueOf(profileDefaultMainParams.getMaxCarbo()), String.valueOf(profileDefaultMainParams.getMaxProt()));

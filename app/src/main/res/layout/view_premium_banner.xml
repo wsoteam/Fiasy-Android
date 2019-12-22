@@ -7,7 +7,7 @@
     android:id="@+id/premium_banner_root"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:gravity="center_horizontal"
     android:paddingTop="16dp"
     android:weightSum="6"

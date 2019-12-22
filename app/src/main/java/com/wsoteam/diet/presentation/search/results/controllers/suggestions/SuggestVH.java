@@ -34,7 +34,11 @@ public class SuggestVH extends RecyclerView.ViewHolder implements View.OnClickLi
 
     public void bind(String title, String query, IClick click) {
         this.click = click;
-        tvTitle.setText(getPaintedString(title, query));
+        try {
+            tvTitle.setText(getPaintedString(title, query));
+        }catch (Exception ex){
+            Log.e("LOL", "unknown");
+        }
     }
 
     private Spannable getPaintedString(String title, String query) {

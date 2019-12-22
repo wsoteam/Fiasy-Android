@@ -52,6 +52,13 @@ public class ResultVH extends RecyclerView.ViewHolder implements View.OnClickLis
     });
   }
 
+  public void bind(Result food, boolean isChecked,
+                   ClickListener clickListener, boolean hideTbSelect) {
+    bind(food, isChecked, clickListener);
+    tbSelect.setVisibility(hideTbSelect ? View.GONE : View.VISIBLE);
+
+  }
+
   public void bindHistoryEntity(HistoryEntity historyEntity, boolean isChecked, ClickListener clickListener) {
     this.clickListener = clickListener;
     tvTitle.setText(historyEntity.getName());

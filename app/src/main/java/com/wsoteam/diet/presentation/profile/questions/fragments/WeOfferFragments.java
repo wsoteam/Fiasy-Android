@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.presentation.profile.questions.AfterQuestionsActivity;
+import com.wsoteam.diet.presentation.teach.TeachUtil;
 
 public class WeOfferFragments extends Fragment {
 
@@ -40,4 +41,5 @@ public class WeOfferFragments extends Fragment {
     //startActivity(intent);
     //getActivity().finish();
   }
+
 }

@@ -89,7 +89,6 @@ public class FragmentC extends Fragment
         //View view = inflater.inflate(R.layout.fragment_subscription_one_button_2, container, false);
         View view = inflater.inflate(R.layout.fragment_subscription_c, container, false);
         unbinder = ButterKnife.bind(this, view);
-        Glide.with(getActivity()).load(R.drawable.subscription_one_button_title_img).into(imgTitle);
 
         box = (Box) getArguments().getSerializable(TAG_BOX);
 
@@ -132,11 +131,11 @@ public class FragmentC extends Fragment
 
                 if (responseCode == BillingClient.BillingResponse.OK && skuDetailsList != null) {
                     Log.e("LOL", skuDetailsList.get(0).toString());
-                    if (skuDetailsList.size() > 0) {
+                    try {
                         setPrice(skuDetailsList.get(0).getPrice());
+                    }catch (Exception ex){
+                        Log.d(TAG, "onSkuDetailsResponse: FAIL");
                     }
-
-
                 } else {
                     Log.d(TAG, "onSkuDetailsResponse: FAIL");
                 }
@@ -146,12 +145,7 @@ public class FragmentC extends Fragment
     }
 
     private void setPrice(String price) {
-        String s = getActivity().getResources().getString(R.string.abt_bottom_prem, price);
-        Spannable spannable = new SpannableString(s);
-        int start = s.split(" ")[0].length() + 1;
-        int end = s.indexOf("\n");
-        spannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.srch_suggest_painted_string)), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textView.setText(spannable);
+        textView.setText(getActivity().getResources().getString(R.string.abt_bottom_prem_week, price));
     }
 
     private void buy(String sku) {

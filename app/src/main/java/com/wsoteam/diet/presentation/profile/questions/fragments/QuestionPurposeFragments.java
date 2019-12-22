@@ -20,6 +20,7 @@ import kotlin.collections.ArraysKt;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.presentation.profile.questions.QuestionsActivity;
+import com.wsoteam.diet.presentation.teach.TeachUtil;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.wsoteam.diet.Config.ONBOARD_PROFILE_PURPOSE;
@@ -123,7 +124,7 @@ public class QuestionPurposeFragments extends Fragment {
     if (position == -1) {
       return;
     }
-
+    TeachUtil.setOpen(getContext(),true);
     ((QuestionsActivity) getActivity()).saveProfile();
   }
 
@@ -165,7 +166,7 @@ public class QuestionPurposeFragments extends Fragment {
     editor.apply();
   }
 
-  private void setSelectedPurposeTint(int tintColor) {
+  public void setSelectedPurposeTint(int tintColor) {
     if (selectedPurpose != null) {
       VectorDrawableCompat d = (VectorDrawableCompat) selectedPurpose.getBackground();
       d.setTint(ContextCompat.getColor(requireContext(), tintColor));
@@ -174,7 +175,7 @@ public class QuestionPurposeFragments extends Fragment {
     }
   }
 
-  private int getLastCheck() {
+  public int getLastCheck() {
     final String level = getActivity().getSharedPreferences(Config.ONBOARD_PROFILE, MODE_PRIVATE)
             .getString(ONBOARD_PROFILE_PURPOSE, null);
 
@@ -188,7 +189,7 @@ public class QuestionPurposeFragments extends Fragment {
     return ArraysKt.indexOf(levels, level);
   }
 
-  private String getDiffLevel(int position) {
+  public String getDiffLevel(int position) {
     switch (position) {
       case 1:
         return getString(R.string.dif_level_normal);

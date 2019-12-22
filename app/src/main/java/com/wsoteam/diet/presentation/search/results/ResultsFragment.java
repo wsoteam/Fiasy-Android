@@ -107,6 +107,7 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
     private Spinner parentSpinner;
 
     private ResultAdapter itemAdapter;
+    private SuggestAdapter suggestAdapter;
     private FoodResultAPI foodResultAPI = FoodSearch.getInstance().getFoodSearchAPI();
     private BasketDAO basketDAO = App.getInstance().getFoodDatabase().basketDAO();
     private HistoryDAO historyDAO = App.getInstance().getFoodDatabase().historyDAO();
@@ -162,16 +163,7 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
     private void showSuggestions(String currentString) {
         showSuggestView();
-        if (Config.CURRENT_SEARCH_URL.equals(Config.DEV_SEARCH_URL)) {
             switch (Locale.getDefault().getLanguage()) {
-                default:
-                case Config.EN:
-                    foodResultAPI
-                            .getSuggestionsEn(currentString)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(t -> updateSuggestions(t, currentString), Throwable::printStackTrace);
-                    break;
                 case Config.RU:
                     foodResultAPI
                             .getSuggestions(currentString)
@@ -200,14 +192,15 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(t -> updateSuggestions(t, currentString), Throwable::printStackTrace);
                     break;
+                default:
+                case Config.EN:
+                    foodResultAPI
+                            .getSuggestionsEn(currentString)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(t -> updateSuggestions(t, currentString), Throwable::printStackTrace);
+                    break;
             }
-        }else {
-            foodResultAPI
-                    .getSuggestions(currentString)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(t -> updateSuggestions(t, currentString), Throwable::printStackTrace);
-        }
     }
 
     private void showSuggestView() {
@@ -259,8 +252,8 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
     }
 
     private void updateSuggestions(Suggest t, String currentString) {
-        rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvSuggestionsList.setAdapter(new SuggestAdapter(t, currentString, new ISuggest() {
+        suggestAdapter = null;
+        suggestAdapter = new SuggestAdapter(t, currentString, new ISuggest() {
             @Override
             public void choiceSuggest(String suggestName) {
                 ((ParentActivity) getActivity()).edtSearch.setText(suggestName);
@@ -273,7 +266,9 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
                 sendSearchQuery(suggestName);
             }
-        }));
+        });
+        rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvSuggestionsList.setAdapter(suggestAdapter);
     }
 
     private void showLoad() {
@@ -526,20 +521,25 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
 
     private FoodResult dropBrands(FoodResult foodResult) {
-        for (int i = 0; i < foodResult.getResults().size(); i++) {
-            try {
-                if (foodResult.getResults().get(i).getName() == null) {
-                    Log.e("LOL", foodResult.getResults().get(i).toString());
-                    foodResult.getResults().remove(i);
-                    i--;
-                } else if (foodResult.getResults().get(i).getBrand().getName().equalsIgnoreCase(EMPTY_BRAND)) {
-                    foodResult.getResults().get(i).getBrand().setName("");
+        if (foodResult.getResults().size() > 0) {
+            Log.e("LOL", String.valueOf(foodResult.getResults().size()));
+            for (int i = 0; i < foodResult.getResults().size(); i++) {
+                try {
+                    if (foodResult.getResults().get(i).getName() == null) {
+                        Log.e("LOL", foodResult.getResults().get(i).toString());
+                        foodResult.getResults().remove(i);
+                        if (foodResult.getResults().size() != 0) {
+                            i--;
+                        }
+                    } else if (foodResult.getResults().get(i).getBrand().getName().equalsIgnoreCase(EMPTY_BRAND)) {
+                        foodResult.getResults().get(i).getBrand().setName("");
+                    }
+                } catch (Exception e) {
+                    Log.e("LOL", e.getMessage());
                 }
-            } catch (Exception e) {
-                Log.e("LOL", e.getMessage());
             }
+            Log.e("LOL", "KEK " + foodResult.getResults().get(0).toString());
         }
-
         return foodResult;
     }
 

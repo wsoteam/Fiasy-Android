@@ -3,21 +3,13 @@ package com.wsoteam.diet.InApp.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.adjust.sdk.Adjust;
 import com.adjust.sdk.AdjustEvent;
@@ -44,11 +36,14 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.Analytics.SavedConst;
-import com.wsoteam.diet.utils.IntentUtils;
+import com.wsoteam.diet.presentation.profile.questions.AfterQuestionsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -61,6 +56,8 @@ public class FragmentA extends Fragment
     TextView textView;
     @BindView(R.id.btnBack)
     ImageView btnBack;
+    @BindView(R.id.textView18)
+    TextView tvNext;
 
 
     private BillingClient billingClient;
@@ -94,6 +91,9 @@ public class FragmentA extends Fragment
         if (box.isOpenFromIntrodaction()) {
             btnBack.setVisibility(View.GONE);
             getActivity().getSharedPreferences(SavedConst.SEE_PREMIUM, Context.MODE_PRIVATE).edit().putBoolean(SavedConst.SEE_PREMIUM, true).commit();
+        } else {
+            tvNext.setVisibility(View.GONE);
+            btnBack.setVisibility(View.VISIBLE);
         }
 
 
@@ -129,23 +129,25 @@ public class FragmentA extends Fragment
             @Override
             public void onSkuDetailsResponse(int responseCode, List<SkuDetails> skuDetailsList) {
 
-                if (responseCode == BillingClient.BillingResponse.OK && skuDetailsList != null) {
+                /*if (responseCode == BillingClient.BillingResponse.OK && skuDetailsList != null) {
                     Log.e("LOL", skuDetailsList.get(0).toString());
-                    if (skuDetailsList.size() > 0){
+                    try {
                         setPrice(skuDetailsList.get(0).getPrice());
+                    }catch (Exception ex){
+                        Log.d(TAG, "onSkuDetailsResponse: FAIL");
                     }
 
 
                 } else {
                     Log.d(TAG, "onSkuDetailsResponse: FAIL");
-                }
+                }*/
 
             }
         });
     }
 
     private void setPrice(String price) {
-        textView.setText(getActivity().getResources().getString(R.string.abt_bottom_prem, price));
+        textView.setText(getActivity().getResources().getString(R.string.abt_bottom_prem_week, price));
     }
 
     private void buy(String sku) {
@@ -198,17 +200,28 @@ public class FragmentA extends Fragment
             editor.putBoolean(Config.ALERT_BUY_SUBSCRIPTION, true);
             editor.apply();
 
-            if (box != null && box.isOpenFromIntrodaction()) {
+            if (box.isOpenFromIntrodaction()) {
                 box.setSubscribe(true);
                 getActivity().getSharedPreferences(SavedConst.HOW_END, Context.MODE_PRIVATE).edit().putString(SavedConst.HOW_END, EventProperties.onboarding_success_trial).commit();
             }
+            Intent intent;
+            if (box.isOpenFromIntrodaction()) {
+                intent = new Intent(getContext(), AfterQuestionsActivity.class);
+                if (box.getProfile() != null) {
+                    intent.putExtra(Config.INTENT_PROFILE, box.getProfile());
+                }
+                startActivity(intent);
+                getActivity().finish();
+            } else {
+                intent = new Intent(getContext(), ActivitySplash.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
 
-            IntentUtils.openMainActivity(requireContext());
         }
     }
 
 
-    @OnClick({R.id.btnBack, R.id.btnClose, R.id.btnBuyPrem, R.id.tvPrivacyPolicy})
+    @OnClick({R.id.btnBack, R.id.btnClose, R.id.btnBuyPrem, R.id.tvPrivacyPolicy, R.id.textView18})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnBuyPrem:
@@ -219,16 +232,15 @@ public class FragmentA extends Fragment
                 Events.logPushButton(EventProperties.push_button_back, box.getBuyFrom());
                 getActivity().onBackPressed();
                 break;
+            case R.id.textView18:
             case R.id.btnClose: {
                 Events.logPushButton(EventProperties.push_button_close, box.getBuyFrom());
-                if (box.isOpenFromIntrodaction()) {
-                    getActivity().getSharedPreferences(SavedConst.HOW_END, Context.MODE_PRIVATE).edit().putString(SavedConst.HOW_END, EventProperties.onboarding_success_close).commit();
-                    final Intent intent = new Intent(getContext(), ActivitySplash.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                } else {
-                    getActivity().onBackPressed();
+                Intent intent = new Intent(getContext(), AfterQuestionsActivity.class);
+                if (box.getProfile() != null) {
+                    intent.putExtra(Config.INTENT_PROFILE, box.getProfile());
                 }
+                startActivity(intent);
+                getActivity().finish();
             }
             break;
             case R.id.tvPrivacyPolicy:
@@ -238,6 +250,10 @@ public class FragmentA extends Fragment
                 break;
 
         }
+    }
+
+    private boolean isNeedGoNext() {
+        return getActivity().getSharedPreferences(Config.AFTER_PREM_ROAD, Context.MODE_PRIVATE).getBoolean(Config.AFTER_PREM_ROAD, false);
     }
 
     @Override

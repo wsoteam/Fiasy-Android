@@ -55,7 +55,7 @@ public class WheelDatePicker extends LinearLayout implements WheelPicker.OnItemS
         mMonth = mPickerMonth.getCurrentMonth();
         mDay = mPickerDay.getCurrentDay();
 
-        monthList = context.getResources().getStringArray(R.array.monthList);
+        monthList = context.getResources().getStringArray(R.array.names_months_meas);
     }
 
     private void setMaximumWidthTextYear() {

@@ -130,8 +130,10 @@ public class FragmentB extends Fragment
 
                 if (responseCode == BillingClient.BillingResponse.OK && skuDetailsList != null) {
                     Log.e("LOL", skuDetailsList.get(0).toString());
-                    if (skuDetailsList.size() > 0){
+                    try {
                         setPrice(skuDetailsList.get(0).getPrice());
+                    }catch (Exception ex){
+                        Log.d(TAG, "onSkuDetailsResponse: FAIL");
                     }
 
 

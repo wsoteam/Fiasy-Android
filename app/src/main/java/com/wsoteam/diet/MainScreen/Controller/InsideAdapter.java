@@ -101,19 +101,20 @@ public class InsideAdapter extends RecyclerView.Adapter<InsideViewHolder> {
             //yyyy-MM-dd
             Date startPlan = DateHelper.stringToDate(plan.getStartDate());
             Date addInDiary = DateHelper.stringToDate(eating.getYear() + "-" + (eating.getMonth() + 1) + "-" + eating.getDay());
-            Log.d("kkk", "removeRecipeForDietPlan: startPlan " + startPlan);
-            Log.d("kkk", "removeRecipeForDietPlan: addInDiary " + addInDiary);
+//            Log.d("kkk", "removeRecipeForDietPlan: startPlan " + startPlan);
+//            Log.d("kkk", "removeRecipeForDietPlan: addInDiary " + addInDiary);
             long mill = (startPlan.getTime() + (plan.getDaysAfterStart() * 24 * 60 * 60 * 1000));
-            Log.d("kkk", "removeRecipeForDietPlan: " + new Date(mill));
+//            Log.d("kkk", "removeRecipeForDietPlan: " + new Date(mill));
             if (addInDiary.getTime() >= startPlan.getTime()
                 && addInDiary.getTime() <= mill ){
                 int day = (int)(addInDiary.getTime() - startPlan.getTime()) / (24 * 60 * 60 * 1000);
-                Log.d("kkk", "removeRecipeForDietPlan: test day " + day);
+//                Log.d("kkk", "removeRecipeForDietPlan: test day " + day);
 
                 String dayS = String.valueOf(day), mealS, recipeNumberS;
 
-
+                if (day >= plan.getRecipeForDays().size()) return;
                 RecipeForDay recipeForDay = plan.getRecipeForDays().get(day);
+
                 if (getRecipePosition(recipeForDay.getBreakfast(), eating.getName()) != null){
                     mealS = "breakfast";
                     recipeNumberS = getRecipePosition(recipeForDay.getBreakfast(), eating.getName());

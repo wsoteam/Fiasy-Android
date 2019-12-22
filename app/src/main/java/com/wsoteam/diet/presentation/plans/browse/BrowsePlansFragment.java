@@ -35,10 +35,12 @@ import butterknife.ButterKnife;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class BrowsePlansFragment extends MvpAppCompatFragment implements BrowsePlansView {
+public class BrowsePlansFragment extends MvpAppCompatFragment implements BrowsePlansView, Observer {
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.recycler) RecyclerView recyclerView;
@@ -70,6 +72,8 @@ public class BrowsePlansFragment extends MvpAppCompatFragment implements BrowseP
             mToolbar.setNavigationIcon(R.drawable.arrow_back_gray);
             mToolbar.setNavigationOnClickListener(navigationListener);
         }
+
+        if (DietPlansHolder.get() == null) DietPlansHolder.subscribe(this);
 
         adapter = new VerticalBrowsePlansAdapter(prepareList());
         adapter.SetOnItemClickListener(onItemClickListener);
@@ -163,5 +167,18 @@ public class BrowsePlansFragment extends MvpAppCompatFragment implements BrowseP
     @Override public void onResume() {
         super.onResume();
         adapter.updateList(prepareList());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        adapter.updateList(prepareList());
+        DietPlansHolder.unsubscribe(this);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        DietPlansHolder.unsubscribe(this);
     }
 }

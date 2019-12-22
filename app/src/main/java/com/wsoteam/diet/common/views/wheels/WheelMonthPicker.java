@@ -23,7 +23,7 @@ public class WheelMonthPicker extends WheelPicker implements IWheelMonthPicker {
 //        for (int i = 1; i <= 12; i++)
 //            data.add(i);
 //        super.setData(data);
-        super.setData(Arrays.asList(context.getResources().getStringArray(R.array.monthList)));
+        super.setData(Arrays.asList(context.getResources().getStringArray(R.array.names_months_meas)));
 
         mSelectedMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
         updateSelectedYear();

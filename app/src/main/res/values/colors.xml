@@ -161,7 +161,7 @@
   <color name="hint_promo">#51000000</color>
   <color name="hint_error">#8acc0808</color>
 
-  <color name="active_drop">#ef7d02</color>
+  <color name="active_drop">#EF7D02</color>
   <color name="inactive_drop">#bdbdbd</color>
 
   <color name="water_blue">#2d9cdb</color>
@@ -174,4 +174,10 @@
   <color name="premium_card_selected_border">#ffe600</color>
   <color name="premium_button_buy_gold_color">#D2A956</color>
   <color name="premium_button_buy_ordinary_color">#FFFFFF</color>
+
+  <color name="fab_color">#ef7d02</color>
+  <color name="fab_black">#DA505050</color>
+
+  <color name="teach_background">#88313130</color>
+  <color name="teach_btn_cancel">#51ffffff</color>
 </resources>

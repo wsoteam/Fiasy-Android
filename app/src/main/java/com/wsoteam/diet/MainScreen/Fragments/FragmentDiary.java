@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -19,6 +18,22 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wsoteam.diet.Config;
+import com.wsoteam.diet.MainScreen.Controller.UpdateCallback;
+import com.wsoteam.diet.MainScreen.Dialogs.SublimePickerDialogFragment;
+import com.wsoteam.diet.POJOProfile.Profile;
+import com.wsoteam.diet.R;
+import com.wsoteam.diet.Sync.UserDataHolder;
+import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
+import com.wsoteam.diet.presentation.plans.detail.day.CurrentDayPlanFragment;
+import com.wsoteam.diet.presentation.search.ParentActivity;
+
+import java.util.Calendar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -31,30 +46,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import com.github.jhonnyx2012.horizontalpicker.DatePickerListener;
-import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.wsoteam.diet.Config;
-import com.wsoteam.diet.MainScreen.Controller.UpdateCallback;
-import com.wsoteam.diet.MainScreen.Dialogs.SublimePickerDialogFragment;
-import com.wsoteam.diet.POJOProfile.Profile;
-import com.wsoteam.diet.R;
-import com.wsoteam.diet.Sync.UserDataHolder;
-import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
-import com.wsoteam.diet.common.Analytics.Events;
-import com.wsoteam.diet.presentation.measurment.MeasurmentActivity;
-import com.wsoteam.diet.presentation.plans.detail.day.CurrentDayPlanFragment;
-import com.wsoteam.diet.presentation.search.ParentActivity;
-import java.util.Calendar;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentDiary extends Fragment
-    implements SublimePickerDialogFragment.OnDateChoosedListener, DatePickerListener {
+    implements SublimePickerDialogFragment.OnDateChoosedListener {
   private final String TAG_COUNT_OF_RUN_FOR_ALERT_DIALOG = "COUNT_OF_RUN";
   @BindView(R.id.pbProt) ProgressBar pbProgressProt;
   @BindView(R.id.pbCarbo) ProgressBar pbProgressCarbo;
@@ -70,7 +66,6 @@ public class FragmentDiary extends Fragment
   @BindView(R.id.collapsingToolbarLayout) CollapsingToolbarLayout collapsingToolbarLayout;
   @BindView(R.id.vpEatingTimeLine) ViewPager vpEatingTimeLine;
   @BindView(R.id.llSum) LinearLayout llSum;
-  @BindView(R.id.datePicker) HorizontalPicker datePicker;
   @BindView(R.id.btnNotification) ImageView btnNotification;
   @BindView(R.id.flCurrentDayPlan) FrameLayout containerCurrentDayPlan;
   private Unbinder unbinder;
@@ -104,9 +99,9 @@ public class FragmentDiary extends Fragment
     @Override
     public void onPageSelected(int i) {
       if (dayPosition < i) {
-        datePicker.plusDay();
+
       } else if (dayPosition > i) {
-        datePicker.minusDay();
+
       }
 
       dayPosition = i;
@@ -171,8 +166,6 @@ public class FragmentDiary extends Fragment
 
     bindViewPager();
 
-    datePicker.setListener(this).init();
-    datePicker.setBackgroundColor(Color.TRANSPARENT);
 
     return mainView;
   }
@@ -207,37 +200,9 @@ public class FragmentDiary extends Fragment
 
   @Override
   public void dateChoosed(Calendar calendar, int dayOfMonth, int month, int year) {
-    datePicker.setDate(new DateTime(calendar.getTime()).withTime(0, 0, 0, 0));
-  }
-
-  @Override
-  public void onDateSelected(DateTime dateSelected) {
-    DateTime today = new DateTime().withTime(0, 0, 0, 0);
-    int difference = Days.daysBetween(dateSelected, today).getDays() * (
-        dateSelected.getYear() < today.getMillis() ? -1 : 1);
-    int page = Config.COUNT_PAGE / 2 + difference;
-    if (vpEatingTimeLine != null && vpEatingTimeLine.getCurrentItem() != page) {
-      vpEatingTimeLine.clearOnPageChangeListeners();
-      vpEatingTimeLine.setCurrentItem(page);
-      vpEatingTimeLine.addOnPageChangeListener(viewPagerListener);
-      dayPosition = vpEatingTimeLine.getCurrentItem();
-    }
-
-    if (currentDayPlanFragment != null) {
-      currentDayPlanFragment.showRecipesForDate(dateSelected.getMillis());
-    }
 
   }
 
-  @Override
-  public void onCalendarClicked() {
-    SublimePickerDialogFragment sublimePickerDialogFragment = new SublimePickerDialogFragment();
-    Bundle bundle = new Bundle();
-    sublimePickerDialogFragment.setArguments(bundle);
-    sublimePickerDialogFragment.setCancelable(true);
-    sublimePickerDialogFragment.setTargetFragment(this, 0);
-    sublimePickerDialogFragment.show(getFragmentManager(), null);
-  }
 
   private void attachCaloriesPopup() {
     View popupView = getLayoutInflater().inflate(R.layout.layout_notification_calories_over, null);
@@ -322,9 +287,7 @@ public class FragmentDiary extends Fragment
       tvDaysAtRow.setText(getActivity().getResources()
           .getQuantityString(R.plurals.daysAtRow, getDaysAtRow(), getDaysAtRow()));
     }
-    if (datePicker != null) {
-      datePicker.setDate(new DateTime());
-    }
+
 
     if (currentDayPlanFragment != null) {
       currentDayPlanFragment.onResume();

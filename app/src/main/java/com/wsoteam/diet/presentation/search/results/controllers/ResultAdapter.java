@@ -51,6 +51,9 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private int page = 1;
     private String searchString = "";
     private FoodResultAPI foodResultAPI = FoodSearch.getInstance().getFoodSearchAPI();
+    ExpandableClickListener teachCallback;
+
+    private boolean hideTbSelect = false;
 
     @Override
     public int[] getParams() {
@@ -85,6 +88,19 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.basketUpdater = basketUpdater;
         this.savedFood = savedFood;
         basketUpdater.getCurrentSize(savedFood.size());
+    }
+
+    public ResultAdapter(List<ISearchResult> foods, Context context, List<BasketEntity> savedFood,
+                         String searchString, BasketUpdater basketUpdate, ExpandableClickListener teachCallback, boolean hideTbSelect) {
+        this(foods, context, savedFood, searchString, basketUpdate);
+        this.teachCallback = teachCallback;
+        this.hideTbSelect = hideTbSelect;
+    }
+
+
+    public void hideTbSelect(boolean hideTbSelect){
+        this.hideTbSelect = hideTbSelect;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -188,6 +204,9 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         getSaveStatus((Result) foods.get(position)), new ClickListener() {
                             @Override
                             public void click(int position, boolean isNeedSave) {
+                                if (teachCallback != null) {
+                                    return;
+                                }
                                 BasketEntity basketEntity = createBasketEntity(position);
                                 if (isNeedSave) {
                                     save(basketEntity);
@@ -199,15 +218,22 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             @Override
                             public void open(int position) {
                                 BasketEntity basketEntity = new BasketEntity((Result) foods.get(position), Config.DEFAULT_WEIGHT, basketUpdater.getCurrentEating(), ((Result) foods.get(position)).getId());
+                                if (teachCallback != null) {
+                                    teachCallback.open(basketEntity);
+                                    return;
+                                }
                                 openDetailActivity(findInBasket(basketEntity));
                             }
-                        });
+                        }, hideTbSelect);
                 break;
             case HISTORY_TYPE:
                 ((ResultVH) holder).bindHistoryEntity((HistoryEntity) foods.get(position),
                         getHistorySaveStatus((HistoryEntity) foods.get(position)), new ClickListener() {
                             @Override
                             public void click(int position, boolean isNeedSave) {
+                                if (teachCallback != null) {
+                                    return;
+                                }
                                 BasketEntity basketEntity = (HistoryEntity) foods.get(position);
                                 basketEntity.setEatingType(basketUpdater.getCurrentEating());
                                 if (isNeedSave) {
@@ -215,11 +241,17 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                                 } else {
                                     delete(basketEntity);
                                 }
+
+
                             }
 
                             @Override
                             public void open(int position) {
                                 BasketEntity basketEntity = (BasketEntity) foods.get(position);
+                                if (teachCallback != null) {
+                                    teachCallback.open(basketEntity);
+                                    return;
+                                }
                                 basketEntity.setEatingType(basketUpdater.getCurrentEating());
                                 openDetailActivity(basketEntity);
                             }
@@ -231,6 +263,9 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         getSavedDeepIds((Result) foods.get(position)), new ExpandableClickListener() {
                             @Override
                             public void click(BasketEntity basketEntity, boolean isNeedSave) {
+                                if (teachCallback != null) {
+                                    return;
+                                }
                                 basketEntity.setEatingType(basketUpdater.getCurrentEating());
                                 if (isNeedSave) {
                                     save(basketEntity);
@@ -242,6 +277,10 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             @Override
                             public void open(BasketEntity basketEntity) {
                                 basketEntity.setEatingType(basketUpdater.getCurrentEating());
+                                if (teachCallback != null) {
+                                    teachCallback.open(basketEntity);
+                                    return;
+                                }
                                 openDetailActivity(findInBasket(basketEntity));
                             }
                         });

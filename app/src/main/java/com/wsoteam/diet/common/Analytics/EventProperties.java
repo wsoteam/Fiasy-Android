@@ -204,4 +204,21 @@ public class EventProperties {
     public static final String diet_plans_LCHF_light = "LCHF_light";
     public static final String diet_plans_6_1 = "6_1";
     public static final String diet_plans_without = "without_plan";
+
+    /**
+     *  TeachHostFragment
+     */
+    public static final String teach_screen = "screen";
+    public static final String teach_main = "main";
+    public static final String teach_search = "search";
+    public static final String teach_add = "add";
+    public static final String teach_weight = "weight";
+    public static final String teach_ready = "ready";
+    public static final String teach_done = "done";
+    public static final String teach_skip = "skip";
+
+    public static final String review_star = "star";
+    public static final String review_comment = "comment";
+    public static final String review_comment_server = "server";
+    public static final String review_comment_store = "store";
 }

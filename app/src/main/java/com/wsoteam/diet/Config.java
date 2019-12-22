@@ -149,5 +149,27 @@ public class Config {
     public static final String CURRENT_SEARCH_URL = "http://116.203.193.111:8000";
 
 
+    public static final int FIRST_LEVEL = 0;
+    public static final int SECOND_LEVEL = 1;
+    public static final int THIRD_LEVEL = 2;
+    public static final int FOURTH_LEVEL = 3;
+    public static final int FIFTH_LEVEL = 4;
+    public static final int SIXTH_LEVEL = 5;
+    public static final int SEVENTH_LEVEL = 6;
+
+    public static final String EMPTY_FIELD = "";
+
+    // left to right, from top to bottom
+    public static final int FIRST_GOAL = 0;
+    public static final int SECOND_GOAL = 1;
+    public static final int THIRD_GOAL = 2;
+    public static final int FOURTH_GOAL = 3;
+
+
+    /////
+    public static final String AFTER_PREM_ROAD = "AFTER_PREM_ROAD";
+
+
+
 
 }

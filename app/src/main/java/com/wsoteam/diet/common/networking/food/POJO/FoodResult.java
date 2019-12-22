@@ -54,4 +54,14 @@ public class FoodResult  {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "FoodResult{" +
+                "count=" + count +
+                ", next='" + next + '\'' +
+                ", previous=" + previous +
+                ", results=" + results +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

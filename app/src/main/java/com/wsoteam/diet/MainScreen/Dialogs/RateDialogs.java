@@ -30,6 +30,8 @@ import com.wsoteam.diet.AmplitudaEvents;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
+import com.wsoteam.diet.common.Analytics.EventProperties;
+import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.model.Grade;
 
 import java.util.Calendar;
@@ -72,9 +74,11 @@ public class RateDialogs {
                             Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                 }
                 saveData(context, Config.GRADED);
+                Events.logReview(atomicRating.get(), EventProperties.review_comment_store);
             } else {
                 grade.setRating(atomicRating.get());
                 msgAlert(context, grade);
+                Events.logReview(atomicRating.get(), EventProperties.review_comment_server);
             }
             alertDialog.cancel();
         });

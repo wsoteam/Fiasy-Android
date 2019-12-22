@@ -1,41 +1,41 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
 	package
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:2:5-54
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:2:5-54
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:1-7:12
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:11-69
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:4:5-5:19
+ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:4:5-5:19
 	android:label
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:4:18-50
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml:4:18-50
 uses-sdk
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		ADDED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
-		INJECTED from D:\projects\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		ADDED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml
+		INJECTED from C:\git\Fiasy-Android\horizontal-picker\src\main\AndroidManifest.xml

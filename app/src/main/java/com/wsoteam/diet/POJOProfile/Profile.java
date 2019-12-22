@@ -35,33 +35,11 @@ public class Profile implements Serializable {
     private int month;
     private int year;
 
-    public Profile() {
-    }
+    ///change 20.11.2019
+    private int goLevel;
+    private int goal;
 
-    public Profile(float maxWater, String firstName, String lastName, boolean isFemale,
-        String email, int age, int height, double weight, double loseWeight, String exerciseStress,
-        String photoUrl, int waterCount, int maxKcal, int maxProt, int maxFat, int maxCarbo,
-        String difficultyLevel, int numberOfDay, int month, int year) {
-        this.maxWater = maxWater;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isFemale = isFemale;
-        this.email = email;
-        this.age = age;
-        this.height = height;
-        this.weight = weight;
-        this.loseWeight = loseWeight;
-        this.exerciseStress = exerciseStress;
-        this.photoUrl = photoUrl;
-        this.waterCount = waterCount;
-        this.maxKcal = maxKcal;
-        this.maxProt = maxProt;
-        this.maxFat = maxFat;
-        this.maxCarbo = maxCarbo;
-        this.difficultyLevel = difficultyLevel;
-        this.numberOfDay = numberOfDay;
-        this.month = month;
-        this.year = year;
+    public Profile() {
     }
 
     public Profile(String firstName, String lastName, boolean isFemale, int age, int height, double weight, double loseWeight, String exerciseStress, String photoUrl, int waterCount, int maxKcal, int maxProt, int maxFat, int maxCarbo, String difficultyLevel, int numberOfDay, int month, int year) {
@@ -84,6 +62,8 @@ public class Profile implements Serializable {
         this.month = month;
         this.year = year;
     }
+
+
 
     public float getMaxWater() {
         return maxWater;
@@ -243,6 +223,23 @@ public class Profile implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public int getGoLevel() {
+        return goLevel;
+    }
+
+    public void setGoLevel(int goLevel) {
+        this.goLevel = goLevel;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
     }
 
     @Override

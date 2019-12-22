@@ -17,7 +17,7 @@ public class IDs {
     public static final String ID_ONE_YEAR = "premium_one_year_2490";
     public static final String ID_THREE_MONTHS = "three_months";
     public static final String ID_ONE_MONTHS = "one_montn_sub";
-    public static final String ID_ONE_YEAR_WITH_TRIAL = "trial_3d_premium_35";
+    public static final String ID_ONE_YEAR_WITH_TRIAL = "trial_v2_3d_premium_35";
 
 
     public static final int PAYMENT_STATE_WAIT = 0;

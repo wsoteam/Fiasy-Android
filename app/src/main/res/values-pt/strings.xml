@@ -821,11 +821,32 @@ Parabéns!</string>
     <string name="question_name_title">Vamos começar.\n Como tu te chamas?</string>
     <string name="subscription_not_found">Assinatura Premium não encontrada, não pode estar disponível no seu país</string>
 
-    <string name="abt_prop_a">Você alcançará seu objetivo e obterá \nacesso a artigos exclusivos sobre \nalimentação saudável e centenas de receitas.</string>
+
+    ///////
+    <string-array name="prf_goals">
+        <item>Ficar em forma</item>
+        <item>Perder peso</item>
+        <item>Ganhar massa muscular</item>
+        <item>Manter a musculatura e queimar gordura</item>
+    </string-array>
+
+    <string-array name="prf_activity_level">
+        <item>O mínimo de exercícios</item>
+        <item>Exercícios leves ao longo do dia</item>
+        <item>Eu me exercito de 2 a 4 vezes por semana (ou realizo um trabalho que exige esforço físico moderado).</item>
+        <item>Eu me exercito intensamente 4-5 vezes por semana.</item>
+        <item>Eu me exercito intensamente todos os dias.</item>
+        <item>Eu me exercito duas vezes por dia, 5-7 dias por semana.</item>
+        <item>Meu trabalho é fisicamente intenso ou faço exercícios intensos duas vezes por dia, todos os dias.</item>
+    </string-array>
+
+    <string name="abt_prop_a">Você alcançará seu objetivo e obterá acesso a artigos exclusivos sobre alimentação saudável e centenas de receitas.</string>
     <string name="abt_1_arrow">Artigos exclusivos de um nutricionista</string>
     <string name="abt_2_arrow">Configurações personalizadas</string>
     <string name="abt_3_arrow">Banco de dados de receitas</string>
     <string name="abt_4_arrow">Planos de refeições</string>
     <string name="abt_5_arrow">Medidas do corpo</string>
     <string name="abt_bottom_prem">Experimente 3 dias gratuitamente \nPróximos %s por ano</string>
+    <string name="abt_bottom_prem_week">Experimente 3 dias gratuitamente \nPróximos %s por semana</string>
+
 </resources>

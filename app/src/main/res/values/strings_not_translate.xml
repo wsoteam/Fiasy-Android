@@ -191,11 +191,5 @@
         <item>@string/my_food</item>
     </string-array>
 
-<!--    <integer-array name="sections_images">-->
-<!--        <item>@drawable/ic_left_sections_favorites</item>-->
-<!--        <item>@drawable/ic_left_sections_template</item>-->
-<!--        <item>@drawable/ic_left_sections_dish</item>-->
-<!--        <item>@drawable/ic_left_sections_food</item>-->
-<!--    </integer-array>-->
 
 </resources>

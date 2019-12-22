@@ -27,7 +27,7 @@ public class WheelDayPicker extends WheelPicker implements IWheelDayPicker {
     public WheelDayPicker(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        monthList = context.getResources().getStringArray(R.array.monthList);
+        monthList = context.getResources().getStringArray(R.array.names_months_meas);
 
         mCalendar = Calendar.getInstance();
 

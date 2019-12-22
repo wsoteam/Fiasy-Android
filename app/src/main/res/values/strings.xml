@@ -110,7 +110,6 @@
     <string name="tvInfo">Are you sure you want to change your diet? \nYour %s diet will be closed.</string>
 
 
-
     <string name="planDays">Day %d/%d</string>
     <plurals name="daysAtRow">
         <item quantity="one">%d day in a row logged</item>
@@ -252,7 +251,7 @@
     <string name="cards_fragment_subscription_info">Get full access \n to exclusive articles and recipes</string>
     <string name="detail_activity_question">Question</string>
     <string name="detail_plans_day_item_day_13">Day 13</string>
-<!--    <string name="detail_plans_recipe_item_recipe_added">Recipe added</string>-->
+    <!--    <string name="detail_plans_recipe_item_recipe_added">Recipe added</string>-->
     <string name="detail_plans_recipe_item_n_kcal">175 kcal\u0020</string>
     <string name="detail_plans_recipe_item_some_name">Olive, Avocado, and Feta Salad</string>
     <string name="diary_recipe_plans_added">You made the following journal entry:</string>
@@ -295,7 +294,7 @@ Share your accomplishments with friends:</string>
     <string name="tab_lat_template_name">Templates</string>
     <string name="template_add_food_add">Add food</string>
     <string name="search_food_activity_say">Speak!</string>
-<!--    <string name="search_food_activity_change">Change</string>-->
+    <!--    <string name="search_food_activity_change">Change</string>-->
     <string name="search_food_activity_weight_ml">Weight: 100 ml</string>
     <string name="search_food_activity_weight_g">Weight: 100 g</string>
     <string name="search_food_activity_prot">P. %d</string>
@@ -394,7 +393,7 @@ Share your accomplishments with friends:</string>
     <string name="dif_level_normal" translatable="false">Средняя</string>
     <string name="dif_level_hard" translatable="false">Высокая</string>
     <string name="dif_level_hard_up" translatable="false">Похудение</string>
-<!--    <string name="dif_level_hard_up">Weight loss</string>-->
+    <!--    <string name="dif_level_hard_up">Weight loss</string>-->
 
     <!--List of main max params in profile-->
     <string name="check_your_email">Wrong format</string>
@@ -414,7 +413,7 @@ Share your accomplishments with friends:</string>
 
     <string name="food_item_for_template_name" translatable="false">Name</string>
     <string name="food_item_for_template_kcal" translatable="false">Kcal</string>
-<!--    <string name="food_item_for_template_weight">Вес</string>-->
+    <!--    <string name="food_item_for_template_weight">Вес</string>-->
     <string name="food_item_for_template_b" translatable="false">B</string>
     <string name="food_item_for_template_g" translatable="false">G</string>
     <string name="food_item_for_template_u" translatable="false">U</string>
@@ -425,7 +424,6 @@ Share your accomplishments with friends:</string>
     <string name="ms_item_eating_list_carbo" translatable="false">Carbo</string>
     <string name="ms_item_eating_list_kcal" translatable="false">Kcal</string>
     <string name="ms_item_eating_list_prot" translatable="false">Prot</string>
-
 
 
     <string name="premium_norm_prem" translatable="false">PREMIUM</string>
@@ -605,17 +603,17 @@ Share your accomplishments with friends:</string>
     <string name="november">November</string>
     <string name="december">December</string>
 
-  <!-- Setting Screen -->
-  <string name="premium_account">Premium Account</string>
-  <string name="promotional_codes">Promo codes</string>
-  <string name="personal_data">Personal information</string>
-  <string name="calorie_intake">Calorie intake</string>
-  <string name="exit">Logout</string>
-  <string name="log_off_question">Are you sure you want logout?</string>
-  <string name="no">no</string>
-  <string name="yes">yes</string>
-  <string name="log_off">Log out</string>
-  <string name="cancel">Cancel</string>
+    <!-- Setting Screen -->
+    <string name="premium_account">Premium Account</string>
+    <string name="promotional_codes">Promo codes</string>
+    <string name="personal_data">Personal information</string>
+    <string name="calorie_intake">Calorie intake</string>
+    <string name="exit">Logout</string>
+    <string name="log_off_question">Are you sure you want logout?</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
+    <string name="log_off">Log out</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Promotional Code Screen -->
     <string name="promotional_navigation">Promo codes</string>
@@ -774,34 +772,32 @@ Share your accomplishments with friends:</string>
     <string name="section_eating">Nutrition</string>
     <string name="section_train">Training</string>
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    <string name="tvItemPlanTime">Cooking time:</string>
+    <string name="tvSaturatedFats">Saturated</string>
+    <string name="tvUnSaturatedFats">Unsaturated</string>
+    <string name="myRecipe">Your recipes</string>
 
+    <plurals name="portion_plurals">
+        <item quantity="one">portion%d</item>
+        <item quantity="other">potions</item>
+    </plurals>
 
-  <string name="tvItemPlanTime">Cooking time:</string>
-  <string name="tvSaturatedFats">Saturated</string>
-  <string name="tvUnSaturatedFats">Unsaturated</string>
-  <string name="myRecipe">Your recipes</string>
-
-  <plurals name="portion_plurals">
-    <item quantity="one">portion%d</item>
-    <item quantity="other">potions</item>
-  </plurals>
-
-  <string name="vh_article_series_day">%d day</string>
-  <string name="art_series_title">Articles from an expert</string>
-  <string name="art_series_author_title">Exclusive articles from a professional nutritionist!</string>
-  <string name="art_series_author_burlakov">Alexander Burlakov</string>
-  <string name="art_series_author_burlakov_bio">A sports medicine doctor and nutritionist, Dr. Burlakov graduated from Kuban State Medical University. He is the founder of the Bodycoach School and runs a wellness blog based on medical science.</string>
+    <string name="vh_article_series_day">%d day</string>
+    <string name="art_series_title">Articles from an expert</string>
+    <string name="art_series_author_title">Exclusive articles from a professional nutritionist!</string>
+    <string name="art_series_author_burlakov">Alexander Burlakov</string>
+    <string name="art_series_author_burlakov_bio">A sports medicine doctor and nutritionist, Dr. Burlakov graduated from Kuban State Medical University. He is the founder of the Bodycoach School and runs a wellness blog based on medical science.</string>
     <string name="art_series_author_burlakov_bio_short">A sports medicine doctor and nutritionist</string>
-  <string name="art_series_author_burlakov_achiv1">18,800 followers on Instagram</string>
-  <string name="art_series_author_burlakov_achiv2">Medical science</string>
-  <string name="art_series_author_burlakov_achiv3">Has trained UFC, ACA, and RCC athletes</string>
-  <string name="understand">Got it</string>
-  <string name="art_series_series_title">Eight articles for an easy start!</string>
-  <string name="art_series_series_info">You need to complete the previous day before you can go to the next one</string>
-  <string name="day">Day %d</string>
+    <string name="art_series_author_burlakov_achiv1">18,800 followers on Instagram</string>
+    <string name="art_series_author_burlakov_achiv2">Medical science</string>
+    <string name="art_series_author_burlakov_achiv3">Has trained UFC, ACA, and RCC athletes</string>
+    <string name="understand">Got it</string>
+    <string name="art_series_series_title">Eight articles for an easy start!</string>
+    <string name="art_series_series_info">You need to complete the previous day before you can go to the next one</string>
+    <string name="day">Day %d</string>
     <string name="art_series_banner" translatable="false">Cтатьи от профессионального диетолога</string>
 
 
@@ -851,8 +847,6 @@ Share your accomplishments with friends:</string>
     <string name="premium_feature_exclusive_plans_description">Ready-made meal plans for every taste and goal</string>
     <string name="premium_feature_exclusive_plans">Meal plans</string>
     <string name="premium_features_comparison">EVERYTHING IS EASIER WITH PREMIUM</string>
-
-
 
 
     <string name="premium_comparision_basic_title" translatable="false">Basic</string>
@@ -906,7 +900,6 @@ Share your accomplishments with friends:</string>
     <string name="propose_enter_data">You have not entered any data yet</string>
     <string name="meas_chest">Chest</string>
     <string name="meas_add_meas">Add</string>
-
 
 
     <string name="meas_waist">Waist</string>
@@ -970,7 +963,6 @@ Share your accomplishments with friends:</string>
     <string name="alert_grade_txt">Напишите несколько слов о приложении</string>
     <string name="alert_rating_title">Оцените приложение</string>
     <string name="alert_rating_txt">Пожалуйста, оцените наше приложение! Каждый отзыв делает его лучше!</string>
-
 
 
     <string name="getAccess">Get  access </string>
@@ -1107,7 +1099,26 @@ Share your accomplishments with friends:</string>
     <string name="my_meals">My meals</string>
     <string name="my_food">My food</string>
 
-    <string name="abt_prop_a">You will reach your goal and \ngain access to unique articles \nabout healthy eating and hundreds of recipes</string>
+
+    ///////
+    <string-array name="prf_goals">
+        <item>Stay in shape</item>
+        <item>Lose weight</item>
+        <item>Build muscle mass</item>
+        <item>Maintain musculature and burn fat</item>
+    </string-array>
+
+    <string-array name="prf_activity_level">
+        <item>Minimal exercise</item>
+        <item>Light exercise over the course of the day</item>
+        <item>I exercise 2–4 times a week (or do work that requires moderate physical exertion</item>
+        <item>I exercise intensely 4–5 times a week.</item>
+        <item>I exercise intensely every day</item>
+        <item>I exercise twice a day, 5–7 days a week.</item>
+        <item>My job is physically intense, or I exercise intensely twice a day, every day.</item>
+    </string-array>
+
+    <string name="abt_prop_a">You will reach your goal and gain access to unique articles about healthy eating and hundreds of recipes</string>
     <string name="abt_1_arrow">Exclusive articles from a nutritionist</string>
     <string name="abt_2_arrow">Personalized settings</string>
     <string name="abt_3_arrow">Recipe database</string>
@@ -1120,4 +1131,33 @@ Share your accomplishments with friends:</string>
     <string name="close_form_dialog_message">Закрыв форму, вы не сможете восстановить пароль.</string>
     <string name="close_dialog">Закрыть</string>
     <string name="continue_form_fill_button">Продолжить</string>
+    <string name="abt_bottom_prem_week">Try 3 days for free \nNext %s per week</string>
+    <string name="s_316_s"><s>316 ₽/мес</s></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="teach_cancel">Пропустить</string>
+    <string name="teach_meal_title">Какой прием пищи у вас был последним?</string>
+    <string name="teach_meal_txt">Выберите прием пищи</string>
+    <string name="teach_meal">Прием пищи</string>
+
+    <string name="teach_search_title">Что вы ели?</string>
+    <string name="teach_search_txt">Введите название продукта в поисковую строку</string>
+    <string name="teach_search_food">Нажмите на подходящий продукт</string>
+
+    <string name="teach_detail_txt">Отрегулируйте размер порции</string>
+    <string name="teach_done_title">Нажмите “Готово”</string>
+    <string name="teach_done_txt">Вы добавите продукт в предварительный список, где сможете проверить все выбранные продукты</string>
+
+    <string name="teach_basket_title">Добавьте выбранный продукт в дневник</string>
+
+    <string name="teach_achievement_title">Добавление первого продукта</string>
+    <string name="teach_achievement_txt">Поздравляем! Ваша первая награда в приложении.</string>
+    <string name="teach_achievement_btn">Отлично!</string>
+
+
+    <string name="fab_menu_food">Еда</string>
+    <string name="fab_menu_measurement">Измерения</string>
 </resources>

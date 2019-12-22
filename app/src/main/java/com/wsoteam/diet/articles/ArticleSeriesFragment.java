@@ -57,7 +57,7 @@ public class ArticleSeriesFragment extends Fragment {
           WorkWithFirebaseDB.addArticleSeries(openArticles);
         }
     }catch (Exception e){
-      //Log.d("kkk", "onCreateView: ", e);
+      Log.d("kkk", "onCreateView: ", e);
     }
 
     View view = inflater.inflate(R.layout.activity_article_series, container, false);

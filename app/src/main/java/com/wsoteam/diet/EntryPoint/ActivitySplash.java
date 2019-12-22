@@ -13,9 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +44,8 @@ import com.wsoteam.diet.InApp.IDs;
 import com.wsoteam.diet.InApp.properties.CheckAndSetPurchase;
 import com.wsoteam.diet.InApp.properties.EmptySubInfo;
 import com.wsoteam.diet.InApp.properties.SingletonMakePurchase;
-import com.wsoteam.diet.MainScreen.Deeplink;
+import com.wsoteam.diet.MainScreen.DeepLink;
 import com.wsoteam.diet.MainScreen.MainActivity;
-import com.wsoteam.diet.POJOProfile.Profile;
 import com.wsoteam.diet.POJOProfile.SubInfo;
 import com.wsoteam.diet.POJOProfile.TrackInfo;
 import com.wsoteam.diet.R;
@@ -63,7 +59,6 @@ import com.wsoteam.diet.presentation.auth.AuthStrategy;
 import com.wsoteam.diet.presentation.global.BaseActivity;
 import com.wsoteam.diet.presentation.intro_tut.NewIntroActivity;
 import com.wsoteam.diet.presentation.profile.questions.QuestionsActivity;
-import com.wsoteam.diet.utils.NetworkService;
 import com.wsoteam.diet.utils.RxFirebase;
 import com.wsoteam.diet.utils.UserNotAuthorized;
 import com.wsoteam.diet.views.SplashBackground;
@@ -90,8 +85,6 @@ public class ActivitySplash extends BaseActivity {
 
   private final CompositeDisposable disposables = new CompositeDisposable();
 
-  private boolean deeplink;
-
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -99,9 +92,9 @@ public class ActivitySplash extends BaseActivity {
     Intent intent = getIntent();
     String action = intent.getAction();
     Uri data = intent.getData();
-    if (Intent.ACTION_VIEW.equals(action) && data != null && !deeplink){
-      Deeplink.isNeedPrem.set(!deeplink);
-      deeplink = true;
+    if (Intent.ACTION_VIEW.equals(action) && data != null ){
+      DeepLink.prepareUri(this, data);
+      intent.setData(null);
     }
 
     if (getSharedPreferences(Config.IS_NEED_SHOW_LOADING_SPLASH, MODE_PRIVATE).getBoolean(

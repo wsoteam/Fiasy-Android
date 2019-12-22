@@ -1,7 +1,5 @@
 package com.wsoteam.diet.DietPlans.POJO;
 
-import android.util.Log;
-
 import java.util.LinkedHashSet;
 import java.util.Observable;
 import java.util.Observer;

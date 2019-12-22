@@ -2,10 +2,10 @@ package com.wsoteam.diet;
 
 public class ABConfig {
     public static final String KEY_FOR_SAVE_STATE = "KEY_FOR_SAVE_STATE";
-    public static final String REQUEST_STRING = "premium_version";
-    public static final String A_VERSION = "trial_stock";
-    public static final String B_VERSION = "trial_diamond";
-    public static final String C_VERSION = "trial_pair";
+    public static final String REQUEST_STRING = "prem_screen";
+    public static final String A_VERSION = "trial_long_pic_v2";
+    public static final String B_VERSION = "trial_long_result_v2";
+    public static final String C_VERSION = "trial_long_result_v2_7d_3m";
 
 
     //Amplituda key

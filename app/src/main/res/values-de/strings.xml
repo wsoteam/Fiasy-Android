@@ -816,11 +816,33 @@ Teilen Sie Ihre Erfolge mit Freunden:</string>
     <string name="question_name_title">Fangen wir an.\n Wie heißen Sie?</string>
     <string name="subscription_not_found">Premium-Abonnement nicht gefunden, kann es nicht in Ihrem Land verfügbar sein</string>
 
-    <string name="abt_prop_a">Sie werden Ihr Ziel erreichen und \nZugang zu einzigartigen Artikeln über \ngesunde Ernährung und Hunderte von Rezepten erhalten.</string>
+
+    ///////
+    <string-array name="prf_goals">
+        <item>In Form bleiben</item>
+        <item>Abnehmen</item>
+        <item>Ganar masa muscular</item>
+        <item>Muskulatur halten und Fett verbrennen</item>
+    </string-array>
+
+
+    <string-array name="prf_activity_level">
+        <item>Minimale Aktivität</item>
+        <item>Leichte Übungen im Laufe des Tages</item>
+        <item>Ich trainiere 2–4 Mal pro Woche (moderate körperliche Anstrengung).</item>
+        <item>Ich trainiere 4–5 Mal pro Woche intensiv.</item>
+        <item>Ich trainiere jeden Tag intensiv.</item>
+        <item>Ich trainiere zweimal täglich an 5 bis 7 Tagen in der Woche.</item>
+        <item>Meine Arbeit ist körperlich anstrengend oder ich trainiere täglich zweimal intensiv.</item>
+    </string-array>
+
+    <string name="abt_prop_a">Sie werden Ihr Ziel erreichen und Zugang zu einzigartigen Artikeln über gesunde Ernährung und Hunderte von Rezepten erhalten.</string>
     <string name="abt_1_arrow">Exklusive Artikel von einem professionellen Ernährungsberater</string>
     <string name="abt_2_arrow">Personalisierte Einstellungen</string>
     <string name="abt_3_arrow">Rezeptdatenbank</string>
     <string name="abt_4_arrow">Mahlzeitenpläne</string>
     <string name="abt_5_arrow">Körpermaße</string>
     <string name="abt_bottom_prem">Probieren Sie 3 Tage kostenlos aus \nNächste %s pro Jahr</string>
+    <string name="abt_bottom_prem_week">Probieren Sie 3 Tage kostenlos aus \nNächste %s pro Woche</string>
+
 </resources>

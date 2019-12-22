@@ -86,8 +86,9 @@ public class VerticalArticlesAdapter extends RecyclerView.Adapter<RecyclerView.V
     super.onViewRecycled(viewHolder);
   }
 
-  public void setData(List<ListArticles> sectionsArticles){
+  public void updateData(List<ListArticles> sectionsArticles){
     this.sectionsArticles = sectionsArticles;
+    notifyDataSetChanged();
   }
 
   @Override public int getItemCount() {

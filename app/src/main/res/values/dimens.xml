@@ -21,4 +21,17 @@
     <dimen name="receipt_container_width">255dp</dimen>
     <dimen name="receipt_container_height">170dp</dimen>
 
+
+    <dimen name="teach_width">62dp</dimen>
+    <dimen name="teach_height">46dp</dimen>
+
+
+<!--    FAB MENU -->
+    <dimen name="action_menu_radius">210dp</dimen>
+
+    <dimen name="sub_action_button_size">50dp</dimen>
+    <dimen name="sub_action_button_content_margin">0dp</dimen>
+
+    <dimen name="sub_action_button_width">200dp</dimen>
+    <dimen name="sub_action_button_height">@dimen/sub_action_button_size</dimen>
 </resources>

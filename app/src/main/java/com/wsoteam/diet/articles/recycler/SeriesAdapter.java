@@ -24,6 +24,7 @@ public class SeriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
   public void setListArticles(List<Article> articles){
     this.articles = articles;
+    notifyDataSetChanged();
   }
 
 

@@ -87,9 +87,9 @@
         android:text="@string/third_target"
         android:textColor="@color/confirm_text"
         app:layout_constraintEnd_toEndOf="@+id/cbMuscle"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/cbMuscle"
-        app:layout_constraintTop_toTopOf="@+id/tvSave"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tvSave" />
 
     <RadioButton
         android:id="@+id/cbSave"
@@ -111,9 +111,9 @@
         android:text="@string/fourth_target"
         android:textColor="@color/confirm_text"
         app:layout_constraintEnd_toEndOf="@+id/cbSave"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="@+id/cbSave"
-        app:layout_constraintTop_toBottomOf="@+id/cbSave"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/cbSave" />
 
     <Button
         android:id="@+id/btnNext"
