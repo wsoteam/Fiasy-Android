@@ -33,7 +33,6 @@ import com.wsoteam.diet.InApp.ActivitySubscription
 import com.wsoteam.diet.R
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB
 import com.wsoteam.diet.common.Analytics.EventProperties
-import com.wsoteam.diet.presentation.fab.MainFabMenu
 import com.wsoteam.diet.presentation.diary.DiaryFragment.Companion.PremiumState.Hiden
 import com.wsoteam.diet.presentation.diary.DiaryFragment.Companion.PremiumState.Revealed
 import com.wsoteam.diet.presentation.diary.DiaryViewModel.DiaryDay
@@ -211,8 +210,8 @@ class DiaryFragment : Fragment() {
                 val scrollingDown = scrollY > oldScrollY
                 val spaceLeft = premiumContainer.height + premiumContainer.translationY
 
-                 FabMenuViewModel.fabState.value = if (scrollingDown)
-                     FabMenuViewModel.FAB_HIDE else  FabMenuViewModel.FAB_SHOW
+                FabMenuViewModel.fabState.value = if (scrollingDown)
+                    FabMenuViewModel.FAB_HIDE else FabMenuViewModel.FAB_SHOW
 
 
                 currentState = if (spaceLeft == 0f) Hiden else Revealed
@@ -322,7 +321,7 @@ class DiaryFragment : Fragment() {
                                     .load(R.drawable.star_1)
                                     .resize(premiumContainer.width, premiumContainer.height)
                                     .into(giftTarget)
-                        }catch (e: java.lang.Exception){
+                        } catch (e: java.lang.Exception) {
 
                         }
                     }
@@ -354,14 +353,14 @@ class DiaryFragment : Fragment() {
 
     private var oldStatusBarColor = 0
 
-    private val waterObserver = androidx.lifecycle.Observer<Int> {position ->
+    private val waterObserver = androidx.lifecycle.Observer<Int> { position ->
         Log.d("kkk", "position = $position")
-        if(position != null)
-        container.post {
-            val y = container.y + container.getChildAt(position).y - premiumContainer.height
-            root.smoothScrollTo(0, y.toInt())
-            DiaryViewModel.scrollToPosition.value = null
-        }
+        if (position != null)
+            container.post {
+                val y = container.y + container.getChildAt(position).y - premiumContainer.height
+                root.smoothScrollTo(0, y.toInt())
+                DiaryViewModel.scrollToPosition.value = null
+            }
     }
 
     override fun onResume() {

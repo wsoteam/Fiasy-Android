@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+
+  <LinearLayout
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="right"
+        android:padding="16dp"
+        android:tint="#717171"
+        app:srcCompat="@drawable/ic_close"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_onboard_question_image"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:text="Важно ваше мнение"
+        android:textColor="#000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="32dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:text="Что мы можем улучшить,чтобы убедить вас подписаться на премиум?"
+        android:textColor="#000"
+        android:textSize="14sp"
+        />
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Мне просто было интерсно, я подумаю над покупкой премиум"
+        android:textColor="#c0000000"
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Больше контроля за тренировками"
+        android:textColor="#c0000000"
+        />
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Меньше цена"
+        android:textColor="#c0000000"
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Больше советов и рекомендаций"
+        android:textColor="#c0000000"
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Помощ по составлению индивидуального плана питания"
+        android:textColor="#c0000000"
+        />
+
+    <CheckBox
+        android:id="@+id/other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/question_checkbox_custom_checkmarks"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        android:text="Другое"
+        android:textColor="#c0000000"
+        />
+
+    <EditText
+        android:id="@+id/custom_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="32dp"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/next"
+        style="@style/Question.NextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/action_send"
+        />
+  </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

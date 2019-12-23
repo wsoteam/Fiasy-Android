@@ -71,15 +71,16 @@ public class AfterQuestionsActivity extends AppCompatActivity {
     }
 
 
-    public void nextQuestion() {
-        Box box = new Box();
-        box.setOpenFromIntrodaction(true);
-        box.setOpenFromPremPart(false);
-        box.setBuyFrom(EventProperties.trial_from_onboard);
-        box.setComeFrom(AmplitudaEvents.view_prem_free_onboard);
-        startActivity(new Intent(this, ActivitySplash.class));
-    }
-
+  public void nextQuestion() {
+    Box box = new Box();
+    box.setOpenFromIntrodaction(true);
+    box.setOpenFromPremPart(false);
+    box.setBuyFrom(EventProperties.trial_from_onboard);
+    box.setComeFrom(AmplitudaEvents.view_prem_free_onboard);
+    startActivities(new Intent[]{
+        new Intent(this, ActivitySplash.class).putExtra(Config.TAG_BOX, box),
+    });
+  }
 
     public void prevQuestion() {
         viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);

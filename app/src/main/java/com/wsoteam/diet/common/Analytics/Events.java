@@ -37,6 +37,8 @@ public class Events {
     public static final String REVENUE = "revenue";
 
     //FOOD
+    public static final String ONBOARD_PLAN = "second_offer";
+
     public static final String ADD_FOOD_SUCCESS = "add_food_success";
     public static final String EDIT_FOOD = "edit_food";
     public static final String DELETE_FOOD = "delete_food";
@@ -518,6 +520,16 @@ public class Events {
         } catch (JSONException exception) {
         }
         Amplitude.getInstance().logEvent(CUSTOM_TEMPLATE_SUCCESS, eventProperties);
+    }
+
+    public static void trackOnboardEvent(String button) {
+        JSONObject eventProperties = new JSONObject();
+        try {
+            eventProperties.put(EventProperties.onboard_next, button);
+        } catch (JSONException exception) {
+        }
+
+        Amplitude.getInstance().logEvent(ONBOARD_PLAN, eventProperties);
     }
 
     public static void logAddFood(String food_intake, String food_category, String food_date, String food_item, int kcals, int weight) {

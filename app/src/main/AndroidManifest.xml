@@ -331,6 +331,14 @@
             android:name=".presentation.premium.PremiumFeaturesActivity"
             android:exported="true" />
         <activity android:name=".presentation.profile.NotificationsSettingsActivity" />
+      <activity
+          android:name=".presentation.onboard.OnboardPlanActivity"
+          android:theme="@style/ActivityAuthMain"
+          />
+        <activity
+            android:name=".presentation.onboard.OnBoardFeedbackActivity"
+            android:theme="@style/ActivityAuthMain"/>
+
     </application>
 
 </manifest>

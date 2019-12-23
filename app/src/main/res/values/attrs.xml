@@ -4,6 +4,11 @@
     <attr name="subtitleStyle" format="reference" />
     <attr name="overlayColor" format="reference|color" />
 
+    <declare-styleable name="OnboardUserCardView">
+        <attr name="text" />
+        <attr name="value" />
+    </declare-styleable>
+
     <declare-styleable name="CheckableCardView">
         <attr name="card_text" format="string|reference" />
         <attr name="card_text_month" format="string|reference" />

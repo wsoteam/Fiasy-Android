@@ -39,7 +39,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 object SubscriptionManager {
 
-  private var fromDiary: Boolean = false
+  private var source: String = "ordinary"
   private val purchases = CopyOnWriteArrayList<SkuDetails>()
   private val purchaseListener = PurchasesUpdatedListener { responseCode, purchases ->
     Log.d("PurchaseUpdated", "responseCode=$responseCode, purchases=$purchases")
@@ -90,7 +90,7 @@ object SubscriptionManager {
         r.setPrice(purchase.price.toDoubleOrNull() ?: 0.0)
         r.setProductId(purchase.sku)
         r.setEventProperties(JSONObject().apply {
-          put("buy_from", if(fromDiary) "header" else "ordinary")
+          put("buy_from", source)
           put("abtest", if (AbTests.enableTrials()) "black_trial" else "black_direct")
         })
         r.setQuantity(1)
@@ -124,7 +124,11 @@ object SubscriptionManager {
     .build()
 
   fun buy(activity: Activity, subscriptionKey: String): Single<Int> {
-    fromDiary = activity.intent.getBooleanExtra("fromDiary", false)
+    if(activity.intent.getBooleanExtra("fromDiary", false)){
+      source = "header"
+    } else if(activity.intent.hasExtra("source")){
+      source = activity.intent.getStringExtra("source") ?: "ordinary"
+    }
 
     return Single.create(ConnectBilling())
       .flatMap { Single.create(QuerySubscriptionSingle(subscriptionKey)) }

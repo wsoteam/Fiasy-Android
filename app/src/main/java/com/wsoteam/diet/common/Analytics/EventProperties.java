@@ -62,6 +62,8 @@ public class EventProperties {
     public static final String food_intake_dinner = "dinner";
     public static final String food_intake_snack = "snack";
 
+    public static final String onboard_next = "onboard_next";
+
     public static final String food_category = "food_category";
     public static final String food_category_base = "base";
     public static final String food_category_custom = "custom";

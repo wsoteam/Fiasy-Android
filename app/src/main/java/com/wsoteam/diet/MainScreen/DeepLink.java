@@ -17,6 +17,7 @@ public class DeepLink {
         public static final String DIETS = "diets";
         public static final String MEASUREMENT = "measurements";
         public static final String ADD_FOOD = "addfood";
+        public static final String ONBOARD_PLAN = "onboard_plan";
 
     }
 
@@ -65,6 +66,7 @@ public class DeepLink {
             case Start.DIETS:
             case Start.MEASUREMENT:
             case Start.ADD_FOOD:
+            case Start.ONBOARD_PLAN:
             case Start.RECIPE:{
                 addAction(context, host);
                 return true;

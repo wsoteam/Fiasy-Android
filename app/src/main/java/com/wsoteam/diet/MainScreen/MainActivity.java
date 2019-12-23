@@ -2,6 +2,7 @@ package com.wsoteam.diet.MainScreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -60,6 +62,7 @@ import com.wsoteam.diet.presentation.diary.DiaryFragment;
 import com.wsoteam.diet.model.ArticleViewModel;
 import com.wsoteam.diet.presentation.fab.SelectMealDialogFragment;
 import com.wsoteam.diet.presentation.measurment.MeasurmentActivity;
+import com.wsoteam.diet.presentation.onboard.OnboardPlanActivity;
 import com.wsoteam.diet.presentation.plans.browse.BrowsePlansFragment;
 import com.wsoteam.diet.presentation.profile.section.ProfileFragment;
 
@@ -207,6 +210,20 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    private void startOnboardPlanSuggestion(boolean withFeedback, boolean force){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if ((!getSharedPreferences(Config.STATE_BILLING, Context.MODE_PRIVATE)
+                .getBoolean(Config.STATE_BILLING, false)
+                && !prefs.getBoolean("onboard_plan", false)) || force) {
+
+            prefs.edit().putBoolean("onboard_plan", true).apply();
+
+            startActivity(new Intent(this, OnboardPlanActivity.class)
+                    .putExtra("feedback", withFeedback));
+        }
+    }
+
     private void startPrem() {
         Box box = new Box();
         box.setSubscribe(false);
@@ -290,11 +307,9 @@ public class MainActivity extends AppCompatActivity {
 
         logEvents();
 
-
         BodyCalculates.handleProfile();
 
         checkDeepLink(getApplicationContext());
-
 
         if (TeachUtil.isNeedOpen(getApplicationContext()) && Locale.getDefault().getLanguage().equals("ru"))
             getSupportFragmentManager().beginTransaction()
@@ -310,15 +325,22 @@ public class MainActivity extends AppCompatActivity {
             fabBackground.setVisibility(View.GONE);
             fab.hide();
         }
+
+        startOnboardPlanSuggestion(getIntent().getBooleanExtra("feedback", false), false);
     }
 
     private void checkDeepLink(Context context) {
-
         String deepLinkAction = DeepLink.getAction(context);
         if (deepLinkAction != null)
             switch (deepLinkAction) {
                 case DeepLink.Start.PREMIUM: {
                     startPrem();
+                    DeepLink.deleteAction(context);
+                    break;
+                }
+
+                case DeepLink.Start.ONBOARD_PLAN: {
+                    startOnboardPlanSuggestion(true, true);
                     DeepLink.deleteAction(context);
                     break;
                 }

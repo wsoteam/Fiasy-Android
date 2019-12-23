@@ -126,6 +126,8 @@ public class QuestionPurposeFragments extends Fragment {
     }
     TeachUtil.setOpen(getContext(),true);
     ((QuestionsActivity) getActivity()).saveProfile();
+
+    getView().findViewById(R.id.btnNext).setEnabled(false);
   }
 
   @OnClick({ R.id.cbNormal, R.id.cbLooseWeight, R.id.cbMuscle, R.id.cbSave })

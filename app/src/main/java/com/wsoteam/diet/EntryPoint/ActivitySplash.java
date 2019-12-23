@@ -27,6 +27,7 @@ import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.Purchase;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthActionCodeException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,7 +56,9 @@ import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.UserProperty;
 import com.wsoteam.diet.common.promo.POJO.UserPromo;
+import com.wsoteam.diet.presentation.auth.AuthFirstFragment;
 import com.wsoteam.diet.presentation.auth.AuthStrategy;
+import com.wsoteam.diet.presentation.auth.MainAuthNewActivity;
 import com.wsoteam.diet.presentation.global.BaseActivity;
 import com.wsoteam.diet.presentation.intro_tut.NewIntroActivity;
 import com.wsoteam.diet.presentation.profile.questions.QuestionsActivity;
@@ -84,6 +87,7 @@ public class ActivitySplash extends BaseActivity {
   private View retryFrame;
 
   private final CompositeDisposable disposables = new CompositeDisposable();
+  private boolean customSplashHandling;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,9 +96,45 @@ public class ActivitySplash extends BaseActivity {
     Intent intent = getIntent();
     String action = intent.getAction();
     Uri data = intent.getData();
-    if (Intent.ACTION_VIEW.equals(action) && data != null ){
-      DeepLink.prepareUri(this, data);
-      intent.setData(null);
+
+    if (data != null &&
+            "diet-for-test.firebaseapp.com".equals(data.getHost()) &&
+            "resetPassword".equals(data.getQueryParameter("mode"))) {
+
+      final String verificationCode = data.getQueryParameter("oobCode");
+      final Disposable d = RxFirebase.from(FirebaseAuth.getInstance()
+              .verifyPasswordResetCode(verificationCode))
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(email -> {
+                  startActivity(new Intent(this, MainAuthNewActivity.class)
+                          .putExtra("email", email)
+                          .putExtra("code", verificationCode)
+                          .putExtra("mode", "resetPassword")
+                  );
+
+                  finish();
+              }, error -> {
+                if (error instanceof FirebaseAuthActionCodeException) {
+                  error.printStackTrace();
+
+                  Toast.makeText(ActivitySplash.this,
+                      R.string.reset_password_verification_expired, LENGTH_SHORT).show();
+                }
+
+                if (checkUserNetworkAvailable()) {
+                  checkRegistrationAndRun();
+                }
+              });
+
+      disposables.add(d);
+
+      data = null;
+      customSplashHandling = true;
+    }
+
+    if (Intent.ACTION_VIEW.equals(action) && data != null){
+        DeepLink.prepareUri(this, data);
+        intent.setData(null);
     }
 
     if (getSharedPreferences(Config.IS_NEED_SHOW_LOADING_SPLASH, MODE_PRIVATE).getBoolean(
@@ -131,6 +171,10 @@ public class ActivitySplash extends BaseActivity {
     super.onStart();
 
     checkFirstLaunch();
+
+    if (customSplashHandling) {
+      return;
+    }
 
     if (checkUserNetworkAvailable()) {
       checkRegistrationAndRun();
@@ -247,8 +291,7 @@ public class ActivitySplash extends BaseActivity {
           Config.IS_NEED_SHOW_LOADING_SPLASH, false)) {
         new FalseWait().execute();
       } else {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        openMainScreen();
       }
     }
   }

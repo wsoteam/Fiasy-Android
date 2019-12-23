@@ -1099,4 +1099,8 @@
   <string name="settings_notifications_title">Уведомления</string>
   <string name="recoverPassword_title">Восстановить пароль</string>
   <string name="forgot_password_hint">Мы отправим вам письмо на почту</string>
+  <string name="reset_password_verification_expired">Reset password link expired</string>
+  <string name="onboard_plan_title">У нас есть для вас эффективный план питания</string>
+  <string name="onboard_plan_subtitle">Ваши физические показатели</string>
+  <string name="onboard_recommended_plan">Рекомендуемый план для вас:</string>
 </resources>
