@@ -114,9 +114,9 @@ public class ActivityCreateFood extends AppCompatActivity {
 
     }
     if (i == FRAGMENT_RESULT) {
-      btnForward.setText(getString(R.string.ok));
+      btnForward.setText(getResources().getString(R.string.cst_save));
     }
-    if (i == FRAGMENT_PORTIONS && btnForward.getText().toString().equals(getString(R.string.ok))) {
+    if (i == FRAGMENT_OUTLAY && btnForward.getText().toString().equals(getString(R.string.cst_save))) {
       btnForward.setText(getString(R.string.next2));
     }
     if (i == FRAGMENT_MAIN && btnBack.getVisibility() == View.VISIBLE) {
