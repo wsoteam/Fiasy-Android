@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.android.material.textfield.TextInputLayout;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.MeasurementUnit;
@@ -23,6 +24,8 @@ public class ActivityCreatePortion extends AppCompatActivity {
   @BindView(R.id.btnForward) Button btnForward;
   boolean isLiquid = false;
   boolean isBeReady = false;
+  @BindView(R.id.textInputLayout22) TextInputLayout tilName;
+  @BindView(R.id.textInputLayout23) TextInputLayout tilSize;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +47,9 @@ public class ActivityCreatePortion extends AppCompatActivity {
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         handlSavedOpportunity(count, edtSize);
+        if (count > 0) {
+          tilName.setErrorEnabled(false);
+        }
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -58,6 +64,9 @@ public class ActivityCreatePortion extends AppCompatActivity {
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         handlSavedOpportunity(count, edtName);
+        if (count > 0) {
+          tilSize.setErrorEnabled(false);
+        }
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -65,6 +74,7 @@ public class ActivityCreatePortion extends AppCompatActivity {
       }
     });
   }
+
 
   private void handlSavedOpportunity(int count, EditText editText) {
     if (count > 0 && isOtherReady(editText)) {
@@ -76,12 +86,10 @@ public class ActivityCreatePortion extends AppCompatActivity {
 
   private void makeButtonUnReady() {
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_gray));
-    btnForward.setEnabled(false);
   }
 
   private void makeButtonReady() {
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_orange));
-    btnForward.setEnabled(true);
   }
 
   private boolean isOtherReady(EditText editText) {
@@ -95,8 +103,42 @@ public class ActivityCreatePortion extends AppCompatActivity {
         onBackPressed();
         break;
       case R.id.btnForward:
-        saveAndClose();
+        if (checkErrors()) {
+          saveAndClose();
+        }
         break;
+    }
+  }
+
+  private boolean checkErrors() {
+    boolean isReady = true;
+    if (edtName.getText().toString().replaceAll("\\s+", " ").trim().equals("")) {
+      setError(tilName);
+      isReady = false;
+    } else {
+      hideError(tilName);
+    }
+
+    if (edtSize.getText().toString().replaceAll("\\s+", " ").trim().equals("")) {
+      setError(tilSize);
+      isReady = false;
+    } else {
+      hideError(tilSize);
+    }
+    return isReady;
+  }
+
+  private void hideError(TextInputLayout tilName) {
+    if (tilName.isErrorEnabled()) {
+      tilName.setErrorEnabled(false);
+    }
+  }
+
+  private void setError(TextInputLayout tilName) {
+    if (!tilName.isErrorEnabled()) {
+      tilName.setErrorEnabled(true);
+      tilName.setErrorTextColor(getResources().getColorStateList(R.color.cst_error));
+      tilName.setError(getResources().getString(R.string.cst_error_text));
     }
   }
 
