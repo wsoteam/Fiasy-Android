@@ -1078,6 +1078,8 @@
     <item>Сохранение мышц и сжигание жира</item>
   </string-array>
 
+  <string name="recoverPassword_title">Восстановить пароль</string>
+  <string name="recoverPassword_enter">Войти</string>
 
   <string-array name="prf_activity_level">
     <item>Минимальная нагрузка</item>

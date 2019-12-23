@@ -79,7 +79,7 @@ class ResetPasswordFragment : AuthStrategyFragment() {
   private val passwordMatchValidation = object : InputValidation {
     override fun validate(input: EditText): CharSequence? {
       if (!input.text.toString().equals(password1.editText?.text?.toString() ?: "")) {
-        return input.context.getString(R.string.auth_user_password_missmatch)
+        return input.context.getString(R.string.password_dont_match)
       } else {
         return null
       }
@@ -209,12 +209,15 @@ class ResetPasswordFragment : AuthStrategyFragment() {
                 if (BuildConfig.DEBUG) {
                   exception.printStackTrace()
                 }
+
                 showSuccessState(false)
 
                 if (exception is FirebaseAuthInvalidUserException) {
                   email.error = "Пользователь не зарегистрирован"
                 } else {
-                  validationLabel.text = "Не удалось отправить письмо"
+                  validationLabel.visibility = View.VISIBLE
+                  validationLabel.text = "Не удалось отправить письмо, " +
+                          "проверьте соединение с интернетом"
                 }
               }
           ))
