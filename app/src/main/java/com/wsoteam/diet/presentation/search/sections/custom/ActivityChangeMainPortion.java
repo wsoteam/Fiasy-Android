@@ -23,6 +23,7 @@ public class ActivityChangeMainPortion extends AppCompatActivity {
   @BindView(R.id.btnForward) Button btnForward;
   boolean isLiquid = false;
   @BindView(R.id.textInputLayout22) TextInputLayout textInputLayout22;
+  @BindView(R.id.textInputLayout23) TextInputLayout tilSize;
   private double mainPortion = 0;
 
   @Override
@@ -46,6 +47,9 @@ public class ActivityChangeMainPortion extends AppCompatActivity {
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         handlSavedOpportunity(count);
+        if (count > 0 && tilSize.isErrorEnabled()){
+          tilSize.setErrorEnabled(false);
+        }
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -64,12 +68,10 @@ public class ActivityChangeMainPortion extends AppCompatActivity {
 
   private void makeButtonUnReady() {
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_gray));
-    btnForward.setEnabled(false);
   }
 
   private void makeButtonReady() {
     btnForward.setBackground(getResources().getDrawable(R.drawable.shape_orange));
-    btnForward.setEnabled(true);
   }
 
   @OnClick({ R.id.ibClose, R.id.btnForward }) public void onViewClicked(View view) {
@@ -78,8 +80,21 @@ public class ActivityChangeMainPortion extends AppCompatActivity {
         onBackPressed();
         break;
       case R.id.btnForward:
-        saveAndClose();
+        if (checkError()) {
+          saveAndClose();
+        }
         break;
+    }
+  }
+
+  private boolean checkError() {
+    if (edtSize.getText().toString().replaceAll("\\s+", " ").trim().equals("")){
+      tilSize.setErrorEnabled(true);
+      tilSize.setErrorTextColor(getResources().getColorStateList(R.color.cst_error));
+      tilSize.setError(getResources().getString(R.string.cst_error_text));
+      return false;
+    }else {
+      return true;
     }
   }
 
