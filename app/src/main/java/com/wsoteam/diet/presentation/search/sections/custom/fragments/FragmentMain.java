@@ -111,10 +111,8 @@ public class FragmentMain extends Fragment implements SayForward {
         String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
         Button btnForward = getActivity().findViewById(R.id.btnForward);
         if (count > 0 && !name.equals("")) {
-          btnForward.setEnabled(true);
           btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_orange));
         }else {
-          btnForward.setEnabled(false);
           btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_gray));
         }
       }

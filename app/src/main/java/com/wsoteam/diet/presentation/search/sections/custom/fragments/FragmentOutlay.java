@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
   private final int FAT_SIZE = 9;
   private final int OTHER_SIZE = 4;
   private List<EditText> fields = new ArrayList<>();
+  private Button btnForward;
 
   Unbinder unbinder;
   private final double EMPTY_PARAM = -1.0;
@@ -92,6 +94,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
     unbinder = ButterKnife.bind(this, view);
+    btnForward = getActivity().findViewById(R.id.btnForward);
     fields.add(edtKcal);
     fields.add(edtFats);
     fields.add(edtCarbo);
@@ -108,9 +111,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
       }
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (checkReady()) {
-          showBottomAlert(isRightFormula());
-        }
+        handlEnter();
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -123,9 +124,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
       }
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (checkReady()) {
-          showBottomAlert(isRightFormula());
-        }
+        handlEnter();
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -138,9 +137,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
       }
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (checkReady()) {
-          showBottomAlert(isRightFormula());
-        }
+        handlEnter();
       }
 
       @Override public void afterTextChanged(Editable s) {
@@ -153,15 +150,30 @@ public class FragmentOutlay extends Fragment implements SayForward {
       }
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (checkReady()) {
-          showBottomAlert(isRightFormula());
-        }
+        handlEnter();
       }
 
       @Override public void afterTextChanged(Editable s) {
 
       }
     });
+  }
+
+  private void handlEnter() {
+    if (checkReady()) {
+      showBottomAlert(isRightFormula());
+      activateBottom();
+    }else {
+      deactivateBottom();
+    }
+  }
+
+  private void deactivateBottom() {
+    btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_gray));
+  }
+
+  private void activateBottom() {
+    btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_orange));
   }
 
   private void showBottomAlert(boolean rightFormula) {
@@ -175,8 +187,8 @@ public class FragmentOutlay extends Fragment implements SayForward {
   private boolean checkReady() {
     boolean isReady = true;
     for (EditText editText : fields) {
-      editText.getText().toString().replaceAll("\\s+", " ").trim();
-      if (editText.getText().toString().equals("")) {
+      String text = editText.getText().toString().replaceAll("\\s+", " ").trim();
+      if (text.equals("")) {
         isReady = false;
       }
     }
