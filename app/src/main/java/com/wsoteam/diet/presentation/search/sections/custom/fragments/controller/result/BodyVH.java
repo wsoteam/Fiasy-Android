@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.result;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -19,11 +20,11 @@ public class BodyVH extends RecyclerView.ViewHolder {
   }
 
   public void bind(String label, String data) {
-    edtText.setText(data);
-    if (label.equals("")) {
-      tilText.setHelperText("-");
+    if (label.equals("") || label == null) {
+      tilText.setHint("-");
     } else {
-      tilText.setHelperText(label);
+      tilText.setHint(label);
     }
+    edtText.setText(data);
   }
 }

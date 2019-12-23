@@ -33,8 +33,9 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   }
 
   private void setHeadersPositions() {
+    third_header_pos = DEFAULT_THIRD_HEADER_POS;
     if (result.getMeasurementUnits() != null) {
-      third_header_pos = result.getMeasurementUnits().size() + DEFAULT_THIRD_HEADER_POS;
+      third_header_pos += result.getMeasurementUnits().size();
     }
   }
 
@@ -102,6 +103,6 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   }
 
   @Override public int getItemCount() {
-    return data.size() - 1;
+    return data.size();
   }
 }
