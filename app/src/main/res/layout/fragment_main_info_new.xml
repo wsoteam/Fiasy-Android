@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
+                android:textColorHint="#59000000"
                 android:hint="@string/brand_manufacturer"
                 android:maxLength="200"
                 android:textColor="#c0000000" />

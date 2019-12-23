@@ -20,8 +20,14 @@
         android:enabled="false"
         android:focusable="false"
         android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/black"
+        android:textColor="#c0000000"
         />
   </com.google.android.material.textfield.TextInputLayout>
+
+  <androidx.legacy.widget.Space
+      android:id="@+id/space"
+      android:visibility="gone"
+      android:layout_width="match_parent"
+      android:layout_height="246dp"/>
 
 </FrameLayout>

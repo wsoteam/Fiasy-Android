@@ -65,7 +65,9 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     data.add(String.valueOf((int) result.getProteins()));
     data.add(String.valueOf((int) result.getCarbohydrates()));
 
-    labels.add(third_header_pos, App.getContext().getResources().getString(R.string.cst_food_price, (int) result.getPortion()));
+    labels.add(third_header_pos, App.getContext()
+        .getResources()
+        .getString(R.string.cst_food_price, (int) result.getPortion()));
   }
 
   @NonNull @Override
@@ -87,7 +89,8 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ((HeaderVH) holder).bind(labels.get(position));
         break;
       case TYPE_BODY:
-        ((BodyVH) holder).bind(labels.get(position), data.get(position));
+        ((BodyVH) holder).bind(labels.get(position), data.get(position),
+            position == data.size() - 1);
         break;
     }
   }

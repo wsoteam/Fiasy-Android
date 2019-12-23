@@ -42,6 +42,7 @@ public class FragmentOutlay extends Fragment implements SayForward {
   @BindView(R.id.textInputLayout24) TextInputLayout tilProt;
 
   private Button btnForward;
+  private Result result;
   private List<EditText> fields = new ArrayList<>();
   private List<TextInputLayout> boxes = new ArrayList<>();
   private Unbinder unbinder;

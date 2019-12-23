@@ -58,10 +58,10 @@
 
     <Button
         android:id="@+id/btnForward"
-        android:layout_width="130dp"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/shape_gray"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/next2"
@@ -69,7 +69,8 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 
     <com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomViewPager
