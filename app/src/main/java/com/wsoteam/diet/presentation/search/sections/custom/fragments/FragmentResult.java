@@ -13,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.coremedia.isocopy.boxes.fragment.TrackRunBox;
+import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
 import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
@@ -21,16 +22,45 @@ import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller
 
 public class FragmentResult extends Fragment implements SayForward {
 
-  Unbinder unbinder;
-  private final String EMPTY_FIELD = "-";
-  private final double EMPTY_PARAM = -1;
   @BindView(R.id.rvResult) RecyclerView rvResult;
+
   private ResultAdapter adapter;
   private Result result;
+  private Unbinder unbinder;
 
   @Override
   public boolean forward() {
+    finCalculate(result);
     return true;
+  }
+
+  private void finCalculate(Result result) {
+    result.setCalories(result.getCalories() / result.getPortion());
+    result.setFats(result.getFats() / result.getPortion());
+    result.setCarbohydrates(result.getCarbohydrates() / result.getPortion());
+    result.setProteins(result.getProteins() / result.getPortion());
+
+    if (result.getSaturatedFats() != Config.EMPTY_COUNT){
+      result.setSaturatedFats(result.getSaturatedFats() / result.getPortion());
+    }
+    if (result.getMonounsaturatedFats() != Config.EMPTY_COUNT){
+      result.setMonounsaturatedFats(result.getMonounsaturatedFats() / result.getPortion());
+    }
+    if (result.getPolyunsaturatedFats() != Config.EMPTY_COUNT){
+      result.setPolyunsaturatedFats(result.getPolyunsaturatedFats() / result.getPortion());
+    }
+    if (result.getCholesterol() != Config.EMPTY_COUNT){
+      result.setCholesterol(result.getCholesterol() / result.getPortion());
+    }
+    if (result.getCellulose() != Config.EMPTY_COUNT){
+      result.setCellulose(result.getCellulose() / result.getPortion());
+    }
+    if (result.getSodium() != Config.EMPTY_COUNT){
+      result.setSodium(result.getSodium() / result.getPortion());
+    }
+    if (result.getPottasium() != Config.EMPTY_COUNT){
+      result.setPottasium(result.getPottasium() / result.getPortion());
+    }
   }
 
   @Override

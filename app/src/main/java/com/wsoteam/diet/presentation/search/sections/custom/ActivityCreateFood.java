@@ -207,6 +207,7 @@ public class ActivityCreateFood extends AppCompatActivity {
   private void saveFood() {
     Events.logCreateCustomFood(getIntent().getStringExtra(EventProperties.product_from),
         customFood.getName());
+
   }
 
   private void askExit() {
