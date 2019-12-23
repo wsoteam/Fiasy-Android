@@ -1172,6 +1172,7 @@ Share your accomplishments with friends:</string>
   <string name="cst_check">Проверка информации</string>
   <string name="cst_alert_bottom">Выбранный размер порции не соответствует количеству введенных калорий</string>
   <string name="cst_save">сохранить</string>
+  <string name="cst_error_text">Введите информацию</string>
 
   <string-array name="cst_result_labels">
     <item>Информация о продукте</item>

@@ -180,4 +180,5 @@
 
   <color name="cst_inactive_rb">#8a000000</color>
   <color name="cst_active_rb">#ef7d02</color>
+  <color name="cst_error">#8acc0808</color>
 </resources>

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.google.android.material.textfield.TextInputLayout;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
@@ -26,21 +27,25 @@ import java.util.List;
 
 public class FragmentOutlay extends Fragment implements SayForward {
 
+  private final static String TAG = "FragmentOutlay";
+  private final int FAT_SIZE = 9;
+  private final int OTHER_SIZE = 4;
+
   @BindView(R.id.edtKcal) EditText edtKcal;
   @BindView(R.id.edtFats) EditText edtFats;
   @BindView(R.id.edtCarbo) EditText edtCarbo;
   @BindView(R.id.edtProt) EditText edtProt;
   @BindView(R.id.tvAlert) TextView tvAlert;
-  private Result result;
-  private final int FAT_SIZE = 9;
-  private final int OTHER_SIZE = 4;
-  private List<EditText> fields = new ArrayList<>();
+  @BindView(R.id.textInputLayout22) TextInputLayout tilKcal;
+  @BindView(R.id.textInputLayout1) TextInputLayout tilFat;
+  @BindView(R.id.textInputLayout23) TextInputLayout tilCarbo;
+  @BindView(R.id.textInputLayout24) TextInputLayout tilProt;
+
   private Button btnForward;
+  private List<EditText> fields = new ArrayList<>();
+  private List<TextInputLayout> boxes = new ArrayList<>();
+  private Unbinder unbinder;
 
-  Unbinder unbinder;
-  private final double EMPTY_PARAM = -1.0;
-
-  private final static String TAG = "FragmentOutlay";
 
   public static FragmentOutlay newInstance(CustomFood customFood) {
     Bundle bundle = new Bundle();
@@ -52,17 +57,16 @@ public class FragmentOutlay extends Fragment implements SayForward {
 
   @Override
   public boolean forward() {
-    if (isCanForward()) {
+    if (checkReady(true)) {
       setInfo();
       return true;
     } else {
-      Toast.makeText(getActivity(), getString(R.string.error_toast), Toast.LENGTH_SHORT).show();
       return false;
     }
   }
 
   @Override public boolean checkForwardPossibility() {
-    return checkReady();
+    return checkReady(false);
   }
 
   private void setInfo() {
@@ -73,21 +77,6 @@ public class FragmentOutlay extends Fragment implements SayForward {
     customFood.setCarbohydrates(Double.parseDouble(edtCarbo.getText().toString()));
   }
 
-  private boolean isCanForward() {
-    if (!edtKcal.getText().toString().equals("")
-        && !edtFats.getText().toString().equals("")
-        && !edtCarbo.getText().toString().equals("")
-        && !edtProt.getText().toString().equals("")
-        && !edtKcal.getText().toString().equals(".")
-        && !edtFats.getText().toString().equals(".")
-        && !edtCarbo.getText().toString().equals(".")
-        && !edtProt.getText().toString().equals(".")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -95,13 +84,22 @@ public class FragmentOutlay extends Fragment implements SayForward {
     View view = inflater.inflate(R.layout.fragment_outlay_new, container, false);
     unbinder = ButterKnife.bind(this, view);
     btnForward = getActivity().findViewById(R.id.btnForward);
+    fillArrays();
+    result = ((ActivityCreateFood) getActivity()).customFood;
+    setListeners();
+    return view;
+  }
+
+  private void fillArrays() {
     fields.add(edtKcal);
     fields.add(edtFats);
     fields.add(edtCarbo);
     fields.add(edtProt);
-    result = ((ActivityCreateFood) getActivity()).customFood;
-    setListeners();
-    return view;
+
+    boxes.add(tilKcal);
+    boxes.add(tilFat);
+    boxes.add(tilCarbo);
+    boxes.add(tilProt);
   }
 
   private void setListeners() {
@@ -160,10 +158,10 @@ public class FragmentOutlay extends Fragment implements SayForward {
   }
 
   private void handlEnter() {
-    if (checkReady()) {
+    if (checkReady(false)) {
       showBottomAlert(isRightFormula());
       activateBottom();
-    }else {
+    } else {
       deactivateBottom();
     }
   }
@@ -184,15 +182,34 @@ public class FragmentOutlay extends Fragment implements SayForward {
     }
   }
 
-  private boolean checkReady() {
+  private boolean checkReady(boolean isNeedShowErros) {
     boolean isReady = true;
-    for (EditText editText : fields) {
-      String text = editText.getText().toString().replaceAll("\\s+", " ").trim();
+    for (int i = 0; i < fields.size(); i++) {
+      String text = fields.get(i).getText().toString().replaceAll("\\s+", " ").trim();
       if (text.equals("")) {
         isReady = false;
+        if (isNeedShowErros) {
+          showError(boxes.get(i));
+        }
+      } else {
+        hideError(boxes.get(i));
       }
     }
     return isReady;
+  }
+
+  private void hideError(TextInputLayout til) {
+    if (til.isErrorEnabled()) {
+      til.setErrorEnabled(false);
+    }
+  }
+
+  private void showError(TextInputLayout til) {
+    if (!til.isErrorEnabled()) {
+      til.setErrorEnabled(true);
+      til.setErrorTextColor(getActivity().getResources().getColorStateList(R.color.cst_error));
+      til.setError(getActivity().getResources().getString(R.string.cst_error_text));
+    }
   }
 
   private boolean isRightFormula() {

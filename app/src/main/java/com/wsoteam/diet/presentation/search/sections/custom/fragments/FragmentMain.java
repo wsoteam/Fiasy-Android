@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.wsoteam.diet.BarcodeScanner.BaseScanner;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
-import com.wsoteam.diet.Config;
-import com.wsoteam.diet.R;
-import com.wsoteam.diet.common.networking.food.POJO.Brand;
-import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
-import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -35,17 +23,29 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import com.google.android.material.textfield.TextInputLayout;
+import com.wsoteam.diet.BarcodeScanner.BaseScanner;
+import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
+import com.wsoteam.diet.Config;
+import com.wsoteam.diet.R;
+import com.wsoteam.diet.common.networking.food.POJO.Brand;
+import com.wsoteam.diet.common.networking.food.POJO.Result;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
 
 public class FragmentMain extends Fragment implements SayForward {
+
+  private final static String TAG = "FragmentMainInfo";
 
   @BindView(R.id.edtBrand) EditText edtBrand;
   @BindView(R.id.edtName) EditText edtName;
   @BindView(R.id.edtBarcode) EditText edtBarcode;
-  Unbinder unbinder;
-  private final static String TAG = "FragmentMainInfo";
   @BindView(R.id.rgrpType) RadioGroup rgrpType;
   @BindView(R.id.rbtnFood) RadioButton rbtnFood;
   @BindView(R.id.rbtnLiquid) RadioButton rbtnLiquid;
+  @BindView(R.id.textInputLayout23) TextInputLayout tilName;
+
+  private Unbinder unbinder;
 
   public static FragmentMain newInstance(Result customFood) {
     Bundle bundle = new Bundle();
@@ -57,22 +57,35 @@ public class FragmentMain extends Fragment implements SayForward {
 
   @Override public boolean checkForwardPossibility() {
     String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
-    if (name.equals("")){
+    if (name.equals("")) {
       return false;
-    }else {
+    } else {
       return true;
+    }
+  }
+
+  private void hideErrorMessage() {
+    if (tilName.isErrorEnabled()) {
+      tilName.setErrorEnabled(false);
+    }
+  }
+
+  private void sayWhereError() {
+    if (!tilName.isErrorEnabled()) {
+      tilName.setErrorEnabled(true);
+      tilName.setErrorTextColor(getActivity().getResources().getColorStateList(R.color.cst_error));
+      tilName.setError(getActivity().getResources().getString(R.string.cst_error_text));
     }
   }
 
   @Override
   public boolean forward() {
-    if (!edtName.getText().toString().equals("")
-        && !edtName.getText().toString().equals(" ")
-        && !edtName.getText().toString().replaceAll("\\s+", " ").equals(" ")) {
+    String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
+    if (!name.equals("")) {
       setInfo();
       return true;
     } else {
-      Toast.makeText(getActivity(), getString(R.string.error_name), Toast.LENGTH_SHORT).show();
+      sayWhereError();
       return false;
     }
   }
@@ -111,8 +124,10 @@ public class FragmentMain extends Fragment implements SayForward {
         String name = edtName.getText().toString().replaceAll("\\s+", " ").trim();
         Button btnForward = getActivity().findViewById(R.id.btnForward);
         if (count > 0 && !name.equals("")) {
-          btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_orange));
-        }else {
+          hideErrorMessage();
+          btnForward.setBackground(
+              getActivity().getResources().getDrawable(R.drawable.shape_orange));
+        } else {
           btnForward.setBackground(getActivity().getResources().getDrawable(R.drawable.shape_gray));
         }
       }
@@ -121,12 +136,6 @@ public class FragmentMain extends Fragment implements SayForward {
 
       }
     });
-  }
-
-  private void bindFields(CustomFood customFood) {
-    edtName.setText(customFood.getName());
-    edtBrand.setText(customFood.getBrand());
-    edtBarcode.setText(customFood.getBarcode());
   }
 
   @OnClick({ R.id.rbtnFood, R.id.rbtnLiquid })
