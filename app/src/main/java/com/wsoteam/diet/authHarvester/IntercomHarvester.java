@@ -19,6 +19,7 @@ import com.wsoteam.diet.authHarvester.POJO.AllUsers;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -80,6 +81,33 @@ public class IntercomHarvester {
         }
 
 
+    }
+
+    private static void saveString(String jsonString, Context context) {
+        try {
+            OutputStreamWriter
+                    outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(jsonString);
+            outputStreamWriter.close();
+            Log.e("LOL", "saved");
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    private static void checkEmptyModels(AllUsers allUsers) {
+        int counter = 0;
+        Log.e("LOL", "SIZE -- " + String.valueOf(allUsers.getUsers().size()));
+        for (int i = 0; i < allUsers.getUsers().size(); i++) {
+            if (allUsers.getUsers().get(i).getEmail() != null) {
+                counter++;
+            } else if (!allUsers.getUsers().get(i).getProviderUserInfo().equals("[]")
+                    && allUsers.getUsers().get(i).getProviderUserInfo().size() > 0
+                    && allUsers.getUsers().get(i).getProviderUserInfo().get(0).getEmail() != null) {
+                counter++;
+            }
+        }
+        Log.e("LOL", "NOT EMPTY -- " + String.valueOf(counter));
     }
 
 
