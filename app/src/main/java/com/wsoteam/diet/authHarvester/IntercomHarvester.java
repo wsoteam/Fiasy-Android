@@ -1,37 +1,26 @@
 package com.wsoteam.diet.authHarvester;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import com.wsoteam.diet.App;
-import com.wsoteam.diet.BranchOfAnalyzer.POJOFoodSQL.FoodDAO;
-import com.wsoteam.diet.Sync.UserDataHolder;
 import com.wsoteam.diet.authHarvester.POJO.AllUsers;
-
 import com.wsoteam.diet.authHarvester.POJO.User;
 import com.wsoteam.diet.authHarvester.POJO.intercom.InterUser;
-import com.wsoteam.diet.common.backward.OldFavoriteConverter;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import io.intercom.android.sdk.Intercom;
-import io.intercom.android.sdk.UserAttributes;
-import io.intercom.android.sdk.identity.Registration;
-
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+
 
 public class IntercomHarvester {
 
@@ -251,13 +240,13 @@ public class IntercomHarvester {
     }
 
     private static void addUser(String email, String uid) {
-        Intercom.client().logout();
+        /*Intercom.client().logout();
         Registration registration = Registration.create().withUserId(uid);
         Intercom.client().registerIdentifiedUser(registration);
         UserAttributes userAttributes = new UserAttributes.Builder()
                 .withEmail(email)
                 .build();
-        Intercom.client().updateUser(userAttributes);
+        Intercom.client().updateUser(userAttributes);*/
     }
 
     private static AllUsers getAllUsers(Context context) {
