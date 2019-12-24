@@ -47,6 +47,7 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.Recipes.POJO.GroupsHolder;
 import com.wsoteam.diet.Recipes.v2.GroupsFragment;
 import com.wsoteam.diet.articles.ArticleSeriesActivity;
+import com.wsoteam.diet.authHarvester.IntercomHarvester;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.Analytics.SavedConst;
@@ -259,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
+        IntercomHarvester.start(this);
         bnvMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         bnvMain.setOnNavigationItemReselectedListener(menuItem ->{
             if (menuItem.getItemId() != R.id.bnv_main_diary) {
