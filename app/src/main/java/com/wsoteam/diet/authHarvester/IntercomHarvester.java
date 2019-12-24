@@ -63,7 +63,7 @@ public class IntercomHarvester {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     try {
                         SubInfo subInfo = dataSnapshot.getValue(SubInfo.class);
-                        if (subInfo.getProductId() != null){
+                        if (subInfo.getProductId() != null && !subInfo.getProductId().equals("empty") && !subInfo.getOrderId().equals("empty")){
                             users.getUsers().get(finalI).setTrial(true);
                             Log.e("LOL", "KEK");
                         }
