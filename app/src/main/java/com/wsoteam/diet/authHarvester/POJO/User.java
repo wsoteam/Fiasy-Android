@@ -26,6 +26,7 @@ public class User {
     private String displayName;
     @Json(name = "photoUrl")
     private String photoUrl;
+    private boolean isTrial;
 
     /**
      * No args constructor for use in serialization
@@ -34,21 +35,7 @@ public class User {
     public User() {
     }
 
-    /**
-     * 
-     * @param lastSignedInAt
-     * @param email
-     * @param createdAt
-     * @param localId
-     * @param photoUrl
-     * @param displayName
-     * @param providerUserInfo
-     * @param passwordHash
-     * @param emailVerified
-     * @param salt
-     */
-    public User(String localId, String email, Boolean emailVerified, String passwordHash, String salt, String lastSignedInAt, String createdAt, List<ProviderUserInfo> providerUserInfo, String displayName, String photoUrl) {
-        super();
+    public User(String localId, String email, Boolean emailVerified, String passwordHash, String salt, String lastSignedInAt, String createdAt, List<ProviderUserInfo> providerUserInfo, String displayName, String photoUrl, boolean isTrial) {
         this.localId = localId;
         this.email = email;
         this.emailVerified = emailVerified;
@@ -59,7 +46,10 @@ public class User {
         this.providerUserInfo = providerUserInfo;
         this.displayName = displayName;
         this.photoUrl = photoUrl;
+        this.isTrial = isTrial;
     }
+
+
 
     public String getLocalId() {
         return localId;
@@ -141,4 +131,11 @@ public class User {
         this.photoUrl = photoUrl;
     }
 
+    public boolean isTrial() {
+        return isTrial;
+    }
+
+    public void setTrial(boolean trial) {
+        isTrial = trial;
+    }
 }

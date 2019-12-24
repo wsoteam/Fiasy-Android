@@ -393,7 +393,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.ibSheetClose, R.id.btnReg})
+    @OnClick({R.id.ibSheetClose, R.id.btnReg, R.id.button3})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ibSheetClose:
@@ -403,6 +403,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ActivitySplash.class)
                         .putExtra(Config.IS_NEED_REG, true)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                break;
+            case R.id.button3:
+                IntercomHarvester.write(this);
                 break;
         }
     }
