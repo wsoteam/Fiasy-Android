@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom;
+package com.wsoteam.diet.presentation.search.sections.custom.add;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -23,10 +23,10 @@ import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentMain;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentOutlay;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentPortions;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.FragmentResult;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.FragmentMain;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.FragmentOutlay;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.FragmentPortions;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.FragmentResult;
 import java.util.ArrayList;
 import java.util.List;
 

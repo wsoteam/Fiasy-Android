@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom.fragments;
+package com.wsoteam.diet.presentation.search.sections.custom.add.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +11,12 @@ import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.MeasurementUnit;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityChangeMainPortion;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreatePortion;
-import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.portions.IPortionsAdapter;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.portions.PortionsAdapter;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityChangeMainPortion;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityCreatePortion;
+import com.wsoteam.diet.presentation.search.sections.custom.add.SayForward;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.controller.portions.IPortionsAdapter;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.controller.portions.PortionsAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

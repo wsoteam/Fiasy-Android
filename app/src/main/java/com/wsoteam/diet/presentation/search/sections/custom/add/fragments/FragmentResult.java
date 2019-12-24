@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom.fragments;
+package com.wsoteam.diet.presentation.search.sections.custom.add.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,13 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.coremedia.isocopy.boxes.fragment.TrackRunBox;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
-import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
-import com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.result.ResultAdapter;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.add.SayForward;
+import com.wsoteam.diet.presentation.search.sections.custom.add.fragments.controller.result.ResultAdapter;
 
 public class FragmentResult extends Fragment implements SayForward {
 

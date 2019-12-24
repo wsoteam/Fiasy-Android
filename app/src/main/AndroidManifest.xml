@@ -79,18 +79,24 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".presentation.search.sections.custom.ActivityCreateFood"
+            android:name=".presentation.search.sections.custom.add.ActivityCreateFood"
             android:screenOrientation="portrait"
             android:theme="@style/CreateFood"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".presentation.search.sections.custom.ActivityCreatePortion"
+            android:name=".presentation.search.sections.custom.add.ActivityCreatePortion"
             android:screenOrientation="portrait"
             android:theme="@style/CreateFood"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".presentation.search.sections.custom.ActivityChangeMainPortion"
+            android:name=".presentation.search.sections.custom.add.ActivityChangeMainPortion"
+            android:screenOrientation="portrait"
+            android:theme="@style/CreateFood"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".presentation.search.sections.custom.ActivityCustomSearch"
             android:screenOrientation="portrait"
             android:theme="@style/CreateFood"
             android:windowSoftInputMode="adjustPan" />

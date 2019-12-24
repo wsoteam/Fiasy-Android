@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wsoteam.diet.R;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.ActivityCustomSearch;
 
 public class SectionAdapter extends RecyclerView.Adapter<SectionViewHolder> {
     private Context context;
@@ -47,7 +47,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionViewHolder> {
 
     private void openScreen(int position) {
         if (position == FOOD) {
-            context.startActivity(new Intent(context, ActivityCreateFood.class));
+            context.startActivity(new Intent(context, ActivityCustomSearch.class));
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.srch_empty_section), Toast.LENGTH_SHORT).show();
         }

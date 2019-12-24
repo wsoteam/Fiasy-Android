@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom.fragments;
+package com.wsoteam.diet.presentation.search.sections.custom.add.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
-import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.add.SayForward;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom;
+package com.wsoteam.diet.presentation.search.sections.custom.add;
 
 import android.content.Intent;
 import android.os.Bundle;

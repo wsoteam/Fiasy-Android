@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom.fragments;
+package com.wsoteam.diet.presentation.search.sections.custom.add.fragments;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -25,13 +24,12 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.google.android.material.textfield.TextInputLayout;
 import com.wsoteam.diet.BarcodeScanner.BaseScanner;
-import com.wsoteam.diet.BranchOfAnalyzer.CustomFood.CustomFood;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.common.networking.food.POJO.Brand;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
-import com.wsoteam.diet.presentation.search.sections.custom.ActivityCreateFood;
-import com.wsoteam.diet.presentation.search.sections.custom.SayForward;
+import com.wsoteam.diet.presentation.search.sections.custom.add.ActivityCreateFood;
+import com.wsoteam.diet.presentation.search.sections.custom.add.SayForward;
 
 public class FragmentMain extends Fragment implements SayForward {
 

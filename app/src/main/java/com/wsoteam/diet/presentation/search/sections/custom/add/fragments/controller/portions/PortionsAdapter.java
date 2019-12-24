@@ -1,4 +1,4 @@
-package com.wsoteam.diet.presentation.search.sections.custom.fragments.controller.portions;
+package com.wsoteam.diet.presentation.search.sections.custom.add.fragments.controller.portions;
 
 import android.content.Context;
 import android.view.LayoutInflater;
