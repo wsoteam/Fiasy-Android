@@ -180,4 +180,6 @@
 
   <color name="teach_background">#88313130</color>
   <color name="teach_btn_cancel">#51ffffff</color>
+
+  <color name="black_for_txt">#C0000000</color>
 </resources>

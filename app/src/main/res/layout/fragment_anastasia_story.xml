@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.wsoteam.diet.presentation.premium.AnastasiaStoryFragment">
 
@@ -20,7 +20,7 @@
             android:background="@android:color/white"
             android:minHeight="?attr/actionBarSize"
             app:title="@string/anastasia_story_title"
-            app:titleTextColor="@color/black" />
+            app:titleTextColor="@color/black_for_txt" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -32,13 +32,254 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/imageView92"
+                    android:layout_width="294dp"
+                    android:layout_height="283dp"
+                    android:src="@drawable/anastasia_before_after"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="62 кг"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView92"
+                    app:layout_constraintStart_toStartOf="@+id/imageView92" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="До"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView42"
+                    app:layout_constraintEnd_toEndOf="@+id/textView42"
+                    app:layout_constraintStart_toStartOf="@+id/textView42" />
+
+                <TextView
+                    android:id="@+id/textView67"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="35dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="52 кг"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView92"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView92" />
+
+                <TextView
+                    android:id="@+id/textView68"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="После"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView67"
+                    app:layout_constraintEnd_toEndOf="@+id/textView67"
+                    app:layout_constraintStart_toStartOf="@+id/textView67" />
+
+                <TextView
+                    android:id="@+id/textView69"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Анастасия, 35 лет"
+                    android:textColor="@color/black_for_txt"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView92" />
+
+                <TextView
+                    android:id="@+id/textView70"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Цель: "
+                    android:textColor="@color/black_for_txt"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView71"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView69" />
+
+                <TextView
+                    android:id="@+id/textView71"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="похудеть"
+                    android:textColor="@color/black_for_txt"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView70"
+                    app:layout_constraintTop_toBottomOf="@+id/textView69" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_1_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_1_txt"
+                android:textColor="@color/black_for_txt" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_2_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_2_txt"
+                android:textColor="@color/black_for_txt" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_3_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_3_txt"
+                android:textColor="@color/black_for_txt" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_5_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_5_txt"
+                android:textColor="@color/black_for_txt" />
 
             <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="900dp"
-                android:text="Button" />
+                android:id="@+id/next"
+                android:layout_width="134dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/shape_btn_article"
+                android:text="Дальше"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:lineSpacingExtra="7sp"
+                android:textColor="@android:color/white" />
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -28,8 +28,14 @@ class AnastasiaStoryFragment : Fragment(R.layout.fragment_anastasia_story) {
         toolbar2.setNavigationIcon(R.drawable.arrow_back_gray)
         toolbar2.setNavigationOnClickListener { activity?.onBackPressed() }
 
+        appbar.setLiftable(true)
         scroll.setOnScrollChangeListener {
             v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
             appbar.setLiftable(scrollY == 0) }
+
+        next.setOnClickListener {
+            activity?.onBackPressed()
+
+        }
     }
 }
