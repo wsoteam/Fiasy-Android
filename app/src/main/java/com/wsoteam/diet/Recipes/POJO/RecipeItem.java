@@ -87,6 +87,12 @@ public class RecipeItem implements Serializable {
     public RecipeItem() {
     }
 
+    public RecipeItem(String url, String name, int calories){
+      this.url = url;
+      this.name = name;
+      this.calories = calories;
+    }
+
 
   public RecipeItem(String url, String name, int time, int calories, String description,
       double percentCarbohydrates, double percentProteins,

@@ -80,6 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="35dp"
+                    android:layout_marginBottom="5dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="52 кг"
                     android:textColor="@android:color/white"
@@ -203,6 +204,8 @@
                 android:textColor="@color/black_for_txt" />
 
 
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -233,6 +236,55 @@
                 android:text="@string/anastasia_story_block_3_txt"
                 android:textColor="@color/black_for_txt" />
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_4_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_4_txt"
+                android:textColor="@color/black_for_txt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_like_recipes"
+                android:textAlignment="center"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:layout_marginBottom="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/anastasia.recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"/>
 
 
             <TextView
@@ -265,6 +317,37 @@
                 android:text="@string/anastasia_story_block_5_txt"
                 android:textColor="@color/black_for_txt" />
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4.5sp"
+                android:text="@string/anastasia_story_block_6_title"
+                android:textColor="@color/black_for_txt"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/shape_orange"
+                android:translationX="-10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/anastasia_story_block_6_txt"
+                android:textColor="@color/black_for_txt" />
             <Button
                 android:id="@+id/next"
                 android:layout_width="134dp"
