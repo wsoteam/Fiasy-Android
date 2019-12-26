@@ -60,7 +60,7 @@ public class FragmentE extends Fragment
     private String currentSKU = "trial_long_result_3d_3m_v2", currentPrice = "99р";
     private SharedPreferences sharedPreferences;
     Unbinder unbinder;
-    private static final String TAG_BOX = "TAG_BOX";
+    public static final String TAG_BOX = "TAG_BOX";
     private Box box;
     public static final String BUY_NOW = "BUY_NOW";
 

@@ -5,24 +5,24 @@
     <SwitchPreference
         android:defaultValue="true"
         android:key="water_pushes_enabled"
-        android:title="Напоминания выпить воду"
+        android:title="Выпить воду"
         app:iconSpaceReserved="false"
-        android:summary="Напоминания о питье воды приходят ежедневно"
+        android:summary="Напоминания о воде приходят утром каждый день"
         />
 
     <SwitchPreference
         android:defaultValue="true"
         android:key="nutrition_pushes_enabled"
-        android:title="Напоминания поесть"
+        android:title="Занести еду"
         app:iconSpaceReserved="false"
-        android:summary="Напоминания поесть приходят 3 раза в день"
+        android:summary="Напоминания о занесении еды приходят вечером каждый день"
         />
 
     <SwitchPreference
         android:defaultValue="true"
         android:key="weight_pushes_enabled"
         app:iconSpaceReserved="false"
-        android:title="Напоминания занести обновления по весу"
+        android:title="Занести обновления по весу"
         />
 
 </PreferenceScreen>

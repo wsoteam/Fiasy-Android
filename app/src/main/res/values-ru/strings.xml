@@ -1098,8 +1098,7 @@
   <string name="abt_5_arrow">Измерения тела</string>
   <string name="abt_bottom_prem">Попробуйте 3 дня бесплатно \nДалее %s в год</string>
   <string name="abt_bottom_prem_week">Попробуйте 3 дня бесплатно \nДалее %s в неделю</string>
-  <string name="settings_notifications_title">Уведомления</string>
-  <string name="recoverPassword_title">Восстановить пароль</string>
+  <string name="settings_notifications_title">Напоминания</string>
   <string name="forgot_password_hint">Мы отправим вам письмо на почту</string>
   <string name="reset_password_verification_expired">Reset password link expired</string>
   <string name="onboard_plan_title">У нас есть для вас эффективный план питания</string>

@@ -27,9 +27,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.teach.TeachActivity"
+        <activity
+            android:name=".presentation.teach.TeachActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TeachDialog.TransparentActivity"/>
+            android:theme="@style/TeachDialog.TransparentActivity" />
         <activity
             android:name=".articles.ArticleSeriesActivity"
             android:screenOrientation="portrait"
@@ -218,9 +219,8 @@
 
             <intent-filter>
                 <data
-                    android:scheme="https"
                     android:host="fiasy.page.link"
-                    />
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -330,14 +330,15 @@
         <activity
             android:name=".presentation.premium.PremiumFeaturesActivity"
             android:exported="true" />
-        <activity android:name=".presentation.profile.NotificationsSettingsActivity" />
-      <activity
-          android:name=".presentation.onboard.OnboardPlanActivity"
-          android:theme="@style/ActivityAuthMain"
-          />
+        <activity
+            android:name=".presentation.profile.NotificationsSettingsActivity"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".presentation.onboard.OnboardPlanActivity"
+            android:theme="@style/ActivityAuthMain" />
         <activity
             android:name=".presentation.onboard.OnBoardFeedbackActivity"
-            android:theme="@style/ActivityAuthMain"/>
+            android:theme="@style/ActivityAuthMain" />
 
     </application>
 

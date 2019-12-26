@@ -130,6 +130,7 @@ public class EventProperties {
     //Purchase
     public static final String trial_from = "trial_from";
     public static final String trial_from_onboard = "onboarding";
+    public static final String trial_from_second_offer = "second_offer";
     public static final String trial_from_recipe = "recipe";
     public static final String trial_from_articles = "articles";
     public static final String trial_from_settings = "settings";

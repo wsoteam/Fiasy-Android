@@ -7,18 +7,22 @@ import com.onesignal.OneSignal
 import com.wsoteam.diet.R
 import com.wsoteam.diet.utils.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 
 class NotificationsSettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_notifications_settings)
         setTitle(R.string.settings_notifications_title)
 
-        attachOnce(NotificationsSettingsFragment(), "notifications_settings")
+        findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
+
+        attachOnce(NotificationsSettingsFragment(), "notifications_settings", R.id.container)
     }
 
     class NotificationsSettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {

@@ -325,8 +325,6 @@ public class MainActivity extends AppCompatActivity {
             fabBackground.setVisibility(View.GONE);
             fab.hide();
         }
-
-        startOnboardPlanSuggestion(getIntent().getBooleanExtra("feedback", false), false);
     }
 
     private void checkDeepLink(Context context) {

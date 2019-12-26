@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.wsoteam.diet.R
+import com.wsoteam.diet.common.Analytics.Events
 import com.wsoteam.diet.utils.ApiRequest.Feedback
 import com.wsoteam.diet.utils.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -40,6 +41,8 @@ class OnBoardFeedbackActivity : AppCompatActivity(), OnCheckedChangeListener {
         } else {
           selected?.text?.toString()
         }
+
+        Events.trackOnboardFeedback()
 
         disposables.add(NetworkService.getInstance().api.sendFeedback(Feedback(text))
           .subscribeOn(Schedulers.io())
