@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_achievement_dialog.*
 class AchievementDialogFragment : DialogFragment() {
 
     private var _style = STYLE_NO_TITLE
-    private var _theme = R.style.TeachDialog_NoStatusBar
+    private var _theme = R.style.FullScreenDialog_NoStatusBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

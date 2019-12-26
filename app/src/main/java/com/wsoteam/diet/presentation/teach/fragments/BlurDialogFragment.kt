@@ -12,7 +12,7 @@ import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment
 class BlurDialogFragment : SupportBlurDialogFragment() {
 
     private var _style = STYLE_NO_TITLE
-    private var _theme = R.style.TeachDialog_NoStatusBar
+    private var _theme = R.style.FullScreenDialog_NoStatusBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -57,7 +57,7 @@ class TeachSearchDialogFragment : DialogFragment() {
     private var isCanSpeak = true
 
     private var _style = STYLE_NO_TITLE
-    private var _theme = R.style.TeachDialog_NoStatusBar
+    private var _theme = R.style.FullScreenDialog_NoStatusBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

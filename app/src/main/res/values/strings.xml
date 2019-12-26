@@ -1176,7 +1176,11 @@ Share your accomplishments with friends:</string>
     <string name="anastasia_story_block_5_txt">Я хотел бы поддерживать свой вес и больше тренироваться.</string>
 
     <string name="anastasia_story_block_6_title">Почему вы хотите рассказать свою историю?</string>
-    <string name="anastasia_story_block_6_txt">Для меня очень важно показать другим пользователям Fiasy, что они могут достичь своей цели. В конце концов, ваш тяжелый труд окупится, и вы сможете гордиться собой!
-</string>
+    <string name="anastasia_story_block_6_txt">Для меня очень важно показать другим пользователям Fiasy, что они могут достичь своей цели. В конце концов, ваш тяжелый труд окупится, и вы сможете гордиться собой!</string>
+
+
+    <string name="wheel_fortune_title">Испытай удачу!</string>
+    <string name="wheel_fortune_txt">Получи скидку</string>
+    <string name="wheel_fortune_start">Старт</string>
 
 </resources>

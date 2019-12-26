@@ -24,7 +24,7 @@ class SelectMealDialogFragment : SupportBlurDialogFragment() {
     val SNACK = 3
 
     private var _style = STYLE_NO_TITLE
-    private var _theme = R.style.TeachDialog_NoStatusBar
+    private var _theme = R.style.FullScreenDialog_NoStatusBar
 
     private var date : String = ParentActivity.prepareDate(Calendar.getInstance())
 
