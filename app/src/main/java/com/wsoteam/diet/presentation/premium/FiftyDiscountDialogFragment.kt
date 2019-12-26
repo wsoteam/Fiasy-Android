@@ -1,6 +1,8 @@
 package com.wsoteam.diet.presentation.premium
 
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.wsoteam.diet.R
+import kotlinx.android.synthetic.main.dialog_fragment_fifty_discount.*
 
 class FiftyDiscountDialogFragment : DialogFragment() {
 
@@ -33,7 +36,14 @@ class FiftyDiscountDialogFragment : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.dialog_fragment_fifty_discount, container, false)
+
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        next.setOnClickListener {
+            targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, null)
+            dismiss()
+        }
+    }
 }
