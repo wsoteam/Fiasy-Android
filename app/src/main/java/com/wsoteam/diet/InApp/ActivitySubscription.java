@@ -17,6 +17,7 @@ import com.wsoteam.diet.InApp.Fragments.FragmentF;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.presentation.premium.AnastasiaStoryFragment;
 import com.wsoteam.diet.presentation.premium.PremiumFeaturesActivity;
+import com.wsoteam.diet.presentation.premium.WheelFortuneFragment;
 
 
 public class ActivitySubscription extends AppCompatActivity {
@@ -33,10 +34,10 @@ public class ActivitySubscription extends AppCompatActivity {
 
         if (abVersion.equals(ABConfig.A_VERSION)) {
             getSupportFragmentManager().beginTransaction().add(R.id.clContainer,
-                    AnastasiaStoryFragment.Companion.newInstance(box)).commit();
+                    WheelFortuneFragment.Companion.newInstance(box)).commit();
         } else {
             getSupportFragmentManager().beginTransaction().add(R.id.clContainer,
-                    AnastasiaStoryFragment.Companion.newInstance(box)).commit();
+                    WheelFortuneFragment.Companion.newInstance(box)).commit();
         }
     }
 }

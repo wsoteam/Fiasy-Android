@@ -40,7 +40,8 @@ class HorizontalRecipesAdapter(private var listRecipe: List<RecipeItem>?):
 
         fun bind(recipeItem: RecipeItem?){
 
-            itemView.premiumLabel.visibility = View.GONE
+            itemView.premiumLabel.visibility =
+                    if (recipeItem?.isPremium == true) View.VISIBLE else View.GONE
             itemView.ivLike.visibility = View.GONE
             itemView.textRecipe.text = recipeItem?.name
             itemView.tvRecipeKK.text = recipeItem?.calories.toString()

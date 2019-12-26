@@ -1,0 +1,29 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wsoteam.diet.presentation.premium.WheelFortuneFragment">
+
+    <ImageView
+        android:id="@+id/wheel_fortune"
+        android:layout_width="284dp"
+        android:layout_height="284dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wheel_fortune" />
+
+    <ImageView
+        android:id="@+id/arrow_fortune"
+        android:layout_width="56dp"
+        android:layout_height="131dp"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/wheel_fortune"
+        app:layout_constraintEnd_toEndOf="@+id/wheel_fortune"
+        app:layout_constraintStart_toStartOf="@+id/wheel_fortune"
+        app:layout_constraintTop_toTopOf="@+id/wheel_fortune"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/arrow_fortune" />
+</androidx.constraintlayout.widget.ConstraintLayout>

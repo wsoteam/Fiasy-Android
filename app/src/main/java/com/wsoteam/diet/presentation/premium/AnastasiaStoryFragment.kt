@@ -56,9 +56,9 @@ class AnastasiaStoryFragment : Fragment(R.layout.fragment_anastasia_story) {
     private fun getRecipes(): List<RecipeItem>{
         val list = LinkedList<RecipeItem>()
         list.add(RecipeItem("https://firebasestorage.googleapis.com/v0/b/diet-for-test.appspot.com/o/PlansRecipes%2F230%2F239.jpg?alt=media&token=2d015c38-fb4d-49ff-814e-fcc2f688db98",
-                "Куриные филе с картофельным салатом", 650))
+                "Куриные филе с картофельным салатом", 650, false))
         list.add(RecipeItem("https://firebasestorage.googleapis.com/v0/b/diet-for-test.appspot.com/o/PlansRecipes%2F190%2F205.jpg?alt=media&token=1abc5b37-6310-4ee5-ad6b-56b538d45c60",
-                "Свежие весенние рулеты", 521))
+                "Свежие весенние рулеты", 521, false))
         return list
     }
 }
