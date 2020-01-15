@@ -398,7 +398,7 @@
             android:rotation="90"
             app:donut_finished_color="#f9a12d"
             app:donut_finished_stroke_width="5dp"
-            app:donut_progress="75"
+            app:donut_progress="0"
             app:donut_text_color="@color/transparent"
             app:donut_unfinished_color="@color/transparent"
             app:layout_constraintBottom_toBottomOf="@+id/civProfile"
