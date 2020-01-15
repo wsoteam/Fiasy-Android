@@ -15,7 +15,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 112
-        versionName "3.0.1.4"
+        versionName "3.0.1.4dev"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         renderscriptTargetApi 27

@@ -230,7 +230,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
         } else {
             manyWordSearch(query.trim());
         }
-
         Events.logSearch(query);
     }
 
@@ -377,7 +376,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
                 .subscribe(new SingleObserver<List<ISearchResult>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
                     }
 
                     @Override
@@ -391,7 +389,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
                 });
     }
@@ -522,11 +519,9 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
     private FoodResult dropBrands(FoodResult foodResult) {
         if (foodResult.getResults().size() > 0) {
-            Log.e("LOL", String.valueOf(foodResult.getResults().size()));
             for (int i = 0; i < foodResult.getResults().size(); i++) {
                 try {
                     if (foodResult.getResults().get(i).getName() == null) {
-                        Log.e("LOL", foodResult.getResults().get(i).toString());
                         foodResult.getResults().remove(i);
                         if (foodResult.getResults().size() != 0) {
                             i--;
@@ -538,7 +533,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
                     Log.e("LOL", e.getMessage());
                 }
             }
-            Log.e("LOL", "KEK " + foodResult.getResults().get(0).toString());
         }
         return foodResult;
     }
