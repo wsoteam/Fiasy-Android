@@ -252,7 +252,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
     }
 
     private void updateSuggestions(Suggest t, String currentString) {
@@ -289,7 +288,8 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
 
     private void updateUI() {
         List<ISearchResult> foods = new ArrayList<>();
-        itemAdapter = new ResultAdapter(foods, getActivity(), new ArrayList<BasketEntity>(), "",
+        if (itemAdapter == null) {
+            itemAdapter = new ResultAdapter(foods, getActivity(), new ArrayList<BasketEntity>(), "",
                 new BasketUpdater() {
                     @Override
                     public void getCurrentSize(int size) {
@@ -306,6 +306,7 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
                         return 0;
                     }
                 });
+        }
         rvBlocks.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBlocks.setAdapter(itemAdapter);
     }
