@@ -250,6 +250,11 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
         return view;
     }
 
+    @Override public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
     private void updateSuggestions(Suggest t, String currentString) {
         suggestAdapter = null;
         suggestAdapter = new SuggestAdapter(t, currentString, new ISuggest() {

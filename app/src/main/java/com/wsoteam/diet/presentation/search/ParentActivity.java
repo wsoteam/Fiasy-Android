@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,12 +63,15 @@ public class ParentActivity extends AppCompatActivity {
   private final String ENTER_FRAGMENT = "ENTER_FRAGMENT";
   private final String SEARCH_FRAGMENT = "SEARCH_FRAGMENT";
   private final String FRAGMENT_STATE_TAG = "FRAGMENT_STATE_TAG";
+  private boolean hasSaveState = false;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_parent);
-    FoodWork.clearBasket();
+    if (savedInstanceState == null) {
+      FoodWork.clearBasket();
+    }
     ButterKnife.bind(this);
     bindSpinnerChoiceEating();
     fragmentManager = getSupportFragmentManager();
@@ -125,7 +129,12 @@ public class ParentActivity extends AppCompatActivity {
       }
     });
     clearContinuePossibility();
-    restoreState(savedInstanceState);
+    if (savedInstanceState != null){
+      Fragment fragment = fragmentManager.findFragmentByTag(BS_TAG);
+      if (fragment instanceof ResultsView){
+        Log.e("LOL", "taki da");
+      }
+    }
   }
 
   @Override protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -139,18 +148,6 @@ public class ParentActivity extends AppCompatActivity {
     super.onSaveInstanceState(outState);
   }
 
-  private void restoreState(Bundle savedInstanceState) {
-    if (savedInstanceState != null) {
-      String fragmentTag = savedInstanceState.getString(FRAGMENT_STATE_TAG);
-      Log.e("LOL", String.valueOf(fragmentManager.getBackStackEntryCount()));
-      if (fragmentTag.equals(SEARCH_FRAGMENT)) {
-        fragmentManager.beginTransaction()
-            .replace(R.id.searchFragmentContainer, fragmentManager.findFragmentByTag(BS_TAG))
-            .addToBackStack(BS_TAG)
-            .commit();
-      }
-    }
-  }
 
   private void clearContinuePossibility() {
     getSharedPreferences(Config.BASKET_CONTINUE, MODE_PRIVATE).edit().clear().commit();
@@ -158,7 +155,7 @@ public class ParentActivity extends AppCompatActivity {
 
   private void setSearchFragment() {
     fragmentManager.beginTransaction()
-        .replace(R.id.searchFragmentContainer, new ResultsFragment())
+        .replace(R.id.searchFragmentContainer, new ResultsFragment(), BS_TAG)
         .addToBackStack(BS_TAG)
         .commit();
   }
@@ -166,7 +163,7 @@ public class ParentActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    if (!isNeedContinue() && !isBackFromDetail) {
+    if (!isNeedContinue() && !isBackFromDetail && fragmentManager.getBackStackEntryCount() == 0) {
       edtSearch.setText("");
       fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
       fragmentManager.beginTransaction()
