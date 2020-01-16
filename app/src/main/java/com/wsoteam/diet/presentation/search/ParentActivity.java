@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +59,9 @@ public class ParentActivity extends AppCompatActivity {
   private final String BS_TAG = "BS_TAG";
   private boolean isBackFromDetail = false;
   private boolean isChangedOnDetail = false;
+  private final String ENTER_FRAGMENT = "ENTER_FRAGMENT";
+  private final String SEARCH_FRAGMENT = "SEARCH_FRAGMENT";
+  private final String FRAGMENT_STATE_TAG = "FRAGMENT_STATE_TAG";
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -120,6 +125,31 @@ public class ParentActivity extends AppCompatActivity {
       }
     });
     clearContinuePossibility();
+    restoreState(savedInstanceState);
+  }
+
+  @Override protected void onSaveInstanceState(@NonNull Bundle outState) {
+    String fragmentTag = ENTER_FRAGMENT;
+    Log.e("LOL", "onSaveInstanceState");
+    if (fragmentManager.findFragmentById(
+        R.id.searchFragmentContainer) instanceof ResultsView) {
+      fragmentTag = SEARCH_FRAGMENT;
+    }
+    outState.putString(FRAGMENT_STATE_TAG, fragmentTag);
+    super.onSaveInstanceState(outState);
+  }
+
+  private void restoreState(Bundle savedInstanceState) {
+    if (savedInstanceState != null) {
+      String fragmentTag = savedInstanceState.getString(FRAGMENT_STATE_TAG);
+      Log.e("LOL", String.valueOf(fragmentManager.getBackStackEntryCount()));
+      if (fragmentTag.equals(SEARCH_FRAGMENT)) {
+        fragmentManager.beginTransaction()
+            .replace(R.id.searchFragmentContainer, fragmentManager.findFragmentByTag(BS_TAG))
+            .addToBackStack(BS_TAG)
+            .commit();
+      }
+    }
   }
 
   private void clearContinuePossibility() {
