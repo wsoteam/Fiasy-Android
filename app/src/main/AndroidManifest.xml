@@ -61,6 +61,7 @@
             android:theme="@style/AnalyzerTheme" />
         <activity
             android:name=".presentation.search.ParentActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AnalyzerTheme" />
         <activity
             android:name=".presentation.profile.norm.choise.activity.ActivActivity"
