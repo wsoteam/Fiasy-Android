@@ -117,6 +117,7 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
   private boolean isOneWordSearch = true;
   private boolean isRestoreCall = false;
   private final String EMPTY_TAG = "EMPTY_TAG";
+  private final String BASKET_VISIBILITY_TAG = "BASKET_VISIBILITY_TAG";
 
   @Override
   public void changeSpinner(int position) {
@@ -244,9 +245,6 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_results, container, false);
-    if (savedInstanceState != null) {
-      isRestoreCall = true;
-    }
     unbinder = ButterKnife.bind(this, view);
     pbLoad = getActivity().findViewById(R.id.pbLoad);
     parentSpinner = getActivity().findViewById(R.id.spnEatingList);
@@ -254,13 +252,20 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
     presenter.attachView(this);
     finalSave = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_meas_update);
     updateUI();
-    showHistory();
+    if (savedInstanceState != null) {
+      isRestoreCall = true;
+      cvBasket.setVisibility(savedInstanceState.getInt(BASKET_VISIBILITY_TAG));
+      itemAdapter.refreshBasket();
+    } else {
+      showHistory();
+    }
     spinnerId = ((ParentActivity) getActivity()).spinnerId;
     return view;
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
     outState.putString(EMPTY_TAG, EMPTY_BRAND);
+    outState.putInt(BASKET_VISIBILITY_TAG, cvBasket.getVisibility());
     super.onSaveInstanceState(outState);
   }
 

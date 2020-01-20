@@ -84,14 +84,53 @@
       />
 
 
-  <include
-      layout="@layout/view_card_basket"
+  <androidx.cardview.widget.CardView android:id="@+id/cvBasket"
       android:layout_width="match_parent"
       android:layout_height="50dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      />
+      app:cardElevation="5dp"
+      android:visibility="invisible"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/flBasket"
+        >
+
+      <TextView
+          android:id="@+id/tvCounter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginStart="8dp"
+          android:drawableLeft="@drawable/srch_right_basket"
+          android:drawablePadding="8dp"
+          android:fontFamily="@font/roboto_medium"
+          android:text="TextView"
+          android:padding="8dp"
+          android:textColor="#8a000000"
+          />
+
+      <TextView
+          android:id="@+id/tvAddToBasket"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end|center_vertical"
+          android:layout_marginEnd="16dp"
+          android:fontFamily="@font/roboto_bold"
+          android:background="?selectableItemBackground"
+          android:text="@string/srch_add_to_basket"
+          android:textColor="#ef7d02"
+          android:textSize="18sp"
+          />
+
+    </FrameLayout>
+
+  </androidx.cardview.widget.CardView>
 
 
 

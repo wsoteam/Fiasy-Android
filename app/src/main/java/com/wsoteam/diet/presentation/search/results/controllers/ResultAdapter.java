@@ -427,6 +427,10 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         basketUpdater.getCurrentSize(savedFood.size());
     }
 
+    @Override public void refreshBasket() {
+        basketUpdater.getCurrentSize(savedFood.size());
+    }
+
     @Override
     public int getItemCount() {
         return foods.size();
