@@ -329,7 +329,7 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
   private void updateBasket(int size) {
     if (cvBasket != null) {
       if (size > 0) {
-        if (cvBasket.getVisibility() == View.GONE) {
+        if (cvBasket.getVisibility() != View.VISIBLE) {
           cvBasket.setVisibility(View.VISIBLE);
         }
         tvCounter.setText(getPaintedString(size));
