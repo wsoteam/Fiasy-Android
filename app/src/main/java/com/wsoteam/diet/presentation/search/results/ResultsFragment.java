@@ -264,8 +264,12 @@ public class ResultsFragment extends MvpAppCompatFragment implements ResultsView
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
-    outState.putString(EMPTY_TAG, EMPTY_BRAND);
-    outState.putInt(BASKET_VISIBILITY_TAG, cvBasket.getVisibility());
+    try {
+      outState.putString(EMPTY_TAG, EMPTY_BRAND);
+      outState.putInt(BASKET_VISIBILITY_TAG, cvBasket.getVisibility());
+    }catch (Exception ex) {
+      Log.e("LOL", "null view");
+    }
     super.onSaveInstanceState(outState);
   }
 
