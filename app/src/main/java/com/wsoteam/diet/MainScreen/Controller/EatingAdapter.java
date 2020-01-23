@@ -19,6 +19,7 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   private static final int TYPE_DINNER = 2;
   private static final int TYPE_SNACKS = 3;
   private static final int TYPE_WATER = 4;
+  private static final long DAY = 86400000l;
   private List<List<Eating>> allEatingGroups;
   private Context context;
   private String data;
@@ -92,14 +93,23 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     Calendar calendar = Calendar.getInstance();
     List<Eating> eatings = allEatingGroups.get(type);
     for (Eating eating : eatings) {
-        eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
-        eating.setMonth(calendar.get(Calendar.MONTH));
-        eating.setYear(calendar.get(Calendar.YEAR));
-        //TODO save
+      eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+      eating.setMonth(calendar.get(Calendar.MONTH));
+      eating.setYear(calendar.get(Calendar.YEAR));
+      //TODO save
     }
   }
 
   private void copyEatingsToday(int type) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTimeInMillis(calendar.getTimeInMillis() + DAY);
+    List<Eating> eatings = allEatingGroups.get(type);
+    for (Eating eating : eatings) {
+      eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+      eating.setMonth(calendar.get(Calendar.MONTH));
+      eating.setYear(calendar.get(Calendar.YEAR));
+      //TODO save
+    }
   }
 
   @Override
