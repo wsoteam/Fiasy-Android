@@ -58,6 +58,8 @@ public class EatingViewHolder extends RecyclerView.ViewHolder {
 
   private UpdateCallback updateCallback;
 
+  private IEatingVH iEatingVH;
+
   public EatingViewHolder(LayoutInflater layoutInflater, ViewGroup viewGroup, Context context,
       String data, UpdateCallback updateCallback) {
     super(layoutInflater.inflate(R.layout.ms_item_eating_list, viewGroup, false));
@@ -67,7 +69,9 @@ public class EatingViewHolder extends RecyclerView.ViewHolder {
     this.updateCallback = updateCallback;
   }
 
-  public void bind(List<Eating> eatingGroup, Context context, String nameOfEatingGroup) {
+  public void bind(List<Eating> eatingGroup, Context context, String nameOfEatingGroup,
+      IEatingVH iEatingVH) {
+    this.iEatingVH = iEatingVH;
     this.eatingGroup = eatingGroup;
     setCPFC();
     setIconAndTime();
@@ -210,10 +214,12 @@ public class EatingViewHolder extends RecyclerView.ViewHolder {
     popupMenu.show();
     popupMenu.setOnMenuItemClickListener(menuItem -> {
       switch (menuItem.getItemId()) {
-        /*case R.id.add_food_dots:
-          openSearch();
-          Events.logDiaryNext(getAdapterPosition());
-          break;*/
+        case R.id.clone_food_today:
+          iEatingVH.copyToday(getAdapterPosition());
+          break;
+        case R.id.clone_food_tomorrow:
+          iEatingVH.copyTomorrow(getAdapterPosition());
+          break;
       }
       return false;
     });
