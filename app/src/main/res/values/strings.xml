@@ -1187,5 +1187,7 @@ Share your accomplishments with friends:</string>
     <string name="fiasy_discount_txt">Вы выиграли скидку</string>
     <string name="fiasy_discount_fifty">50%</string>
     <string name="fiasy_discount_for_fiasy">на Fiasy Premium</string>
+  <string name="cln_add_to_today">Копировать на сегодня</string>
+  <string name="cln_add_to_tomorrow">Копировать на завтра</string>
 
 </resources>
