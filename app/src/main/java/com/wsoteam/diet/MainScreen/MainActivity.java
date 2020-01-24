@@ -246,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
     handlGrade(Calendar.getInstance().getTimeInMillis());
     new UpdateChecker(this).runChecker();
     hideFabMenu();
+    Log.e("LOL", FirebaseAuth.getInstance().getCurrentUser().getUid());
   }
 
   private void handlGrade(long currentTime) {

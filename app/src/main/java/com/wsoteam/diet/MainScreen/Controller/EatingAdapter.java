@@ -7,8 +7,13 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.wsoteam.diet.R;
+import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
+import com.wsoteam.diet.model.Breakfast;
+import com.wsoteam.diet.model.Dinner;
 import com.wsoteam.diet.model.Eating;
 
+import com.wsoteam.diet.model.Lunch;
+import com.wsoteam.diet.model.Snack;
 import com.wsoteam.diet.model.Water;
 import java.util.Calendar;
 import java.util.List;
@@ -96,7 +101,24 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
       eating.setMonth(calendar.get(Calendar.MONTH));
       eating.setYear(calendar.get(Calendar.YEAR));
-      //TODO save
+      pushInDb(eating, type);
+    }
+  }
+
+  private void pushInDb(Eating eating, int type) {
+    switch (type){
+      case TYPE_BREAKFAST:
+        WorkWithFirebaseDB.addBreakfast((Breakfast) eating);
+        break;
+      case TYPE_LUNCH:
+        WorkWithFirebaseDB.addLunch((Lunch) eating);
+        break;
+      case TYPE_DINNER:
+        WorkWithFirebaseDB.addDinner((Dinner) eating);
+        break;
+      case TYPE_SNACKS:
+        WorkWithFirebaseDB.addSnack((Snack) eating);
+        break;
     }
   }
 
@@ -108,7 +130,7 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
       eating.setMonth(calendar.get(Calendar.MONTH));
       eating.setYear(calendar.get(Calendar.YEAR));
-      //TODO save
+      pushInDb(eating, type);
     }
   }
 
