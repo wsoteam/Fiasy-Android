@@ -100,8 +100,10 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     Calendar calendar = Calendar.getInstance();
     List<Eating> eatings = allEatingGroups.get(type);
     if (eatings.size() == 0) {
-      showToast();
+      showErrorToast();
       return;
+    }else {
+      showCompleteToast();
     }
     for (Eating eating : eatings) {
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
@@ -111,7 +113,12 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
   }
 
-  private void showToast() {
+  private void showCompleteToast() {
+    Toast.makeText(App.getContext(), App.getContext().getResources().getString(R.string.cln_comlete),
+        Toast.LENGTH_SHORT).show();
+  }
+
+  private void showErrorToast() {
     Toast.makeText(App.getContext(), App.getContext().getResources().getString(R.string.cln_alert),
         Toast.LENGTH_SHORT).show();
   }
@@ -138,8 +145,10 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     calendar.setTimeInMillis(calendar.getTimeInMillis() + DAY);
     List<Eating> eatings = allEatingGroups.get(type);
     if (eatings.size() == 0) {
-      showToast();
+      showErrorToast();
       return;
+    }else {
+      showCompleteToast();
     }
     for (Eating eating : eatings) {
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
@@ -147,6 +156,7 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
       eating.setYear(calendar.get(Calendar.YEAR));
       pushInDb(eating, type);
     }
+
   }
 
   @Override
