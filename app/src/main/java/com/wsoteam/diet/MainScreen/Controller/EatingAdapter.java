@@ -94,7 +94,7 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
   }
 
-  private void copyEatingsTomorrow(int type) {
+  private void copyEatingsToday(int type) {
     Calendar calendar = Calendar.getInstance();
     List<Eating> eatings = allEatingGroups.get(type);
     for (Eating eating : eatings) {
@@ -122,7 +122,7 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
   }
 
-  private void copyEatingsToday(int type) {
+  private void copyEatingsTomorrow(int type) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(calendar.getTimeInMillis() + DAY);
     List<Eating> eatings = allEatingGroups.get(type);
