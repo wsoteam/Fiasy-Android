@@ -1,11 +1,13 @@
 package com.wsoteam.diet.MainScreen.Controller;
 
 import android.content.Context;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.wsoteam.diet.App;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.model.Breakfast;
@@ -97,6 +99,10 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   private void copyEatingsToday(int type) {
     Calendar calendar = Calendar.getInstance();
     List<Eating> eatings = allEatingGroups.get(type);
+    if (eatings.size() == 0) {
+      showToast();
+      return;
+    }
     for (Eating eating : eatings) {
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
       eating.setMonth(calendar.get(Calendar.MONTH));
@@ -105,8 +111,13 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
   }
 
+  private void showToast() {
+    Toast.makeText(App.getContext(), App.getContext().getResources().getString(R.string.cln_alert),
+        Toast.LENGTH_SHORT).show();
+  }
+
   private void pushInDb(Eating eating, int type) {
-    switch (type){
+    switch (type) {
       case TYPE_BREAKFAST:
         WorkWithFirebaseDB.addBreakfast(new Breakfast(eating));
         break;
@@ -126,6 +137,10 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(calendar.getTimeInMillis() + DAY);
     List<Eating> eatings = allEatingGroups.get(type);
+    if (eatings.size() == 0) {
+      showToast();
+      return;
+    }
     for (Eating eating : eatings) {
       eating.setDay(calendar.get(Calendar.DAY_OF_MONTH));
       eating.setMonth(calendar.get(Calendar.MONTH));

@@ -1189,5 +1189,6 @@ Share your accomplishments with friends:</string>
     <string name="fiasy_discount_for_fiasy">на Fiasy Premium</string>
   <string name="cln_add_to_today">Копировать на сегодня</string>
   <string name="cln_add_to_tomorrow">Копировать на завтра</string>
+  <string name="cln_alert">Нельзя копировать пустой прием пищи</string>
 
 </resources>
