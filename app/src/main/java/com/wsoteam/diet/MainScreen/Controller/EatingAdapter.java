@@ -108,16 +108,16 @@ public class EatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   private void pushInDb(Eating eating, int type) {
     switch (type){
       case TYPE_BREAKFAST:
-        WorkWithFirebaseDB.addBreakfast((Breakfast) eating);
+        WorkWithFirebaseDB.addBreakfast(new Breakfast(eating));
         break;
       case TYPE_LUNCH:
-        WorkWithFirebaseDB.addLunch((Lunch) eating);
+        WorkWithFirebaseDB.addLunch(new Lunch(eating));
         break;
       case TYPE_DINNER:
-        WorkWithFirebaseDB.addDinner((Dinner) eating);
+        WorkWithFirebaseDB.addDinner(new Dinner(eating));
         break;
       case TYPE_SNACKS:
-        WorkWithFirebaseDB.addSnack((Snack) eating);
+        WorkWithFirebaseDB.addSnack(new Snack(eating));
         break;
     }
   }

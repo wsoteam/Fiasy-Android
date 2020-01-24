@@ -46,6 +46,36 @@ public class Eating implements Serializable {
   public Eating() {
   }
 
+  public Eating(Eating eating) {
+    this.name = eating.getName();
+    this.urlOfImages = eating.getUrlOfImages();
+    this.calories = eating.getCalories();
+    this.carbohydrates = eating.getCarbohydrates();
+    this.protein = eating.getProtein();
+    this.fat = eating.getFat();
+    this.weight = eating.getWeight();
+    this.day = eating.getDay();
+    this.month = eating.getMonth();
+    this.year = eating.getYear();
+    this.serverId = eating.getServerId();
+    this.deepId = eating.getDeepId();
+    this.isNewFood = eating.isNewFood();
+    this.brand = eating.getBrand();
+    this.isLiquid = eating.isLiquid();
+    this.kilojoules = eating.getKilojoules();
+    this.sugar = eating.getSugar();
+    this.saturatedFats = eating.getSaturatedFats();
+    this.monoUnSaturatedFats = eating.getMonoUnSaturatedFats();
+    this.polyUnSaturatedFats = eating.getPolyUnSaturatedFats();
+    this.cholesterol = eating.getCholesterol();
+    this.cellulose = eating.getCellulose();
+    this.sodium = eating.getSodium();
+    this.pottassium = eating.getPottassium();
+    this.namePortion = eating.getNamePortion();
+    this.sizePortion = eating.getSizePortion();
+    this.type = eating.getType();
+  }
+
   public Eating(String name, String urlOfImages, int calories, int carbohydrates, int protein,
       int fat, int weight, int day, int month, int year, int serverId, int deepId,
       boolean isNewFood,
@@ -80,6 +110,8 @@ public class Eating implements Serializable {
     this.sizePortion = sizePortion;
     this.type = type;
   }
+
+
 
   public Eating(BasketEntity basketEntity, int day, int month, int year, int type) {
     this.name = basketEntity.getName();
