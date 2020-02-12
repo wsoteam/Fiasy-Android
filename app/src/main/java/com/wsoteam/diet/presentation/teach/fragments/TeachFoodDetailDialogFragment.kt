@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.wsoteam.diet.Config
 import com.wsoteam.diet.R
@@ -80,17 +83,7 @@ class TeachFoodDetailDialogFragment: DialogFragment() {
             dismiss() }
 
         teachNext.setOnClickListener {
-            if (weight > 0){
-                include.setBackgroundResource(R.drawable.teach_cardview_back_2)
-                btnDone.visibility = View.VISIBLE
-                teachCancel.visibility = View.GONE
-                teachNext.visibility = View.GONE
-                firstTxt.visibility = View.GONE
-                secondTxt.visibility = View.VISIBLE
-                teachConstr.setPadding(0,0,0, 30)
-                edtWeightCalculate.hideKeyboard()
-                Events.logTeach(EventProperties.teach_ready)
-            }
+            moveNext()
         }
 
         ivBack.setOnClickListener {
@@ -108,6 +101,17 @@ class TeachFoodDetailDialogFragment: DialogFragment() {
         setValue(basketEntity)
         bindSpinnerChoiceEating()
         handlePortions(basketEntity)
+
+        edtWeightCalculate.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    moveNext()
+                    return true
+                }else{
+                    return false
+                }
+            }
+        })
 
         edtWeightCalculate.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -141,6 +145,20 @@ class TeachFoodDetailDialogFragment: DialogFragment() {
                }
             }
         })
+    }
+
+    private fun moveNext() {
+        if (weight > 0){
+            include.setBackgroundResource(R.drawable.teach_cardview_back_2)
+            btnDone.visibility = View.VISIBLE
+            teachCancel.visibility = View.GONE
+            teachNext.visibility = View.GONE
+            firstTxt.visibility = View.GONE
+            secondTxt.visibility = View.VISIBLE
+            teachConstr.setPadding(0,0,0, 30)
+            edtWeightCalculate.hideKeyboard()
+            Events.logTeach(EventProperties.teach_ready)
+        }
     }
 
     private fun bindSpinnerChoiceEating() {
