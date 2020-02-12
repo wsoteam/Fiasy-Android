@@ -55,7 +55,7 @@ public class SignInFragment extends AuthStrategyFragment {
   }
 
   private CardView signInButton;
-
+  private TextInputLayout login;
   private final List<TextInputLayout> formInputs = new ArrayList<>();
   private final Runnable validateForm = () -> {
     signInButton.setActivated(validateForm(false));
@@ -100,7 +100,7 @@ public class SignInFragment extends AuthStrategyFragment {
       }
 
       formInputs.add(target);
-
+      login = view.findViewById(R.id.username);
       target.getEditText().setOnEditorActionListener((v, actionId, event) -> {
         if(actionId == EditorInfo.IME_ACTION_DONE){
           ViewsExtKt.hideKeyboard(v);
@@ -134,11 +134,17 @@ public class SignInFragment extends AuthStrategyFragment {
     signInButton.setActivated(false);
     signInButton.setOnClickListener(v -> {
       if (validateForm(true)) {
+        cutSpaces();
         clearInputErrors();
-
         authorize(strategy.get(R.id.auth_strategy_login));
       }
     });
+  }
+
+  private void cutSpaces() {
+    String name = login.getEditText().getText().toString().trim();
+    login.getEditText().setText(name);
+    Log.e("LOL", name);
   }
 
   private void clearInputErrors() {
