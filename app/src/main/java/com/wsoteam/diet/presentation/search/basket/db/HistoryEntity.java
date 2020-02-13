@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.search.basket.db;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import com.wsoteam.diet.common.networking.food.ISearchResult;
 import com.wsoteam.diet.common.networking.food.POJO.Result;
@@ -24,5 +25,15 @@ public class HistoryEntity extends BasketEntity implements ISearchResult {
   @Override
   public void swapId(BasketEntity basketEntity) {
     super.swapId(basketEntity);
+  }
+
+  @Override
+  public boolean equals(@Nullable Object obj) {
+    return this.getDeepId() == ((BasketEntity) obj).getDeepId() && this.getServerId() == ((BasketEntity) obj).getServerId();
+  }
+
+  @Override
+  public int hashCode() {
+    return this.getServerId() * 1000 + this.getDeepId();
   }
 }

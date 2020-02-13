@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.search.basket.db;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import com.wsoteam.diet.Config;
@@ -639,4 +640,14 @@ public class BasketEntity implements ISearchResult, Serializable {
       deepId = basketEntity.getDeepId();
       eatingType = basketEntity.getEatingType();
     }
+
+  @Override
+  public boolean equals(@Nullable Object obj) {
+    return this.getDeepId() == ((BasketEntity) obj).getDeepId() && this.getServerId() == ((BasketEntity) obj).getServerId();
+  }
+
+  @Override
+  public int hashCode() {
+    return this.getServerId() * 1000 + this.getDeepId();
+  }
 }

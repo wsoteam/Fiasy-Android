@@ -1,6 +1,8 @@
 package com.wsoteam.diet.common.diary;
 
 
+import android.util.Log;
+
 import com.wsoteam.diet.App;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
 import com.wsoteam.diet.common.Analytics.EventProperties;
@@ -21,7 +23,9 @@ import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.wsoteam.diet.common.helpers.DateAndTime.getDateType;
 
@@ -124,6 +128,34 @@ public class FoodWork {
     }
 
     private static List<HistoryEntity> dropMatch(List<HistoryEntity> historyEntities) {
+        Set<HistoryEntity> clearList = new HashSet<>(historyEntities);
+        historyEntities.clear();
+        historyEntities.addAll(clearList);
+
+        for (int i = 0; i < historyEntities.size() - 1; i++) {
+            Log.e("LOL", historyEntities.get(i).toString());
+        }
+        return historyEntities;
+    }
+
+    /*private static List<HistoryEntity> dropMatch(List<HistoryEntity> historyEntities) {
+        //TODO override hashCode and set HashSet
+        try {
+            for (int i = 0; i < historyEntities.size(); i++) {
+                for (int j = i + 1; j < historyEntities.size(); j++) {
+                    if (historyEntities.get(i).equals(historyEntities.get(j))) {
+                        historyEntities.remove(j);
+                        j--;
+                    }
+                }
+            }
+        }catch (Exception ex){
+            Log.e("LOL", "out of bound");
+        }
+        return historyEntities;
+    }*/
+
+    /*private static List<HistoryEntity> dropMatch(List<HistoryEntity> historyEntities) {
         if (historyEntities.size() > 1) {
             ArrayList<Integer> indexs = new ArrayList<>();
             List<HistoryEntity> uniqueEntities = new ArrayList<>();
@@ -149,7 +181,7 @@ public class FoodWork {
             historyEntities = uniqueEntities;
         }
         return historyEntities;
-    }
+    }*/
 
     private static List<HistoryEntity> cut(List<HistoryEntity> historyEntities, int size) {
         if (historyEntities.size() <= size) {
