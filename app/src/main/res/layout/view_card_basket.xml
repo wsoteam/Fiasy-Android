@@ -27,9 +27,11 @@
     <TextView
         android:id="@+id/tvAddToBasket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="end|center_vertical"
-        android:layout_marginEnd="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:paddingStart="36dp"
         android:fontFamily="@font/roboto_bold"
         android:background="?selectableItemBackground"
         android:text="@string/srch_add_to_basket"

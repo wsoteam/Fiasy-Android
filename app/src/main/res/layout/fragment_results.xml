@@ -91,7 +91,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:cardElevation="5dp"
-      android:visibility="invisible"
+      android:visibility="visible"
       xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       >
@@ -118,10 +118,12 @@
       <TextView
           android:id="@+id/tvAddToBasket"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_height="match_parent"
+          android:gravity="center_vertical"
           android:layout_gravity="end|center_vertical"
-          android:layout_marginEnd="16dp"
           android:fontFamily="@font/roboto_bold"
+          android:paddingEnd="16dp"
+          android:paddingStart="36dp"
           android:background="?selectableItemBackground"
           android:text="@string/srch_add_to_basket"
           android:textColor="#ef7d02"
