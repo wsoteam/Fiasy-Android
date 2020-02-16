@@ -1096,4 +1096,8 @@
   <string name="abt_5_arrow">Измерения тела</string>
   <string name="abt_bottom_prem">Попробуйте 3 дня бесплатно \nДалее %s в год</string>
   <string name="abt_bottom_prem_week">Попробуйте 3 дня бесплатно \nДалее %s в неделю</string>
+  <string name="action_achievement_unlocked_done">Отлично!</string>
+  <string name="title_achievement">Награда</string>
+  <string name="achievement_locked_keep_going">Выполняйте задания и получайте награды! Считать калории - значит внимательно относится к своему здоровью.</string>
+  <string name="already_achieved_achievements">Полученные награды:</string>
 </resources>

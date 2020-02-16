@@ -1188,4 +1188,73 @@ Share your accomplishments with friends:</string>
     <string name="fiasy_discount_fifty">50%</string>
     <string name="fiasy_discount_for_fiasy">на Fiasy Premium</string>
 
+
+
+  <string name="action_achievement_unlocked_done">Отлично!</string>
+
+  <string name="sign_up_title">Регистрация в приложение</string>
+  <string name="sign_up_description">Вы зарегистрировались в нашем приложении, рады с вами познакомиться! Наш дневник поможет вам достигнуть качественного результата.</string>
+
+  <string name="first_product_title">Молодой огурчик</string>
+  <string name="first_product_description">Вы добавили первый продукт и успешно справились с заданием! Награда ваша.</string>
+  <string name="title_achievement">Награда</string>
+  <string name="time_left_till_achievement_finish">До конца выполнения задания осталось:</string>
+  <string name="achievement_locked_keep_going">Выполняйте задания и получайте награды! Считать калории - значит внимательно относится к своему здоровью.</string>
+  <string name="already_achieved_achievements">Полученные награды:</string>
+
+  <string name="motivation_7_products_added_achievement_title">Неутомимый перчик</string>
+  <string name="motivation_7_products_added_achievement_description">Заполняйте дневник питания в течении 7-ми дней подряд и награда будет ваша!	</string>
+  <string name="motivation_7_products_added_achievement_achieved">Вести учет калорий, значит быстрее двигаться к намеченной цели. Так держать, не останавливайтесь!</string>
+
+  <string name="motivation_14_products_added_achievement_title">Активная помидорка</string>
+  <string name="motivation_14_products_added_achievement_description">Заполняйте дневник питания в течении 14-ти дней подряд и награда будет ваша!</string>
+  <string name="motivation_14_products_added_achievement_achieved">Вы на верном пути! Не бросайте начатое, цель сама себя не достигнет! Награда ваша.</string>
+
+  <string name="motivation_21_products_added_achievement_title">Салату - рад</string>
+  <string name="motivation_21_products_added_achievement_description">Заполняйте дневник питания в течении 21-го дня подряд и награда будет ваша!</string>
+  <string name="motivation_21_products_added_achievement_achieved">Вашему упорству можно позавидовать! Продолжайте в том же духе! Награда ваша.</string>
+
+  <string name="motivation_21_2_products_added_achievement_title">Крутое яйцо</string>
+  <string name="motivation_21_2_products_added_achievement_description">Заполняйте дневник питания в течении 21-го дня подряд и награда будет ваша!</string>
+  <string name="motivation_21_2_products_added_achievement_achieved">Теперь вы профи правильного питания, следить за своим рационом - значит с заботой относится к своему здоровью! Награда ваша.</string>
+
+  <string name="motivation_7_water_added_achievement_title">Первые капли</string>
+  <string name="motivation_7_water_added_achievement_description">Ежедневно в течении 7-ми дней отмечайте количество выпитой воды. Регулярное потребление воды хорошо сказывается на здоровье!</string>
+  <string name="motivation_7_water_added_achievement_achieved">Вода - источник жизни! Вы отмечали выпитую воду в течении 7-ми дней, награда ваша!</string>
+
+  <string name="motivation_14_water_added_achievement_title">Лужица</string>
+  <string name="motivation_14_water_added_achievement_description">Ежедневно в течении 14-ти дней заносите количество выпитбой воды и награда будет ваша!</string>
+  <string name="motivation_14_water_added_achievement_achieved">Лужица не океан, но ей ничего не мешает им стать. Регулярно потребляйте воду, это очень важно!</string>
+
+  <string name="motivation_21_water_added_achievement_title">Тропический ливень</string>
+  <string name="motivation_21_water_added_achievement_description">Ежедневно в течении 21-го дня заносите количество выпитой воды и заберите заслуженную награду!</string>
+  <string name="motivation_21_water_added_achievement_achieved">Тропический ливень - это когда все живое напитывается живительной влагой. Ваш организм будет вам благодарен!</string>
+
+  <string name="motivation_21_2_water_added_achievement_title">Море воды</string>
+  <string name="motivation_21_2_water_added_achievement_description">Заносите количество выпитой воды ежедневно в течении 28-ми дней и заберите вашу награду!</string>
+  <string name="motivation_21_2_water_added_achievement_achieved">Теперь точно можно сказать что ваше тело состоит на 80% из воды. Вы выработали полезную привычку, не останавливайтесь!</string>
+
+
+  <string name="motivation_7_weight_added_achievement_title">Замотивированная груша</string>
+  <string name="motivation_7_weight_added_achievement_description">Ежеденевно в течении 7-ми дней отмечайте свой вес в приложении. Для чего это нужно вы можете прочитать здесь (активная ссылка, ведет на инфо экран)</string>
+  <string name="motivation_7_weight_added_achievement_achieved">Вы активно отмечали свой вес в течении 7-ми дней подряд, получите вашу награду!</string>
+
+  <string name="motivation_14_weight_added_achievement_title">Радостный авокадо</string>
+  <string name="motivation_14_weight_added_achievement_description">Заносите вес в течении 14-ти дней подряд и награда будет ваша</string>
+  <string name="motivation_14_weight_added_achievement_achieved">Вы регулярно заносилли вес в течении 14-ти дней подряд, вы настроены серьезно! Не останавливайтесь! Награда ваша.</string>
+
+  <string name="motivation_21_weight_added_achievement_title">Успешный брокколи	</string>
+  <string name="motivation_21_weight_added_achievement_description">Ежедневно отмечайте вес в течении 21-го дня и награда будет ваша.	</string>
+  <string name="motivation_21_weight_added_achievement_achieved">Постоянство - залог успеха! Вы отмечали вес в течении 21-го дня подряд. Награда ваша!	</string>
+
+  <string name="motivation_21_2_weight_added_achievement_title">Спортивная морковка</string>
+  <string name="motivation_21_2_weight_added_achievement_description">Отмечайте вес ежедневно в течении 28-ми дней, так вы сможете более точно отслеживать свои результаты!</string>
+  <string name="motivation_21_2_weight_added_achievement_achieved">Вы, кажется, достигли определенной цели и знаете каких усердий стоят мечты. Награда ваша!</string>
+
+  <string name="level_1">Первый уровень</string>
+  <string name="level_2">Второй уровень</string>
+  <string name="level_3">Третий уровень</string>
+  <string name="level_4">Четвертый уровень</string>
+  <string name="level_5">Пятый уровень</string>
+
 </resources>

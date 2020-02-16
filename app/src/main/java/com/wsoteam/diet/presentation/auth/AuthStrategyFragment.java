@@ -24,6 +24,8 @@ import com.wsoteam.diet.EntryPoint.ActivitySplash;
 import com.wsoteam.diet.MainScreen.MainActivity;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.Sync.WorkWithFirebaseDB;
+import com.wsoteam.diet.achievements.Levels;
+import com.wsoteam.diet.achievements.UserInAppAction;
 import com.wsoteam.diet.common.Analytics.EventProperties;
 import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.Analytics.UserProperty;
@@ -41,6 +43,7 @@ import java.io.IOException;
 import okhttp3.ResponseBody;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.wsoteam.diet.achievements.UserInAppAction.SIGN_UP;
 
 public abstract class AuthStrategyFragment extends Fragment {
 
@@ -178,6 +181,7 @@ public abstract class AuthStrategyFragment extends Fragment {
             UserProperty.setUserProvider(provider);
             getActivity().getSharedPreferences(Config.IS_NEED_SHOW_LOADING_SPLASH, MODE_PRIVATE).edit().putBoolean(Config.IS_NEED_SHOW_LOADING_SPLASH, true).commit();
 
+            Levels.dispatchInAppAction(SIGN_UP);
         } else {
             final String type;
 

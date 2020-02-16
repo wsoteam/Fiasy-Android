@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="16dp"
+    >
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <ImageView
+          android:id="@+id/icon"
+          android:layout_width="145dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="16dp"
+          tools:src="@drawable/meal_1"
+          />
+
+      <ImageView
+          android:id="@+id/close"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:layout_gravity="right"
+          android:layout_marginTop="8dp"
+          android:padding="12dp"
+          android:src="@drawable/ic_close_gray"
+          />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="4.5sp"
+        android:textColor="#c0000000"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        tools:text="Регистрация"
+        />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="4.2sp"
+        android:textColor="#c0000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Вы зарегистрировались в нашем приложении, рады с вами познакомиться! Наш дневник поможет вам достигнуть качественного результата."
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
+        >
+
+      <TextView
+          android:id="@+id/action_done"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="sans-serif"
+          android:paddingLeft="48dp"
+          android:paddingRight="48dp"
+          android:paddingTop="8dp"
+          android:paddingBottom="8dp"
+          android:lineSpacingExtra="7sp"
+          android:layout_gravity="center"
+          android:gravity="center"
+          android:text="@string/action_achievement_unlocked_done"
+          android:textColor="#ef7d02"
+          android:textSize="14sp"
+          android:textStyle="bold"
+          />
+
+    </androidx.cardview.widget.CardView>
+
+  </LinearLayout>
+
+</androidx.cardview.widget.CardView>

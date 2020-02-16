@@ -15,6 +15,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.onesignal.OneSignal;
 import com.wsoteam.diet.BranchOfAnalyzer.POJOFoodSQL.FoodDatabase;
 import java.util.HashMap;
+import timber.log.Timber;
 
 import static com.adjust.sdk.AdjustConfig.ENVIRONMENT_PRODUCTION;
 import static com.wsoteam.diet.EventsAdjust.app_token;
@@ -36,6 +37,10 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
 
         FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);

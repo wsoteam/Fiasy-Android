@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/fake_card_rounded_bottoms"
+      android:elevation="2dp"
+      android:orientation="vertical"
+      android:paddingBottom="24dp"
+      android:translationZ="2dp"
+      >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_prem_back"
+        tools:title="Первый уровень"
+        />
+
+    <ImageView
+        android:id="@+id/level_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_evolve_map_1"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:lineSpacingExtra="4.5sp"
+        android:text="@string/already_achieved_achievements"
+        android:textColor="#7C7C7C"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        />
+
+    <LinearLayout
+        android:id="@+id/achievements_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+      <ImageView
+          android:layout_width="85dp"
+          android:layout_height="75dp"
+          app:srcCompat="@drawable/meal_1"
+          />
+
+      <ImageView
+          android:layout_width="85dp"
+          android:layout_height="75dp"
+          android:layout_marginLeft="16dp"
+          app:srcCompat="@drawable/ic_achievement_locked_wait"
+          />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/goals_list"
+      android:layout_marginTop="24dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+  </LinearLayout>
+
+</LinearLayout>

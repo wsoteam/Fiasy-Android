@@ -43,6 +43,7 @@ class FragmentArgument<T> : ReadWriteProperty<Fragment, T?> {
     cached = when {
       isParcelable(property.returnType) -> bundle.getParcelable<Parcelable>(property.name)
       type == Boolean::class -> bundle.getBoolean(property.name)
+      type == Int::class -> bundle.getInt(property.name)
 
       else -> throw IllegalStateException("cannot deserialize ${property.returnType}")
     } as T?
@@ -59,6 +60,7 @@ class FragmentArgument<T> : ReadWriteProperty<Fragment, T?> {
     when {
       isParcelable(property.returnType) -> bundle.putParcelable(property.name, value as Parcelable?)
       type == Boolean::class -> bundle.putBoolean(property.name, value as Boolean)
+      type == Int::class -> bundle.putInt(property.name, value as Int)
 
       else -> throw IllegalStateException("cannot serialize ${property.returnType}")
     }

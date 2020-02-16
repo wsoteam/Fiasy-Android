@@ -7,9 +7,13 @@ import android.util.TypedValue
 import java.text.DecimalFormat
 import java.util.*
 
-fun dp(context: Context, dp: Float): Int {
+fun dpF(context: Context, dp: Float): Float {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-            context.resources.displayMetrics).toInt()
+            context.resources.displayMetrics)
+}
+
+fun dp(context: Context, dp: Float): Int {
+    return dpF(context, dp).toInt()
 }
 
 
@@ -32,4 +36,8 @@ val Number.asCurrency: String
 
 fun Context.dp2px(value: Float): Int {
     return dp(this, value)
+}
+
+fun Context.dp2pxF(value: Float): Float {
+    return dpF(this, value)
 }

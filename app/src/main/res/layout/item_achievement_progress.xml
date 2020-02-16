@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+  <ProgressBar
+      android:id="@+id/progress"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:padding="12dp"
+      android:indeterminate="false"
+      android:progress="4"
+      android:max="10"
+      />
+
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14sp"
+      android:fontFamily="sans-serif"
+      android:textStyle="normal"
+      android:textColor="#c0000000"
+      android:lineSpacingExtra="4.2sp"
+      tools:text="Добавлял 7 дня подряд еду"
+      />
+
+</LinearLayout>
