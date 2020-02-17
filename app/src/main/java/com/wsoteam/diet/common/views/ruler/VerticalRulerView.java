@@ -237,7 +237,7 @@ final class VerticalRulerView extends View {
         Rect bounds = new Rect();
         mTextPaint.getTextBounds("100", 0, 3, bounds);
         int height = bounds.height();
-        canvas.drawText((248 - value) + CM_APPEND,
+        canvas.drawText((250 - value) + CM_APPEND,
                 getWidth() - mLongIndicatorWidth - mTextPaint.getTextSize() - mTextOffset,
                 mIndicatorInterval * value + (float) height / 2,
                 mTextPaint);

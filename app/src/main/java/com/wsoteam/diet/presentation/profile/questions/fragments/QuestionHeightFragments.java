@@ -47,8 +47,8 @@ public class QuestionHeightFragments extends Fragment {
         rulerPicker.setValuePickerListener(new RulerValuePickerListener() {
             @Override
             public void onValueChange(int selectedValue) {
-                height = selectedValue;
-                tvHeight.setText(String.format(getString(R.string.onboard_height_pattern), selectedValue));
+                height = 390 - selectedValue;
+                tvHeight.setText(String.format(getString(R.string.onboard_height_pattern), height));
             }
 
             @Override

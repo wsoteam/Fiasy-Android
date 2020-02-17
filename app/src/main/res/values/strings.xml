@@ -1239,4 +1239,5 @@ Share your accomplishments with friends:</string>
 
     <string name="exercise_alert_txt">Вы хотите покинуть тренировку без завершения?</string>
     <string name="exercises_round_number">Круг</string>
+    <string name="choise_your_height">Выбери свой рост</string>
 </resources>

@@ -213,7 +213,7 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     Completable.fromAction(new Action() {
       @Override
       public void run() throws Exception {
-        basketDAO.deleteById(basketEntity.getServerId(), basketEntity.getDeepId());
+        basketDAO.deleteById(basketEntity.getId());
       }
     }).subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
@@ -231,8 +231,7 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     int position = -1;
     for (int i = 0; i < adapterFoods.size(); i++) {
       if (adapterFoods.get(i) instanceof BasketEntity) {
-        if (((BasketEntity )adapterFoods.get(i)).getServerId() == basketEntity.getServerId()
-            && ((BasketEntity) adapterFoods.get(i)).getDeepId() == basketEntity.getDeepId()) {
+        if (((BasketEntity )adapterFoods.get(i)).getId() == basketEntity.getId()) {
           adapterFoods.remove(i);
           position = i;
           break;
