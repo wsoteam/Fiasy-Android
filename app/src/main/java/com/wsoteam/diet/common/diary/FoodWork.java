@@ -139,7 +139,6 @@ public class FoodWork {
     }
 
     /*private static List<HistoryEntity> dropMatch(List<HistoryEntity> historyEntities) {
-        //TODO override hashCode and set HashSet
         try {
             for (int i = 0; i < historyEntities.size(); i++) {
                 for (int j = i + 1; j < historyEntities.size(); j++) {
