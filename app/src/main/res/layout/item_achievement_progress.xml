@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:gravity="center"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     >
 
   <ProgressBar
       android:id="@+id/progress"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:padding="12dp"
+      android:layout_width="36dp"
+      android:layout_height="36dp"
+      android:layout_marginRight="16dp"
+      android:padding="8dp"
       android:indeterminate="false"
+      android:indeterminateOnly="false"
       android:progress="4"
       android:max="10"
       />

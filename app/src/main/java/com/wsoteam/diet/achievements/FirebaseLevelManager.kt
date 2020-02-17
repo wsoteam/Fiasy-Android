@@ -35,7 +35,16 @@ class FirebaseLevelManager(context: Context) : LevelManager(context) {
   override val liveLevelChanges: LiveData<Pair<Int, Int>>
     get() = mutableLevel
 
+  // debug purpose only
+  fun unlockDirectly(achievement: Achievement){
+    onAchievementUnlocked(achievement)
+  }
+
   protected fun onAchievementUnlocked(achievement: Achievement) {
+    if (achievement in unlockedAchievements) {
+      return
+    }
+
     Timber.d("achievement unlocked: ${achievement.id}")
 
     unlockedAchievements.add(achievement)
