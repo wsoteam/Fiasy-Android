@@ -717,16 +717,16 @@
   <string name="search_food_activity_say">Говорите!</string>
   <string name="search_food_activity_weight_ml">Вес: 100мл</string>
   <string name="search_food_activity_weight_g">Вес: 100г</string>
-  <string name="search_food_activity_prot">Б. %d</string>
-  <string name="search_food_activity_fat">Ж. %d</string>
-  <string name="search_food_activity_carbo">У. %d</string>
+  <string name="search_food_activity_prot">Б. %f</string>
+  <string name="search_food_activity_fat">Ж. %f</string>
+  <string name="search_food_activity_carbo">У. %f</string>
   <string name="inside_view_holder_1_portion">1 порция</string>
   <string name="inside_view_holder_weight">Вес: %dг</string>
   <string name="weight_n_ml">Вес: %d мл</string>
   <string name="weight_n_g">Вес: %d г</string>
 
   <string name="n_item">%d шт.</string>
-  <string name="n_KCal">%d Ккал</string>
+  <string name="n_KCal">%f Ккал</string>
 
   <string name="n_mg">%d мг</string>
   <string name="n_kk">%d кк</string>

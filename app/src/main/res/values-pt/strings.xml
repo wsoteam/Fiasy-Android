@@ -279,7 +279,7 @@
     <string name="food_popup_menu_delete">Excluir</string>
     <string name="activity_main_new_burnt">0\nquemadas</string>
     <string name="alert_dialog_promo_success_congratulations">Parabéns!</string>
-    <string name="n_KCal">%d kcal</string>
+    <string name="n_KCal">%f kcal</string>
     <string name="n_mg">%d mg</string>
     <string name="n_kk">%d kc</string>
     <string name="onboard_weight_pattern">%d kg</string>

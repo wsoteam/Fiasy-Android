@@ -255,7 +255,7 @@
     <string name="alert_dialog_confirm_delete">Löschen</string>
     <string name="activity_main_new_burnt">0\nverbrannt</string>
     <string name="alert_dialog_promo_success_congratulations">Herzlichen Glückwunsch!</string>
-    <string name="n_KCal">%d kcal</string>
+    <string name="n_KCal">%f kcal</string>
     <string name="n_mg">%d mg</string>
     <string name="n_kk">%d kc</string>
     <string name="onboard_weight_pattern">%d kg</string>
