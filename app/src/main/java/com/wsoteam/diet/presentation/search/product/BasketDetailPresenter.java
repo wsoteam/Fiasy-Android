@@ -145,6 +145,7 @@ public class BasketDetailPresenter extends MvpPresenter<DetailView> {
     basketEntity.setProteins(proteins);
     basketEntity.setCountPortions(countPortions);
     basketEntity.setEatingType(selectedItemPosition);
+    basketEntity.setId(0);
 
     if (portionsSizes.get(position) == MINIMAL_PORTION) {
       basketEntity.setDeepId(-1);

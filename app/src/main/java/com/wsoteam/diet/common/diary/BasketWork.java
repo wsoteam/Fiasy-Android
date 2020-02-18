@@ -1,5 +1,7 @@
 package com.wsoteam.diet.common.diary;
 
+import android.util.Log;
+
 import com.wsoteam.diet.App;
 import com.wsoteam.diet.presentation.search.basket.db.BasketDAO;
 import com.wsoteam.diet.presentation.search.basket.db.BasketEntity;
