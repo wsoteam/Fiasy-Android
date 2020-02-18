@@ -30,10 +30,10 @@ import kotlin.math.abs
 open class DailyBurnWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView) {
   companion object {
     val emptyState = MealsDetailedResult(
-        calories = 0,
-        fats = 0,
-        proteins = 0,
-        carbons = 0,
+        calories = 0.0,
+        fats = 0.0,
+        proteins = 0.0,
+        carbons = 0.0,
         meals = emptyList()
     )
   }
@@ -105,7 +105,7 @@ open class DailyBurnWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView)
     val date = DiaryViewModel.currentDate
 
     disposables.add(Meals.detailed(date.day, date.month, date.year)
-      .reduce(MealsDetailedResult(0, 0, 0, 0, emptyList())) { l, r ->
+      .reduce(MealsDetailedResult(0.0, 0.0, 0.0, 0.0, emptyList())) { l, r ->
         MealsDetailedResult(
             calories = l.calories + r.calories,
             proteins = l.proteins + r.proteins,
@@ -129,11 +129,11 @@ open class DailyBurnWidget(itemView: View) : WidgetsAdapter.WidgetView(itemView)
 
     var todayProgress = progressView.max - progress.calories + burnedCals
 
-    fatsView.progress = progress.fats
-    carbonsView.progress = progress.carbons
-    proteinsView.progress = progress.proteins
+    fatsView.progress = progress.fats.toInt()
+    carbonsView.progress = progress.carbons.toInt()
+    proteinsView.progress = progress.proteins.toInt()
 
-    progressView.progress = (progress.calories - burnedCals).coerceAtLeast(0)
+    progressView.progress = (progress.calories - burnedCals).coerceAtLeast(0.0).toInt()
 
     eatenCaloriesView.text = withIcon("${progress.calories}  ", R.drawable.ic_daily_eaten)
     burnedCaaloriesView.text = withIcon("$burnedCals  ", R.drawable.ic_calories_burned_fire)

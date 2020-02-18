@@ -54,10 +54,10 @@ object Meals {
   fun detailed(day: Int, month: Int, year: Int): Flowable<MealsDetailedResult> {
     return meals(DiaryDay(day, month, year))
       .map { meals ->
-        var calories = 0
-        var fats = 0
-        var proteins = 0
-        var carbons = 0
+        var calories = 0.0
+        var fats = 0.0
+        var proteins = 0.0
+        var carbons = 0.0
 
         meals.forEach { meal ->
           calories += meal.calories
@@ -86,10 +86,10 @@ object Meals {
   }
 
   data class MealsDetailedResult(
-    val calories: Int,
-    val fats: Int,
-    val proteins: Int,
-    val carbons: Int,
+    val calories: Double,
+    val fats: Double,
+    val proteins: Double,
+    val carbons: Double,
     val meals: List<Eating>
   )
 }

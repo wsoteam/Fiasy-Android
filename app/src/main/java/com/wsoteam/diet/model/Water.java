@@ -70,25 +70,6 @@ public class Water extends Eating implements Serializable {
     return super.getUrlOfImages();
   }
 
-  @Exclude
-  @Override public int getCalories() {
-    return super.getCalories();
-  }
-
-  @Exclude
-  @Override public int getCarbohydrates() {
-    return super.getCarbohydrates();
-  }
-
-  @Exclude
-  @Override public int getProtein() {
-    return super.getProtein();
-  }
-
-  @Exclude
-  @Override public int getFat() {
-    return super.getFat();
-  }
 
   @Exclude
   @Override public int getWeight() {

@@ -197,7 +197,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
       boolean isNeedCreateNewDate = true;
 
       if (calories.size() == 0) {
-        calories.put(timeInMillis, eating.getCalories());
+        calories.put(timeInMillis,(int) eating.getCalories());
         isNeedCreateNewDate = false;
       } else {
         caloriesIterator = calories.entrySet().iterator();
@@ -213,7 +213,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
       }
 
       if (isNeedCreateNewDate) {
-        calories.put(timeInMillis, eating.getCalories());
+        calories.put(timeInMillis,(int) eating.getCalories());
       }
     }
     return increaseSort(calories);

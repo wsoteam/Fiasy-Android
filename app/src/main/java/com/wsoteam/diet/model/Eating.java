@@ -7,10 +7,10 @@ public class Eating implements Serializable {
   private String name;
   private String urlOfImages;
 
-  private int calories;
-  private int carbohydrates;
-  private int protein;
-  private int fat;
+  private double calories;
+  private double carbohydrates;
+  private double protein;
+  private double fat;
 
   private int weight;
 
@@ -164,35 +164,35 @@ public class Eating implements Serializable {
     this.urlOfImages = urlOfImages;
   }
 
-  public int getCalories() {
+  public double getCalories() {
     return calories;
   }
 
-  public void setCalories(int calories) {
+  public void setCalories(double calories) {
     this.calories = calories;
   }
 
-  public int getCarbohydrates() {
+  public double getCarbohydrates() {
     return carbohydrates;
   }
 
-  public void setCarbohydrates(int carbohydrates) {
+  public void setCarbohydrates(double carbohydrates) {
     this.carbohydrates = carbohydrates;
   }
 
-  public int getProtein() {
+  public double getProtein() {
     return protein;
   }
 
-  public void setProtein(int protein) {
+  public void setProtein(double protein) {
     this.protein = protein;
   }
 
-  public int getFat() {
+  public double getFat() {
     return fat;
   }
 
-  public void setFat(int fat) {
+  public void setFat(double fat) {
     this.fat = fat;
   }
 

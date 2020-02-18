@@ -51,7 +51,6 @@ public class BasketDetailPresenter extends MvpPresenter<DetailView> {
 
   @Override
   protected void onFirstViewAttach() {
-    Log.e("LOL", basketEntity.toString());
     defaultCountPortions = basketEntity.getCountPortions();
     handlePortions();
     int portionSize = portionsSizes.get(0);
