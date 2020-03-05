@@ -1,5 +1,7 @@
 package com.wsoteam.diet.model;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -31,7 +33,20 @@ public class ArticleViewModel extends ViewModel {
                     data.setValue(t);
                     //Log.d("kkk", "loadData: " + t.getCount());
                 }, Throwable::printStackTrace);
+
+        loadUser();
     });
+  }
+
+  private void loadUser(){
+
+      NetworkService.getInstance().getApi().getUser("2993")
+              .subscribeOn(Schedulers.io())
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(userDTO -> {
+
+                  Log.d("kkk", "loadData: " + userDTO);
+              }, Throwable::printStackTrace);
   }
 
 }
