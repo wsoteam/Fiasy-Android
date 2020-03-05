@@ -22,4 +22,7 @@ public interface ApiRequest {
   @POST("/api/v1/sendsay/set")
   @FormUrlEncoded
   Single<ResponseBody> sign2Newsletters(@Field("email") String email, @Field("os") String os);
+
+  @GET("/api/v1/articles/")
+  Observable<ApiResult<Article>> getfArticles();
 }
