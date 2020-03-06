@@ -8,10 +8,12 @@ import com.wsoteam.diet.model.rest.UserDTO;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import okhttp3.ResponseBody;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiRequest {
@@ -27,5 +29,11 @@ public interface ApiRequest {
   Single<ResponseBody> sign2Newsletters(@Field("email") String email, @Field("os") String os);
 
   @GET("/api/v1/users/{user_id}/")
-  Observable<UserDTO> getUser(@Path("user_id") String userId);
+  Observable<UserDTO> getUser(@Path("user_id") String id);
+
+  @DELETE("/api/v1/water/{water_id}/")
+  Observable<UserDTO> deleteWater(@Path("water_id") String id);
+
+  @PUT("/api/v1/water/{water_id}/")
+  Observable<UserDTO> updateWater(@Path("water_id") String id);
 }

@@ -40,7 +40,7 @@ public class ArticleViewModel extends ViewModel {
 
   private void loadUser(){
 
-      NetworkService.getInstance().getApi().getUser("2993")
+      NetworkService.getInstance().getApi().getUser("7076")
               .subscribeOn(Schedulers.io())
               .observeOn(AndroidSchedulers.mainThread())
               .subscribe(userDTO -> {
