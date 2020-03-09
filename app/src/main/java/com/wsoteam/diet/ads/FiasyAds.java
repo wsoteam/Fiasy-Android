@@ -12,6 +12,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.wsoteam.diet.BuildConfig;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.utils.Subscription;
 
@@ -23,8 +24,6 @@ import androidx.lifecycle.MutableLiveData;
 public class FiasyAds {
 
     public static final int NATIVE_STEP_IN_RECYCLER = 6;
-
-//    private static final String ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
 
     private static InterstitialAd mInterstitialAd;
 //    private static UnifiedNativeAdView adView;
@@ -44,7 +43,7 @@ public class FiasyAds {
         if (Subscription.check(context)) return;
 
         MobileAds.initialize(context.getApplicationContext(), initializationStatus -> {
-//            Log.d("kkk", initializationStatus.toString());
+            Log.d("kkk", initializationStatus.toString());
             initInterstitial(context);
             refreshAd(context);
         });
@@ -55,7 +54,7 @@ public class FiasyAds {
 
         isRefreshLocked = true;
 
-        AdLoader.Builder builder = new AdLoader.Builder(context.getApplicationContext(), /*ADMOB_AD_UNIT_ID*/ context.getString(R.string.admob_native));
+        AdLoader.Builder builder = new AdLoader.Builder(context.getApplicationContext(),context.getString( BuildConfig.DEBUG ? R.string.admob_native_test : R.string.admob_native));
 
         // OnUnifiedNativeAdLoadedListener implementation.
         builder.forUnifiedNativeAd(unifiedNativeAd -> {
@@ -65,7 +64,7 @@ public class FiasyAds {
                 nativeAd.destroy();
             }
             nativeAd = unifiedNativeAd;
-//            Log.d("kkk", "++" + unifiedNativeAd);
+            Log.d("kkk", "++" + unifiedNativeAd);
             nativeAdView.setValue(unifiedNativeAd);
             isRefreshLocked = false;
 
@@ -85,8 +84,8 @@ public class FiasyAds {
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 isRefreshLocked = false;
-//                Toast.makeText(context, "Failed to load native ad: "
-//                        + errorCode, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Failed to load native ad: "
+                        + errorCode, Toast.LENGTH_SHORT).show();
             }
         }).build();
 
@@ -97,19 +96,19 @@ public class FiasyAds {
 
     private static void initInterstitial(Context context){
         mInterstitialAd = new InterstitialAd(context.getApplicationContext());
-        mInterstitialAd.setAdUnitId(context.getString(R.string.admob_native));
+        mInterstitialAd.setAdUnitId(context.getString(BuildConfig.DEBUG ? R.string.admob_native_test : R.string.admob_native));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
     public static void openInter(){
-
+        Log.d("kkk", "openInter()");
         if (mInterstitialAd == null) return;
 
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+            Log.d("kkk", "The interstitial wasn't loaded yet.");
         }
 
     }

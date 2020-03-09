@@ -1,12 +1,13 @@
 package com.wsoteam.diet.model;
 
+import java.net.URL;
 import java.util.List;
 
 public class ApiResult<T> {
 
   private int count;
-  private Object next;
-  private Object previous;
+  private URL next;
+  private URL previous;
   private List<T> results;
 
   public int getCount() {
@@ -17,19 +18,19 @@ public class ApiResult<T> {
     this.count = count;
   }
 
-  public Object getNext() {
+  public URL getNext() {
     return next;
   }
 
-  public void setNext(Object next) {
+  public void setNext(URL next) {
     this.next = next;
   }
 
-  public Object getPrevious() {
+  public URL getPrevious() {
     return previous;
   }
 
-  public void setPrevious(Object previous) {
+  public void setPrevious(URL previous) {
     this.previous = previous;
   }
 

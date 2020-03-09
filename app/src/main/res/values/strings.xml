@@ -663,7 +663,7 @@ Share your accomplishments with friends:</string>
     <string name="all">All</string>
     <string name="water_settings">Water settings</string>
 
-    <!-- Water Screen -->
+    <!-- WaterDTO Screen -->
     <string name="benefit_water_title">Benefits of water</string>
     <string name="benefit_water_description_first">Moisturizes your skin and makes it more supple.</string>
     <string name="benefit_water_description_second">Delivers nutrients to cells, thus preventing them from starving and dying.</string>

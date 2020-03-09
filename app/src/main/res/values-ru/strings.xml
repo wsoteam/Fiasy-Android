@@ -205,7 +205,7 @@
 
 
 
-  <!-- Water Screen -->
+  <!-- WaterDTO Screen -->
   <string name="water_settings">Настройки воды</string>
   <string name="benefit_water_title">Польза воды</string>
   <string name="benefit_water_description_first">Снабжает кожу влагой и делает её упругой и эластичной</string>

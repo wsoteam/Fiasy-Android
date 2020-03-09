@@ -4,6 +4,7 @@ import com.wsoteam.diet.model.ApiResult;
 import com.wsoteam.diet.model.Article;
 import com.wsoteam.diet.model.Author;
 import com.wsoteam.diet.model.rest.UserDTO;
+import com.wsoteam.diet.model.rest.WaterDTO;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -29,11 +30,17 @@ public interface ApiRequest {
   Single<ResponseBody> sign2Newsletters(@Field("email") String email, @Field("os") String os);
 
   @GET("/api/v1/users/{user_id}/")
-  Observable<UserDTO> getUser(@Path("user_id") String id);
+  Single<UserDTO> getUser(@Path("user_id") String id);
 
   @DELETE("/api/v1/water/{water_id}/")
-  Observable<UserDTO> deleteWater(@Path("water_id") String id);
+  Single<UserDTO> deleteWater(@Path("water_id") String id);
 
   @PUT("/api/v1/water/{water_id}/")
-  Observable<UserDTO> updateWater(@Path("water_id") String id);
+  Single<UserDTO> updateWater(@Path("water_id") String id);
+
+  @GET("/api/v1/water/")
+  Single<ApiResult<WaterDTO>> getWater();
+
+  @GET("/api/v1/water/?limit={limit}&offset={offset}")
+  Single<ApiResult<WaterDTO>> getWater(@Path("limit") String limit, @Path("offset") String offset);
 }
