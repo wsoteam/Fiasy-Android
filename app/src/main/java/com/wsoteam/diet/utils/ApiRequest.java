@@ -16,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiRequest {
 
@@ -41,6 +42,6 @@ public interface ApiRequest {
   @GET("/api/v1/water/")
   Single<ApiResult<WaterDTO>> getWater();
 
-  @GET("/api/v1/water/?limit={limit}&offset={offset}")
-  Single<ApiResult<WaterDTO>> getWater(@Path("limit") String limit, @Path("offset") String offset);
+  @GET("/api/v1/water/")
+  Single<ApiResult<WaterDTO>> getWater(@Query("limit") String limit, @Query("offset") String offset);
 }

@@ -60,7 +60,9 @@ import com.wsoteam.diet.common.Analytics.Events;
 import com.wsoteam.diet.common.Analytics.SavedConst;
 import com.wsoteam.diet.common.helpers.BodyCalculates;
 import com.wsoteam.diet.common.remote.UpdateChecker;
+import com.wsoteam.diet.model.ApiResult;
 import com.wsoteam.diet.model.WaterViewModel;
+import com.wsoteam.diet.model.rest.WaterDTO;
 import com.wsoteam.diet.presentation.activity.UserActivityFragment;
 import com.wsoteam.diet.presentation.diary.DiaryViewModel;
 import com.wsoteam.diet.presentation.fab.FabMenuViewModel;
@@ -312,7 +314,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ViewModelProviders.of(this).get(ArticleViewModel.class).getData();
-    ViewModelProviders.of(this).get(WaterViewModel.class).getData();
+    ViewModelProviders.of(this).get(WaterViewModel.class).getData().observe(this, waterDTOApiResult -> {
+      Log.d("kkk", "size = " + waterDTOApiResult.getResults().size());
+    });
 
     if (DietPlansHolder.get() == null) {
       loadDietPlans();
