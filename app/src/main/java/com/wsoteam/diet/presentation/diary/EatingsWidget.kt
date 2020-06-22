@@ -1,5 +1,6 @@
 package com.wsoteam.diet.presentation.diary
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.wsoteam.diet.ads.nativetemplates.TemplateView
 import com.wsoteam.diet.model.Eating
 import com.wsoteam.diet.presentation.diary.DiaryViewModel.DiaryDay
 import com.wsoteam.diet.presentation.diary.WidgetsAdapter.WidgetView
+import com.wsoteam.diet.utils.Subscription
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -37,8 +39,14 @@ class EatingsWidget(itemView: View) : WidgetView(itemView), UpdateCallback {
       update()
     }
   }
-
   private val nativeAd: TemplateView = itemView.findViewById(R.id.nativeAd)
+
+  private val adObserver = Observer<Boolean> {
+    Log.d("kkk", "adObserver+ $it")
+    if (it)  nativeAd.visibility = View.VISIBLE
+    else  nativeAd.visibility = View.GONE
+  }
+
 
   init {
     container.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -74,7 +82,7 @@ class EatingsWidget(itemView: View) : WidgetView(itemView), UpdateCallback {
 
     val ad = FiasyAds.getLiveDataAdView().value
 
-    if (ad != null) {
+    if (ad != null && Subscription.check(context)) {
       nativeAd.visibility = View.VISIBLE
       nativeAd.setStyles(NativeTemplateStyle.Builder().build())
       nativeAd.setNativeAd(ad)
@@ -93,6 +101,7 @@ class EatingsWidget(itemView: View) : WidgetView(itemView), UpdateCallback {
 
     DiaryViewModel.selectedDate.observeForever(dateChangeObserver)
     WorkWithFirebaseDB.liveUpdates().observeForever(eatingsObserver)
+    FiasyAds.adStatus.observeForever(adObserver)
 
     update()
     updateNativeAd()
@@ -102,6 +111,7 @@ class EatingsWidget(itemView: View) : WidgetView(itemView), UpdateCallback {
     super.onDetached(parent)
     DiaryViewModel.selectedDate.removeObserver(dateChangeObserver)
     WorkWithFirebaseDB.liveUpdates().removeObserver(eatingsObserver)
+    FiasyAds.adStatus.removeObserver(adObserver)
 
     disposables.clear()
   }

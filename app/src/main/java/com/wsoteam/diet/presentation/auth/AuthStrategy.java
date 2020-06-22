@@ -20,9 +20,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wsoteam.diet.App;
 import com.wsoteam.diet.Config;
 import com.wsoteam.diet.EntryPoint.ActivitySplash;
 import com.wsoteam.diet.Sync.UserDataHolder;
+import com.wsoteam.diet.presentation.profile.questions.QuestionsActivity;
 import com.wsoteam.diet.utils.RxFirebase;
 
 import java.util.Objects;
@@ -103,11 +105,13 @@ public abstract class AuthStrategy {
       Log.d("kkk","handle cred elese");
       user.linkWithCredential(credential).addOnFailureListener(e -> {
         Log.d("kkk","on failure", e);
+
         disposeOnRelease(RxFirebase.from(FirebaseAuth.getInstance()
                 .signInWithCredential(credential))
                 .subscribe(this::onAuthenticated, this::onAuthException));
       }).addOnCompleteListener(task1 -> {
         if (task1.isSuccessful()) {
+          QuestionsActivity.setFlagQuestionsStart(App.getContext());
           Log.d("kkk","complete isSucc");
           onAuthenticated(Objects.requireNonNull(task1.getResult()));
         }

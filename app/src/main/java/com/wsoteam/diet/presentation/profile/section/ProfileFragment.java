@@ -310,8 +310,7 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
     @Override
     public void onResume() {
         super.onResume();
-        if (Subscription.check(getContext())) profilePremium.setVisibility(View.INVISIBLE );
-        else profilePremium.setVisibility(View.VISIBLE);
+        Subscription.setVisibility(profilePremium);
         profilePresenter.attachPresenter();
         clearSwitch();
     }
@@ -349,13 +348,17 @@ public class ProfileFragment extends MvpAppCompatFragment implements ProfileView
         });
 
         FiasyAds.getLiveDataAdView().observe(this, ad -> {
-            if (ad != null) {
+            if (ad != null && !Subscription.check(getContext())) {
                 nativeAd.setVisibility(View.VISIBLE);
                 nativeAd.setStyles(new NativeTemplateStyle.Builder().build());
                 nativeAd.setNativeAd(ad);
             }else {
                 nativeAd.setVisibility(View.GONE);
             }
+        });
+
+        FiasyAds.adStatus.observe(getViewLifecycleOwner(), isOpen ->{
+            if (!isOpen) nativeAd.setVisibility(View.GONE);
         });
     }
 

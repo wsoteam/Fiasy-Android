@@ -1091,7 +1091,7 @@ Share your accomplishments with friends:</string>
     <string name="phone_memory">Phone memory</string>
 
     <string name="widget_activity_question">Have you been active today?</string>
-    <string name="url_privacy_police">https://fiasy.com/privacypolicy_en</string>
+    <string name="url_privacy_police" translatable="false">https://ny0110.wixsite.com/fiasy</string>
 
 
     <string name="my_meals">My meals</string>
@@ -1240,24 +1240,73 @@ Share your accomplishments with friends:</string>
     <string name="exercise_alert_txt">Вы хотите покинуть тренировку без завершения?</string>
     <string name="exercises_round_number">Круг</string>
 
-    <string name="starvation_title">16:8 Голодание</string>
-    <string name="starvation_start">Начать</string>
-    <string name="starvation_cancle">Отменить</string>
-    <string name="starvation_select">Выбрать</string>
-    <string name="starvation_close">Закрыть</string>
+    <string name="starvation_title">16:8 Starvation</string>
+    <string name="starvation_start">Begin</string>
+    <string name="starvation_cancle">Cancel</string>
+    <string name="starvation_select">Select</string>
+    <string name="starvation_close">Close</string>
 
-    <string name="starvation_time">Выберите время начала голодания:</string>
-    <string name="starvation_date">Выберите дату начала голодания:</string>
-    <string name="starvation_days">Выберите дни голодания:</string>
-    <string name="starvation_week_days">Дни недели</string>
+    <string name="starvation_time">Choose a time to start fasting:</string>
+    <string name="starvation_date">Choose a fasting start date:</string>
+    <string name="starvation_days">Choose days of fasting:</string>
+    <string name="starvation_week_days">Days of the week</string>
 
-    <string name="monday_f">Понедельник</string>
-    <string name="tuesday_f">Вторник</string>
-    <string name="wednesday_f">Среда</string>
-    <string name="thursday_f">Четверг</string>
-    <string name="friday_f">Пятница</string>
-    <string name="saturday_f">Суббота</string>
-    <string name="sunday_f">Воскресенье</string>
+    <string name="monday_f">Monday</string>
+    <string name="tuesday_f">Tuesday</string>
+    <string name="wednesday_f">Wednesday</string>
+    <string name="thursday_f">Thursday</string>
+    <string name="friday_f">Friday</string>
+    <string name="saturday_f">Saturday</string>
+    <string name="sunday_f">Sunday</string>
+
+
+    <string name="starvation_all_days">Daily</string>
+
+    <string name="starvation_on">Fasting now</string>
+    <string name="starvation_off">Now there is a meal</string>
+    <string name="starvation_started">Starvation will begin</string>
+    <string name="starvation_time_left">Time left:</string>
+    <string name="starvation_off_subtitle">Meal will end in:</string>
+    <string name="starvation_on_subtitle">The fasting period will end in:</string>
+
+    <string name="hours_short">hours</string>
+    <string name="minutes_short">minutes</string>
+    <string name="seconds_short">seconds</string>
+
+    <string name="starvation_exit">Log off</string>
+    <string name="starvation_save">Save</string>
+    <string name="starvation_cancel">Cancel</string>
+    <string name="starvation_setting">Settings</string>
+    <string name="starvation_back">Back</string>
+    <string name="starvation_alert_txt">Do you want to leave the test?</string>
+    <string name="starvation">Starvation</string>
+
+    <string name="starvation_blocked_title">16 hour fast</string>
+    <string name="starvation_blocked_part1">A simple and effective way to lose extra pounds. This method of fasting offers only to refuse breakfast or dinner and thereby reduce the amount of calories consumed, starting the process of fat burning.</string>
+    <string name="starvation_blocked_part2">Subscribe to PREMIUM and activate the auto-count function, which will do everything for you!</string>
+    <string name="starvation_blocked_buy">Checkout</string>
+
+    <string name="starvation_time_from">from</string>
+    <string name="starvation_time_till">before</string>
+
+    <string name="starvation_exit_without_saving">Exit without saving fasting settings?</string>
+
+
+    <string name="starvation_notification_basic_start">The fasting countdown has begun.</string>
+    <string name="starvation_notification_basic_end">Fasting is over, it\'s time to eat.</string>
+
+    <string name="starvation_notification_advance_start">15 minutes before fasting.</string>
+    <string name="starvation_notification_advance_end">15 minutes before the end of fasting.</string>
+
+    <string name="starvation_notification">Reminders</string>
+
+    <string name="starvation_notification_setting_basic">Remind about the beginning and end of fasting</string>
+    <string name="starvation_notification_setting_advance">Remind 15 minutes before and after fasting</string>
+
+    <string name="starvation_notification_alert_title">Notifications disabled</string>
+    <string name="starvation_notification_alert_txt">You can enable notifications in the Android settings for the Fiasy app.</string>
+
+    <string name="starvation_channel_name">Fasting in Fiasy</string>
 
     <string-array name="days_week">
         <item>@string/sunday_f</item>
@@ -1269,82 +1318,32 @@ Share your accomplishments with friends:</string>
         <item>@string/saturday_f</item>
     </string-array>
 
-    <string name="starvation_all_days">Ежедневно</string>
+    <string name="ad_attribution" translatable="false">Ad</string>
 
-    <string name="starvation_on">Сейчас идет голодание</string>
-    <string name="starvation_off">Сейчас идет прием пищи</string>
-    <string name="starvation_started">Голодание начнется</string>
-    <string name="starvation_time_left">Осталось времени:</string>
-    <string name="starvation_off_subtitle">Прием пищи закончится через:</string>
-    <string name="starvation_on_subtitle">Период голодания закончится через:</string>
+    <string name="splash_internet_check">Try to connect…</string>
+    <string name="splash_internet_bad">Failed, try again</string>
+    <string name="sign_in_facebook">Sign in with Facebook</string>
+    <string name="sign_in_google">Sign in with Google</string>
 
-    <string name="hours_short">ч.</string>
-    <string name="minutes_short">мин.</string>
-    <string name="seconds_short">сек.</string>
+    <string name="sent">sent</string>
+    <string name="sign_in_widget">You must be %s in to see your true calorie rate</string>
+    <string name="sign_in_alert">In Guest mode, calories are calculated based on averages. To change the calorie intake you must %s the application</string>
 
-    <string name="starvation_exit">Выйти</string>
-    <string name="starvation_save">Сохранить</string>
-    <string name="starvation_cancel">Отменить</string>
-    <string name="starvation_setting">Настройки</string>
-    <string name="starvation_back">Назад</string>
-    <string name="starvation_alert_txt">Вы хотите покинуть испытание?</string>
-    <string name="starvation">Голодание</string>
+    <string name="fragment_blocked_normal_text">You must be %s in to be able to change calories, proteins, fats and carbohydrates</string>
+    <string name="personal_info_text">You must be %s in to personal information to be displayed in full</string>
 
-    <string name="starvation_blocked_title">16-часовое голодание</string>
-    <string name="starvation_blocked_part1">Простой и действенный способ сбросить лишние килограммы. Данный метод голодания предлагает всего-лишь отказаться от завтрака или ужина и тем самым сократить объем потребляемых калорий, запустив процессы жиросжигания.</string>
-    <string name="starvation_blocked_part2">Оформите подписку PREMIUM и активируйте функцию автоматического отсчета, которая все будет делать за вас!</string>
-    <string name="starvation_blocked_buy">Оформить</string>
+    <string name="premium_text_g">Lose weight easily with %s, comfortable diary and a personal approach</string>
+    <string name="premium_G_field_1">Lack of banner advertising</string>
+    <string name="premium_G_field_2">No pop-up ads</string>
+    <string name="premium_G_field_3">Exclusive articles from a nutritionist</string>
+    <string name="premium_g_button_txt">Continue for free for 7 days</string>
 
-    <string name="starvation_time_from">с</string>
-    <string name="starvation_time_till">до</string>
+    <string name="hide">Hide</string>
+    <string name="show">Disclose</string>
 
-    <string name="starvation_exit_without_saving">Выйти без сохранения настроек голодания?</string>
+    <string name="set_your_weight">Carry your weight</string>
 
-
-    <string name="starvation_notification_basic_start">Отсчет голодания начался.</string>
-    <string name="starvation_notification_basic_end">Голодание окончено, пора кушать.</string>
-
-    <string name="starvation_notification_advance_start">15 минуть до начала голодания.</string>
-    <string name="starvation_notification_advance_end">15 минут до окончания голодания.</string>
-
-    <string name="starvation_notification">Напоминания</string>
-
-    <string name="starvation_notification_setting_basic">Напомнить о начале и окончании голодания</string>
-    <string name="starvation_notification_setting_advance">Напомнить за 15 минут до начала и окончания голодания</string>
-
-    <string name="starvation_notification_alert_title">Уведомления отключены</string>
-    <string name="starvation_notification_alert_txt">Включить уведомления вы можете в настройках Android для приложения Fiasy.</string>
-
-    <string name="starvation_channel_name">Голодание в Fiasy</string>
-
-
-    <string name="splash_internet_check">Пробуем подключиться...</string>
-    <string name="splash_internet_bad">Не удалось, попробовать снова</string>
-    <string name="sign_in_facebook">Войти через Facebook</string>
-    <string name="sign_in_google">Войти через Google</string>
-
-    <string name="sent">отправлено</string>
-
-    <string name="ad_attribution">Ad</string>
-
-
-    <string name="sign_in_widget">Необходимо %s в приложение чтобы отображалась ваша реальная норма калорий</string>
-    <string name="sign_in_alert">В режиме Гостя расчет калорий производится по усредненным показателям. Чтобы изменить норму калорий необходимо %s в приложение</string>
-
-    <string name="fragment_blocked_normal_text">Необходимо %s в приложение, чтобы появилась возможность менять КБЖУ</string>
-    <string name="personal_info_text">Необходимо %s в приложение, чтобы личная информация отображалась полностью</string>
-
-    <string name="premium_text_g">Худеть легко вместе с %s, комфортное ведение дневника и персональный подход </string>
-    <string name="premium_G_field_1">Отсутствие баннерной рекламы</string>
-    <string name="premium_G_field_2">Отсутствие всплывающей рекламы</string>
-    <string name="premium_G_field_3">Эксклюзивные статьи от диетолога</string>
-    <string name="premium_g_button_txt">Продолжить бесплатно 7 дней</string>
-
-    <string name="hide">Скрыть</string>
-    <string name="show">Раскрыть</string>
-
-    <string name="set_your_weight">Занесите свой вес</string>
-
-    <string name="mount_premium">Далее %s/месяц</string>
+    <string name="mount_premium">Further %s/month</string>
+    <string name="default_name">Guest</string>
 
 </resources>

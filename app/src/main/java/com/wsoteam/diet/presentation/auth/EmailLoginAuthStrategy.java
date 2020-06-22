@@ -7,6 +7,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wsoteam.diet.App;
+import com.wsoteam.diet.presentation.profile.questions.QuestionsActivity;
 import com.wsoteam.diet.utils.RxFirebase;
 
 import java.util.Objects;
@@ -42,7 +44,11 @@ public class EmailLoginAuthStrategy extends AuthStrategy {
         authTask = FirebaseAuth.getInstance()
           .createUserWithEmailAndPassword(account.email, account.password);
       }else {
-        authTask = user.linkWithCredential(credential);
+        authTask = user.linkWithCredential(credential).addOnCompleteListener(task1 -> {
+          if (task1.isSuccessful()) {
+            QuestionsActivity.setFlagQuestionsStart(App.getContext());
+          }
+        });
       }
 
     }

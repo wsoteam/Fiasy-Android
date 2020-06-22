@@ -26,7 +26,7 @@ public class Subscription {
 
     public static void setVisibility(View view){
         if (Subscription.check(view.getContext())){
-            view.setVisibility(View.INVISIBLE);
+            view.setVisibility(View.GONE);
         }else {
             view.setVisibility(View.VISIBLE);
         }

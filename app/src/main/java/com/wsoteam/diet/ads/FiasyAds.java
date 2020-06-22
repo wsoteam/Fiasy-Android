@@ -12,6 +12,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.wsoteam.diet.App;
 import com.wsoteam.diet.R;
 import com.wsoteam.diet.utils.Subscription;
 
@@ -31,6 +32,7 @@ public class FiasyAds {
 
     private static boolean isRefreshLocked = false;
 
+    public static MutableLiveData<Boolean> adStatus= new MutableLiveData<>(true);
 
     private static MutableLiveData<UnifiedNativeAd> nativeAdView = new MutableLiveData<>();
 
@@ -145,6 +147,11 @@ public class FiasyAds {
 
     public static void openInter(){
         Log.d("TAGi", "openInter() 1");
+        if (Subscription.check(App.getContext())) {
+            adStatus.setValue(false);
+            return;
+        }
+
         if (mInterstitialAd == null) return;
 
         Log.d("TAGi", "openInter() 2");

@@ -108,7 +108,6 @@
     <string name="yesterday">ontem</string>
     <string name="tomorrow">amanhã</string>
     <string name="daily_burn_widget_title">Taxa diária</string>
-    <string name="url_privacy_police">https://fiasy.com/privacypolicy_en</string>
     <string name="today">hoje</string>
     <string name="daily_rate_2">Taxa diária =</string>
 
@@ -848,5 +847,101 @@ Parabéns!</string>
     <string name="abt_5_arrow">Medidas do corpo</string>
     <string name="abt_bottom_prem">Experimente 3 dias gratuitamente \nPróximos %s por ano</string>
     <string name="abt_bottom_prem_week">Experimente 3 dias gratuitamente \nPróximos %s por semana</string>
+
+
+    <string name="splash_internet_check">Tentando se conectar…</string>
+    <string name="splash_internet_bad">Falha, tente novamente</string>
+    <string name="sign_in_facebook">Entrar com o Facebook</string>
+    <string name="sign_in_google">Entrar com o Google</string>
+
+    <string name="sent">enviei</string>
+    <string name="sign_in_widget">Você deve estar %s para ver sua verdadeira taxa calórica</string>
+    <string name="sign_in_alert">No modo Convidado, as calorias são calculadas com base nas médias. Para alterar a ingestão de calorias, você deve %s o aplicativo</string>
+
+    <string name="fragment_blocked_normal_text">Você deve estar %s para poder alterar calorias, proteínas, gorduras e carboidratos</string>
+    <string name="personal_info_text">Você deve estar %s às informações pessoais para serem exibidas na íntegra</string>
+
+    <string name="premium_text_g">Perca peso facilmente com %s, diário confortável e uma abordagem pessoal</string>
+    <string name="premium_G_field_1">Falta de publicidade em banner</string>
+    <string name="premium_G_field_2">Nenhum anúncio pop-up</string>
+    <string name="premium_G_field_3">Artigos exclusivos de um nutricionista</string>
+    <string name="premium_g_button_txt">Continue de graça por 7 dias.</string>
+
+    <string name="hide">Ocultar</string>
+    <string name="show">Desmascarar</string>
+
+    <string name="set_your_weight">Carregue seu peso</string>
+
+    <string name="mount_premium">Mais longe %s/mês</string>
+
+    //
+
+    <string name="starvation_title">16:8 Inanição</string>
+    <string name="starvation_start">Começar</string>
+    <string name="starvation_cancle">Cancelar</string>
+    <string name="starvation_select">Selecione</string>
+    <string name="starvation_close">Fechar</string>
+
+    <string name="starvation_time">Escolha um horário para começar a jejuar:</string>
+    <string name="starvation_date">Escolha a data de início do jejum:</string>
+    <string name="starvation_days">Escolha dias de jejum:</string>
+    <string name="starvation_week_days">Dias da semana</string>
+
+    <string name="monday_f">Segunda-feira</string>
+    <string name="tuesday_f">Terça</string>
+    <string name="wednesday_f">Quarta-feira</string>
+    <string name="thursday_f">Quinta-feira</string>
+    <string name="friday_f">Sexta-feira</string>
+    <string name="saturday_f">Sábado</string>
+    <string name="sunday_f">Domingo</string>
+
+
+    <string name="starvation_all_days">Diariamente</string>
+
+    <string name="starvation_on">Jejuando agora</string>
+    <string name="starvation_off">Agora há uma refeição</string>
+    <string name="starvation_started">A fome começará</string>
+    <string name="starvation_time_left">Tempo restante:</string>
+    <string name="starvation_off_subtitle">A refeição terminará em:</string>
+    <string name="starvation_on_subtitle">O período de jejum terminará em:</string>
+
+    <string name="hours_short">horas</string>
+    <string name="minutes_short">minutos</string>
+    <string name="seconds_short">segundos</string>
+
+    <string name="starvation_exit">Sair</string>
+    <string name="starvation_save">Salve</string>
+    <string name="starvation_cancel">Cancelar</string>
+    <string name="starvation_setting">Definições</string>
+    <string name="starvation_back">De volta</string>
+    <string name="starvation_alert_txt">Deseja sair do teste?</string>
+    <string name="starvation">Inanição</string>
+
+    <string name="starvation_blocked_title">16 horas rápido</string>
+    <string name="starvation_blocked_part1">Uma maneira simples e eficaz de perder quilos extras. Este método de jejum oferece apenas recusar café da manhã ou jantar e, assim, reduzir a quantidade de calorias consumidas iniciando o processo de queima de gordura.</string>
+    <string name="starvation_blocked_part2">Assine o PREMIUM e ative a função de contagem automática, que fará tudo por você!</string>
+    <string name="starvation_blocked_buy">Verificação de saída</string>
+
+    <string name="starvation_time_from">com</string>
+    <string name="starvation_time_till">antes</string>
+
+    <string name="starvation_exit_without_saving">Sair sem salvar as configurações de jejum?</string>
+
+
+    <string name="starvation_notification_basic_start">A contagem regressiva do jejum começou.</string>
+    <string name="starvation_notification_basic_end">O jejum acabou, é hora de comer.</string>
+
+    <string name="starvation_notification_advance_start">15 minutos antes do jejum.</string>
+    <string name="starvation_notification_advance_end">15 minutos antes do final do jejum.</string>
+
+    <string name="starvation_notification">Lembretes</string>
+
+    <string name="starvation_notification_setting_basic">Lembre-se do início e do fim do jejum</string>
+    <string name="starvation_notification_setting_advance">Lembre 15 minutos antes e depois do jejum</string>
+
+    <string name="starvation_notification_alert_title">Notificações desativadas</string>
+    <string name="starvation_notification_alert_txt">Você pode ativar as notificações nas configurações do Android para o aplicativo Fiasy.</string>
+
+    <string name="starvation_channel_name">Jejum em Fiasy</string>
 
 </resources>

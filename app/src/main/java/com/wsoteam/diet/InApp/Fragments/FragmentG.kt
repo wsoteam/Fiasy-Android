@@ -16,19 +16,20 @@ class FragmentG : BasePremiumFragment(R.layout.fragment_g) {
 
     companion object {
         @JvmStatic
-        fun newInstance(box: Box?) : Fragment{
+        fun newInstance(box: Box) : Fragment{
             val bundle = Bundle()
-            bundle.putSerializable(TAG_BOX, box);
+            bundle.putSerializable(TAG_BOX, box)
             val fragment = FragmentG()
-            fragment.arguments = bundle;
+            fragment.arguments = bundle
             return fragment
         }
     }
 
     override fun getCurrentSKU(): String = "trial_long_pic_3d_3m_2k"
-    override fun setPrice(sku: com.android.billingclient.api.SkuDetails) {
-        priceText.text = getString(R.string.mount_premium, sku.price)
-
+    override fun setPrice(sku: com.android.billingclient.api.SkuDetails?) {
+        sku?.also {
+            priceText.text = getString(R.string.mount_premium, it.price)
+        }
     }
 
 

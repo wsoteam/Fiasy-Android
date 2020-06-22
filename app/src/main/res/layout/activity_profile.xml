@@ -31,33 +31,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/settings_profile" />
 
-    <ImageView
-        android:id="@+id/profilePremium"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:elevation="9dp"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView13"
         app:layout_constraintEnd_toStartOf="@+id/ibSettings"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
-        app:srcCompat="@drawable/ic_mdi_crown" />
+        app:layout_constraintTop_toTopOf="@+id/imageView13">
 
-    <Button
-        android:id="@+id/profileLogIn"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/shape_login_button"
-        android:elevation="9dp"
-        android:paddingHorizontal="8dp"
-        android:stateListAnimator="@null"
-        android:text="@string/signIn"
-        android:textAllCaps="true"
-        android:textColor="#EF7D02"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-        app:layout_constraintEnd_toStartOf="@+id/profilePremium"
-        app:layout_constraintTop_toTopOf="@+id/imageView13" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/profileLogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_login_button"
+            android:backgroundTint="@color/white"
+            android:paddingHorizontal="8dp"
+            android:stateListAnimator="@null"
+            android:text="@string/signIn"
+            android:textAllCaps="true"
+            android:textColor="@color/pumpkin_orange"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/profilePremium"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="1dp"
+            app:srcCompat="@drawable/ic_mdi_crown" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView54"

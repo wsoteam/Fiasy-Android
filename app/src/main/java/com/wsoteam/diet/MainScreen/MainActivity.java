@@ -81,6 +81,7 @@ import com.wsoteam.diet.presentation.teach.TeachUtil;
 
 import com.wsoteam.diet.presentation.search.ParentActivity;
 import com.wsoteam.diet.utils.BlurBuilder;
+import com.wsoteam.diet.utils.Subscription;
 import com.wsoteam.diet.views.fabmenu.FloatingActionMenu;
 
 import org.json.JSONObject;
@@ -257,6 +258,9 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
+
+    FiasyAds.adStatus.setValue(!Subscription.check(this));
+
     handlGrade(Calendar.getInstance().getTimeInMillis());
     new UpdateChecker(this).runChecker();
 
@@ -590,7 +594,6 @@ public class MainActivity extends AppCompatActivity {
   };
 
   private Observer<String> fabState = state -> {
-    Log.d("kkk", " state - " + state);
     if (state != null) {
       switch (state) {
         case FabMenuViewModel.FAB_HIDE: {

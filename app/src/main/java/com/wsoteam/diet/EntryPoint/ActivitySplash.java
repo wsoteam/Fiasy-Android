@@ -195,7 +195,7 @@ public class ActivitySplash extends BaseActivity {
                     // Sign in success, update UI with the signed-in user's information
 
                     Log.d("user_id", "user id " + mAuth.getCurrentUser().getUid());
-                    WorkWithFirebaseDB.putProfileValue(ModelFactory.getDefaultProfile());
+                    WorkWithFirebaseDB.putProfileValue(ModelFactory.getDefaultProfile(this));
 
                     checkRegistrationAndRun();
                   } else {

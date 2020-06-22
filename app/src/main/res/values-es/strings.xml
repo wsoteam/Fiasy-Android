@@ -84,7 +84,6 @@
     <string name="user_activity_time_elapsed_wh" formatted="false">%dh %d m</string>
     <string name="user_activity_time_elapsed_wh_wm">%dh</string>
     <string name="daily_burn_widget_title">Cálculo diario</string>
-    <string name="url_privacy_police">https://fiasy.com/privacypolicy_en</string>
     <string name="today">hoy</string>
     <string name="camera">Cámara</string>
     <string name="load_photo">Subir foto</string>
@@ -171,7 +170,7 @@
         <item quantity="one">Hace %d día</item>
         <item quantity="other">Hace %d días</item>
     </plurals>
-<!--    <string name="enter_multi_params">Introducir datos</string>-->
+    <!--    <string name="enter_multi_params">Introducir datos</string>-->
     <string name="measurments">Medidas corporales</string>
     <string name="medium_weight">peso medio para la semana</string>
     <string name="meas_title_bottom">Medidas (cm)</string>
@@ -213,9 +212,9 @@
     <string name="errorTimeRecipe">Introduzca el tiempo de cocinado necesario</string>
     <string name="errorIngrRecipe">Introducir ingredientes</string>
     <string name="errorInstrReipe">Introducir instrucciones paso a paso</string>
-<!--    <string name="action_add">Añadir</string>-->
-<!--    <string name="action_add_to_favorite">Añadir a favoritos</string>-->
-<!--    <string name="calendar_today">Hoy</string>-->
+    <!--    <string name="action_add">Añadir</string>-->
+    <!--    <string name="action_add_to_favorite">Añadir a favoritos</string>-->
+    <!--    <string name="calendar_today">Hoy</string>-->
     <string name="widget_weight_title">Medidas corporales</string>
     <plurals name="duration_minutes">
         <item quantity="one">minuto</item>
@@ -331,7 +330,7 @@
     <string name="auth_restore_your_password">Recuperar contraseña</string>
     <string name="constraint_error_username_email">Introduzca la dirección de correo electrónico</string>
     <string name="enter_email_hint">Introduzca la dirección de correo electrónico</string>
-<!--    <string name="dif_level_hard_up">Perder peso</string>-->
+    <!--    <string name="dif_level_hard_up">Perder peso</string>-->
     <string name="activity_detail_food_add">Añadir</string>
     <string name="activity_detail_food_to_100_g">por cada 100 g\u0020</string>
     <string name="update_title">Actualización!</string>
@@ -427,7 +426,7 @@
     <string name="everyday_recipes">Recetas para cada día</string>
     <string name="science_articles">Interesantes artículos científicos</string>
     <string name="trace_elements_in_recipes">Micronutrientes de alimentos y recetas</string>
-<!--    <string name="try">Pruébelo</string>-->
+    <!--    <string name="try">Pruébelo</string>-->
     <string name="count_day_trial">de forma gratuita durante siete días</string>
     <string name="amount_per_month">Y por menos de 3 euros al mes.</string>
     <string name="connect_premium">ACTIVAR CUENTA PREMIUM</string>
@@ -546,7 +545,7 @@ deslice hacia la izquierda y pulse en el símbolo de corazón.</string>
     <string name="attention_description">Si introduce mal una actividad, los datos sobre su ingesta
 de CPFC diaria podrían mostrarse incorrectamente.</string>
     <string name="calories_spent">Calorías quemadas</string>
-<!--    <string name="for">para</string>-->
+    <!--    <string name="for">para</string>-->
     <string name="move_slider">Arrastre el control deslizante para cambiar la cantidad de tiempo</string>
     <string name="add_to_diary">Añadir al diario</string>
     <string name="search_empty">No se han encontrado los resultados. Vuelva a intentarlo o cree su propia comida.</string>
@@ -571,7 +570,7 @@ determinadas comidas.</string>
     <string name="choose_complexity">Seleccione un nivel de dificultad</string>
     <string name="easy">Fácil</string>
     <string name="medium">Medio</string>
-<!--    <string name="сomplex">Difícil</string>-->
+    <!--    <string name="сomplex">Difícil</string>-->
     <string name="all_users_can_see">Visible para todos los usuarios</string>
     <string name="all_users_can_see_description">Las recetas y comidas que cree y añada a la base de datos podrán verlas otros usuarios.
  Intente completar el formulario anterior de la forma más precisa y completa posible.</string>
@@ -865,5 +864,102 @@ Comparta sus logros con sus amigos:</string>
     <string name="abt_5_arrow">Medidas corporales</string>
     <string name="abt_bottom_prem">Prueba 3 días gratisn \nPróximos %s por año</string>
     <string name="abt_bottom_prem_week">Prueba 3 días gratisn \nPróximos %s por semana</string>
+
+
+    <string name="splash_internet_check">Intentando conectar…</string>
+    <string name="splash_internet_bad">Falló, intente nuevamente</string>
+    <string name="sign_in_facebook">Iniciar sesión usando Facebook</string>
+    <string name="sign_in_google">Iniciar sesión usando Google</string>
+
+    <string name="sent">expedidoо</string>
+    <string name="sign_in_widget">Debe %s sesión para ver su verdadera tasa de calorías</string>
+    <string name="sign_in_alert">En el modo Invitado, las calorías se calculan en función de los promedios. Para cambiar la ingesta de calorías debes %s a la aplicación</string>
+
+    <string name="fragment_blocked_normal_text">Debe %s sesión para poder cambiar calorías, proteínas, grasas y carbohidratos.</string>
+    <string name="personal_info_text">Debe %s sesión en la información personal para que se muestre en su totalidad</string>
+
+    <string name="premium_text_g">Pierda peso fácilmente con %s, diario cómodo y un enfoque personal</string>
+    <string name="premium_G_field_1">Falta de publicidad publicitaria</string>
+    <string name="premium_G_field_2">No hay anuncios emergentes</string>
+    <string name="premium_G_field_3">Artículos exclusivos de un nutricionista.</string>
+    <string name="premium_g_button_txt">Continuar de forma gratuita durante 7 días</string>
+
+    <string name="hide">Esconder</string>
+    <string name="show">Para descubrir</string>
+
+    <string name="set_your_weight">Lleva tu peso</string>
+
+    <string name="mount_premium">Más lejos %s/mes</string>
+
+    //
+
+    <string name="starvation_title">16:8 Inanición</string>
+    <string name="starvation_start">Empezar</string>
+    <string name="starvation_cancle">Cancelar</string>
+    <string name="starvation_select">Escoger</string>
+    <string name="starvation_close">Cerca</string>
+
+    <string name="starvation_time">Elige un momento para comenzar a ayunar:</string>
+    <string name="starvation_date">Elija una fecha de inicio de ayuno:</string>
+    <string name="starvation_days">Elige días de ayuno:</string>
+    <string name="starvation_week_days">Días de la semana</string>
+
+    <string name="monday_f">Lunes</string>
+    <string name="tuesday_f">Martes</string>
+    <string name="wednesday_f">Miércoles</string>
+    <string name="thursday_f">Jueves</string>
+    <string name="friday_f">Viernes</string>
+    <string name="saturday_f">Sábado</string>
+    <string name="sunday_f">Domingo</string>
+
+
+    <string name="starvation_all_days">Diario</string>
+
+    <string name="starvation_on">Ayuno ahora</string>
+    <string name="starvation_off">Ahora hay una comida</string>
+    <string name="starvation_started">El hambre comenzará</string>
+    <string name="starvation_time_left">Tiempo restante:</string>
+    <string name="starvation_off_subtitle">La comida terminará en:</string>
+    <string name="starvation_on_subtitle">El período de ayuno terminará en:</string>
+
+    <string name="hours_short">horas</string>
+    <string name="minutes_short">minutos</string>
+    <string name="seconds_short">segundos</string>
+
+    <string name="starvation_exit">Desconectarse</string>
+    <string name="starvation_save">Salvar</string>
+    <string name="starvation_cancel">Cancelar</string>
+    <string name="starvation_setting">Configuraciones</string>
+    <string name="starvation_back">Atrás</string>
+    <string name="starvation_alert_txt">¿Quieres dejar la prueba?</string>
+    <string name="starvation">Inanición</string>
+
+    <string name="starvation_blocked_title">16 horas de ayuno</string>
+    <string name="starvation_blocked_part1">Una forma simple y efectiva de perder kilos de más. Este método de ayuno ofrece solo rechazar el desayuno o la cena y, por lo tanto, reducir la cantidad de calorías consumidas al comenzar el proceso de quema de grasa.</string>
+    <string name="starvation_blocked_part2">¡Suscríbase a PREMIUM y active la función de conteo automático, que hará todo por usted!</string>
+    <string name="starvation_blocked_buy">Revisa</string>
+
+    <string name="starvation_time_from">con</string>
+    <string name="starvation_time_till">antes de</string>
+
+    <string name="starvation_exit_without_saving">¿Salir sin guardar la configuración de ayuno?</string>
+
+
+    <string name="starvation_notification_basic_start">La cuenta atrás en ayunas ha comenzado.</string>
+    <string name="starvation_notification_basic_end">El ayuno ha terminado, es hora de comer.</string>
+
+    <string name="starvation_notification_advance_start">15 minutos antes del ayuno.</string>
+    <string name="starvation_notification_advance_end">15 minutos antes del final del ayuno.</string>
+
+    <string name="starvation_notification">Recordatorios</string>
+
+    <string name="starvation_notification_setting_basic">Recordar el comienzo y el final del ayuno</string>
+    <string name="starvation_notification_setting_advance">Recuerde 15 minutos antes y después del ayuno</string>
+
+    <string name="starvation_notification_alert_title">Notificaciones deshabilitadas</string>
+    <string name="starvation_notification_alert_txt">Puede habilitar las notificaciones en la configuración de Android para la aplicación Fiasy.</string>
+
+    <string name="starvation_channel_name">Ayuno en Fiasy</string>
+
 
 </resources>

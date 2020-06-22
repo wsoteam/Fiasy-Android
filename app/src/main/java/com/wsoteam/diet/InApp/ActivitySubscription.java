@@ -26,13 +26,15 @@ public class ActivitySubscription extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_subscription);
-    getSupportFragmentManager().beginTransaction().add(R.id.clContainer,
-            FragmentG.newInstance(box)).commit();
+
 
 //    abVersion = getSharedPreferences(ABConfig.KEY_FOR_SAVE_STATE, MODE_PRIVATE).
 //        getString(ABConfig.KEY_FOR_SAVE_STATE, "default");
-//    box = (Box) getIntent().getSerializableExtra(Config.TAG_BOX);
-//
+    box = (Box) getIntent().getSerializableExtra(Config.TAG_BOX);
+
+
+    getSupportFragmentManager().beginTransaction().add(R.id.clContainer,
+            FragmentG.newInstance(box)).commit();
 //    switch (abVersion) {
 //      default:
 //      case ABConfig.A:
